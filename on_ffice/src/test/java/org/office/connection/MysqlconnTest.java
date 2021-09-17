@@ -27,7 +27,6 @@ public class MysqlconnTest {
 			e.printStackTrace();
 		}
 	}
-	//테스트 코드를 실행하면 @Test가 붙은 메서드만 실행
 	@Test
 	public void testConnection() {
 		try {
