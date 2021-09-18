@@ -1,5 +1,6 @@
 package org.office.controller;
 
+import org.office.domain.UserVO;
 import org.office.service.MyPageService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
