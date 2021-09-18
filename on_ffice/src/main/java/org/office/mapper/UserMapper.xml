@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.office.mapper.UserMapper">
+
+<!-- 회원가입 로직 -->
+<insert id="insert">
+	INSERT INTO users (uid, upw, name, profile_img, gender, birth, position, email, cp, depart_name, depart_id)
+	VALUES (#{uid}, #{upw}, #{name}, #{profile_img}, #{gender}, #{birth}, #{position}, #{email}, #{cp}, #{depart_name}, #{depart_id})
+</insert>
+
+</mapper>
