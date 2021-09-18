@@ -35,9 +35,20 @@ public class UserServiceTests {
 		}
 		@Test
 		public void testLogin() {
-			String uid = "users";
+			//form에서 입력한 값
+			String uid = "user";
 			String upw = "1234";
-			UserVO user = service.login(uid, upw);
-			log.info(user);
+			try {
+				UserVO user = service.login(uid);
+				
+				if(user.getUpw().equals(upw)) {
+					log.info("로그인 성공");
+				} else {
+					log.info("비밀번호가 틀립니다.");
+				}
+
+			} catch (Exception e) {
+				log.info("입력하신 아이디가 없습니다.");
+			}
 		}
 }

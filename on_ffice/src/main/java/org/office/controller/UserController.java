@@ -34,7 +34,7 @@ public class UserController {
 		
 		@PostMapping("/login")
 		private String login(String uid, String upw, Model model) {
-			UserVO vo = service.login(uid, upw);
+			UserVO vo = service.login(uid);
 			log.info("login로직 접속");
 			log.info("받아온 uid : " + uid);
 			log.info("받아온 upw : " + upw);
