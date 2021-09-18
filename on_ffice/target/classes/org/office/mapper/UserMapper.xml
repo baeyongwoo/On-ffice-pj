@@ -8,4 +8,10 @@
 	VALUES (#{uid}, #{upw}, #{name}, #{profile_img}, #{gender}, #{birth}, #{position}, #{email}, #{cp}, #{depart_name}, #{depart_id})
 </insert>
 
+<!-- 로그인 로직 -->
+<select id="select" resultType="org.office.domain.UserVO" parameterType="map">
+	SELECT * FROM users WHERE uid = #{uid}
+</select>
+
+
 </mapper>

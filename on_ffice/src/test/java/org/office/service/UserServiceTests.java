@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.office.domain.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,7 +25,7 @@ public class UserServiceTests {
 	private UserService service;
 	
 	// 먼저 서비스가 제대로 주입되었는지 여부 확인
-		@Test
+		//@Test
 		public void testExist() {
 			log.info(service);
 			
@@ -32,6 +33,11 @@ public class UserServiceTests {
 			// null인경우 에러를 발생
 			assertNotNull(service);
 		}
-		
-		
+		@Test
+		public void testLogin() {
+			String uid = "users";
+			String upw = "1234";
+			UserVO user = service.login(uid, upw);
+			log.info(user);
+		}
 }

@@ -7,4 +7,7 @@ public interface UserService {
 
 	// 회원 가입 서비스
 	public void register(UserVO vo);
+	
+	// 로그인 서비스
+	public UserVO login(String uid, String upw);
 }
