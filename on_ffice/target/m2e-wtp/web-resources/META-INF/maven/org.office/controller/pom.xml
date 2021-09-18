@@ -115,7 +115,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<scope>test</scope>
+			<!-- <scope>test</scope> 이거 있으면 명령어 호출 안먹어서 수정요 - 고광훈 -->
 		</dependency>
 
 		<!-- spring-test -->
@@ -123,7 +123,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>5.0.7.RELEASE</version>
-			<scope>test</scope>
+			<!-- <scope>test</scope> 이거 있으면 명령어 호출 안먹어서 수정요 - 고광훈 -->
 		</dependency>
 
 		<!-- spring-jdbc -->
