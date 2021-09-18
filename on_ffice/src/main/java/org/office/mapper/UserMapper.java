@@ -7,4 +7,8 @@ public interface UserMapper {
 	
 // 회원가입 매퍼
 	public void insert(UserVO vo);
+
+// 로그인 매퍼
+	public UserVO select(String uid, String upw);
 }
+
