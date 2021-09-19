@@ -27,7 +27,7 @@ public class NoticeServiceTests {
 	@Test
 	public void testList() {
 		
-		service.lookUp();
+		service.list();
 	}
 
 }

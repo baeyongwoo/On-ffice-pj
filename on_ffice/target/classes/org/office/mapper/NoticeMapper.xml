@@ -3,8 +3,8 @@
 <mapper namespace="org.office.mapper.NoticeMapper">
 
 <!-- 글 조회 로직 -->
-<select id="noticeList">
-	SELECT * FROM notice WHERE btitle ORDER BY notice_num DESC
+<select id="noticeList" resultType="org.office.domain.NoticeVO">
+	SELECT * FROM notice ORDER BY notice_num DESC
 </select>
 
 <!-- 글 작성 로직 -->

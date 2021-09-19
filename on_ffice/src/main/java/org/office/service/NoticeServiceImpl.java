@@ -19,13 +19,12 @@ public class NoticeServiceImpl implements NoticeService{
 	private NoticeMapper noticemapper;
 	
 	@Override
-	public List<NoticeVO> lookUp() {
-		List<NoticeVO> NoticeList = noticemapper.lookUp();
+	public List<NoticeVO> list() {
+		List<NoticeVO> NoticeList = noticemapper.noticeList();
+		log.info("service noticelist" + NoticeList);
 		log.info("전체 글 목록 조회");
 		return NoticeList;
-		
 	}
-	
 	
 	@Override
 	public void write(NoticeVO vo) {
@@ -33,5 +32,7 @@ public class NoticeServiceImpl implements NoticeService{
 		log.info("글작성 실행");
 		noticemapper.insert(vo);
 	}
+
+
 
 }

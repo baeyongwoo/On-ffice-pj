@@ -20,7 +20,7 @@ public class NoticeMapperTests {
 	@Test
 	public void testList() {
 		log.info("게시글 조회중...");
-		log.info(noticeMapper.lookUp());
+		log.info(noticeMapper.noticeList());
 	}
 	
 	//@Test

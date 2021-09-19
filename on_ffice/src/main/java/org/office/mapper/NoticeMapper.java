@@ -7,7 +7,7 @@ import org.office.domain.NoticeVO;
 public interface NoticeMapper {
 
 //글 조회 로직
-	public List<NoticeVO> lookUp();
+	public List<NoticeVO> noticeList();
 	
 // 글 작성 로직
 	public void insert(NoticeVO vo);

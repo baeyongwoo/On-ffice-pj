@@ -28,7 +28,7 @@ public class NoticeController {
 	public void noticeList(Model model) {
 			
 		log.info("게시글 로직 접속");
-		List<NoticeVO> noticeList = service.lookUp();
+		List<NoticeVO> noticeList = service.list();
 		model.addAttribute("noticeList",noticeList);
 	}
 	
