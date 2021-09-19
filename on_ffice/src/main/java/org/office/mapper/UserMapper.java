@@ -9,6 +9,6 @@ public interface UserMapper {
 	public void insert(UserVO vo);
 
 // 로그인 매퍼
-	public UserVO select(String uid);
+	public UserVO select(String uid, String upw);
 }
 

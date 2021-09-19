@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVO login(String uid) {
-		UserVO user = mapper.select(uid);
+	public UserVO login(String uid, String upw) {
+		UserVO user = mapper.select(uid, upw);
 		log.info("로그인 실행");
 		return user;
 	}

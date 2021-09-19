@@ -39,7 +39,7 @@ public class UserServiceTests {
 			String uid = "user";
 			String upw = "1234";
 			try {
-				UserVO user = service.login(uid);
+				UserVO user = service.login(uid, upw);
 				
 				if(user.getUpw().equals(upw)) {
 					log.info("로그인 성공");

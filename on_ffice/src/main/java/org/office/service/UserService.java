@@ -9,5 +9,5 @@ public interface UserService {
 	public void register(UserVO vo);
 	
 	// 로그인 서비스
-	public UserVO login(String uid);
+	public UserVO login(String uid, String upw);
 }
