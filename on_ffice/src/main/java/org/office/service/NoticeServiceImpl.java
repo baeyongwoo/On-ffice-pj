@@ -30,7 +30,7 @@ public class NoticeServiceImpl implements NoticeService{
 	public void write(NoticeVO vo) {
 		
 		log.info("글작성 실행");
-		noticemapper.insert(vo);
+		noticemapper.writeSelect(vo);
 	}
 
 

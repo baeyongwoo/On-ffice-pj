@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -33,10 +34,18 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/write")
+	public String write(NoticeVO vo, RedirectAttributes rttr) {
+		
+		service.write(vo);
+		log.info(vo);
+		
+		rttr.addFlashAttribute("notice_num", vo.getNotice_num());
+		
+		return "redirect:/user/noticeList";
+	}
+	
+	@GetMapping("/write")
 	public String write() {
 		return "/user/write";
 	}
-	
-	
-
 }

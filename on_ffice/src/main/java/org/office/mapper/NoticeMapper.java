@@ -10,6 +10,8 @@ public interface NoticeMapper {
 	public List<NoticeVO> noticeList();
 	
 // 글 작성 로직
-	public void insert(NoticeVO vo);
+	public void write(NoticeVO vo);
+	
+	public void writeSelect(NoticeVO vo);
 
 }

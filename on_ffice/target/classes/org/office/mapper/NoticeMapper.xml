@@ -15,6 +15,16 @@
 					#{name}, #{position}, #{dpname}, #{importance})
 </insert>
 
+<insert id="writeSelect">
+	<selectKey keyProperty="notice_num" order="BEFORE" resultType="int">
+			SELECT notice_num.nextval from dual
+	</selectKey>
+		INSERT INTO NOTICE(notice_num, id, btitle, bcontent, 
+							name, position, dpname, importance)
+		VALUES(#{notice_num}, #{id}, #{btitle}, #{bcontent}, 
+					#{name}, #{position}, #{dpname}, #{importance})
+</insert>
+
 
 </mapper>
 

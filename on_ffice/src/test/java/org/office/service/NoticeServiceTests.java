@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.office.domain.NoticeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,10 +25,27 @@ public class NoticeServiceTests {
 		assertNotNull(service);
 	}
 	
-	@Test
+	//@Test
 	public void testList() {
 		
 		service.list();
 	}
+	
+	@Test
+	public void testWrite() {
+		
+		NoticeVO vo = new NoticeVO();
+		
+		vo.setId(100001);
+		vo.setBtitle("글제목");
+		vo.setBcontent("글내용");
+		vo.setName("아무개");
+		vo.setPosition("사원");
+		vo.setDpname("관리부");
+		vo.setImportance("일반");
+		
+		service.write(vo);
+	}
+	
 
 }
