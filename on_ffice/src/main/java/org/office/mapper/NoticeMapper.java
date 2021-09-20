@@ -12,6 +12,6 @@ public interface NoticeMapper {
 // 글 작성 로직
 	public void write(NoticeVO vo);
 	
-	public void writeSelect(NoticeVO vo);
+	public void writeSelectkey(NoticeVO vo);
 
 }

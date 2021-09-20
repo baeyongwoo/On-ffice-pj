@@ -4,7 +4,6 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.office.domain.NoticeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -14,10 +13,10 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-public class NoticeServiceTests {
+public class DpCommunityServiceTests {
 	
 	@Autowired
-	private NoticeService service;
+	private DpCommunityService service;
 	
 	//@Test
 	public void testExist() {
@@ -25,23 +24,9 @@ public class NoticeServiceTests {
 		assertNotNull(service);
 	}
 	
-	//@Test
-	public void testList() {
+	@Test
+	public void testDpCList() {
 		
 		service.list();
 	}
-	
-	@Test
-	public void testWrite() {
-		
-		NoticeVO vo = new NoticeVO();
-		vo.setNtitle("test");
-		vo.setNcontent("테스트용 ");
-		vo.setNwriter("test1");
-		
-		service.write(vo);
-		
-	}
-	
-
 }

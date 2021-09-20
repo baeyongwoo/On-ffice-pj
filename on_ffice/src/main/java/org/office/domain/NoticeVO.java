@@ -1,17 +1,18 @@
 package org.office.domain;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data
 public class NoticeVO {
 	
 	private int notice_num;
-	private int id;
-	private String btitle;
-	private String bcontent;
-	private String name;
-	private String position;
-	private String dpname;
-	private String importance;
+	private String ntitle;
+	private String ncontent;
+	private String nwriter;
+	private Date ndate;
+	private Date nupdate;
+	private int nhits;
 
 }

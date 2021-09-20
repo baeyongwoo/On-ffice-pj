@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.office.mapper.DpCommunityMapper">
+
+<!-- 글 조회 로직 -->
+<select id="DpCommunityList" resultType="org.office.domain.DpCommunityVO">
+	SELECT * FROM depart_community ORDER BY dc_num DESC
+</select>
+
+<insert id="DpCwrite">
+	INSERT INTO depart_community(dp_code, dtitle, dcontent, dwriter, ddate, dupdate, dhits)
+	VALUES (#{dp_code}, #{dtitle}, #{dcontent}, #{dwriter}, #{ddate}, #{dupdate}, #{dhits}) 
+</insert>
+
+</mapper>

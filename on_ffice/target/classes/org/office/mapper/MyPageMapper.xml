@@ -11,5 +11,13 @@
 *	etc...
  -->
  
- <select id="#"/>
+ <select id="getInfo" resultType="org.office.domain.MyPageVO">
+ <![CDATA[
+ SELECT * FROM users WHERE uid=#{uid}
+ ]]>
+ </select>
+ 
+ 
+ 
+ 
  </mapper>

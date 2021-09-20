@@ -10,9 +10,22 @@
 
 package org.office.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
 public class MyPageVO {
 
+	private String uid;
+	private String upw;
+	private String name;
+	private String profile_img;
+	private String gender;
+	private Date birth;
+	private String email;
+	private String cp;
+	private int dp_code;
+	private int position_code;
+	
 }
