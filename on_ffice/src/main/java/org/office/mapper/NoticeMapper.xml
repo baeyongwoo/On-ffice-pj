@@ -2,28 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.office.mapper.NoticeMapper">
 
-<!-- 글 조회 로직 -->
-<select id="noticeList" resultType="org.office.domain.NoticeVO">
-	SELECT * FROM notice ORDER BY notice_num DESC
-</select>
+	<!-- 글 조회 로직 -->
+	<select id="noticeList" resultType="org.office.domain.NoticeVO">
+		SELECT * FROM notice ORDER BY notice_num DESC
+	</select>
 
-<!-- 글 작성 로직 -->
-<insert id="write">
-	INSERT INTO NOTICE(notice_num, id, btitle, bcontent, 
-					name, position, dpname, importance)
-	VALUES(notice_num.nextval, #{id}, #{btitle}, #{bcontent}, 
-					#{name}, #{position}, #{dpname}, #{importance})
-</insert>
+	<!-- 글 작성 로직 -->
+	<insert id="write">
+		INSERT INTO NOTICE
+		VALUES(notice_num.nextval, #{id}, #{ntitle}, #{ncontent},
+		#{nwriter})
+	</insert>
 
-<insert id="writeSelect">
-	<selectKey keyProperty="notice_num" order="BEFORE" resultType="int">
-			SELECT notice_num.nextval from dual
-	</selectKey>
-		INSERT INTO NOTICE(notice_num, id, btitle, bcontent, 
-							name, position, dpname, importance)
-		VALUES(#{notice_num}, #{id}, #{btitle}, #{bcontent}, 
-					#{name}, #{position}, #{dpname}, #{importance})
-</insert>
+	<insert id="writeSelectkey">
+		<selectKey keyProperty="notice_num" order="BEFORE"
+			resultType="int">
+			select max(notice_num) + 1 as nextnum from notice;
+		</selectKey>
+		INSERT INTO NOTICE 
+		VALUES(#{notice_num}, #{ntitle}, #{ncontent}, #{nwriter}, now(), now(), 0)
+	</insert>
 
 
 </mapper>

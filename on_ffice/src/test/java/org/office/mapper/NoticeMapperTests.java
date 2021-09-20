@@ -17,25 +17,19 @@ public class NoticeMapperTests {
 	@Autowired
 	private NoticeMapper noticeMapper;
 	
-	//@Test
+	@Test
 	public void testList() {
 		log.info("게시글 조회중...");
 		log.info(noticeMapper.noticeList());
 	}
 	
-	@Test
+	//@Test
 	public void testInsert() {
-		
 		NoticeVO vo = new NoticeVO();
-	
-		vo.setId(100001);
-		vo.setBtitle("글제목");
-		vo.setBcontent("글내용");
-		vo.setName("아무개");
-		vo.setPosition("사원");
-		vo.setDpname("관리부");
-		vo.setImportance("일반");
-		noticeMapper.write(vo);
+		vo.setNtitle("test공지");
+		vo.setNcontent("test글");
+		vo.setNwriter("test관리자");
+
 	}
 
 }

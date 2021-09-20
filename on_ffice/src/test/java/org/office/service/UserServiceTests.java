@@ -35,13 +35,17 @@ public class UserServiceTests {
 	@Test
 	public void testLogin() {
 		// form에서 입력한 값
-		String uid = "users";
+		String uid = "test1";
 		String upw = "1234";
 		try {
 			UserVO user = service.login(uid, upw);
-
+			if(user == null) {
+				log.info("아이디나 비밀번호가 적합하지 않습니다.");
+			} else {
+				log.info("로그인 성공 ");
+			}
 		} catch (Exception e) {
-			log.info("아이디나 비밀번호가 적합하지 않습니다.");
+			e.printStackTrace();
 		}
 
 	}

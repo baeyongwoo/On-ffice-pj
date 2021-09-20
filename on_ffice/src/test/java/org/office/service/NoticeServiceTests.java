@@ -35,16 +35,12 @@ public class NoticeServiceTests {
 	public void testWrite() {
 		
 		NoticeVO vo = new NoticeVO();
-		
-		vo.setId(100001);
-		vo.setBtitle("글제목");
-		vo.setBcontent("글내용");
-		vo.setName("아무개");
-		vo.setPosition("사원");
-		vo.setDpname("관리부");
-		vo.setImportance("일반");
+		vo.setNtitle("test");
+		vo.setNcontent("테스트용 ");
+		vo.setNwriter("test1");
 		
 		service.write(vo);
+		
 	}
 	
 
