@@ -11,8 +11,11 @@
 package org.office.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.office.domain.MyPageVO;
+import org.office.service.MyPageService;
 
 @Mapper
 public interface MyPageMapper {
 
+	public MyPageVO getInfo(String uid); 
 }
