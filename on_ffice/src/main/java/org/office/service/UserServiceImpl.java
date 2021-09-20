@@ -20,15 +20,29 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void register(UserVO vo) {
 		
-		log.info("회원가입 실행");
+		log.info("회원가입 service 실행");
 		mapper.insert(vo);
 	}
 
 	@Override
 	public UserVO login(String uid, String upw) {
 		UserVO user = mapper.select(uid, upw);
-		log.info("로그인 실행");
+		log.info("로그인 service 실행");
 		return user;
+	}
+
+	@Override
+	// id 중복체크 서비스
+	public int idCheck(String uid) {
+		log.info("id 중복검사 service 실행");
+		return mapper.selectIdCount(uid);
+	}
+	
+	@Override
+	// email 중복체크 서비스
+	public int emailCheck(String email) {
+		log.info("email 중복검사 service 실행");
+		return mapper.selectEmailCount(email);
 	}
 
 }

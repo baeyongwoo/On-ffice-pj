@@ -4,8 +4,8 @@
 
 <!-- 회원가입 로직 -->
 <insert id="insert">
-	INSERT INTO users (uid, upw, name, profile_img, gender, birth, position, email, cp, depart_name, depart_id)
-	VALUES (#{uid}, #{upw}, #{name}, #{profile_img}, #{gender}, #{birth}, #{position}, #{email}, #{cp}, #{depart_name}, #{depart_id})
+	INSERT INTO users (uid, upw, name, profile_img, gender, birth, postion_code, email, cp, dp_code)
+	VALUES (#{uid}, #{upw}, #{name}, #{profile_img}, #{gender}, #{birth}, #{postion_code}, #{email}, #{cp}, #{dp_code})
 </insert>
 
 <!-- 로그인 로직 -->
@@ -13,5 +13,14 @@
 	SELECT * FROM users WHERE uid = #{uid} AND upw = #{upw}
 </select>
 
+<!-- id 중복검사 로직 -->
+<select id="selectIdCount" resultType="int">
+	SELECT count(*) FROM users WHERE uid = #{uid}
+</select>
+
+<!-- email 중복검사 로직 -->
+<select id="selectEmailCount" resultType="int">
+	SELECT count(*) FROM users WHERE email = #{email}
+</select>
 
 </mapper>

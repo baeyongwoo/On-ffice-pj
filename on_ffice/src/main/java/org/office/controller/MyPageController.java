@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-@Controller //컴포넌트스캔
-@Log4j
-@RequestMapping("/mypage/*") //이 클래스를 사용하는 메서드이 들어오는 주소 앞 /mypage로 명명
-@AllArgsConstructor // 의존성 주입
+//@Controller //컴포넌트스캔
+//@Log4j
+//@RequestMapping("/mypage/*") //이 클래스를 사용하는 메서드이 들어오는 주소 앞 /mypage로 명명
+//@AllArgsConstructor // 의존성 주입
 public class MyPageController {
 	
 	@Autowired

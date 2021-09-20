@@ -10,4 +10,10 @@ public interface UserService {
 	
 	// 로그인 서비스
 	public UserVO login(String uid, String upw);
+	
+	// id중복검사 서비스
+	public int idCheck(String uid);
+	
+	// id중복검사 서비스
+	public int emailCheck(String email);
 }
