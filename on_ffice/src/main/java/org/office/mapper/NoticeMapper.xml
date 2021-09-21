@@ -11,6 +11,12 @@
 	<select id="notice_detail" resultType="org.office.domain.NoticeVO">
 		SELECT * FROM notice WHERE notice_num = #{notice_num}
 	</select>
+	
+	<!-- 글 조회수 증가 로직 -->
+	<update id="nhit_up">
+		UPDATE notice SET nhits = nhits + 1 WHERE notice_num = #{notice_num} 
+		
+	</update>
 
 	<!-- 글 작성 로직 -->
 	<insert id="write">

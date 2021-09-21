@@ -61,6 +61,7 @@ public class NoticeServiceTests {
 	public void testDetail() {
 		
 		service.detail(1);
+		service.nhit_up(1);
 	}
 	
 	

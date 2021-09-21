@@ -21,6 +21,9 @@ public interface NoticeMapper {
 	
 // 글 수정 로직
 	public void update(NoticeVO vo);
+
+// 글 조회수 증가 로직
+	public void nhit_up(int notice_num);
 	
 
 }

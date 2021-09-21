@@ -29,5 +29,8 @@ public interface NoticeService {
 	
 	// 글 갱신 서비스
 	public void update(NoticeVO vo);
+	
+	// 글 조회수 증가 서비스
+	public void nhit_up(int notice_num);
 
 }

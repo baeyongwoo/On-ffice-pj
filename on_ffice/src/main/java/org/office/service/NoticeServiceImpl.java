@@ -69,13 +69,16 @@ public class NoticeServiceImpl implements NoticeService{
 		log.info(notice_num + "번째 글 상세보기 요청");
 		log.info("글 상세보기 실행");
 		int hits = vo.getNhits();
-		log.info("현재 조회수 출력 : " + hits);
-		hits ++;
-		vo.setNhits(hits);
-		log.info("조회수 증감된 것 출력 : " + vo.getNhits());
-		
+	
 		return vo;
 		
+		
+	}
+
+	@Override
+	public void nhit_up(int notice_num) {
+		log.info("글 조회수 증가");
+		noticemapper.nhit_up(notice_num);
 		
 	}
 
