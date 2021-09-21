@@ -25,7 +25,7 @@
 			uid=uid.trim(); 
 		
 		// uid의 길이가 5 미만일 경우 아이디는 5자 이상 입력해주세요 경고창 출력
-		if(uid.length<5){ alert("아이디는 5자 이상 입력해주십시오."); 
+		if(uid.length<4){ alert("아이디는 4자 이상 입력해주십시오."); 
 		// false를 리턴해줘야만 onsubmit의 원리로 submit자체를 차단할 수 있음
 		// onsubmit 뒤에 "return false"가 있으면 이 폼의 submit을 차단할 수 있음
 		return false; }//if end return true; 

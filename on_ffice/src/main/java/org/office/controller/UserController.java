@@ -2,6 +2,7 @@ package org.office.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.office.domain.UserVO;
 import org.office.service.MyPageService;
 import org.office.service.UserService;
@@ -121,8 +122,63 @@ public class UserController {
 			} else {
 				model.addAttribute("login_result", "success");
 				session.setAttribute("login_session", uid);
-				return "/lobby";
+				return "home";
 			}
+		}
+		
+		@PostMapping("/userInfo")
+		private String userInfo(String uid, Model model) {
+			log.info("유저 정보 조회 시작");
+			UserVO vo = service.userInfo(uid);
+			model.addAttribute("userInfo", vo);
+			return "/user/userInfo";
+		}
+		
+		@GetMapping("/userInfo")
+		private String goUserInfo(String uid) {
+			log.info("유저 정보 페이지로 이동");
+			return "/user/userInfo";
+		}
+		
+		@PostMapping("/userModify")
+		private String userModify(UserVO vo, Model model) {
+			log.info("유저 정보 수정 시작");
+			service.userModify(vo);
+			model.addAttribute("userInfo", vo);
+			model.addAttribute("modify_result", "success");
+			return "/user/userInfo";
+		}
+		
+		@PostMapping("/goUserModify")
+		private String goUserModify(@Param("uid")String uid, Model model) {
+			model.addAttribute("userInfo", service.userInfo(uid));
+			log.info("유저 정보 수정창 이동");
+			return "/user/userModify";
+		}
+		
+		
+		@PostMapping("/deleteCheck")
+		private String deleteCheck(String uid, String upw, Model model) {
+			log.info("탈퇴를 위한 비밀번호 확인 시작");
+			// 로그인 로직과 동일하므로, 로그인 서비스 재사용
+			UserVO vo = service.login(uid, upw);
+			
+			if(vo==null) {
+				log.info("비밀번호가 틀려서 회원탈퇴 실패");
+				model.addAttribute("delete_result", "fail");
+				return "/user/userInfo";
+			}else {
+				log.info("비밀번호 일치하여 회원탈퇴 진행");
+				service.userDelete(uid);
+				model.addAttribute("delete_result", "success");
+				return "/user/deleteCheckForm";
+				
+			}
+		}
+		@GetMapping("/deleteCheckForm")
+		private String deleteCheckForm() {
+			log.info("비밀번호 재확인 페이지 진입");
+			return "/user/deleteCheckForm";
 		}
 	}
 

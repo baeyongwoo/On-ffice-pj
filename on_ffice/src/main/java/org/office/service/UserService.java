@@ -16,4 +16,14 @@ public interface UserService {
 	
 	// id중복검사 서비스
 	public int emailCheck(String email);
+	
+	// 유저 정보 조회 서비스
+	public UserVO userInfo(String uid);
+	
+	// 유저 정보 수정 서비스
+	public void userModify(UserVO vo);
+	
+	// 회원 탈퇴 서비스
+	public void userDelete(String uid);
+	
 }

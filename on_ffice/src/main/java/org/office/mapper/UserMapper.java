@@ -19,5 +19,20 @@ public interface UserMapper {
 	
 // 이메일 중복체크 매퍼
 	public int selectEmailCount(@Param("email")String email);
+	
+// 유저 정보 조회 매퍼
+	public UserVO selectUser(@Param("uid") String uid);
+	
+// 유저 정보 수정 매퍼
+	public void updateUser(UserVO vo);
+	
+// 회원 탈퇴 매퍼
+	public void deleteUser(@Param("uid") String uid);
+	
+
+	
+	
+
+	
 }
 

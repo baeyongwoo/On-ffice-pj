@@ -23,4 +23,20 @@
 	SELECT count(*) FROM users WHERE email = #{email}
 </select>
 
+<!-- 유저 정보 조회 로직 -->
+<select id="selectUser" resultType="org.office.domain.UserVO">
+	SELECT * FROM users WHERE uid = #{uid}
+</select>
+
+<!-- 유저 정보 수정 로직 -->
+<update id="updateUser">
+	UPDATE users set uid=#{uid}, upw=#{upw}, name=#{name}, profile_img=#{profile_img}, gender=#{gender}, birth=#{birth}, postion_code=#{postion_code}, email=#{email}, cp=#{cp}, dp_code=#{dp_code}
+	WHERE uid = #{uid}
+</update>
+
+<!-- 회원 탈퇴 로직 -->
+<delete id="deleteUser">
+	DELETE FROM users WHERE uid = #{uid}
+</delete>
+
 </mapper>
