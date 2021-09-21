@@ -25,4 +25,21 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 		return DpCommunityList;		
 	}
 
+	@Override
+	public DpCommunityVO detail(int dc_num) {
+		DpCommunityVO vo = dpcommunitymapper.DpC_detail(dc_num);
+		log.info(dc_num + "번째 부서글 상세보기 요청");
+		log.info("부서글 상세보기 실행");
+		int hits = vo.getDhits();
+		
+		return vo;
+	}
+
+	@Override
+	public void dhit_up(int dc_num) {
+		log.info("글 조회수 증가");
+		dpcommunitymapper.dhit_up(dc_num);
+		
+	}
+
 }

@@ -7,9 +7,14 @@
 	SELECT * FROM depart_community ORDER BY dc_num DESC
 </select>
 
-<insert id="DpCwrite">
-	INSERT INTO depart_community(dp_code, dtitle, dcontent, dwriter, ddate, dupdate, dhits)
-	VALUES (#{dp_code}, #{dtitle}, #{dcontent}, #{dwriter}, #{ddate}, #{dupdate}, #{dhits}) 
-</insert>
+<!-- 글 상세보기 로직 -->
+<select id="DpC_detail" resultType="org.office.domain.DpCommunityVO">
+	SELECT * FROM depart_community WHERE dc_num = #{dc_num}
+</select>
+
+<!-- 글 조회수 증가 로직 -->
+<update id="dhit_up">
+	UPDATE depart_community SET dhits = dhits + 1 WHERE dc_num = #{dc_num}
+</update>
 
 </mapper>

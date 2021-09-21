@@ -22,20 +22,11 @@ public class DpCommunityMapperTests {
 		log.info("부서 게시글 조회중...");
 		log.info(dpcommunityMapper.DpCommunityList());
 	}
-	
-	@Test
-	public void testDpCInsert() {
-		
-		DpCommunityVO vo = new DpCommunityVO();
-		
-		vo.setDp_code(10001);
-		vo.setDtitle("2번째 글");
-		vo.setDcontent("2번째 글 내용");
-		vo.setDwriter("글쓴이");
-		vo.setDdate();
-		vo.setDupdate();
-		vo.setDhits(0);
-		
+	//@Test
+	public void testDpCdetail() {
+		log.info("부서 게시글 상세 조회중...");
+		log.info(dpcommunityMapper.DpC_detail(1));
 	}
-
+	
+	
 }
