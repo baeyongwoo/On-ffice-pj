@@ -47,6 +47,38 @@ public class NoticeServiceImpl implements NoticeService{
 		
 	}
 
+	@Override
+	public void delete(int notice_num) {
+		log.info(notice_num + "번째 글 삭제 요청");
+		log.info("글 삭제 실행");
+		noticemapper.delete(notice_num);
+		
+		
+	}
+
+	@Override
+	public void update(NoticeVO vo) {
+		log.info(vo.getNotice_num() + "번째 글 갱신 요청");
+		log.info("글 갱신 실행");
+		noticemapper.update(vo);
+	}
+
+	@Override
+	public NoticeVO detail(int notice_num) {
+		NoticeVO vo = noticemapper.notice_detail(notice_num);
+		log.info(notice_num + "번째 글 상세보기 요청");
+		log.info("글 상세보기 실행");
+		int hits = vo.getNhits();
+		log.info("현재 조회수 출력 : " + hits);
+		hits ++;
+		vo.setNhits(hits);
+		log.info("조회수 증감된 것 출력 : " + vo.getNhits());
+		
+		return vo;
+		
+		
+	}
+
 
 
 }
