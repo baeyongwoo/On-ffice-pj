@@ -122,6 +122,7 @@ public class UserController {
 			} else {
 				model.addAttribute("login_result", "success");
 				session.setAttribute("login_session", uid);
+				return "/lobby";
 				return "home";
 			}
 		}
