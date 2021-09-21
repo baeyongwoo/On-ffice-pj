@@ -6,6 +6,11 @@
 	<select id="noticeList" resultType="org.office.domain.NoticeVO">
 		SELECT * FROM notice ORDER BY notice_num DESC
 	</select>
+	
+	<!-- 글 상세보기 로직 -->
+	<select id="notice_detail" resultType="org.office.domain.NoticeVO">
+		SELECT * FROM notice WHERE notice_num = #{notice_num}
+	</select>
 
 	<!-- 글 작성 로직 -->
 	<insert id="write">
@@ -22,6 +27,17 @@
 		INSERT INTO NOTICE 
 		VALUES(#{notice_num}, #{ntitle}, #{ncontent}, #{nwriter}, now(), now(), 0)
 	</insert>
+
+	<!-- 글 삭제 로직 -->	
+	<delete id="delete">
+		DELETE FROM notice WHERE notice_num=#{notice_num};
+	</delete>
+	
+	<!-- 글 수정 로직 -->
+	<update id="update">
+		UPDATE notice SET ntitle=#{ntitle}, ncontent=#{ncontent}, nwriter=#{nwriter}, nupdate=sysdate() where notice_num=#{notice_num};
+	
+	</update>
 
 
 </mapper>
