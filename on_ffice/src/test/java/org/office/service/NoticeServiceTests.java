@@ -31,7 +31,7 @@ public class NoticeServiceTests {
 		service.list();
 	}
 	
-	//@Test
+	@Test
 	public void testWrite() {
 		
 		NoticeVO vo = new NoticeVO();
@@ -57,7 +57,7 @@ public class NoticeServiceTests {
 		service.update(vo);
 	}
 	
-	@Test
+	//@Test
 	public void testDetail() {
 		
 		service.detail(1);

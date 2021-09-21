@@ -4,8 +4,8 @@
 
 <!-- 회원가입 로직 -->
 <insert id="insert">
-	INSERT INTO users (uid, upw, name, profile_img, gender, birth, postion_code, email, cp, dp_code)
-	VALUES (#{uid}, #{upw}, #{name}, #{profile_img}, #{gender}, #{birth}, #{postion_code}, #{email}, #{cp}, #{dp_code})
+	INSERT INTO users 
+    VALUES (null, #{uid}, #{upw}, #{name}, NULL, #{gender}, #{birth}, #{email}, #{cp}, #{dp_code}, #{position_code})
 </insert>
 
 <!-- 로그인 로직 -->

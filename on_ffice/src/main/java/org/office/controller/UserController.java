@@ -116,14 +116,17 @@ public class UserController {
 			log.info("받아온 uid : " + uid);
 			log.info("받아온 upw : " + upw);
 			
+			
 			if(vo == null) {
 				model.addAttribute("login_result", "fail");
 				return "/user/login";
 			} else {
+				
 				model.addAttribute("login_result", "success");
+				session.setAttribute("position", vo.getPosition_code()); // 임시로 세션으로 전송
 				session.setAttribute("login_session", uid);
-				return "/lobby";
-				return "home";
+				
+				return "redirect:/community/noticeList";	//임시로 noticelist로 가게함
 			}
 		}
 		

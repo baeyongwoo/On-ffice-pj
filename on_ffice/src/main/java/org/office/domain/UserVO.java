@@ -22,7 +22,7 @@ public class UserVO {
 	private String profile_img;
 	private String gender;
 	private Date birth;
-	private String postion_code;
+	private int position_code;
 	private String email; 
 	private String cp;
 	private int dp_code;

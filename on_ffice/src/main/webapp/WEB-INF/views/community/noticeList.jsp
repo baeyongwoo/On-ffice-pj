@@ -7,15 +7,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function check_position() {
-		var position = document.getElementsById("login_session");
-		console.log(position);
-	}	
+	
 </script>
 </head>
 <body>
 	<h1>알림 게시판</h1>
-	<button><a href="/community/write" onclick="check_position('${login_session}')"></a>글쓰러가기</button></br>
+	<c:set var="position" value="${position}" />
+	<c:if test="${position >= 6}">
+		<a href="/community/write"><button>글쓰러가기</button></a></br>	
+	</c:if>
+	
 	<c:forEach items="${noticeList}" var="nl">
 		${nl.notice_num}
 		${nl.ntitle}
