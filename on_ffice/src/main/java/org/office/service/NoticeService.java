@@ -18,7 +18,16 @@ public interface NoticeService {
 	//글 조회 서비스
 	public List<NoticeVO> list();
 	
+	//글 상세보기 서비스
+	public NoticeVO detail(int notice_num);
+	
 	// 글 작성 서비스
 	public void write(NoticeVO vo);
+	
+	// 글 삭제 서비스
+	public void delete(int notice_num);
+	
+	// 글 갱신 서비스
+	public void update(NoticeVO vo);
 
 }

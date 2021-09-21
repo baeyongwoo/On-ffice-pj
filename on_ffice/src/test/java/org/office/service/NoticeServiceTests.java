@@ -31,7 +31,7 @@ public class NoticeServiceTests {
 		service.list();
 	}
 	
-	@Test
+	//@Test
 	public void testWrite() {
 		
 		NoticeVO vo = new NoticeVO();
@@ -42,6 +42,27 @@ public class NoticeServiceTests {
 		service.write(vo);
 		
 	}
+	//@Test
+	public void testDelete() {
+		service.delete(3);
+	}
+	
+	//@Test
+	public void testUpdate() {
+		NoticeVO vo = new NoticeVO();
+		vo.setNotice_num(1);
+		vo.setNtitle("test수정");
+		vo.setNcontent("수정테스트진행중");
+		vo.setNwriter("test1");
+		service.update(vo);
+	}
+	
+	@Test
+	public void testDetail() {
+		
+		service.detail(1);
+	}
+	
 	
 
 }
