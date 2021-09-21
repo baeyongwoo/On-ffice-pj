@@ -44,5 +44,23 @@ public class UserServiceImpl implements UserService {
 		log.info("email 중복검사 service 실행");
 		return mapper.selectEmailCount(email);
 	}
-
+	
+	@Override
+	public UserVO userInfo(String uid) {
+		log.info("유저 정보 조회 service 실행");
+		return mapper.selectUser(uid);
+	}
+	
+	@Override
+	public void userModify(UserVO vo) {
+		log.info("유저 정보 수정 service 실행");
+		mapper.updateUser(vo);
+	}
+	
+	@Override
+	public void userDelete(String uid) {
+		log.info("회원 탈퇴 service 실행");
+		mapper.deleteUser(uid);
+	}
 }
+
