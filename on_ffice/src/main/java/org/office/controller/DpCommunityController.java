@@ -52,7 +52,7 @@ public class DpCommunityController {
 	@GetMapping("/dpcdetail")
 	public String DpCdetail(int dc_num, Model model) {
 			
-		DpCommunityVO vo = service.detail(dc_num);
+		DpCommunityVO vo = service.DpCdetail(dc_num);
 		
 		model.addAttribute("dpcdetail", vo);
 		
