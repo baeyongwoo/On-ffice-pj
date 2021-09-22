@@ -26,8 +26,8 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 	}
 
 	@Override
-	public DpCommunityVO detail(int dc_num) {
-		DpCommunityVO vo = dpcommunitymapper.DpC_detail(dc_num);
+	public DpCommunityVO DpCdetail(int dc_num) {
+		DpCommunityVO vo = dpcommunitymapper.DpCdetail(dc_num);
 		log.info(dc_num + "번째 부서글 상세보기 요청");
 		log.info("부서글 상세보기 실행");
 		int hits = vo.getDhits();
@@ -42,4 +42,36 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 		
 	}
 
+	@Override
+	public void DpCwrite(DpCommunityVO vo) {
+		
+		log.info("부서글 작성 실행");
+		try {
+			if(dpcommunitymapper.DpCommunityList().isEmpty()) {
+				log.info("처음 작성되는 글입니다.");
+			} else {
+				dpcommunitymapper.DpCwriteSelectKey(vo);
+			}
+		} catch (Exception e) {
+			log.info("게시글 작성 권한이 없습니다.");
+			int num = vo.getDc_num();
+			log.info("서베스에서 받아온 num값 : " + num);
+			num -= 1;
+			vo.setDc_num(num);
+		}
+		
+	}
+
+	@Override
+	public void DpCupdate(DpCommunityVO vo) {
+		log.info(vo.getDc_num() + "번째 글 수정");
+		dpcommunitymapper.DpCupdate(vo);
+	}
+
+	@Override
+	public void DpCdelete(int dc_num) {
+		log.info(dc_num + "번째 글 삭제");
+		dpcommunitymapper.DpCdelete(dc_num);
+		
+	}
 }

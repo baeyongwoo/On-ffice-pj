@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.office.domain.DpCommunityVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,9 +25,48 @@ public class DpCommunityServiceTests {
 		assertNotNull(service);
 	}
 	
-	@Test
+	//@Test
 	public void testDpCList() {
 		
 		service.list();
 	}
+	
+	//@Test
+	public void testDpCDetail() {
+		
+		service.detail(2);
+		service.dhit_up(2);
+	}
+	
+	//@Test
+	public void testDpCWrite() {
+		
+		DpCommunityVO vo = new DpCommunityVO();
+		vo.setDp_code(10001);
+		vo.setDtitle("6번째 글");
+		vo.setDcontent("6번째 글 내용");
+		vo.setDwriter("글쓴이");
+		
+		service.DpCwrite(vo);
+	}
+	
+	//@Test
+	public void testDpCUpdate() {
+		
+		DpCommunityVO vo = new DpCommunityVO();
+		vo.setDc_num(3);
+		vo.setDtitle("수정글");
+		vo.setDcontent("수정된 글 내용");
+		vo.setDwriter("수정한 글쓴이");
+		
+		service.DpCupdate(vo);
+	}
+	
+	//@Test
+	public void testDpCDelete() {
+		service.DpCdelete(6);
+	}
+	
+	
 }
+

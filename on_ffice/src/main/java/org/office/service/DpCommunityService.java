@@ -18,9 +18,18 @@ public interface DpCommunityService {
 	public List<DpCommunityVO> list();
 	
 	// 글 상세보기 서비스
-	public DpCommunityVO detail(int dc_num);
+	public DpCommunityVO DpCdetail(int dc_num);
 	
 	// 글 조회수 증가 서비스
 	public void dhit_up(int dc_num);
+	
+	// 글 작성 서비스
+	public void DpCwrite(DpCommunityVO vo);
+	
+	// 글 수정 로직
+	public void DpCupdate(DpCommunityVO vo);
+	
+	// 글 삭제 로직
+	public void DpCdelete(int dc_num);
 
 }

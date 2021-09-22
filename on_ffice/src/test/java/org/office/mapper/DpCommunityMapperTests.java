@@ -22,11 +22,46 @@ public class DpCommunityMapperTests {
 		log.info("부서 게시글 조회중...");
 		log.info(dpcommunityMapper.DpCommunityList());
 	}
+	
 	//@Test
 	public void testDpCdetail() {
 		log.info("부서 게시글 상세 조회중...");
-		log.info(dpcommunityMapper.DpC_detail(1));
+		log.info(dpcommunityMapper.DpCdetail(5));
 	}
+	
+	//@Test
+	public void testDpCWrite() {
+		
+		DpCommunityVO vo = new DpCommunityVO();
+				
+		vo.setDp_code(10001);
+		vo.setDtitle("6번째 글");
+		vo.setDcontent("6번째 글 내용");
+		vo.setDwriter("글쓴이");
+		dpcommunityMapper.DpCwriteSelectKey(vo);
+	}
+	
+	//@Test
+	public void testDpCUpdate() {
+		log.info("부서 게시글 수정중...");
+		
+		DpCommunityVO vo = new DpCommunityVO();
+		vo.setDc_num(6);
+		vo.setDtitle("수정글");
+		vo.setDcontent("수정된 글 내용");
+		vo.setDwriter("수정한 글쓴이");
+		dpcommunityMapper.DpCupdate(vo);
+	}
+	
+	//@Test
+	public void testDpCDelete() {
+		log.info("부서 게시글 삭제중...");
+		dpcommunityMapper.DpCdelete(7);
+	}
+	
+	
+	
+	
 	
 	
 }

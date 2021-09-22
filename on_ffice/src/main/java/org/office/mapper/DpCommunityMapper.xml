@@ -8,7 +8,7 @@
 </select>
 
 <!-- 글 상세보기 로직 -->
-<select id="DpC_detail" resultType="org.office.domain.DpCommunityVO">
+<select id="DpCdetail" resultType="org.office.domain.DpCommunityVO">
 	SELECT * FROM depart_community WHERE dc_num = #{dc_num}
 </select>
 
@@ -16,5 +16,26 @@
 <update id="dhit_up">
 	UPDATE depart_community SET dhits = dhits + 1 WHERE dc_num = #{dc_num}
 </update>
+
+<!-- 글 작성 로직 -->
+<insert id="DpCwriteSelectKey">
+	<selectKey keyProperty="dc_num" order="BEFORE" resultType="int">
+		select max(dc_num) + 1 as nextnum from depart_community;
+	</selectKey>
+	INSERT INTO depart_community 
+		VALUES(#{dc_num}, #{dp_code}, #{dtitle}, #{dcontent}, #{dwriter}, now(), now(), 0)
+</insert>
+
+<!-- 글 수정 로직 -->
+<update id="DpCupdate">
+	UPDATE depart_community SET dtitle = #{dtitle}, dcontent = #{dcontent}, 
+		dwriter = #{dwriter}, dupdate = sysdate() where dc_num = #{dc_num}
+</update>
+
+<!-- 글 삭제 로직 -->
+<delete id="DpCdelete">
+	DELETE FROM depart_community WHERE dc_num = #{dc_num};
+</delete>
+
 
 </mapper>
