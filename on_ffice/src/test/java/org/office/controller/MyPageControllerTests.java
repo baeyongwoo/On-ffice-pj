@@ -10,10 +10,12 @@
 */
 package org.office.controller;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -33,19 +35,28 @@ public class MyPageControllerTests {
 	
 	@Autowired
 	private WebApplicationContext ctx; // MockMvc를 만들기 위한 객체
+	MockHttpSession session = new MockHttpSession();
 	
 	private MockMvc mockMvc;
 	
 	@Before //org.junit의 test이전 실행 내용입력 어노테이션
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
+		session.setAttribute("login_session", "test1");
+		session.setAttribute("name_session", "test1");
+	}
+	@After
+	public void clean() {
+		session.clearAttributes();
 	}
 	
 	@Test
 	public void testgetInfo() throws Exception{
 		String resultPage = mockMvc
-							.perform(MockMvcRequestBuilders.post("/mypage/main").param("uid","test1"))
+							.perform(MockMvcRequestBuilders.get("/mypage/main").session(session))
 							.andReturn().getModelAndView().getViewName();
 		log.info(resultPage);
 	}
+	
+	
 }

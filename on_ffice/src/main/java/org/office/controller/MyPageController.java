@@ -11,11 +11,14 @@ package org.office.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.office.domain.MyPageVO;
+import org.office.domain.MealVO;
+import org.office.domain.TodoVO;
+import org.office.domain.UserVO;
 import org.office.service.MyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,19 +44,23 @@ public class MyPageController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
 		HttpSession session = request.getSession();
-		String login_session_uid = (String) session.getAttribute("login_session");
-		String login_time = formatter.format(session.getCreationTime());
+		String login_session_id = (String) session.getAttribute("login_session");
+		String login_session_name = (String) session.getAttribute("name_session");
+		String login_time = formatter.format(session.getCreationTime()); //특정 세션만 골라서 출력하는법 찾아보기.
 		dailymeal = formatter2.format(new Date());
 		 
 		log.info("유저 메인페이지 접속");
-		log.info("세션 아이디 : " + login_session_uid);
-		MyPageVO vo = service.getInfo("test1"); //테스트를 위해 test1삽입 추후 login_session_uid로 변경
-		log.info("받아온 정보 : " + vo);
-		MyPageVO vo2 = service.getMeal(dailymeal);
-		log.info("받아온 정보 : " + vo2);
-		model.addAttribute("info", vo);
+		log.info("세션 아이디 : " + login_session_id);
+		UserVO uservo = service.getInfo(login_session_id); //테스트를 위해 test1삽입 추후 login_session_uid로 변경
+		log.info("받아온 정보 : " + uservo);
+		List<TodoVO> todovo = service.getTodo(login_session_name);
+		log.info("받아온 할일 : " +todovo);
+		MealVO mealvo = service.getMeal(dailymeal);
+		log.info("받아온 정보 : " + mealvo);
+		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
-		model.addAttribute("meal", vo2);
+		model.addAttribute("meal", mealvo);
+		model.addAttribute("todo",todovo);
 		return "mypage/main";
 	}
 

@@ -11,7 +11,11 @@
 
 package org.office.service;
 
-import org.office.domain.MyPageVO;
+import java.util.List;
+
+import org.office.domain.MealVO;
+import org.office.domain.TodoVO;
+import org.office.domain.UserVO;
 import org.office.mapper.MyPageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,16 +32,29 @@ public class MyPageServiceImpl implements MyPageService{
 	private MyPageMapper mapper;
 	
 	@Override
-	public MyPageVO getInfo(String uid) {
+	public UserVO getInfo(String uid) {
 		log.info("유저 정보 조회");
-		MyPageVO vo = mapper.getInfo(uid);
+		UserVO vo = mapper.getInfo(uid);
 		return vo;
 	}
 	
 	@Override
-	public MyPageVO getMeal(String dailymeal) {
+	public MealVO getMeal(String dailymeal) {
 		log.info("오늘의 식단 조회");
-		MyPageVO vo = mapper.getMeal(dailymeal);
+		MealVO vo = mapper.getMeal(dailymeal);
 		return vo;
+	}
+	
+	@Override
+	public List<TodoVO> getTodo (String worker){
+		log.info("TODO 리스트 생성");
+		List<TodoVO> vo = mapper.getTodo(worker);
+		return vo;
+	}
+	
+	@Override
+	public void insertTodo(TodoVO vo) {
+		log.info("해야할일 지시");
+		mapper.insertTodo(vo);
 	}
 }

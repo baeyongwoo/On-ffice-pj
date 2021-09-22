@@ -10,11 +10,17 @@
 */
 package org.office.service;
 
-import org.office.domain.MyPageVO;
+import java.util.List;
+
+import org.office.domain.MealVO;
+import org.office.domain.TodoVO;
+import org.office.domain.UserVO;
 
 public interface MyPageService {
 
 	//서비스 하나당 기능 하나
-	public MyPageVO getInfo(String uid);
-	public MyPageVO getMeal(String dailymeal);
+	public UserVO getInfo(String uid);
+	public MealVO getMeal(String dailymeal);
+	public List<TodoVO> getTodo(String worker);
+	public void insertTodo(TodoVO vo);
 }

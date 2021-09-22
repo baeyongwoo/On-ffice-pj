@@ -11,19 +11,28 @@
 *	etc...
  -->
  
- <select id="getInfo" resultType="org.office.domain.MyPageVO">
+ <select id="getInfo" resultType="org.office.domain.UserVO">
  <![CDATA[
  SELECT * FROM users WHERE uid=#{uid}
  ]]>
  </select>
  
- <select id="getMeal" resultType="org.office.domain.MyPageVO">
+ <select id="getMeal" resultType="org.office.domain.MealVO">
  <![CDATA[
  SELECT * FROM meal WHERE dailymeal=#{dailymeal}
  ]]>
  </select>
  
+ <select id="getTodo" resultType="org.office.domain.TodoVO">
+ <![CDATA[
+ SELECT todo_num, checker, todo_content, recive_time, complete FROM todo WHERE worker=#{worker}
+ ]]>
+ </select>
  
- 
+ <insert id="insertTodo">
+ <![CDATA[
+ INSERT INTO todo(worker, checker, todo_content, complete, recive_time) VALUES (#{worker}, #{checker}, #{todo_content}, #{complete}, now())
+ ]]>
+ </insert>
  
  </mapper>

@@ -10,13 +10,21 @@
 
 package org.office.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
-import org.office.domain.MyPageVO;
+import org.office.domain.MealVO;
+import org.office.domain.TodoVO;
+import org.office.domain.UserVO;
 
 @Mapper
 public interface MyPageMapper {
 
-	public MyPageVO getInfo(String uid);
+	public UserVO getInfo(String uid);
 
-	public MyPageVO getMeal(String dailymeal); 
+	public MealVO getMeal(String dailymeal); 
+	
+	public List<TodoVO> getTodo(String worker);
+	
+	public void insertTodo(TodoVO vo);
 }

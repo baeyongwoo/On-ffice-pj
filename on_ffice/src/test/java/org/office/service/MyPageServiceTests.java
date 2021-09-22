@@ -14,8 +14,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.office.domain.MyPageVO;
-import org.office.domain.NoticeVO;
+import org.office.domain.TodoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -36,11 +35,28 @@ public class MyPageServiceTests {
 		assertNotNull(service);
 	}
 	
-	@Test
+	//@Test
 	public void testgetInfo() {	
 		log.info(service.getInfo("test1"));;
 		
 	}
+	
+	//@Test
+	public void testgetTodo() {
+		log.info(service.getTodo("test1"));
+		
+	}
+	
+	@Test
+	public void testInsertTodo() {
+		TodoVO vo = new TodoVO();
+		vo.setChecker("test3");
+		vo.setWorker("test1");
+		vo.setComplete("no");
+		vo.setTodo_content("테스트폼");
+		service.insertTodo(vo);
+		log.info(vo);
+			}
 	
 
 }
