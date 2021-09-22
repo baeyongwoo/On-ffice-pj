@@ -11,28 +11,27 @@ package org.office.service;
 
 import java.util.List;
 
-import org.office.domain.NoticeVO;
+import org.office.domain.CommunityVO;
 
-public interface NoticeService {
+public interface CommunityService {
 	
 	//글 조회 서비스
-	public List<NoticeVO> list();
+	public List<CommunityVO> list();
 	
 	//글 상세보기 서비스
-	public NoticeVO detail(int notice_num);
+	public CommunityVO detail(int community_num);
 	
 	// 글 작성 서비스
-	public void write(NoticeVO vo);
+	public void write(CommunityVO vo);
 	
 	// 글 삭제 서비스
-	public void delete(int notice_num);
+	public void delete(int community_num);
 	
 	// 글 갱신 서비스
-	public void update(NoticeVO vo);
+	public void update(CommunityVO vo);
 	
 	// 글 조회수 증가 서비스
-	public void nhit_up(int notice_num);
-
+	public void chit_up(int community_num);
 
 
 }

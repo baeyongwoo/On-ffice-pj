@@ -17,16 +17,16 @@
 	<h2>최근 업데이트 : ${nd.nupdate}</h2>
 	<h2>조회수 : ${nd.nhits}</h2>
 	
-	<a href="/community/noticeList">목록으로</a>
+	<a href="/notice/noticeList">목록으로</a>
 	
 	<c:if test="${nd.nwriter eq login_session}">
 	
-		<form action="/community/noticeDelete" method="post">
+		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
 			<input type="submit" value="삭제하기">
 		</form>
 		
-		<form action="/community/noticeUpdate" method="post">
+		<form action="/notice/noticeUpdate" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
 			<input type="submit" value="수정하기">
 		</form>

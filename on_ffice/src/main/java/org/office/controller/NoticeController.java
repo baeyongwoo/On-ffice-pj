@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller //컴포넌트스캔
 @Log4j
-@RequestMapping("/community/*") //이 클래스를 사용하는 메서드이 들어오는 주소 앞 /user로 명명
+@RequestMapping("/notice/*") //이 클래스를 사용하는 메서드이 들어오는 주소 앞 /user로 명명
 @AllArgsConstructor // 의존성 주입
 
 public class NoticeController {
@@ -41,12 +41,12 @@ public class NoticeController {
 		
 		rttr.addFlashAttribute("notice_num", vo.getNotice_num());
 		
-		return "redirect:/community/noticeList";
+		return "redirect:/notice/noticeList";
 	}
 	
 	@GetMapping("/write")
 	public String write() {
-		return "/community/write";
+		return "/notice/write";
 	}
 	
 	@GetMapping("/noticeDetail")
@@ -59,11 +59,11 @@ public class NoticeController {
 		} catch (Exception e) {
 			// 주소창으로 table에 없는 글 번호로 접근할 경우 오류가 뜨기 때문에 redirect시킴
 			// 올바르지 않는 구문을 입력할경우 클라이언트에러는 에러페이지 구현해서 처리하기
-			return "redirect:/community/noticeList";
+			return "redirect:/notice/noticeList";
 		}
 
 		
-		return "/community/noticeDetail";
+		return "/notice/noticeDetail";
 	}
 	
 	@PostMapping("/noticeDelete")
@@ -72,7 +72,7 @@ public class NoticeController {
 		rttr.addFlashAttribute("result", "success");
 		rttr.addFlashAttribute("notice_num", notice_num);
 		
-		return "redirect:/community/noticeList";
+		return "redirect:/notice/noticeList";
 		
 	}
 	
@@ -81,7 +81,7 @@ public class NoticeController {
 		log.info("폼에서 받은 vo" + vo);
 		service.update(vo);
 		
-		return "redirect:/community/noticeDetail?notice_num=" + vo.getNotice_num();
+		return "redirect:/notice/noticeDetail?notice_num=" + vo.getNotice_num();
 	}
 	
 	@PostMapping("/noticeUpdate")
@@ -90,7 +90,7 @@ public class NoticeController {
 		log.info("update에서 받아온 vo : " + vo);
 		model.addAttribute("notice", vo);
 		
-		return "/community/noticeUpdate";
+		return "/notice/noticeUpdate";
 	}
 	
 }
