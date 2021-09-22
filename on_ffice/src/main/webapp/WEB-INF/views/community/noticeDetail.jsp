@@ -18,12 +18,9 @@
 	<h2>조회수 : ${nd.nhits}</h2>
 	
 	<a href="/community/noticeList">목록으로</a>
-	${nd.nwriter}
-	<c:set var="lu" value="${login_user}"></c:set>
-	ttt ${lu}
-	<c:if test="${login_user eq 'lu'}">
 	
-		<h2>test</h2>
+	<c:if test="${nd.nwriter eq login_session}">
+	
 		<form action="/community/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
 			<input type="submit" value="삭제하기">

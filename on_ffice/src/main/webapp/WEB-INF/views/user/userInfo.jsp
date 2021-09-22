@@ -88,7 +88,7 @@
 				<tr> 
 					<th>직위번호</th> 
 					<td>
-						<input type="text" name="postion_code" id="postion_code" size="15" readonly value="${userInfo.postion_code }">
+						<input type="text" name="position_code" id="position_code" size="15" readonly value="${userInfo.position_code }">
 					</td> 
 				</tr>
 
