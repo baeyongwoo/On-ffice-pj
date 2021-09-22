@@ -1,12 +1,11 @@
 /.metadata/
 /Servers/
 
-
-
 ### Eclipse ###
 .metadata
 bin/
 tmp/
+*.MF
 *.tmp
 *.bak
 *.swp
