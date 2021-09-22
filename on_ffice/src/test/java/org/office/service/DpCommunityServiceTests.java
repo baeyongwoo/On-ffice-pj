@@ -34,7 +34,7 @@ public class DpCommunityServiceTests {
 	//@Test
 	public void testDpCDetail() {
 		
-		service.detail(2);
+		service.DpCdetail(2);
 		service.dhit_up(2);
 	}
 	
