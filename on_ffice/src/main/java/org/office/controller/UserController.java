@@ -46,7 +46,7 @@ public class UserController {
 		}
 		
 		@PostMapping("/register")
-		private String register(UserVO vo) {
+		private String register(UserVO vo, Model model) {
 			
 			if(vo==null) {
 				log.info("회원가입 실패");
@@ -55,7 +55,7 @@ public class UserController {
 			
 			log.info("회원가입 시작");
 			service.register(vo);
-			
+			model.addAttribute("register_result", "success");
 			return "/user/login";
 			
 			
@@ -117,6 +117,7 @@ public class UserController {
 			log.info("받아온 upw : " + upw);
 			
 			
+		
 			if(vo == null) {
 				model.addAttribute("login_result", "fail");
 				return "/user/login";
@@ -126,9 +127,19 @@ public class UserController {
 				session.setAttribute("position", vo.getPosition_code()); // 임시로 세션으로 전송
 	
 				session.setAttribute("login_session", uid);
+				session.setAttribute("pw_session", upw);
+				session.setAttribute("name_session", vo.getName());
 				
 				return "redirect:/community/noticeList";	//임시로 noticelist로 가게함
 			}
+		}
+		
+		@GetMapping("/logout")
+		private String login(HttpSession session) {
+			log.info("로그아웃 컨트롤러 실행");
+			session.invalidate();
+			
+			return "/user/login";
 		}
 		
 		@PostMapping("/userInfo")

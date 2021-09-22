@@ -9,9 +9,9 @@
 </head>
 <body>
 	<h2>로그인 창입니다.</h2>
-	<c:if test="${delete_result eq 'success' }">
+	<c:if test="${register_result eq 'success' }">
 		<script>
-			alert('회원 탈퇴가 정상적으로 진행되었습니다.');
+			alert('회원 가입이 정상적으로 진행되었습니다.');
 			window.close();
 		</script>
 	</c:if>
