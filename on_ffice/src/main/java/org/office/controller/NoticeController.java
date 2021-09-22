@@ -81,7 +81,7 @@ public class NoticeController {
 		log.info("폼에서 받은 vo" + vo);
 		service.update(vo);
 		
-		return "redirect:/community/noticeDetail?notice_num" + vo.getNotice_num();
+		return "redirect:/community/noticeDetail?notice_num=" + vo.getNotice_num();
 	}
 	
 	@PostMapping("/noticeUpdate")
