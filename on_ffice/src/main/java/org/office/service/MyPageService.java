@@ -16,4 +16,5 @@ public interface MyPageService {
 
 	//서비스 하나당 기능 하나
 	public MyPageVO getInfo(String uid);
+	public MyPageVO getMeal(String dailymeal);
 }

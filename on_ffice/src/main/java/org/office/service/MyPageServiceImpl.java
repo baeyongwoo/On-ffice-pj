@@ -33,4 +33,11 @@ public class MyPageServiceImpl implements MyPageService{
 		MyPageVO vo = mapper.getInfo(uid);
 		return vo;
 	}
+	
+	@Override
+	public MyPageVO getMeal(String dailymeal) {
+		log.info("오늘의 식단 조회");
+		MyPageVO vo = mapper.getMeal(dailymeal);
+		return vo;
+	}
 }

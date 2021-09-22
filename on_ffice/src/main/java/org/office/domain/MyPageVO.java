@@ -5,7 +5,8 @@
 *	테스트 성공 유무 :  
 *	오류사항 : 
 *	etc...
-*	
+*	09/21 user테이블 변수 추가
+*	09/22 meal테이블 변수 추가	
 */
 
 package org.office.domain;
@@ -27,5 +28,15 @@ public class MyPageVO {
 	private String cp;
 	private int dp_code;
 	private int position_code;
-	
+	private int notice_num;
+	private String ntitle;
+	private String nwriter;
+	private Date ndate;
+	private Date nupdate;
+	private String dailymeal;
+	private String MENU1;
+	private String MENU2;
+	private String MENU3;
+	private String MENU4;
+	private String MENU5;
 }
