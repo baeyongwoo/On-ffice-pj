@@ -25,6 +25,11 @@
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
 			<input type="submit" value="삭제하기">
 		</form>
+		
+		<form action="/community/noticeUpdate" method="post">
+			<input type="hidden" name="notice_num" value="${nd.notice_num}">
+			<input type="submit" value="수정하기">
+		</form>
 	</c:if>
 </body>
 </html>

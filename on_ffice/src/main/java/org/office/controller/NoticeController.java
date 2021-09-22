@@ -76,4 +76,21 @@ public class NoticeController {
 		
 	}
 	
+	@PostMapping("/Update")
+	public String update(NoticeVO vo, RedirectAttributes rttr) {
+		log.info("폼에서 받은 vo" + vo);
+		service.update(vo);
+		
+		return "redirect:/community/noticeDetail?notice_num" + vo.getNotice_num();
+	}
+	
+	@PostMapping("/noticeUpdate")
+	public String update(int notice_num, Model model) {
+		NoticeVO vo = service.detail(notice_num);
+		log.info("update에서 받아온 vo : " + vo);
+		model.addAttribute("notice", vo);
+		
+		return "/community/noticeUpdate";
+	}
+	
 }
