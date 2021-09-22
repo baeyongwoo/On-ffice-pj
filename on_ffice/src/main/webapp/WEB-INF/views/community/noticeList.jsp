@@ -18,15 +18,13 @@
 	</c:if>
 	
 	<c:forEach items="${noticeList}" var="nl">
-		${nl.notice_num}
+		<a href="/community/noticeDetail?notice_num=${nl.notice_num}">${nl.notice_num}</a>
 		${nl.ntitle}
-		${nl.ncontent}
 		${nl.nwriter}
 		${nl.ndate}
-		${nl.nupdate}
 		${nl.nhits}
 		</br>
 	</c:forEach>
-	
+	<!-- url로 접속할 때 잘못된 주소로 접근하면 error창 처리하는 것 만들기 -->
 </body>
 </html>

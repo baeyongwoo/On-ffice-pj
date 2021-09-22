@@ -65,9 +65,9 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public NoticeVO detail(int notice_num) {
-		NoticeVO vo = noticemapper.notice_detail(notice_num);
 		log.info(notice_num + "번째 글 상세보기 요청");
 		log.info("글 상세보기 실행");
+		NoticeVO vo = noticemapper.notice_detail(notice_num);
 		int hits = vo.getNhits();
 	
 		return vo;

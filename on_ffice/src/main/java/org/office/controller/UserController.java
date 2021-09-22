@@ -124,6 +124,8 @@ public class UserController {
 				
 				model.addAttribute("login_result", "success");
 				session.setAttribute("position", vo.getPosition_code()); // 임시로 세션으로 전송
+	
+				model.addAttribute("login_user", vo.getUid());
 				session.setAttribute("login_session", uid);
 				
 				return "redirect:/community/noticeList";	//임시로 noticelist로 가게함

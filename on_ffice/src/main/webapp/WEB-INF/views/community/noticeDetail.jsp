@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<c:set var="nd" value="${noticeDetail}"></c:set>
+	<h2>${nd.notice_num}번쨰 게시글 입니다</h2>
+	<h2>제목 :  ${nd.ntitle}</h2>
+	<h2>내용 : ${nd.ncontent}</h2>
+	<h2>작성자 : ${nd.nwriter}</h2>
+	<h2>작성일 : ${nd.ndate}</h2>
+	<h2>최근 업데이트 : ${nd.nupdate}</h2>
+	<h2>조회수 : ${nd.nhits}</h2>
+	
+	<a href="/community/noticeList">목록으로</a>
+	${nd.nwriter}
+	<c:set var="lu" value="${login_user}"></c:set>
+	ttt ${lu}
+	<c:if test="${login_user eq 'lu'}">
+	
+		<h2>test</h2>
+		<form action="/community/noticeDelete" method="post">
+			<input type="hidden" name="notice_num" value="${nd.notice_num}">
+			<input type="submit" value="삭제하기">
+		</form>
+	</c:if>
+</body>
+</html>

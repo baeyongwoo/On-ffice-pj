@@ -48,4 +48,32 @@ public class NoticeController {
 	public String write() {
 		return "/community/write";
 	}
+	
+	@GetMapping("/noticeDetail")
+	public String detail(int notice_num, Model model) {
+		//사용자가 주소창에 
+		log.info("form에서 받은 데이터 : " + notice_num);
+		try {
+			service.nhit_up(notice_num);
+			model.addAttribute("noticeDetail", service.detail(notice_num));
+		} catch (Exception e) {
+			// 주소창으로 table에 없는 글 번호로 접근할 경우 오류가 뜨기 때문에 redirect시킴
+			// 올바르지 않는 구문을 입력할경우 클라이언트에러는 에러페이지 구현해서 처리하기
+			return "redirect:/community/noticeList";
+		}
+
+		
+		return "/community/noticeDetail";
+	}
+	
+	@PostMapping("/noticeDelete")
+	public String delete(int notice_num, RedirectAttributes rttr) {
+		service.delete(notice_num);
+		rttr.addFlashAttribute("result", "success");
+		rttr.addFlashAttribute("notice_num", notice_num);
+		
+		return "redirect:/community/noticeList";
+		
+	}
+	
 }
