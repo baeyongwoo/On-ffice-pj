@@ -9,7 +9,7 @@
 <body>
 	<h2>알림 게시판 작성 창</h2>
 	
-	<form action="/community/write" method="post">
+	<form action="/notice/write" method="post">
 		<input type="text" name="ntitle" placeholder="제목" required="required"></br>
 		<textarea rows="10" cols="50" name="ncontent" required="required"></textarea></br>
 		<input type="text" name="nwriter" value="${login_session}" readonly="readonly"></br>

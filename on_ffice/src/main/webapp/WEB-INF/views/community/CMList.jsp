@@ -11,18 +11,15 @@
 </script>
 </head>
 <body>
-	<h1>알림 게시판</h1>
-	<c:set var="position" value="${position}" />
-	<c:if test="${position >= 6}">
-		<a href="/community/write"><button>글쓰러가기</button></a></br>	
-	</c:if>
+	<h1>자유 게시판</h1>
+	<a href="/community/write"><button>글쓰러가기</button></a></br>	
 	
-	<c:forEach items="${noticeList}" var="nl">
-		<a href="/community/noticeDetail?notice_num=${nl.notice_num}">${nl.notice_num}</a>
-		${nl.ntitle}
-		${nl.nwriter}
-		${nl.ndate}
-		${nl.nhits}
+	<c:forEach items="${cmList}" var="cl">
+		<a href="/community/CMDetail?community_num=${cl.community_num}">${cl.community_num}</a>
+		${cl.ctitle}
+		${cl.cwriter}
+		${cl.cdate}
+		${cl.chits}
 		</br>
 	</c:forEach>
 	<!-- url로 접속할 때 잘못된 주소로 접근하면 error창 처리하는 것 만들기 -->

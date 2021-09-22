@@ -51,13 +51,38 @@ public class DpCommunityController {
 	
 	@GetMapping("/dpcdetail")
 	public String DpCdetail(int dc_num, Model model) {
+		log.info("form에서 받은 값 : " + dc_num);
+		try {
+			service.dhit_up(dc_num);
+			model.addAttribute("dpcdetail", service.DpCdetail(dc_num));
 			
-		DpCommunityVO vo = service.DpCdetail(dc_num);
+		} catch (Exception e) {
+			
+			return "redirect:/dpcommunity/dpclist";
+		}
 		
-		model.addAttribute("dpcdetail", vo);
+		return "/dpcommunity/dpcdetail";
 		
-		return "/dpcommuity/dpcdetail";
 	}
+	
+	@PostMapping("/dpcupdate")
+	public String DpCupdate(int dc_num, Model model) {
+		DpCommunityVO vo = service.DpCdetail(dc_num);
+		log.info("dpcUpdate에서 받아온 vo : " + vo);
+		model.addAttribute("dpcommunity", vo);
+		
+		return "/dpcommunity/dpcupdate";
+	}
+	
+	@PostMapping("/dpcdelete")
+	public String DpCdelete(int dc_num, RedirectAttributes rttr) {
+		service.DpCdelete(dc_num);
+		rttr.addFlashAttribute("result", "success");
+		rttr.addFlashAttribute("dc_num", dc_num);
+		
+		return "redirect:/dpcommunity/dpclist";
+	}
+	
 		
 }
 

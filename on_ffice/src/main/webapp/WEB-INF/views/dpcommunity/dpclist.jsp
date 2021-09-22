@@ -28,7 +28,7 @@
 	<tr>	
 		<td>${dpcList.dc_num}</td>
 		<td>${dpcList.dp_code}</td>
-		<td><a href="/dplist/dpcdetail?dc_num=${detail.dc_num}">${dpcList.dtitle}</a></td>
+		<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}">${dpcList.dtitle}</a></td>
 		<td>${dpcList.dcontent}</td>
 		<td>${dpcList.dwriter}</td>
 		<td>${dpcList.ddate}</td>
