@@ -23,4 +23,5 @@ public interface MyPageService {
 	public MealVO getMeal(String dailymeal);
 	public List<TodoVO> getTodo(String worker);
 	public void insertTodo(TodoVO vo);
+
 }
