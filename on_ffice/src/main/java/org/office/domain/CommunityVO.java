@@ -24,4 +24,5 @@ public class CommunityVO {
 	private Date cdate;
 	private Date cupdate;
 	private int chits;
+	private String cpw;
 }

@@ -12,7 +12,7 @@
 
 
 	<h2>회원 탈퇴를 위해 비밀번호를 입력해주세요.</h2>
-	<form name="pwCheck" action="/user/deleteCheck" method="post">
+	<form name="pwCheck" action="/community/deleteCheck" method="post">
 		비밀번호<input type="password" name="upw" id="upw">
 		<input type="hidden" name="uid" value="${login_session }">
 		<input type="hidden" name="upwSession" value="${pw_session }">

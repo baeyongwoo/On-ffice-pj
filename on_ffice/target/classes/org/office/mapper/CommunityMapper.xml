@@ -22,7 +22,7 @@
 	<insert id="write">
 		INSERT INTO NOTICE
 		VALUES(notice_num.nextval, #{id}, #{ntitle}, #{ncontent},
-		#{nwriter})
+		#{nwriter} {ncw})
 	</insert>
 
 	<insert id="writeSelectkey">
@@ -31,7 +31,7 @@
 			select max(community_num) + 1 as nextnum from community;
 		</selectKey>
 		INSERT INTO community
-		VALUES(#{community_num}, #{ctitle}, #{ccontent}, #{cwriter}, now(), now(), 0)
+		VALUES(#{community_num}, #{ctitle}, #{ccontent}, #{cwriter}, now(), now(), 0, #{cpw})
 	</insert>
 
 	<!-- 글 삭제 로직 -->	

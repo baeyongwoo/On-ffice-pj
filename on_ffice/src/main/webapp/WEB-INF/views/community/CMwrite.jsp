@@ -13,6 +13,7 @@
 		<input type="text" name="ctitle" placeholder="제목" required="required"></br>
 		<textarea rows="10" cols="50" name="ccontent" required="required"></textarea></br>
 		<input type="text" name="cwriter"></br>
+		<input type="password" name="cpw" /> 
 		<input type="submit" value="작성완료">
 		<input type="reset" value="다시작성">
 	</form>
