@@ -130,7 +130,7 @@ public class UserController {
 				session.setAttribute("pw_session", upw);
 				session.setAttribute("name_session", vo.getName());
 				
-				return "redirect:/community/noticeList";	//임시로 noticelist로 가게함
+				return "redirect:/mypage/main";	//임시로 noticelist로 가게함
 			}
 		}
 		

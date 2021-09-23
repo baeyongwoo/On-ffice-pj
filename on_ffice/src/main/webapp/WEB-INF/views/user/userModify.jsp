@@ -86,7 +86,7 @@
 				<tr> 
 					<th>직위번호</th> 
 					<td>
-						<input type="text" name="postion_code" id="postion_code" size="15" value="${userInfo.postion_code }" required>
+						<input type="text" name="position_code" id="position_code" size="15" value="${userInfo.position_code }" required>
 					</td> 
 				</tr>
 			<tr> 
