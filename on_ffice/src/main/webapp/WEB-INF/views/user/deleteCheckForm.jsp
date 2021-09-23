@@ -21,14 +21,14 @@
 	</form>
 	
 		<script>
-				
 				 function redirect() {
+				console.log('패스워드 세션 값 : ' + document.pwCheck.upwSession.value);
+				console.log('패스워드 입력 값 : ' + document.pwCheck.upw.value);
 
 					
 					
 					if(document.pwCheck.upw.value===document.pwCheck.upwSession.value){
 							
-							document.getElementById("pwCheck").submit();
 							
 							alert('회원탈퇴 완료');
 							
