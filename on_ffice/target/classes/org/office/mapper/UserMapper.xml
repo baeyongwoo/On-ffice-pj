@@ -30,7 +30,7 @@
 
 <!-- 유저 정보 수정 로직 -->
 <update id="updateUser">
-	UPDATE users set uid=#{uid}, upw=#{upw}, name=#{name}, profile_img=#{profile_img}, gender=#{gender}, birth=#{birth}, postion_code=#{postion_code}, email=#{email}, cp=#{cp}, dp_code=#{dp_code}
+	UPDATE users set uid=#{uid}, upw=#{upw}, name=#{name}, profile_img=#{profile_img}, gender=#{gender}, birth=#{birth}, position_code=#{position_code}, email=#{email}, cp=#{cp}, dp_code=#{dp_code}
 	WHERE uid = #{uid}
 </update>
 
