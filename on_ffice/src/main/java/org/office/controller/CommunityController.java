@@ -66,13 +66,13 @@ public class CommunityController {
 	}
 
 	@PostMapping("/CM_dcf")
-	public String delete(int community_num, String cpw, String cpwck, RedirectAttributes rttr) {
+	public String delete(int community_num, String cpwck, RedirectAttributes rttr) {
 		log.info("delete 눌렀을 때 글 번호 : " + community_num);
-		log.info("delete 눌렀을 때 글 번호 : " + cpw);	//db에 저장된 값
 		log.info("delete 눌렀을 때 글 번호 : " + cpwck);	// 사용자가 입력한 값
 		
-
-		if (cpw.equals(cpwck)) {
+		CommunityVO vo = new CommunityVO();
+		vo = cs.detail(community_num);
+		if (vo.getCpw().equals(cpwck)) {
 			log.info("비밀번호 일치");
 			log.info("글번호 : " + community_num);
 			cs.delete(community_num);

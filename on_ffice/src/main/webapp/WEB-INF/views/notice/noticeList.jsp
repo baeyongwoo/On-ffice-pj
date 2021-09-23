@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h1>알림 게시판</h1>
-	<c:set var="position" value="${position}" />
+	<c:set var="position" value="${login_session.position_code}" />
 	<c:if test="${position >= 6}">
 		<a href="/notice/write"><button>글쓰러가기</button></a></br>	
 	</c:if>

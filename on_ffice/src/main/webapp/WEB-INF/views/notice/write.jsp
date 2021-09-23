@@ -12,7 +12,7 @@
 	<form action="/notice/write" method="post">
 		<input type="text" name="ntitle" placeholder="제목" required="required"></br>
 		<textarea rows="10" cols="50" name="ncontent" required="required"></textarea></br>
-		<input type="text" name="nwriter" value="${login_session}" readonly="readonly"></br>
+		<input type="text" name="nwriter" value="${login_session.uid}" readonly="readonly"></br>
 		<input type="submit" value="작성완료">
 		<input type="reset" value="다시작성">
 	</form>
