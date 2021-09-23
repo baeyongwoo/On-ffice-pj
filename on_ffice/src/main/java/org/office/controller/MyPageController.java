@@ -51,17 +51,19 @@ public class MyPageController {
 		 
 		log.info("유저 메인페이지 접속");
 		log.info("세션 아이디 : " + login_session_id);
-		UserVO uservo = service.getInfo(login_session_id); //테스트를 위해 test1삽입 추후 login_session_uid로 변경
+		UserVO uservo = service.getInfo("test1"); //테스트를 위해 test1삽입 추후 login_session_uid로 변경
 		log.info("받아온 정보 : " + uservo);
-		List<TodoVO> todovo = service.getTodo(login_session_name);
-		log.info("받아온 할일 : " +todovo);
+		List<TodoVO> todoList = service.getTodo("test1");
+		log.info("받아온 할일 : " +todoList);
 		MealVO mealvo = service.getMeal(dailymeal);
 		log.info("받아온 정보 : " + mealvo);
+		
+		
 		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
 		model.addAttribute("meal", mealvo);
-		model.addAttribute("todo",todovo);
+		model.addAttribute("todoList",todoList);
 		return "mypage/main";
 	}
-
+	
 }

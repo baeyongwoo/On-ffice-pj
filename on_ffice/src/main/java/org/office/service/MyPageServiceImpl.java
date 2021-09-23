@@ -57,4 +57,6 @@ public class MyPageServiceImpl implements MyPageService{
 		log.info("해야할일 지시");
 		mapper.insertTodo(vo);
 	}
+	
+
 }
