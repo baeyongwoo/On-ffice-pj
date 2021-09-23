@@ -124,11 +124,8 @@ public class UserController {
 			} else {
 				
 				model.addAttribute("login_result", "success");
-				session.setAttribute("position", vo.getPosition_code()); // 임시로 세션으로 전송
 	
-				session.setAttribute("login_session", uid);
-				session.setAttribute("pw_session", upw);
-				session.setAttribute("name_session", vo.getName());
+				session.setAttribute("login_session", vo);
 				
 				return "redirect:/mypage/main";	//임시로 noticelist로 가게함
 			}
