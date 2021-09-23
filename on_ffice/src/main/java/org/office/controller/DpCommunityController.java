@@ -65,6 +65,14 @@ public class DpCommunityController {
 		
 	}
 	
+	@PostMapping("/Update")
+	public String update(DpCommunityVO vo, RedirectAttributes rttr) {
+		log.info("Update에서 받아온 vo : " + vo);
+		service.DpCupdate(vo);
+		
+		return "redirect:/dpcommunity/dpcdetail?dc_num=" + vo.getDc_num();
+	}
+	
 	@PostMapping("/dpcupdate")
 	public String DpCupdate(int dc_num, Model model) {
 		DpCommunityVO vo = service.DpCdetail(dc_num);
