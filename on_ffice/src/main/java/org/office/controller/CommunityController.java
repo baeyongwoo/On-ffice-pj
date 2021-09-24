@@ -32,7 +32,6 @@ public class CommunityController {
 		List<CommunityVO> communityList = cs.list();
 		model.addAttribute("cmList", communityList);
 	}
-
 	@PostMapping("/write")
 	public String write(CommunityVO vo, RedirectAttributes rttr) {
 
