@@ -11,7 +11,7 @@
 	
 	<form action="/dpcommunity/dpcwrite" method="post">
 		<input type="text" name="dp_code" value="${login_session.dp_code}" readonly="readonly"><br/>
-		<input type="text" name="empno" value="${login_session.emp_no}" readonly="readonly"><br/>
+		<input type="text" name="empno" value="${login_session.empno}" readonly="readonly"><br/>
 		<input type="text" name="dtitle" placeholder="글 제목" required="required"><br/>
 		<textarea rows="10" cols="50" name="dcontent" required="required"></textarea><br/>
 		<input type="text" name="dwriter" value="${login_session.name}" readonly="readonly"><br/>

@@ -28,6 +28,17 @@
 	SELECT * FROM users WHERE uid = #{uid}
 </select>
 
+<!-- 가입된 모든 유저 리스트 조회 -->
+<select id="selectUserList" resultType="org.office.domain.UserVO">
+	SELECT * FROM users
+</select>
+
+<!-- 부서별 유저 리스트 조회 -->
+<select id="selectUserListByDp" resultType="org.office.domain.UserVO">
+	SELECT * FROM users WHERE dp_code=#{dp_code}
+</select>
+
+
 <!-- 유저 정보 수정 로직 -->
 <update id="updateUser">
 	UPDATE users set uid=#{uid}, upw=#{upw}, name=#{name}, profile_img=#{profile_img}, gender=#{gender}, birth=#{birth}, position_code=#{position_code}, email=#{email}, cp=#{cp}, dp_code=#{dp_code}

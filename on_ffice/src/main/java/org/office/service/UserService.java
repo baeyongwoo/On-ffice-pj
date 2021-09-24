@@ -1,6 +1,8 @@
 // 신우람 0918 작업
 package org.office.service;
 
+import java.util.List;
+
 import org.office.domain.UserVO;
 
 public interface UserService {
@@ -19,6 +21,12 @@ public interface UserService {
 	
 	// 유저 정보 조회 서비스
 	public UserVO userInfo(String uid);
+	
+	// 모든 유저 리스트 조회
+	public List<UserVO> allUserInfo();
+	
+	// 부서별 유저 리스트 조회
+	public List<UserVO> allUserInfoByDp(int dp_code);
 	
 	// 유저 정보 수정 서비스
 	public void userModify(UserVO vo);

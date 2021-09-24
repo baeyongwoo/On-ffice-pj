@@ -21,7 +21,8 @@
 			} 
 	}
 
-
+ </script>
+ 
 	<h2>로그인 창입니다.</h2>
 	<c:if test="${register_result eq 'success' }">
 		<script>
