@@ -41,8 +41,10 @@ public class UserServiceTests {
 			UserVO user = service.login(uid, upw);
 			if(user == null) {
 				log.info("아이디나 비밀번호가 적합하지 않습니다.");
+				
 			} else {
 				log.info("로그인 성공 ");
+				log.info(service.allUserInfo());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
