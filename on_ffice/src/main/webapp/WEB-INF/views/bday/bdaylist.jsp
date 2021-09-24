@@ -4,19 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>이달의 생일</h1>
-		<table>
+	<h1 class="text-center">이달의 생일</h1>
+		<table class="table">
+		<thaed>
 			<tr>
-				<th>이름</th>
-				<th>부서</th>
-				<th>직급</th>
-				<th>생일</th>
+				<th scope="col">이름</th>
+				<th scope="col">부서</th>
+				<th scope="col">직급</th>
+				<th scope="col">생일</th>
 			</tr>
+		</thaed>
+		<tbody>	
 			<c:forEach items="${list }" var="list">
 			<tr>
 				<td>${list.name }</td>
@@ -26,7 +29,7 @@
 			</tr>	
 			
 			</c:forEach>
-				
+	  </tbody>		
 		</table>
 </body>
 </html>
