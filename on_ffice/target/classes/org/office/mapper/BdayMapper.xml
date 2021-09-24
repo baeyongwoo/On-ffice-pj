@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.rg/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.office.mapper.BdayMapper">
+
+	<select id="getList" resultType="org.office.domain.UserVO">
+		<!-- 쿼리문에서 like절을 사용하는 경우 #{변수명} 대신
+		1. '%'||#{변수명}||'%'를 사용합니다. (oracle)
+		2. CONCAT ('%',#{변수명},'%')를 사용합니다. (maysql) -->
+	 <![CDATA[
+ SELECT * FROM users WHERE birth like CONCAT('%',#{birth},'%'); 
+ 	]]>
+		
+	</select>
+
+</mapper>

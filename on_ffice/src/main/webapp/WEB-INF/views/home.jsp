@@ -10,12 +10,10 @@
 <h1>
 	Hello world!  
 </h1>
- <form action="/user/userInfo" method="post">
- 	<input type="hidden" name="uid" value="${login_session }">
- 	<input type="submit" value="회원정보">
- </form>
+
+
 <P>  The time on the server is ${serverTime}. </P>
 
-<button onclick="location.href='/user/logout'" value="로그아웃"></button>
+
 </body>
 </html>
