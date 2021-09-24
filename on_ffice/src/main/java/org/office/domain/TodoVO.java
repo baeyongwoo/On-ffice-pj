@@ -9,7 +9,8 @@ public class TodoVO {
 
 	public int todo_num;
 	public String worker;
-	public String checker;
+	public String checker;	
+	public String todo_title;
 	public String todo_content;
 	public String complete;
 	public Date recive_time;

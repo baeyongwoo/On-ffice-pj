@@ -94,21 +94,21 @@ body{margin:20px;}
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       	<div class="modal-body">
-   			<select class="form-select btn btn-secondar">
+   			<input type="hidden" name="checker" value="${info.empno }">
+   			<select class="form-select btn btn-secondar" name="worker">
   			<option selected>작업자를 선택해주세요</option>
   				<c:forEach items="${users}" var="users">
-  				<option value="${users.uid}">${users.dp_code}부서 ${users.name }</option>
+  				<option value="${users.empno}">직원번호[${users.empno}] ${users.dp_code}부서 ${users.name }</option>
   				</c:forEach>
 			</select>
         <span class="input-group-text">작업 제목</span>
-  		<input type="text" class="form-control" placeholder="작업명 입력" name="todotitle">
+  		<input type="text" class="form-control" placeholder="작업명 입력" name="todo_title">
   		<br>
 	  	<span class="input-group-text">작업내용</span>
-  		<textarea class="form-control" placeholder="작업내용 입력" name="todocon"></textarea>
-		</div>
-      </div>
-      <div class="modal-footer">
+  		<textarea class="form-control" placeholder="작업내용 입력" name="todo_content"></textarea>
+  		<br/>
         <input type="submit" class="btn btn-primary" value="TODO생성"/>
+		</div>
       </div>
     </div>
   </div>

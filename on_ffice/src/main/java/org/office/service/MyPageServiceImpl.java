@@ -46,9 +46,9 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public List<TodoVO> getTodo (String worker){
+	public List<TodoVO> getTodo (int empno){
 		log.info("TODO 리스트 생성");
-		List<TodoVO> vo = mapper.getTodo(worker);
+		List<TodoVO> vo = mapper.getTodo(empno);
 		return vo;
 	}
 	

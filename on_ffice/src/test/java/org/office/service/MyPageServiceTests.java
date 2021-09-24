@@ -19,21 +19,21 @@ public class MyPageServiceTests {
 	@Autowired
 	private MyPageService service;
 	
-	//@Test
+	@Test
 	public void testExist() {
 		log.info(service);
 		assertNotNull(service);
 	}
 	
-	//@Test
+	@Test
 	public void testgetInfo() {	
 		log.info(service.getInfo("test1"));;
 		
 	}
 	
-	@Test
+	//@Test
 	public void testgetTodo() {
-		log.info(service.getTodo("test1"));
+		log.info(service.getTodo(1));
 		
 	}
 	

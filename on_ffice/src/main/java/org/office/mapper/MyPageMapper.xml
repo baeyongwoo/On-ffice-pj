@@ -31,7 +31,8 @@
  
  <insert id="insertTodo">
  <![CDATA[
- INSERT INTO todo(worker, checker, todo_content, complete, recive_time) VALUES (#{worker}, #{checker}, #{todo_content}, #{complete}, now())
+ INSERT INTO todo(worker, checker, todo_title, todo_content, recive_time)
+ VALUES (#{worker}, #{checker},#{todo_title}, #{todo_content}, now())
  ]]>
  </insert>
  
