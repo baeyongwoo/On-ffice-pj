@@ -36,8 +36,8 @@ public class CommunityController {
 	@PostMapping("/write")
 	public String write(CommunityVO vo, RedirectAttributes rttr) {
 
+		log.info("폼에서 불러온 vo " +vo);
 		cs.write(vo);
-		log.info(vo);
 
 		rttr.addFlashAttribute("community_num", vo.getCommunity_num());
 
@@ -96,10 +96,17 @@ public class CommunityController {
 	}
 
 	@PostMapping("/Update")
-	public String update(CommunityVO vo, RedirectAttributes rttr) {
-		log.info("폼에서 받은 vo" + vo);
-		cs.update(vo);
-
+	public String update(CommunityVO vo, String cpwck, RedirectAttributes rttr) {
+		CommunityVO data = cs.detail(vo.getCommunity_num());
+		if(data.getCpw().equals(cpwck)) {
+			log.info("업데이트 성공");
+			cs.update(vo);
+			rttr.addFlashAttribute("update", "success");
+		}else {
+			log.info("업데이트 실패");
+			rttr.addFlashAttribute("update", "fail");
+			
+		}
 		return "redirect:/community/CMDetail?community_num=" + vo.getCommunity_num();
 	}
 

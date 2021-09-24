@@ -14,8 +14,10 @@
 		<input type="text" name="ctitle" value="${cm.ctitle}"></br>
 		<textarea rows="10" cols="50" name="ccontent">${cm.ccontent}</textarea></br>
 		<input type="text" name="cwriter" value="${cm.cwriter}" readonly="readonly"></br>
+		<input type="password" name="cpwck" placeholder="비밀번호 입력" required="required">
 		<input type="submit" value="수정완료">
 	</form>
 	
+
 </body>
 </html>

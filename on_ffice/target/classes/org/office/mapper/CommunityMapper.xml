@@ -28,10 +28,13 @@
 	<insert id="writeSelectkey">
 		<selectKey keyProperty="community_num" order="BEFORE"
 			resultType="int">
-			select max(community_num) + 1 as nextnum from community;
+			SELECT IF(ISNULL(community_num), 1, max(community_num) + 1) AS community_num FROM community;
 		</selectKey>
+		
 		INSERT INTO community
 		VALUES(#{community_num}, #{ctitle}, #{ccontent}, #{cwriter}, now(), now(), 0, #{cpw})
+		
+		
 	</insert>
 
 	<!-- 글 삭제 로직 -->	
