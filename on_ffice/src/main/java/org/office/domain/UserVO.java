@@ -15,7 +15,7 @@ import java.sql.Date;
 import lombok.Data;
 @Data
 public class UserVO {
-	private int emp_no;
+	private int empno;
 	private String uid;
 	private String upw;
 	private String name;
