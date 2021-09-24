@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h1>알림 게시판</h1>
-	<c:set var="position" value="${position}" />
+	<c:set var="position" value="${login_session.position_code}" />
 	<c:if test="${position >= 6}">
 		<a href="/notice/write"><button>글쓰러가기</button></a></br>	
 	</c:if>
@@ -27,7 +27,7 @@
 	</c:forEach>
 	<!-- url로 접속할 때 잘못된 주소로 접근하면 error창 처리하는 것 만들기 -->
 	<form action="/user/userInfo" method="post">
- 	<input type="hidden" name="uid" value="${login_session }">
+ 	<input type="hidden" name="uid" value="${login_session.uid }">
  	<input type="submit" value="회원정보">
  </form>
 </body>

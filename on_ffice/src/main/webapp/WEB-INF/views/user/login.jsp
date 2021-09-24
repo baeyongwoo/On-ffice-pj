@@ -8,6 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script src='https://www.google.com/recaptcha/api.js'></script> 
+<script type="text/javascript"> 
+/* 서브밋 전에 리캡챠 체크 여부 를 확인합니다. */
+ 
+ function FormSubmit() { 
+	if (grecaptcha.getResponse() == ""){ 
+		alert("리캡챠를 체크해야 합니다."); 
+		return false; 
+		} else {
+			return true; 
+			} 
+	}
+
+
 	<h2>로그인 창입니다.</h2>
 	<c:if test="${register_result eq 'success' }">
 		<script>
@@ -21,12 +35,14 @@
 		
 		</script>
 	</c:if>
-	<form action ="/user/login" method="post">
+	<form action ="/user/login" method="post" onsubmit="return FormSubmit();">
 		아이디<input type="text" name="uid" placeholder="ID" required><br/>
 		비밀번호<input type="password" name="upw" placeholder="PASSWORD" required><br/>
 		<input type="submit" value="로그인">
 		<input type="reset" value="초기화"><br/>
 		<input type="button" value="회원가입" onclick ="location.href ='/user/register'">
+		<div class="g-recaptcha" data-sitekey="6LezJokcAAAAAGeSI922uGsecDbO3MCUTxplIzLj"></div>
+
 	</form>
 	
 	

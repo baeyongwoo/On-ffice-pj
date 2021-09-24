@@ -10,7 +10,6 @@
 <body>
 	<c:if test="${delete_result eq 'fail'}">
 		<script>
-			alert('비밀번호가 틀렸습니다.')
 			window.close();
 		</script>
 		

@@ -15,13 +15,13 @@ import java.sql.Date;
 import lombok.Data;
 @Data
 public class UserVO {
-	private int emp_no;
+	private int empno;
 	private String uid;
 	private String upw;
 	private String name;
 	private String profile_img;
 	private String gender;
-	private Date birth;
+	private String birth;
 	private int position_code;
 	private String email; 
 	private String cp;

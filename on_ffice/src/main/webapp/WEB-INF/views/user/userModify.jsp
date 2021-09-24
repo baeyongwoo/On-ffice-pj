@@ -41,21 +41,20 @@
 				<tr> 
 					<th>*이메일</th> 
 					<td> 
-						<input type="text" name="email" id="email" size="30" readonly> 
-						<input type="button" value="Email 중복확인" onclick="emailCheck()"> 
+						<input type="text" name="email" id="email" size="30" readonly value="${userInfo.email }"> 
 					</td> 
 				</tr> 
 					<tr> 
 					<th>전화번호</th> 
 					<td>
-						<input type="tel" name="cp" size="15" value="${userInfo.cp }" required>
+						<input type="tel" name="cp" size="15" value="${userInfo.cp }" readonly required>
 					</td> 
 				</tr>
 				
 				<tr> 
 					<th>프로필 사진</th> 
 					<td>
-						<input type="text" name="profile_img" size="15" value="${userInfo.profile_img }" required>
+						<input type="text" name="profile_img" size="15" value="${userInfo.profile_img }">
 					</td> 
 				</tr>
 				
@@ -80,13 +79,13 @@
 				<tr> 
 					<th>부서번호</th> 
 					<td>
-						<input type="text" name="dp_code" id="dp_code" size="15" value="${userInfo.dp_code }" required>
+						<input type="text" name="dp_code" id="dp_code" size="15" value="${userInfo.dp_code }" readonly required>
 					</td> 
 				</tr>
 				<tr> 
 					<th>직위번호</th> 
 					<td>
-						<input type="text" name="position_code" id="position_code" size="15" value="${userInfo.position_code }" required>
+						<input type="text" name="position_code" id="position_code" size="15" value="${userInfo.position_code }" readonly required>
 					</td> 
 				</tr>
 			<tr> 

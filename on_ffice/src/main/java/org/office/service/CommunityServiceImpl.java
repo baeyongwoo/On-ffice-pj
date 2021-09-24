@@ -32,20 +32,7 @@ public class CommunityServiceImpl implements CommunityService{
 	public void write(CommunityVO vo) {
 		
 		log.info("글작성 실행");
-		try {
-			if(CM.CommunityList().isEmpty()) {
-				log.info("처음 글 쓰는거임");
-				log.info("관리자에게 문의하세요");
-			} else {
-				CM.writeSelectkey(vo);
-			}
-		} catch (Exception e) {
-			log.info("글쓰기 권한이 없습니다.");
-			int num = vo.getCommunity_num();
-			log.info("service에서 나온 num " + num);
-//			num -= 1;
-//			vo.setNotice_num(num);
-		}
+		CM.writeSelectkey(vo);
 		
 	}
 

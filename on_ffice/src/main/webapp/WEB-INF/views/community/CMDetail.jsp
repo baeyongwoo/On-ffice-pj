@@ -19,9 +19,7 @@
 	
 	<a href="/community/CMList">목록으로</a>
 	
-	<c:if test="${nd.nwriter eq login_session}">
-	
-		<form action="/community/CMDelete" method="post">
+		<form action="/community/deleteCheck" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
 			<input type="submit" value="삭제하기">
 		</form>
@@ -30,6 +28,16 @@
 			<input type="hidden" name="community_num" value="${cd.community_num}">
 			<input type="submit" value="수정하기">
 		</form>
-	</c:if>
+		
+	<script>
+		var result = "${update}";
+		console.log(result);
+		
+		if(result==="success"){
+			alert("수정완료했습니다.")
+		}else if(result==="fail")(
+			alert("비밀번호가 달라 수정 실패했습니다.")
+		)
+	</script>
 </body>
 </html>

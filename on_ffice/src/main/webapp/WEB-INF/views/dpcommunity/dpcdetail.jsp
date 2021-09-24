@@ -20,14 +20,16 @@
 	
 	<a href="/dpcommunity/dpclist"><button>목록으로</button></a>
 	
-	<form action="/dpcommunity/dpcupdate" method="post">
-		<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
-		<input type="submit" value="수정하기">
-	</form>
-	<form action="/dpcommunity/dpcdelete" method="post">
-		<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
-		<input type="submit" value="삭제하기">
-	</form>
-	
+	<c:if test="${DpCd.dwriter eq login_session.name}">
+		
+		<form action="/dpcommunity/dpcupdate" method="post">
+			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
+			<input type="submit" value="수정하기">
+		</form>
+		<form action="/dpcommunity/dpcdelete" method="post">
+			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
+			<input type="submit" value="삭제하기">
+		</form>
+	</c:if>
 </body>
 </html>

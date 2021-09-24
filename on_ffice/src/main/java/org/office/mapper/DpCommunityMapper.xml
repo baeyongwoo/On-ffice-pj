@@ -18,12 +18,17 @@
 </update>
 
 <!-- 글 작성 로직 -->
+<insert id="DpCwrite">
+	INSERT INTO depart_community
+	VALUES(#{dc_num}, #{dp_code}, #{empno}, #{dtitle}, #{dcontent}, #{dwriter}, now(), now(), 0)
+</insert>
+
 <insert id="DpCwriteSelectKey">
 	<selectKey keyProperty="dc_num" order="BEFORE" resultType="int">
-		select max(dc_num) + 1 as nextnum from depart_community;
+		SELECT OF (ISNULL(dc_num), 1, max(dc_num) + 1) as dc_num FROM depart_community;
 	</selectKey>
 	INSERT INTO depart_community 
-		VALUES(#{dc_num}, #{dp_code}, #{dtitle}, #{dcontent}, #{dwriter}, now(), now(), 0)
+		VALUES(#{dc_num}, #{dp_code}, #{empno}, #{dtitle}, #{dcontent}, #{dwriter}, now(), now(), 0)
 </insert>
 
 <!-- 글 수정 로직 -->

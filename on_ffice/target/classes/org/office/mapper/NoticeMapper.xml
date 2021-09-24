@@ -28,7 +28,7 @@
 	<insert id="writeSelectkey">
 		<selectKey keyProperty="notice_num" order="BEFORE"
 			resultType="int">
-			select max(notice_num) + 1 as nextnum from notice;
+			SELECT IF(ISNULL(notice_num), 1, max(notice_num) + 1) AS notice_num FROM notice
 		</selectKey>
 		INSERT INTO NOTICE 
 		VALUES(#{notice_num}, #{ntitle}, #{ncontent}, #{nwriter}, now(), now(), 0)

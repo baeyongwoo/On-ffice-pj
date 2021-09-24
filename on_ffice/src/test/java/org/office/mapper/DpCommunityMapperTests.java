@@ -29,12 +29,13 @@ public class DpCommunityMapperTests {
 		log.info(dpcommunityMapper.DpCdetail(5));
 	}
 	
-	//@Test
+	@Test
 	public void testDpCWrite() {
 		
 		DpCommunityVO vo = new DpCommunityVO();
-				
-		vo.setDp_code(10001);
+		
+		vo.setDp_code(1);
+		vo.setEmpno(1);
 		vo.setDtitle("6번째 글");
 		vo.setDcontent("6번째 글 내용");
 		vo.setDwriter("글쓴이");
