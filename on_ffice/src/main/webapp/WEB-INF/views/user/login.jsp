@@ -27,7 +27,7 @@
 	<c:if test="${register_result eq 'success' }">
 		<script>
 			alert('회원 가입이 정상적으로 진행되었습니다.');
-			window.close();
+			
 		</script>
 	</c:if>
 	<c:if test="${login_result eq 'fail'}">
