@@ -15,7 +15,7 @@
 	회사 관련 이미지<img src="">
 	<c:set var="user" value="${login_session}" />
 	
-	<a href="/community/dp?dp_code=${user.dp_code}"><button>부서로비가기</button></a>		
+	<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>		
 	
 	<!-- 오늘의 메뉴 -->
 	<!-- db에서 불러오기 -->
