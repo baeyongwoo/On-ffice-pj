@@ -25,20 +25,22 @@
 			<th>조회수</th>
 		</tr>
 	</table>
-	<c:forEach items="${dpCommunityList}" var="dpcList">
-	<tr>	
-		<td>${dpcList.dc_num}</td>
-		<td>${dpcList.dp_code}</td>
-		<td>${dpcList.empno}</td>
-		<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}">${dpcList.dtitle}</a></td>
-		<td>${dpcList.dcontent}</td>
-		<td>${dpcList.dwriter}</td>
-		<td>${dpcList.ddate}</td>
-		<td>${dpcList.dupdate}</td>
-		<td>${dpcList.dhits}</td>
-	</tr>
+	<c:if test="SELECT * FROM depart_community WHERE dp_code = ${login_session.dp_code}">
+		<c:forEach items="${dpCommunityList}" var="dpcList">
+			<tr>	
+				<td>${dpcList.dc_num}</td>
+				<td>${dpcList.dp_code}</td>
+				<td>${dpcList.empno}</td>
+				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}">${dpcList.dtitle}</a></td>
+				<td>${dpcList.dcontent}</td>
+				<td>${dpcList.dwriter}</td>
+				<td>${dpcList.ddate}</td>
+				<td>${dpcList.dupdate}</td>
+				<td>${dpcList.dhits}</td>
+			</tr>
+		</c:forEach>
+	</c:if>
 	<br/>		
-	</c:forEach>
 	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a><br/>
 </body>
 </html>
