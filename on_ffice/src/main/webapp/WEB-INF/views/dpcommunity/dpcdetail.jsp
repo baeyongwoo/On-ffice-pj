@@ -19,8 +19,7 @@
 	<h2>조회수 : ${DpCd.dhits}</h2>
 	
 	<a href="/dpcommunity/dpclist"><button>목록으로</button></a>
-	
-	<c:if test="${DpCd.dwriter eq login_session.name}">
+		<c:if test="${DpCd.dwriter eq login_session.name}">
 		
 		<form action="/dpcommunity/dpcupdate" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
@@ -30,6 +29,6 @@
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			<input type="submit" value="삭제하기">
 		</form>
-	</c:if>
+		</c:if>
 </body>
 </html>
