@@ -42,9 +42,10 @@ public class BdayController {
 		String births = format.format(date);
 		log.info(births);
 		
-		List<UserVO> bList = service.getList(births); 
+		List<UserVO> bList = service.getList(birth); 
 		log.info(bList);
 		model.addAttribute("list", bList);
+		model.addAttribute("MM", "9");
 	}
 	
 	

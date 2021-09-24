@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>이 달의 생일</h1>
+	<h1>이달의 생일</h1>
 		<table>
 			<tr>
 				<th>이름</th>
