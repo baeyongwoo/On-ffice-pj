@@ -1,6 +1,8 @@
 // 신우람 0918 작업
 package org.office.service;
 
+import java.util.List;
+
 import org.office.domain.UserVO;
 import org.office.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +63,19 @@ public class UserServiceImpl implements UserService {
 	public void userDelete(String uid) {
 		log.info("회원 탈퇴 service 실행");
 		mapper.deleteUser(uid);
+	}
+	
+	@Override
+	public List<UserVO> allUserInfo() {
+		log.info("모든회원정보 조회 service 실행");
+		return mapper.selectUserList();
+	}
+
+	@Override
+	public List<UserVO> allUserInfoByDp(int dp_code) {
+		log.info("부서별 회원 리스트 service 실행");
+		
+		return mapper.selectUserListByDp(dp_code);
 	}
 }
 
