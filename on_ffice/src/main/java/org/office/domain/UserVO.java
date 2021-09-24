@@ -10,7 +10,6 @@
 
 package org.office.domain;
 
-import java.sql.Date;
 
 import lombok.Data;
 @Data
@@ -26,5 +25,8 @@ public class UserVO {
 	private String email; 
 	private String cp;
 	private int dp_code;
+	private String depart_name;
+	private String p_name;
+	private String p_salary;
 	
 }

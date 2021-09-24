@@ -30,7 +30,12 @@
 
 <!-- 가입된 모든 유저 리스트 조회 -->
 <select id="selectUserList" resultType="org.office.domain.UserVO">
-	SELECT * FROM users
+	<![CDATA[
+	select users.* ,depart.depart_name
+	from users, depart
+	where users.dp_code = depart.dp_code
+
+	]]>
 </select>
 
 <!-- 부서별 유저 리스트 조회 -->
