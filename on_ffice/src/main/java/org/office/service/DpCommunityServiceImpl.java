@@ -46,21 +46,10 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 	public void DpCwrite(DpCommunityVO vo) {
 		
 		log.info("부서글 작성 실행");
-		try {
-			if(dpcommunitymapper.DpCommunityList().isEmpty()) {
-				log.info("처음 작성되는 글입니다.");
-			} else {
-				dpcommunitymapper.DpCwriteSelectKey(vo);
-			}
-		} catch (Exception e) {
-			log.info("게시글 작성 권한이 없습니다.");
-			int num = vo.getDc_num();
-			log.info("서베스에서 받아온 num값 : " + num);
-			num -= 1;
-			vo.setDc_num(num);
+		
+		dpcommunitymapper.DpCwriteSelectKey(vo);
 		}
 		
-	}
 
 	@Override
 	public void DpCupdate(DpCommunityVO vo) {
