@@ -128,7 +128,7 @@ public class UserController {
 				session.setAttribute("login_session", vo);
 				log.info("로그인 세션 정보" + session.getAttribute("login_session"));
 				
-				return "/lobby";	//임시로 noticelist로 가게함
+				return "/company/lobby";	//임시로 noticelist로 가게함
 			}
 		}
 		
