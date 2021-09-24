@@ -16,6 +16,7 @@
 		<tr>
 			<th>글번호</th>
 			<th>부서번호</th>
+			<th>사원번호</th>
 			<th>글제목</th>
 			<th>글본문</th>
 			<th>작성자</th>
@@ -28,6 +29,7 @@
 	<tr>	
 		<td>${dpcList.dc_num}</td>
 		<td>${dpcList.dp_code}</td>
+		<td>${dpcList.empno}</td>
 		<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}">${dpcList.dtitle}</a></td>
 		<td>${dpcList.dcontent}</td>
 		<td>${dpcList.dwriter}</td>
