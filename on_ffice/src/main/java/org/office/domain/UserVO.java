@@ -21,7 +21,7 @@ public class UserVO {
 	private String name;
 	private String profile_img;
 	private String gender;
-	private Date birth;
+	private String birth;
 	private int position_code;
 	private String email; 
 	private String cp;
