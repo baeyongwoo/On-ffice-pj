@@ -31,6 +31,7 @@ public class DpCommunityController {
 		log.info("부서 자유 게시판 로직 접속");
 		List<DpCommunityVO> dpCommunityList = service.list();
 		model.addAttribute("dpCommunityList", dpCommunityList);
+		
 	}
 		
 	@PostMapping("/dpcwrite")

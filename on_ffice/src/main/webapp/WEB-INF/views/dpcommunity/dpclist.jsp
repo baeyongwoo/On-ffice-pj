@@ -25,8 +25,8 @@
 			<th>조회수</th>
 		</tr>
 	</table>
-	<c:if test="SELECT * FROM depart_community WHERE dp_code = ${login_session.dp_code}">
-		<c:forEach items="${dpCommunityList}" var="dpcList">
+	<c:forEach items="${dpCommunityList}" var="dpcList">
+		<c:if test="${dpcList.dp_code eq login_session.dp_code}">
 			<tr>	
 				<td>${dpcList.dc_num}</td>
 				<td>${dpcList.dp_code}</td>
@@ -38,9 +38,9 @@
 				<td>${dpcList.dupdate}</td>
 				<td>${dpcList.dhits}</td>
 			</tr>
-		</c:forEach>
-	</c:if>
-	<br/>		
+		<br/>		
+		</c:if>
+	</c:forEach>
 	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a><br/>
 </body>
 </html>

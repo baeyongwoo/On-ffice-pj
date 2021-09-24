@@ -25,7 +25,7 @@
 
 <insert id="DpCwriteSelectKey">
 	<selectKey keyProperty="dc_num" order="BEFORE" resultType="int">
-		SELECT OF (ISNULL(dc_num), 1, max(dc_num) + 1) as dc_num FROM depart_community;
+		SELECT IF (ISNULL(dc_num), 1, max(dc_num) + 1) AS dc_num FROM depart_community;
 	</selectKey>
 	INSERT INTO depart_community 
 		VALUES(#{dc_num}, #{dp_code}, #{empno}, #{dtitle}, #{dcontent}, #{dwriter}, now(), now(), 0)
