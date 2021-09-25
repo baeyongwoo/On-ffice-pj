@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.office.mapper.DepartMapper">
+
+
+	<!-- 각 부서 정보 조회(dp_code, depart_name, count) -->
+	<select id = "selectDpInfo" resultType="org.office.domain.DepartVO">
+		select depart.depart_name as depart_name, count(*) as count
+	    from users, depart
+	    where users.dp_code = depart.dp_code
+	    group by users.dp_code
+	    having users.dp_code = #{dp_code}
+	</select>
+
+
+
+</mapper>
+
+
