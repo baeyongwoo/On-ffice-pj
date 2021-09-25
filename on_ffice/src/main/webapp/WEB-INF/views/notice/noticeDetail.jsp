@@ -18,9 +18,9 @@
 	<h2>조회수 : ${nd.nhits}</h2>
 	
 	<a href="/notice/noticeList">목록으로</a>
+
 	
-	${login.session}
-	<c:if test="${nd.nwriter eq login.session}">
+	<c:if test="${nd.nwriter eq login_session.name}">
 	
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
