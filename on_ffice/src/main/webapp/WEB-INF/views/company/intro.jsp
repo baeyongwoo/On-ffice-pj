@@ -16,7 +16,10 @@
 				<p>2021.09.18일 - 프로젝트 생성 & 깃허브 생성</p>
 				<p>2021.09.19일 - 회사원 계정 CRUD</p>
 				<p>2021.09.20일 - notice CRUD</p>
-				<p>2021.09.21일 - dPCommunity CRUD, Community</p>
+				<p>2021.09.21일 - dPCommunity CRUD, Community CRUD</p>
+				<p>2021.09.22일 - todo CRUD</p>
+				<p>2021.09.23일 - 회사로비 view 생성</p>
+				<p>2021.09.21일 - 회사로비 view와 dp community 연결</p>
 			</li>
 			<li>프로젝트 멤버
 				<p>배용우, 신우람, 신동규, 고광훈, 서성현</p>

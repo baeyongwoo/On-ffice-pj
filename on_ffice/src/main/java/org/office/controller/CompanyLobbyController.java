@@ -4,6 +4,7 @@ package org.office.controller;
 import javax.servlet.http.HttpSession;
 
 import org.office.domain.UserVO;
+import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class CompanyLobbyController {
 	
 	@Autowired
 	DpCommunityService dcs;
+	
+	@Autowired
+	DepartService ds;
 
 	@GetMapping("/lobby")
 	public String showlobby(Model model, HttpSession session) {
@@ -46,13 +50,19 @@ public class CompanyLobbyController {
 	public String showdp(int dp_code, Model model) {
 		
 		log.info("폼에서 받은 dp_code" + dp_code);
-		log.info("부서리스트 " + us.allUserInfoByDp(dp_code));
-		
 		
 		model.addAttribute("dpu_list", us.allUserInfoByDp(dp_code));
 		
-		log.info("dcslist " + dcs.list());
 		model.addAttribute("dpc_list", dcs.list());	//dpc 부서 커뮤니티
+		
+		model.addAttribute("dpinfo", ds.getDpInfo(dp_code));
 		return "/company/dplobby";
+	}
+	
+	@GetMapping("/dpc")
+	public String movedpc() {
+		dcs.list();
+		
+		return "/dpcommunity/dpclist";
 	}
 }

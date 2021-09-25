@@ -10,7 +10,10 @@
 <body>
 	<!-- 부서 사람들 불러오는것 -->
 	<!-- 부서 커뮤니티 연결 -->
-	<h2>부서이름, 부서인원수</h2>
+	<h2>부서 코드 : ${dpinfo.dp_code}</h2>
+	<h2>부서 이름 : ${dpinfo.depart_name}</h2>
+	<h2>부서 직원 수  : ${dpinfo.count}</h2>
+	<hr>
 		사번 아이디 이름 성별 생일 이메일 전화번호 직위 </br>
 	<c:forEach items="${dpu_list}" var="dl">
 		${dl.empno}
@@ -40,6 +43,7 @@
 	</c:forEach>
 	
 	<a href="/company/lobby"><button>메인로비로가기</button></a>
+	<a href="/company/dpc"><button>부서게시판으로가기</button></a>
 	
 	
 	

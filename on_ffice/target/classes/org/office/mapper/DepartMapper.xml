@@ -5,7 +5,7 @@
 
 	<!-- 각 부서 정보 조회(dp_code, depart_name, count) -->
 	<select id = "selectDpInfo" resultType="org.office.domain.DepartVO">
-		select depart.depart_name as depart_name, count(*) as count
+		select depart.dp_code, depart.depart_name as depart_name, count(*) as count
 	    from users, depart
 	    where users.dp_code = depart.dp_code
 	    group by users.dp_code
