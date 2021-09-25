@@ -24,4 +24,11 @@ public class DepartServiceImpl implements DepartService {
 		return mapper.selectDpInfo(dp_code);
 		
 	}
+
+	@Override
+	public void UpCount(int dp_code) {
+		log.info("회원가입시 부서 테이블 사원수 증가");
+		mapper.UpCount(dp_code);
+	}
+	
 }
