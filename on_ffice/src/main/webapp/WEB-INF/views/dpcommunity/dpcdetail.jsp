@@ -8,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<script>
+		function back() {
+			window.history.back();
+		}
+	</script>
+	
+	<button onclick="back();">뒤로가기</button>
 	<c:set var="DpCd" value="${dpcdetail}"></c:set>
 	<h2>${DpCd.dc_num}번 게시글 입니다.</h2>
 	<h2>부서번호 : ${DpCd.dp_code}</h2>
@@ -18,7 +25,7 @@
 	<h2>수정일 : ${DpCd.dupdate}</h2>
 	<h2>조회수 : ${DpCd.dhits}</h2>
 	
-	<a href="/dpcommunity/dpclist"><button>목록으로</button></a>
+	<a href="/dpcommunity/dpclist"><button>게시판으로</button></a>
 		<c:if test="${DpCd.dwriter eq login_session.name}">
 		
 		<form action="/dpcommunity/dpcupdate" method="post">

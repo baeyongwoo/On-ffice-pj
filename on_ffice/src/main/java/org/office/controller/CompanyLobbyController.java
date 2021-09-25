@@ -48,7 +48,7 @@ public class CompanyLobbyController {
 		log.info("폼에서 받은 dp_code" + dp_code);
 		log.info("부서리스트 " + us.allUserInfoByDp(dp_code));
 		
-		us.allUserInfo();
+		
 		model.addAttribute("dpu_list", us.allUserInfoByDp(dp_code));
 		
 		log.info("dcslist " + dcs.list());

@@ -20,18 +20,23 @@
 		${dl.birth}
 		${dl.email}
 		${dl.cp}
-		${dl.position_code}
+		${dl.p_name}
 		</br>
 	</c:forEach>
 	
 	<hr>
 	<c:forEach items="${dpc_list}" var="dpcl">
-		${dpcl.dc_num}
-		${dpcl.dtitle}
-		${dpcl.dwriter}
-		${dpcl.ddate}
-		${dpcl.dhits}
-		</br>
+		<c:if test="${dpcl.dp_code eq login_session.dp_code}">
+			<tr>	
+				<td>${dpcl.dc_num}</td>
+				<td>${dpcl.dp_code}</td>
+				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcl.dc_num}">${dpcl.dtitle}</a></td>
+				<td>${dpcl.dwriter}</td>
+				<td>${dpcl.ddate}</td>
+				<td>${dpcl.dhits}</td>
+			</tr>
+		<br/>		
+		</c:if>
 	</c:forEach>
 	
 	<a href="/company/lobby"><button>메인로비로가기</button></a>
