@@ -8,5 +8,7 @@ public interface DepartMapper {
 	
 	public DepartVO selectDpInfo(int dp_code);
 	
+	public void UpCount(int dp_code);
+	
 	
 }

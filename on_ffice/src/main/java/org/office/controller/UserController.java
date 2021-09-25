@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.office.domain.UserVO;
+import org.office.service.DepartService;
 import org.office.service.MyPageService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class UserController {
 		
 		@Autowired
 		private UserService service;
+		
+		@Autowired
+		private DepartService ds;
 		
 		@GetMapping("/login")
 		private String Gologin() {
@@ -52,12 +56,12 @@ public class UserController {
 				log.info("회원가입 실패");
 				return "/user/register";
 			}
-			
 			log.info("회원가입 시작");
 			service.register(vo);
+			log.info("회원가입할때 부서번호 : " + vo.getDp_code());
+			ds.UpCount(vo.getDp_code());
 			model.addAttribute("register_result", "success");
 			return "/user/login";
-			
 			
 		}
 		
