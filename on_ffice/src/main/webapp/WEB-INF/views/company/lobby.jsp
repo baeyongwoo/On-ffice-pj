@@ -10,21 +10,25 @@
 <body>
 	<c:if test="${login_session ne null}">
 		<script>
-			alert('${login_session.uid}님 환영합니다.');
+			alert('${login_session.name}님 환영합니다.');
 			
 		</script>
 	</c:if>
 		
 	<h1>ict03회사</h1>
-	${login_session}
 	<a href="/company/intro"><button>회사소개</button></a>
 	<a href="#"><button>회사행사</button></a>
 	<a href="#"><button>회사소통</button></a>
 	회사 관련 이미지<img src="">
 	<c:set var="user" value="${login_session}" />
+	<a href="/user/login"><button>로그인하기</button></a>
+	<c:if test="${login_session ne null}">
+		<a href="/user/logout"><button>로그아웃하기</button></a>
+		<a href="/mypage/main"><button>마이페이지로</button></a>
+		<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>	
+	</c:if>
 	
-	<a href="/mypage/main"><button>마이페이지로</button></a>
-	<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>		
+	<a href="/community/CMList"><button>자유게시판가기</button></a>
 	
 	<c:if test="${user.dp_code == 1 and user.position_code >= 2}">
 		<a href="/user/register"><button>회원가입</button></a>

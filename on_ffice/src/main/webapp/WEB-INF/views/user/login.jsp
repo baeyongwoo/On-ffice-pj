@@ -36,6 +36,7 @@
 		
 		</script>
 	</c:if>
+	
 	<form action ="/user/login" method="post" onsubmit="return FormSubmit();">
 		아이디<input type="text" name="uid" placeholder="ID" required><br/>
 		비밀번호<input type="password" name="upw" placeholder="PASSWORD" required><br/>
@@ -43,8 +44,9 @@
 		<input type="reset" value="초기화"><br/>
 		<input type="button" value="회원가입" onclick ="location.href ='/user/register'">
 		<div class="g-recaptcha" data-sitekey="6LezJokcAAAAAGeSI922uGsecDbO3MCUTxplIzLj"></div>
-
 	</form>
+	
+	<a href="/company/lobby"><button>게스트입장</button></a>
 	
 	
 </body>
