@@ -22,6 +22,7 @@
 		${cl.chits}
 		</br>
 	</c:forEach>
+	<a href="/company/lobby">로비로가기</a>
 	<!-- url로 접속할 때 잘못된 주소로 접근하면 error창 처리하는 것 만들기 -->
 	<form action="/user/userInfo" method="post">
  	<input type="hidden" name="uid" value="${login_session}">
