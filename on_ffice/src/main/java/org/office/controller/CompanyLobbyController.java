@@ -38,6 +38,7 @@ public class CompanyLobbyController {
 	@GetMapping("/lobby")
 	public String showlobby(Model model, HttpSession session) {
 		
+		log.info("로비컨트롤러실행");
 		UserVO vo = new UserVO();
 		vo = (UserVO)session.getAttribute("login_session");
 		model.addAttribute("login_session", vo);

@@ -10,7 +10,15 @@
 
 <!-- 로그인 로직 -->
 <select id="select" resultType="org.office.domain.UserVO">
-	SELECT * FROM users WHERE uid = #{uid} AND upw = #{upw}
+	      SELECT * ,
+        (select depart_name
+        from depart
+        where dp_code=users.dp_code) as depart_name,
+        (select p_name
+        from positions
+        where p_code=users.position_code) as p_name
+        FROM users
+        WHERE uid = #{uid} AND upw = #{upw}
 </select>
 
 <!-- id 중복검사 로직 -->

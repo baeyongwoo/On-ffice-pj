@@ -10,9 +10,11 @@ import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -114,7 +116,7 @@ public class UserController {
 		
 	
 		@PostMapping("/login")
-		private String login(String uid, String upw, Model model, HttpSession session) {
+		private String login(String uid, String upw, Model model, HttpSession session, RedirectAttributes rttr) {
 			UserVO vo = service.login(uid, upw);
 			log.info("login로직 접속");
 			log.info("받아온 uid : " + uid);
@@ -127,12 +129,12 @@ public class UserController {
 				return "/user/login";
 			} else {
 				
-				model.addAttribute("login_result", "success");
+				rttr.addAttribute("login_result", "success");
 	
 				session.setAttribute("login_session", vo);
 				log.info("로그인 세션 정보" + session.getAttribute("login_session"));
 				
-				return "/company/lobby";	//임시로 noticelist로 가게함
+				return "redirect:/company/lobby";	//임시로 noticelist로 가게함
 			}
 		}
 		

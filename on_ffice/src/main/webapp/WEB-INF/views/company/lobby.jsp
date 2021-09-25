@@ -8,7 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:if test="${login_session ne null}">
+		<script>
+			alert('${login_session.uid}님 환영합니다.');
+			
+		</script>
+	</c:if>
+		
 	<h1>ict03회사</h1>
+	${login_session}
 	<a href="/company/intro"><button>회사소개</button></a>
 	<a href="#"><button>회사행사</button></a>
 	<a href="#"><button>회사소통</button></a>
