@@ -10,13 +10,13 @@
 	<h2>부서 자유 게시판 작성 창</h2>
 	
 	<form action="/dpcommunity/dpcwrite" method="post">
-		<input type="text" name="dp_code" value="${login_session.dp_code}" readonly="readonly"><br/>
-		<input type="text" name="empno" value="${login_session.empno}" readonly="readonly"><br/>
+		<input type="hidden" name="dp_code" value="${login_session.dp_code}" readonly="readonly"><br/>
+		<input type="hidden" name="empno" value="${login_session.empno}" readonly="readonly"><br/>
 		<input type="text" name="dtitle" placeholder="글 제목" required="required"><br/>
 		<textarea rows="10" cols="50" name="dcontent" required="required"></textarea><br/>
 		<input type="text" name="dwriter" value="${login_session.name}" readonly="readonly"><br/>
-		<input type="submit" value="작성완료">
-		<input type="reset" value="초기화"> 
+		<input type="submit" value="작성완료">		
+		<input type="reset" value="초기화">
 	</form>
 </body>
 </html>

@@ -15,7 +15,7 @@
 	<table>
 		<tr>
 			<th>글번호</th>
-			<th>부서번호</th>
+			<th>부서명</th>
 			<th>사원번호</th>
 			<th>글제목</th>
 			<th>글본문</th>
@@ -27,9 +27,21 @@
 	</table>
 	<c:forEach items="${dpCommunityList}" var="dpcList">
 		<c:if test="${dpcList.dp_code eq login_session.dp_code}">
+		
 			<tr>	
 				<td>${dpcList.dc_num}</td>
-				<td>${dpcList.dp_code}</td>
+				<c:if test="${dpcList.dp_code eq 1}">
+				<td>인사부</td>
+				</c:if>
+				<c:if test="${dpcList.dp_code eq 2}">
+				<td>회계부</td>
+				</c:if>
+				<c:if test="${dpcList.dp_code eq 3}">
+				<td>IT부</td>
+				</c:if>
+				<c:if test="${dpcList.dp_code eq 4}">
+				<td>마케팅부</td>
+				</c:if>
 				<td>${dpcList.empno}</td>
 				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}">${dpcList.dtitle}</a></td>
 				<td>${dpcList.dcontent}</td>
@@ -41,6 +53,9 @@
 		<br/>		
 		</c:if>
 	</c:forEach>
-	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a><br/>
+	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a>
+	<c:set var="user" value="${login_session}" />
+	<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>
+	<a href="/company/lobby"><button>메인로비로가기</button></a>
 </body>
 </html>
