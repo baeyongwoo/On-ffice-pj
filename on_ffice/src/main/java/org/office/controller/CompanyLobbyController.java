@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
+import org.office.service.NoticeService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,9 @@ public class CompanyLobbyController {
 	
 	@Autowired
 	DepartService ds;
+	
+	@Autowired
+	NoticeService ns;
 
 	@GetMapping("/lobby")
 	public String showlobby(Model model, HttpSession session) {
@@ -37,6 +41,10 @@ public class CompanyLobbyController {
 		UserVO vo = new UserVO();
 		vo = (UserVO)session.getAttribute("login_session");
 		model.addAttribute("login_session", vo);
+		
+		log.info("notice 정보 : " + ns.list());
+		model.addAttribute("nslist", ns.list());
+		
 		return "/company/lobby";
 	}
 	

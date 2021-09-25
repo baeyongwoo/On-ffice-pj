@@ -28,11 +28,11 @@
 	</c:forEach>
 	
 	<hr>
+	글번호/제목/작성자/작성일/조회수 </br>
 	<c:forEach items="${dpc_list}" var="dpcl">
 		<c:if test="${dpcl.dp_code eq login_session.dp_code}">
 			<tr>	
 				<td>${dpcl.dc_num}</td>
-				<td>${dpcl.dp_code}</td>
 				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcl.dc_num}">${dpcl.dtitle}</a></td>
 				<td>${dpcl.dwriter}</td>
 				<td>${dpcl.ddate}</td>
@@ -43,8 +43,9 @@
 	</c:forEach>
 	
 	<a href="/company/lobby"><button>메인로비로가기</button></a>
-	
-	<a href="/dpcommunity/dpclist"><button>게시판으로</button></a>
+	<a href="/dpcommunity/dpclist"><button>부서게시판으로가기</button></a>
+	<a href="/mypage/main"><button>마이페이지로</button> </a>
+
 	
 	
 	

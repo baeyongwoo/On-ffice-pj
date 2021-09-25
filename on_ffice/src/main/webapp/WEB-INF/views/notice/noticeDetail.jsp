@@ -19,7 +19,8 @@
 	
 	<a href="/notice/noticeList">목록으로</a>
 	
-	<c:if test="${nd.nwriter eq login_session}">
+	${login.session}
+	<c:if test="${nd.nwriter eq login.session}">
 	
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
