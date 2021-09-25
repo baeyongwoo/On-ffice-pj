@@ -15,7 +15,7 @@
 	<table>
 		<tr>
 			<th>글번호</th>
-			<th>부서번호</th>
+			<th>부서명</th>
 			<th>사원번호</th>
 			<th>글제목</th>
 			<th>글본문</th>
@@ -41,6 +41,10 @@
 		<br/>		
 		</c:if>
 	</c:forEach>
-	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a><br/>
+	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a>
+	<c:set var="user" value="${login_session}" />
+	
+	<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>
+	<a href="/company/lobby"><button>메인로비로가기</button></a>
 </body>
 </html>

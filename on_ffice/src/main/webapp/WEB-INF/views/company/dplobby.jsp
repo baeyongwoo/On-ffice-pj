@@ -40,7 +40,7 @@
 	</c:forEach>
 	
 	<a href="/company/lobby"><button>메인로비로가기</button></a>
-	
+	<a href="/dpcommunity/dpclist"><button>게시판으로</button></a>
 	
 	
 </body>
