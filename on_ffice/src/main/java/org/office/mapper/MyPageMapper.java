@@ -30,6 +30,7 @@ public interface MyPageMapper {
 	
 	public void passTodo(TodoVO vo);
 	
-	public TodoVO getTodo(int empno);
+	public TodoVO getTodo(int todo_num);
 
+	public void statTodo(TodoVO vo);
 }

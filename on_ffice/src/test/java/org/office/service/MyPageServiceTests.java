@@ -58,9 +58,19 @@ public class MyPageServiceTests {
 		log.info(vo);
 	}
 
-	@Test
+	//@Test
 		public void testgetTodo() {
-			log.info(service.getTodo(1));
+			log.info(service.getTodo(2));
+			
+		}
+		
+	//@Test
+		public void teststatTodo() {
+			TodoVO vo = new TodoVO();
+			vo.setTodo_num(4);
+			vo.setComplete("완료!");
+			service.statTodo(vo);
+			log.info(vo);
 			
 		}
 }

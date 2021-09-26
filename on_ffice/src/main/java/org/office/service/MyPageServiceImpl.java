@@ -65,10 +65,16 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	@Override
-	public TodoVO getTodo(int empno) {
+	public TodoVO getTodo(int todo_num) {
 		log.info("개별 작업 받아오기");
-		TodoVO vo = mapper.getTodo(empno);
+		TodoVO vo = mapper.getTodo(todo_num);
 		return vo;
+	}
+	@Override
+	public void statTodo(TodoVO vo) {
+		log.info("TODO상태 변경");
+		mapper.statTodo(vo);
+		
 	}
 
 }

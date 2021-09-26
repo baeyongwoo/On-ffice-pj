@@ -44,8 +44,14 @@
  
  <select id="getTodo" resultType="org.office.domain.TodoVO">
  <![CDATA[
- SELECT * FROM todo WHERE worker=#{worker}
+ SELECT * FROM todo WHERE todo_num = #{todo_num}
  ]]>
  </select>
 
+ <update id="statTodo">
+ <![CDATA[
+ UPDATE todo SET complete = #{complete} WHERE todo_num = #{todo_num}
+ ]]>
+ </update>
+ 
  </mapper>
