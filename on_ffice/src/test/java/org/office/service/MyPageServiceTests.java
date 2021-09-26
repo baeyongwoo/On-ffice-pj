@@ -25,28 +25,42 @@ public class MyPageServiceTests {
 		assertNotNull(service);
 	}
 	
-	@Test
+	//@Test
 	public void testgetInfo() {	
 		log.info(service.getInfo("test1"));;
 		
 	}
 	
 	//@Test
-	public void testgetTodo() {
-		log.info(service.getTodo(1));
+	public void testgetTodoList() {
+		log.info(service.getTodoList(1));
 		
 	}
 	
 	//@Test
 	public void testInsertTodo() {
 		TodoVO vo = new TodoVO();
-		vo.setChecker("test3");
-		vo.setWorker("test1");
+		vo.setChecker(3);
+		vo.setWorker(1);
 		vo.setComplete("no");
 		vo.setTodo_content("테스트폼");
 		service.insertTodo(vo);
 		log.info(vo);
 			}
 	
+	//@Test
+	public void testPassTodo() {
+		TodoVO vo = new TodoVO();
+		vo.setTodo_num(1);
+		vo.setWorker(4);
+		vo.setTodo_content("패스 한 작업내용");
+		service.passTodo(vo);
+		log.info(vo);
+	}
 
+	@Test
+		public void testgetTodo() {
+			log.info(service.getTodo(1));
+			
+		}
 }
