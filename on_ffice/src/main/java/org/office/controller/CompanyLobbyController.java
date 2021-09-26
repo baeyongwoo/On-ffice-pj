@@ -4,6 +4,7 @@ package org.office.controller;
 import javax.servlet.http.HttpSession;
 
 import org.office.domain.UserVO;
+import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
 import org.office.service.NoticeService;
 import org.office.service.UserService;
