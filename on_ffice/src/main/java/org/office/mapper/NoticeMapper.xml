@@ -12,6 +12,11 @@
 		SELECT * FROM notice WHERE notice_num = #{notice_num}
 	</select>
 	
+	<!-- 글 카테고리 로직 -->
+	<select id="category" resultType="org.office.domain.NoticeVO">
+		SELECT * FROM notice WHERE ncategory= #{ncategory}
+	</select>
+	
 	<!-- 글 조회수 증가 로직 -->
 	<update id="nhit_up">
 		UPDATE notice SET nhits = nhits + 1 WHERE notice_num = #{notice_num} 
@@ -31,7 +36,7 @@
 			SELECT IF(ISNULL(notice_num), 1, max(notice_num) + 1) AS notice_num FROM notice
 		</selectKey>
 		INSERT INTO NOTICE 
-		VALUES(#{notice_num}, #{ntitle}, #{ncontent}, #{nwriter}, now(), now(), 0)
+		VALUES(#{notice_num}, #{ncategory}, #{ntitle}, #{ncontent}, #{nwriter}, now(), now(), 0)
 	</insert>
 
 	<!-- 글 삭제 로직 -->	

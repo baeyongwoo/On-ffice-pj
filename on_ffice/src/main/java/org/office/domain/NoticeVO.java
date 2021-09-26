@@ -8,11 +8,14 @@ import lombok.Data;
 public class NoticeVO {
 	
 	private int notice_num;
+	private String ncategory;
 	private String ntitle;
 	private String ncontent;
 	private String nwriter;
 	private Date ndate;
 	private Date nupdate;
 	private int nhits;
+	
+	
 
 }

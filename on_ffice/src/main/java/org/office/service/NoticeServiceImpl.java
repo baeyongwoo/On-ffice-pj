@@ -70,4 +70,14 @@ public class NoticeServiceImpl implements NoticeService {
 
 	}
 
+	
+	@Override
+	public List<NoticeVO> category(String ncategory) {
+		log.info(ncategory + "만 보기");
+		List<NoticeVO> list = noticemapper.noticeList();
+		List<NoticeVO> nc = noticemapper.category(list, ncategory);
+		return nc;
+	}
+
+
 }

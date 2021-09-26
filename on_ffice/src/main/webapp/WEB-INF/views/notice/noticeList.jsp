@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	
+	function selectreq() {
+		var select = document.getElementById("select").value;
+		window.location.href = '/notice/category?ncategory='+select;
+		
+	}
 </script>
 </head>
 <body>
@@ -15,11 +19,21 @@
 	<h1>알림 게시판</h1>
 	<c:set var="position" value="${login_session.position_code}" />
 	<c:if test="${position >= 6}">
-		<a href="/notice/write"><button>글쓰러가기</button></a><br/>	
+		<a href="/notice/write"><button>글쓰러가기</button></a>
 	</c:if>
+	
+		<select id="select" onchange="selectreq()">
+			<option value="" selected="disalbed">--선택--</option>
+			<option value="공지">공지</option>
+			<option value="행사">행사</option>
+			<option value="자료">자료</option>
+			<option value="기타">기타</option>
+		</select>
+	<br>
 	
 	<c:forEach items="${noticeList}" var="nl">
 		<a href="/notice/noticeDetail?notice_num=${nl.notice_num}">${nl.notice_num}</a>
+		${nl.ncategory}
 		${nl.ntitle}
 		${nl.nwriter}
 		${nl.ndate}

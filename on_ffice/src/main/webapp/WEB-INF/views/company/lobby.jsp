@@ -21,7 +21,9 @@
 	<a href="#"><button>회사소통</button></a>
 	회사 관련 이미지<img src="">
 	<c:set var="user" value="${login_session}" />
-	<a href="/user/login"><button>로그인하기</button></a>
+	<c:if test="${login_session eq null}">
+		<a href="/user/login"><button>로그인하기</button></a>
+	</c:if>
 	<c:if test="${login_session ne null}">
 		<a href="/user/logout"><button>로그아웃하기</button></a>
 		<a href="/mypage/main"><button>마이페이지로</button></a>
@@ -43,6 +45,7 @@
 	<c:forEach items="${nslist}" var="nl">
 			<tr>	
 				<td>${nl.notice_num}</td>
+				<td>${nl.ncategory}</td>
 				<td>${nl.ntitle}</td>
 				<td>${nl.nwriter}</td>
 				<td>${nl.ndate}</td>

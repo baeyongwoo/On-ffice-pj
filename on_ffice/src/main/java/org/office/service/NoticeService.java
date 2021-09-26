@@ -21,6 +21,9 @@ public interface NoticeService {
 	//글 상세보기 서비스
 	public NoticeVO detail(int notice_num);
 	
+	//카테고리 서비스
+	public List<NoticeVO> category(String ncategory);
+	
 	// 글 작성 서비스
 	public void write(NoticeVO vo);
 	
@@ -32,6 +35,7 @@ public interface NoticeService {
 	
 	// 글 조회수 증가 서비스
 	public void nhit_up(int notice_num);
+
 
 
 

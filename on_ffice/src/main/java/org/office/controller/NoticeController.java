@@ -33,6 +33,13 @@ public class NoticeController {
 		model.addAttribute("noticeList",noticeList);
 	}
 	
+	@GetMapping("/category")
+	public void category(String ncategory, Model model) {
+		log.info("form에서 받은 데이터 : " + ncategory);
+		model.addAttribute("category", service.category(ncategory));
+
+	}
+	
 	@PostMapping("/write")
 	public String write(NoticeVO vo, RedirectAttributes rttr) {
 		
@@ -92,5 +99,7 @@ public class NoticeController {
 		
 		return "/notice/noticeUpdate";
 	}
+	
+
 	
 }

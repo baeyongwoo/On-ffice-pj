@@ -2,6 +2,7 @@ package org.office.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.office.domain.NoticeVO;
 
 public interface NoticeMapper {
@@ -11,6 +12,9 @@ public interface NoticeMapper {
 
 // 글 상세보기 로직
 	public NoticeVO notice_detail(int notice_num);
+	
+// 카테고리 로직
+	public List<NoticeVO> category(List<NoticeVO> list, @Param("ncategory")String ncategory);
 	
 // 글 작성 로직
 	//public void write(NoticeVO vo);
