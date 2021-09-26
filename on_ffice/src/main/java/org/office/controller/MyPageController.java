@@ -55,9 +55,9 @@ public class MyPageController {
 		 
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
-		UserVO uservo = service.getInfo("test1"); //테스트를 위해 test1삽입 추후  로 변경
+		UserVO uservo = service.getInfo("test1"); //테스트를 위해 test1삽입 추후 세션으로 변경
 		log.info("받아온 정보 : " + uservo);
-		List<TodoVO> todoList = service.getTodo(1);
+		List<TodoVO> todoList = service.getTodoList(1);
 		log.info("받아온 할일 : " +todoList);
 		MealVO mealvo = service.getMeal(dailymeal);
 		log.info("받아온 식단 : " + mealvo);
@@ -70,12 +70,21 @@ public class MyPageController {
 		model.addAttribute("meal", mealvo);
 		model.addAttribute("todoList",todoList);
 		model.addAttribute("users", userList);
-	}
+		}
 	
 	@PostMapping("/insertTodo")
 	public String insertTodo
 	(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
 		service.insertTodo(vo);
+		log.info(vo);
+		model.addAttribute(vo);
+		return "redirect:/mypage/main";
+	}
+	
+	@PostMapping("/passTodo")
+	public String passTodo
+	(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
+		service.passTodo(vo);
 		log.info(vo);
 		model.addAttribute(vo);
 		return "redirect:/mypage/main";

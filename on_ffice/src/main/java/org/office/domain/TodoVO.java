@@ -8,8 +8,8 @@ import lombok.Data;
 public class TodoVO {
 
 	public int todo_num;
-	public String worker;
-	public String checker;	
+	public int worker;
+	public int checker;	
 	public String todo_title;
 	public String todo_content;
 	public String complete;

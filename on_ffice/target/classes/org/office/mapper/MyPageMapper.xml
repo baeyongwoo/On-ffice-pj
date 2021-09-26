@@ -23,7 +23,7 @@
  ]]>
  </select>
  
- <select id="getTodo" resultType="org.office.domain.TodoVO">
+ <select id="getTodoList" resultType="org.office.domain.TodoVO">
  <![CDATA[
  SELECT todo_num, checker, todo_content, recive_time, complete FROM todo WHERE worker=#{worker}
  ]]>
@@ -36,5 +36,16 @@
  ]]>
  </insert>
  
+ <update id="passTodo">
+ <![CDATA[
+ UPDATE todo SET worker = #{worker}, todo_content = #{todo_content} WHERE todo_num = #{todo_num}
+ ]]>
+ </update>
+ 
+ <select id="getTodo" resultType="org.office.domain.TodoVO">
+ <![CDATA[
+ SELECT * FROM todo WHERE worker=#{worker}
+ ]]>
+ </select>
 
  </mapper>

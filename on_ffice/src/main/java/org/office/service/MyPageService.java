@@ -21,7 +21,8 @@ public interface MyPageService {
 	//서비스 하나당 기능 하나
 	public UserVO getInfo(String uid);
 	public MealVO getMeal(String dailymeal);
-	public List<TodoVO> getTodo(int empno);
+	public List<TodoVO> getTodoList(int empno);
 	public void insertTodo(TodoVO vo);
-
+	public void passTodo(TodoVO vo);
+	public TodoVO getTodo(int empno);
 }

@@ -46,9 +46,9 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public List<TodoVO> getTodo (int empno){
+	public List<TodoVO> getTodoList (int empno){
 		log.info("TODO 리스트 생성");
-		List<TodoVO> vo = mapper.getTodo(empno);
+		List<TodoVO> vo = mapper.getTodoList(empno);
 		return vo;
 	}
 	
@@ -58,5 +58,17 @@ public class MyPageServiceImpl implements MyPageService{
 		mapper.insertTodo(vo);
 	}
 	
+	@Override
+	public void passTodo(TodoVO vo) {
+		log.info("작업을 넘겨줍니다");
+		mapper.passTodo(vo);
+	}
+
+	@Override
+	public TodoVO getTodo(int empno) {
+		log.info("개별 작업 받아오기");
+		TodoVO vo = mapper.getTodo(empno);
+		return vo;
+	}
 
 }

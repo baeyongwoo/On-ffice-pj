@@ -24,9 +24,12 @@ public interface MyPageMapper {
 
 	public MealVO getMeal(String dailymeal); 
 	
-	public List<TodoVO> getTodo(int empno);
+	public List<TodoVO> getTodoList(int empno);
 	
 	public void insertTodo(TodoVO vo);
 	
+	public void passTodo(TodoVO vo);
+	
+	public TodoVO getTodo(int empno);
 
 }
