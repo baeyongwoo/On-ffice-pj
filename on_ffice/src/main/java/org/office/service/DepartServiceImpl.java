@@ -17,6 +17,9 @@ public class DepartServiceImpl implements DepartService {
 	@Autowired
 	DepartMapper mapper;
 	
+	@Autowired
+	UserMapper um;
+	
 	@Override
 	public DepartVO getDpInfo(int dp_code) {
 		

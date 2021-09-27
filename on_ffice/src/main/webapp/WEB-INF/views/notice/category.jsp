@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<c:forEach items="${category}" var="nl">
-		<a href="/notice/noticeDetail?notice_num=${nl.notice_num}">${nl.notice_num}</a>
-		${nl.ncategory}
-		${nl.ntitle}
-		${nl.nwriter}
-		${nl.ndate}
-		${nl.nhits}
+		<c:forEach items="${category}" var="cg">
+		<a href="/notice/noticeDetail?notice_num=${cg.notice_num}">${cg.notice_num}</a>
+		${cg.ncategory}
+		${cg.ntitle}
+		${cg.nwriter}
+		${cg.ndate}
+		${cg.nhits}
 		<br/>
 	</c:forEach>
 

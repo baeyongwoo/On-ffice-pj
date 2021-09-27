@@ -16,6 +16,7 @@
 	<hr>
 		사번 아이디 이름 성별 생일 이메일 전화번호 직위 </br>
 	<c:forEach items="${dpu_list}" var="dl">
+		<c:if test="${dl.dp_code eq login_session.dp_code}">
 		${dl.empno}
 		${dl.uid}
 		${dl.name}
@@ -25,12 +26,14 @@
 		${dl.cp}
 		${dl.p_name}
 		</br>
+		</c:if>
 	</c:forEach>
 	
 	<hr>
-	글번호/제목/작성자/작성일/조회수 </br>
+	<h2>우리의 게시판</h2>
+	글번호/제목/작성자/작성일/조회수<br>
 	<c:forEach items="${dpc_list}" var="dpcl">
-		<c:if test="${dpcl.dp_code eq login_session.dp_code}">
+	<c:if test="${dpcl.dp_code eq login_session.dp_code}">
 			<tr>	
 				<td>${dpcl.dc_num}</td>
 				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcl.dc_num}">${dpcl.dtitle}</a></td>

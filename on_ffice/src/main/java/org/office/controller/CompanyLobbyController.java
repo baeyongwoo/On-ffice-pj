@@ -46,6 +46,7 @@ public class CompanyLobbyController {
 		log.info("notice 정보 : " + ns.list());
 		model.addAttribute("nslist", ns.list());
 		
+		
 		return "/company/lobby";
 	}
 	
@@ -56,15 +57,18 @@ public class CompanyLobbyController {
 	}
 	
 	@GetMapping("/dplobby")
-	public String showdp(int dp_code, Model model) {
+	public String showdp(String dp_code, Model model) {
+		int dp_codeCI = Integer.parseInt(dp_code);
 		
-		log.info("폼에서 받은 dp_code" + dp_code);
+		log.info("폼에서 받은 dp_code : " + dp_code);
 		
-		model.addAttribute("dpu_list", us.allUserInfoByDp(dp_code));
+		model.addAttribute("dpu_list", us.allUserInfoByDp(dp_codeCI));
 		
 		model.addAttribute("dpc_list", dcs.list());	//dpc 부서 커뮤니티
 		
-		model.addAttribute("dpinfo", ds.getDpInfo(dp_code));
+		model.addAttribute("dpinfo", ds.getDpInfo(dp_codeCI));
+		
+		log.info("부서 게시판 : " + dcs.list());
 		return "/company/dplobby";
 	}
 	

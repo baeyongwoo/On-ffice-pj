@@ -49,7 +49,7 @@
 
 <!-- 부서별 유저 리스트 조회 -->
 <select id="selectUserListByDp" resultType="org.office.domain.UserVO">
-	select empno, uid, name, gender, birth, email, cp, p_name
+	select empno, uid, name, gender, birth, email, cp, p_name, dp_code, p_salary
     from users, positions
     where users.position_code = positions.p_code and users.dp_code = #{dp_code};
 </select>

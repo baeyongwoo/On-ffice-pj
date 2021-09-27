@@ -132,6 +132,7 @@ public class UserController {
 				rttr.addAttribute("login_result", "success");
 	
 				session.setAttribute("login_session", vo);
+				session.setMaxInactiveInterval(60*10);
 				log.info("로그인 세션 정보" + session.getAttribute("login_session"));
 				
 				return "redirect:/company/lobby";	//임시로 noticelist로 가게함
@@ -140,9 +141,15 @@ public class UserController {
 		
 		@GetMapping("/logout")
 		private String login(HttpSession session) {
-			log.info("로그아웃 컨트롤러 실행");
-			session.invalidate();
 			
+			Object object = session.getAttribute("login_session");
+			if(object == null) {
+				UserVO user = (UserVO) object;
+				session.removeAttribute("login_session");
+				log.info("로그아웃 컨트롤러 실행");
+				return "/user/logout";
+			}
+			session.invalidate();
 			return "/user/login";
 		}
 		
