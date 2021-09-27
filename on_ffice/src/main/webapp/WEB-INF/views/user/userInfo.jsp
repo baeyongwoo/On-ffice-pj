@@ -96,7 +96,7 @@
 	<form action="/user/goUserModify" method="post">
 		<input type="hidden" name="uid" value="${login_session.uid}">
 		<input type="submit" value="회원정보수정">
-		<input type="button" value="돌아가기" onclick ="location.href ='/'">
+		<input type="button" value="돌아가기" onclick ="location.href ='/mypage/main'">
 	</form>
 	
 	<input type="button" value="회원탈퇴" onclick="deleteCheck()">

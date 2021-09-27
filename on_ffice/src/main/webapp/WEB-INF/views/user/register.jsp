@@ -56,11 +56,11 @@
 				<tr> 
 					<th>프로필 사진</th> 
 					<td>
-						<input type="radio" name="profile_img" size="15" value="'/resources/img/p1.PNG'"> <img width="50px" height="50px" src="/resources/img/p1.PNG">
-						<input type="radio" name="profile_img" size="15" value="'/resources/img/p2.PNG'"> <img width="50px" height="50px" src="/resources/img/p2.PNG">
-						<input type="radio" name="profile_img" size="15" value="'/resources/img/p3.PNG'"> <img width="50px" height="50px" src="/resources/img/p3.PNG">
-						<input type="radio" name="profile_img" size="15" value="'/resources/img/p4.PNG'"> <img width="50px" height="50px" src="/resources/img/p4.PNG">
-						<input type="radio" name="profile_img" size="15" value="'/resources/img/p5.PNG'"> <img width="50px" height="50px" src="/resources/img/p5.PNG">
+						<input type="radio" name="profile_img" size="15" value="/resources/img/p1.PNG"> <img width="50px" height="50px" src="/resources/img/p1.PNG">
+						<input type="radio" name="profile_img" size="15" value="/resources/img/p2.PNG"> <img width="50px" height="50px" src="/resources/img/p2.PNG">
+						<input type="radio" name="profile_img" size="15" value="/resources/img/p3.PNG"> <img width="50px" height="50px" src="/resources/img/p3.PNG">
+						<input type="radio" name="profile_img" size="15" value="/resources/img/p4.PNG"> <img width="50px" height="50px" src="/resources/img/p4.PNG">
+						<input type="radio" name="profile_img" size="15" value="/resources/img/p5.PNG"> <img width="50px" height="50px" src="/resources/img/p5.PNG">
 					</td> 
 				</tr>
 				
