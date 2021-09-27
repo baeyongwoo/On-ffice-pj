@@ -15,6 +15,7 @@
 		<input type="text" name="dtitle" placeholder="글 제목" required="required"><br/>
 		<textarea rows="10" cols="50" name="dcontent" required="required"></textarea><br/>
 		<input type="text" name="dwriter" value="${login_session.name}" readonly="readonly"><br/>
+				
 		<input type="submit" value="작성완료">		
 		<input type="reset" value="초기화">
 	</form>

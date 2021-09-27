@@ -33,7 +33,7 @@ public class DpCommunityController {
 		model.addAttribute("dpCommunityList", dpCommunityList);
 		
 	}
-		
+	
 	@PostMapping("/dpcwrite")
 	public String DpCwrite(DpCommunityVO vo, RedirectAttributes rttr) {
 		
