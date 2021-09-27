@@ -18,7 +18,6 @@
 			<th>부서명</th>
 			<th>사원번호</th>
 			<th>글제목</th>
-			<th>글본문</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>수정일</th>
@@ -26,8 +25,6 @@
 		</tr>
 	</table>
 	<c:forEach items="${dpCommunityList}" var="dpcList">
-		<c:if test="${dpcList.dp_code eq login_session.dp_code}">
-		
 			<tr>	
 				<td>${dpcList.dc_num}</td>
 				<c:if test="${dpcList.dp_code eq 1}">
@@ -44,14 +41,12 @@
 				</c:if>
 				<td>${dpcList.empno}</td>
 				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}">${dpcList.dtitle}</a></td>
-				<td>${dpcList.dcontent}</td>
 				<td>${dpcList.dwriter}</td>
 				<td>${dpcList.ddate}</td>
 				<td>${dpcList.dupdate}</td>
 				<td>${dpcList.dhits}</td>
 			</tr>
 		<br/>		
-		</c:if>
 	</c:forEach>
 	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a>
 	<c:set var="user" value="${login_session}" />

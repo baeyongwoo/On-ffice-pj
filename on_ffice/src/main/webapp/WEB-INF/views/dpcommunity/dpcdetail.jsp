@@ -14,7 +14,6 @@
 		}
 	</script>
 	
-	<button onclick="back();">뒤로가기</button>
 	<c:set var="DpCd" value="${dpcdetail}"></c:set>
 	<h2>${DpCd.dc_num}번 게시글 입니다.</h2>
 	<h2>부서번호 : ${DpCd.dp_code}</h2>
@@ -27,7 +26,7 @@
 	
 	<a href="/dpcommunity/dpclist"><button>게시판으로</button></a>
 		<c:if test="${DpCd.dwriter eq login_session.name}">
-		
+			
 		<form action="/dpcommunity/dpcupdate" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			<input type="submit" value="수정하기">
