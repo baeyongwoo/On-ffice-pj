@@ -1,5 +1,7 @@
 package org.office.mapper;
 
+import java.util.List;
+
 import org.office.domain.DepartVO;
 
 public interface DepartMapper {
@@ -10,5 +12,6 @@ public interface DepartMapper {
 	
 	public void UpCount(int dp_code);
 	
+	public List<DepartVO> selectDpList();
 	
 }

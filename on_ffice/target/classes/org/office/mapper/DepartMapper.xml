@@ -17,6 +17,9 @@
 		update depart set count = count + 1 where dp_code= #{dp_code}
 	</update>
 
+	<select id="selectDpList" resultType="org.office.domain.DepartVO">
+		select * from depart
+	</select>
 
 </mapper>
 

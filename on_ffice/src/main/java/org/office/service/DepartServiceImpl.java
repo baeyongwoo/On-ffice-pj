@@ -1,5 +1,7 @@
 package org.office.service;
 
+import java.util.List;
+
 import org.office.domain.DepartVO;
 import org.office.mapper.DepartMapper;
 import org.office.mapper.UserMapper;
@@ -34,4 +36,10 @@ public class DepartServiceImpl implements DepartService {
 		mapper.UpCount(dp_code);
 	}
 	
+	@Override
+	public List<DepartVO> selectDpList() {
+		log.info("부서 리스트 조회 서비스 시작");
+		
+		return mapper.selectDpList();
+	}
 }

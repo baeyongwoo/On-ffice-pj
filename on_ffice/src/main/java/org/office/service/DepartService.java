@@ -1,5 +1,7 @@
 package org.office.service;
 
+import java.util.List;
+
 import org.office.domain.DepartVO;
 
 public interface DepartService {
@@ -8,5 +10,5 @@ public interface DepartService {
 	
 	public void UpCount(int dp_code);
 		
-	
+	public List<DepartVO> selectDpList();
 }

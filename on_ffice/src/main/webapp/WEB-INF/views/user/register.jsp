@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 <html>
 
@@ -83,15 +84,23 @@
 					</td> 
 				</tr>
 				<tr> 
-					<th>부서번호</th> 
+					<th>부서</th> 
 					<td>
-						<input type="text" name="dp_code" id="dp_code" size="15">
+					<select name="dp_code">
+					<c:forEach var="depart" items="${dpList }">
+					    <option value="${depart.dp_code }">${depart.depart_name }</option>
+					</c:forEach>
+					</select>
 					</td> 
 				</tr>
 				<tr> 
-					<th>직위번호</th> 
+					<th>직위</th> 
 					<td>
-						<input type="text" name="position_code" id="position_code" size="15">
+					<select name="position_code">
+					<c:forEach var="position" items="${positionList }">
+					    <option value="${position.p_code}">${position.p_name }</option>
+					</c:forEach>
+					</select>
 					</td> 
 				</tr>
 			<tr> 

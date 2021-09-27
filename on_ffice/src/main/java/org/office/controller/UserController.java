@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
 import org.office.service.MyPageService;
+import org.office.service.PositionService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,10 @@ public class UserController {
 		@Autowired
 		private DepartService ds;
 		
+		@Autowired
+		private PositionService ps;
+		
+		
 		@GetMapping("/login")
 		private String Gologin() {
 			
@@ -44,9 +49,14 @@ public class UserController {
 		// 회원가입 폼으로 입장하기 위한 컨트롤러 
 		
 		@GetMapping("/register")
-		private String GoRegister() {
+		private String GoRegister(Model model) {
 			
 			log.info("register.jsp로 이동");
+			log.info(ds.selectDpList());
+			log.info(ps.selectPositionList());
+			model.addAttribute("dpList", ds.selectDpList());
+			
+			model.addAttribute("positionList", ps.selectPositionList());
 			
 			return "/user/register";
 		}
