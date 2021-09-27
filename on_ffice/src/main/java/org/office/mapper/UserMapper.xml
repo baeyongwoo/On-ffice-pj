@@ -42,7 +42,7 @@
 	select users.*,depart_name, positions.p_name as job
 	from users, positions, depart
 	where users.position_code = positions.p_code  AND users.dp_code = depart.dp_code
-	order by empno asc;
+	order by position_code desc;
 
 	]]>
 </select>
