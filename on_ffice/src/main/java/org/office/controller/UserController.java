@@ -129,7 +129,7 @@ public class UserController {
 				return "/user/login";
 			} else {
 				
-				rttr.addAttribute("login_result", "success");
+				rttr.addFlashAttribute("login_result", "success");
 	
 				session.setAttribute("login_session", vo);
 				session.setMaxInactiveInterval(60*10);

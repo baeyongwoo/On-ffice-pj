@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${login_session ne null}">
+
+	<c:if test="${login_result ne null}">
 		<script>
 			alert('${login_session.name}님 환영합니다.');
 			

@@ -5,7 +5,7 @@
 <!-- 회원가입 로직 -->
 <insert id="insert">
 	INSERT INTO users (empno, uid, upw, name, profile_img, gender, birth, email, cp, dp_code, position_code)
-    VALUES (null, #{uid}, #{upw}, #{name}, NULL, #{gender}, #{birth}, #{email}, #{cp}, #{dp_code}, #{position_code})
+    VALUES (null, #{uid}, #{upw}, #{name}, #{profile_img}, #{gender}, #{birth}, #{email}, #{cp}, #{dp_code}, #{position_code})
 </insert>
 
 <!-- 로그인 로직 -->
