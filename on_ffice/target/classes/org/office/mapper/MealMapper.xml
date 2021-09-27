@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.office.mapper.MealMapper">
 
-	<select id="daily">
-		SELECT * FROM meal WHERE mealno = ${mealno}
+	<select id="month" resultType="org.office.domain.MealVO">
+		SELECT * FROM meal
 	</select>
 	
 </mapper>

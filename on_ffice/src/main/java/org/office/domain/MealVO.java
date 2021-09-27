@@ -17,7 +17,7 @@ import lombok.Data;
 @Data
 public class MealVO {
 
-	private String dailymeal;
+	private String mealno;
 	private String menu1;
 	private String menu2;
 	private String menu3;

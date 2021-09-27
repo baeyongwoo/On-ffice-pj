@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.office.mapper.RiceMapper">
+
+	<insert id="riceInsert">
+		insert into rice values(null, "#{menu1}", #{side1}, #{side2}, #{side3}, #{side4})
+	</insert>
+	
+</mapper>
+
+
