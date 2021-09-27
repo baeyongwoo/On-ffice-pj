@@ -13,7 +13,7 @@ package org.office.service;
 
 import java.util.List;
 
-import org.office.domain.MealVO;
+import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 import org.office.mapper.MyPageMapper;
@@ -39,9 +39,9 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public MealVO getMeal(String dailymeal) {
+	public MenuVO getMeal(String dailymeal) {
 		log.info("오늘의 식단 조회");
-		MealVO vo = mapper.getMeal(dailymeal);
+		MenuVO vo = mapper.getMeal(dailymeal);
 		return vo;
 	}
 	

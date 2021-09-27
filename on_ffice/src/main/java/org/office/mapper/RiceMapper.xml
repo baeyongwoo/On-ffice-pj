@@ -3,7 +3,7 @@
 <mapper namespace="org.office.mapper.RiceMapper">
 
 	<insert id="riceInsert">
-		insert into rice values(null, "#{menu1}", #{side1}, #{side2}, #{side3}, #{side4})
+		insert into rice values(null, "#{main}", #{side1}, #{side2}, #{side3}, #{side4})
 	</insert>
 	
 </mapper>

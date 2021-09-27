@@ -13,7 +13,7 @@ package org.office.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.office.domain.MealVO;
+import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 
@@ -22,7 +22,7 @@ public interface MyPageMapper {
 
 	public UserVO getInfo(String uid);
 
-	public MealVO getMeal(String dailymeal); 
+	public MenuVO getMeal(String dailymeal); 
 	
 	public List<TodoVO> getTodoList(int empno);
 	

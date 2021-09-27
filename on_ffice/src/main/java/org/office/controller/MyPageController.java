@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
-import org.office.domain.MealVO;
+import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 import org.office.service.MyPageService;
@@ -28,7 +28,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -51,7 +50,6 @@ public class MyPageController {
 		HttpSession session = request.getSession();
 		UserVO login_session =  (UserVO) session.getAttribute("login_session");
 		String login_time = formatter.format(session.getCreationTime()); //특정 세션만 골라서 출력하는법 찾아보기.
-		String dailymeal = formatter2.format(new Date());
 		 
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
@@ -59,15 +57,12 @@ public class MyPageController {
 		log.info("받아온 정보 : " + uservo);
 		List<TodoVO> todoList = service.getTodoList(login_session.getEmpno());
 		log.info("받아온 할일 : " +todoList);
-		MealVO mealvo = service.getMeal(dailymeal);
-		log.info("받아온 식단 : " + mealvo);
 		List<UserVO> userList = user_service.allUserInfo();
 		log.info("전체유저리스트 :" + userList);
 		
 		
 		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
-		model.addAttribute("meal", mealvo);
 		model.addAttribute("todoList",todoList);
 		model.addAttribute("users", userList);
 		}

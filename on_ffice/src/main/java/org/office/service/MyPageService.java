@@ -12,7 +12,7 @@ package org.office.service;
 
 import java.util.List;
 
-import org.office.domain.MealVO;
+import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 
@@ -20,7 +20,7 @@ public interface MyPageService {
 
 	//서비스 하나당 기능 하나
 	public UserVO getInfo(String uid);
-	public MealVO getMeal(String dailymeal);
+	public MenuVO getMeal(String dailymeal);
 	public List<TodoVO> getTodoList(int empno);
 	public void insertTodo(TodoVO vo);
 	public void passTodo(TodoVO vo);
