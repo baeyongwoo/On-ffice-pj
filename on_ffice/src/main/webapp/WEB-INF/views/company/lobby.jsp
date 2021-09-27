@@ -27,7 +27,8 @@
 	<c:if test="${login_session ne null}">
 		<a href="/user/logout"><button>로그아웃하기</button></a>
 		<a href="/mypage/main"><button>마이페이지로</button></a>
-		<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>	
+		<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>
+		<a href="/company/userInfo"><button>회사직원들</button></a>	
 	</c:if>
 	
 	<a href="/community/CMList"><button>자유게시판가기</button></a>
@@ -54,7 +55,8 @@
 		<br/>		
 	</c:forEach>
 	
-	<a href="/company/userInfo"><button>회사직원들</button></a>
+		
+	
 	
 	<hr>
 	<p>홈페이지 주소 : http://www.ict03company.com</p>
