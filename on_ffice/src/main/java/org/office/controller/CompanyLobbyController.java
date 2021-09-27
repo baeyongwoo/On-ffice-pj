@@ -80,7 +80,13 @@ public class CompanyLobbyController {
 	}
 	
 	@GetMapping("/userInfo")
-	public String getInfo(Model model){
+	public String getInfo(Model model, HttpSession session){
+		if(session.getAttribute("login_session") == null) {
+			log.info("로그인세션이 없음");
+			//model.addAttribute("l_s", "fail");
+			//return "/company/users";
+			return "/user/logintry_req";
+		}
 		model.addAttribute("usersInfo", us.allUserInfo());
 		log.info("유저리스트 : " + us.allUserInfo());
 		
