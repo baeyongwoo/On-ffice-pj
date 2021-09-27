@@ -39,7 +39,7 @@
 <!-- 가입된 모든 유저 리스트 조회 -->
 <select id="selectUserList" resultType="org.office.domain.UserVO">
 	<![CDATA[
-	select users.*,depart_name, positions.p_name, positions.p_salary
+	select users.*,depart_name, positions.p_name as job
 	from users, positions, depart
 	where users.position_code = positions.p_code  AND users.dp_code = depart.dp_code
 	order by empno asc;

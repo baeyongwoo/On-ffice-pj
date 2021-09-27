@@ -78,4 +78,12 @@ public class CompanyLobbyController {
 		
 		return "/dpcommunity/dpclist";
 	}
+	
+	@GetMapping("/userInfo")
+	public String getInfo(Model model){
+		model.addAttribute("usersInfo", us.allUserInfo());
+		log.info("유저리스트 : " + us.allUserInfo());
+		
+		return "/company/users";
+	}
 }

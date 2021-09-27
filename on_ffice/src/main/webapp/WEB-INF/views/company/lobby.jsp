@@ -54,6 +54,7 @@
 		<br/>		
 	</c:forEach>
 	
+	<a href="/company/userInfo"><button>회사직원들</button></a>
 	
 	<hr>
 	<p>홈페이지 주소 : http://www.ict03company.com</p>

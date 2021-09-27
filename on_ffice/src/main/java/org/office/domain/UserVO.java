@@ -25,8 +25,10 @@ public class UserVO {
 	private String email; 
 	private String cp;
 	private int dp_code;
+	private String job;
 	private String depart_name;
 	private String p_name;
 	private String p_salary;
+	private String stat;
 	
 }
