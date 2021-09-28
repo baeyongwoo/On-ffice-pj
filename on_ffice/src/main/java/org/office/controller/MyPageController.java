@@ -53,15 +53,15 @@ public class MyPageController {
 		 
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
-		UserVO uservo = service.getInfo(login_session.getUid()); //테스트를 위해 test1삽입 추후 세션으로 변경
-		log.info("받아온 정보 : " + uservo);
+		//UserVO uservo = service.getInfo(login_session.getUid()); //테스트를 위해 test1삽입 추후 세션으로 변경
+		//log.info("받아온 정보 : " + uservo);
 		List<TodoVO> todoList = service.getTodoList(login_session.getEmpno());
 		log.info("받아온 할일 : " +todoList);
 		List<UserVO> userList = user_service.allUserInfo();
 		log.info("전체유저리스트 :" + userList);
 		
 		
-		model.addAttribute("info", uservo);
+		//model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
 		model.addAttribute("todoList",todoList);
 		model.addAttribute("users", userList);

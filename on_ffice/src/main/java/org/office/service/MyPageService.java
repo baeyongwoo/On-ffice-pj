@@ -19,8 +19,6 @@ import org.office.domain.UserVO;
 public interface MyPageService {
 
 	//서비스 하나당 기능 하나
-	public UserVO getInfo(String uid);
-	public MenuVO getMeal(String dailymeal);
 	public List<TodoVO> getTodoList(int empno);
 	public void insertTodo(TodoVO vo);
 	public void passTodo(TodoVO vo);

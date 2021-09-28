@@ -18,12 +18,10 @@ public class MenuMapperTest {
 	@Autowired
 	MenuMapper mm;
 	
-	@Autowired
-	MealMapper mm2;
 	
 	@Test
 	public void mmtest() {
-		log.info("메뉴리스트" + mm2.meal());
+		log.info("메뉴리스트" + mm.menu());
 		
 		
 	}

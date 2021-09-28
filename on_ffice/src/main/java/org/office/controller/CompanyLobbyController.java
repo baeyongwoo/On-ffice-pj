@@ -47,6 +47,7 @@ public class CompanyLobbyController {
 		model.addAttribute("nslist", ns.list());
 		
 		
+		
 		return "/company/lobby";
 	}
 	

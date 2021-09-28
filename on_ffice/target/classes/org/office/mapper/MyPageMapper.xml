@@ -10,19 +10,8 @@
 *	오류사항 : 
 *	etc...
  -->
- 
- <select id="getInfo" resultType="org.office.domain.UserVO">
- <![CDATA[
- SELECT * FROM users WHERE uid=#{uid}
- ]]>
- </select>
- 
- <select id="getMeal" resultType="org.office.domain.MealVO">
- <![CDATA[
- SELECT * FROM meal WHERE dailymeal=#{dailymeal}
- ]]>
- </select>
- 
+
+
  <select id="getTodoList" resultType="org.office.domain.TodoVO">
  <![CDATA[
  SELECT todo_num, checker, todo_title, todo_content, recive_time, complete FROM todo WHERE worker=#{worker}

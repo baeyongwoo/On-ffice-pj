@@ -27,7 +27,7 @@ public class MenuTest {
 	@Autowired
 	RiceMapper rm;
 	
-	@Test
+	//@Test
 	public void getMealListTest() {
 		log.info("구내식당 전체메뉴 : " + ms.menuList());
 	}
@@ -80,12 +80,12 @@ public class MenuTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void copyProperties() throws BeansException{
-		//List<MealVO> meal = mm.month(); 
+		List<MenuVO> menu = ms.menuList(); 
 		List<RiceVO> rice = new ArrayList<RiceVO>();
 		log.info("가지고올 값 : " + ms.menuList().toString());
-		BeanUtils.copyProperties(ms.menuList(), rice);
+		BeanUtils.copyProperties(menu, rice);
 		log.info("copy한값 : " + rice);
 		
 	}

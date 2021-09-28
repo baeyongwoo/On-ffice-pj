@@ -31,20 +31,7 @@ public class MyPageServiceImpl implements MyPageService{
 	@Autowired
 	private MyPageMapper mapper;
 	
-	@Override
-	public UserVO getInfo(String uid) {
-		log.info("유저 정보 조회");
-		UserVO vo = mapper.getInfo(uid);
-		return vo;
-	}
-	
-	@Override
-	public MenuVO getMeal(String dailymeal) {
-		log.info("오늘의 식단 조회");
-		MenuVO vo = mapper.getMeal(dailymeal);
-		return vo;
-	}
-	
+
 	@Override
 	public List<TodoVO> getTodoList (int empno){
 		log.info("TODO 리스트 생성");

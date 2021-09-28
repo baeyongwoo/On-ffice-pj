@@ -26,12 +26,6 @@ public class MyPageServiceTests {
 	}
 	
 	//@Test
-	public void testgetInfo() {	
-		log.info(service.getInfo("test1"));;
-		
-	}
-	
-	//@Test
 	public void testgetTodoList() {
 		log.info(service.getTodoList(1));
 		
