@@ -9,6 +9,6 @@
 */
 package org.office.mapper;
 
-public class MyPageMapperTests {
+public class TodoMapperTests {
 
 }

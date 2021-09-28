@@ -20,7 +20,7 @@ import org.apache.ibatis.annotations.Param;
 import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
-import org.office.service.MyPageService;
+import org.office.service.TodoService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,28 +40,27 @@ import lombok.extern.log4j.Log4j;
 public class MyPageController {
 
 	@Autowired
-	private MyPageService service;
+	private TodoService service;
 	private UserService user_service;
 
 	@GetMapping("/main")
 	public void getInfo(Model model, HttpServletRequest request) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
 		HttpSession session = request.getSession();
 		UserVO login_session =  (UserVO) session.getAttribute("login_session");
-		String login_time = formatter.format(session.getCreationTime()); //특정 세션만 골라서 출력하는법 찾아보기.
+		String login_time = formatter.format(session.getCreationTime());
 		 
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
-		//UserVO uservo = service.getInfo(login_session.getUid()); //테스트를 위해 test1삽입 추후 세션으로 변경
-		//log.info("받아온 정보 : " + uservo);
+		UserVO uservo = user_service.userInfo(login_session.getUid());
+		log.info("받아온 정보 : " + uservo);
 		List<TodoVO> todoList = service.getTodoList(login_session.getEmpno());
 		log.info("받아온 할일 : " +todoList);
 		List<UserVO> userList = user_service.allUserInfo();
 		log.info("전체유저리스트 :" + userList);
 		
 		
-		//model.addAttribute("info", uservo);
+		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
 		model.addAttribute("todoList",todoList);
 		model.addAttribute("users", userList);
