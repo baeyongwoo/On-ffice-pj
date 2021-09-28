@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	#applyBtn {
+		display : none;
+	}
+</style>
 <body>
 	
 	<div style="text-align: center"></div> 
@@ -18,17 +23,33 @@
 	</c:when>
 	
 	<c:otherwise>
-		<a href='javascript:apply("${email }")'>적용</a>
+		해당 이메일을 사용할 수 있습니다.
+		<form action ="/user/emailCodeCheck">
+			<input type="text" name="code">
+			<input type="hidden" name ="codeString" value="${code }">
+			<input type="submit" value="인증하기" onsubmit="emailCodeCheck(this)">
+		</form>
+		<a id = "applyBtn" href='javascript:apply("${email }")'>적용</a>
 	</c:otherwise>
 	
 </c:choose>
 <script>
-	
+	 function emailCodeCheck (f) {
+			if(f.codeString.value===f.code.value){
+				alert('인증이 완료되었습니다.');
+				var btn = document.getElementById("applyBtn");
+				btn.style.display = 'block';
+			}
+			else{
+				alert('인증 실패');
+			}
+						
+	 }
+	 
 	 function apply(email){ 
-		 //2) 중복확인 id를 부모창에 적용 //부모창 opener 
+		 //2) 중복확인 email을 부모창에 적용 //부모창 opener 
 		 
-		 opener.document.regForm.email.value=email; 
-		 
+		 opener.document.regForm.email.value=email;
 		 window.close(); 
 		 //창닫기 
 		 

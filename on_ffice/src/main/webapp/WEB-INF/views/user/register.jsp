@@ -42,9 +42,22 @@
 			</tr> 
 				<tr> 
 					<th>*이메일</th> 
-					<td> 
-						<input type="text" name="email" id="email" size="30" readonly> 
+					<td id = "emailTd"> 
+						<input type="text" name="email" id="email" size="30" value="email" required readonly onchange="emailCodeCheck()"> 
 						<input type="button" value="Email 중복확인" onclick="emailCheck()"> 
+						<script>
+							
+								function emailCodeCheck() {
+									console.log('onchange 이벤트 실행');
+									const btn = document.createElement("button");
+									btn.setAttribute("onclick", "openWindow();");
+									document.getElementById("emailTd").appendChild(btn);
+								}
+									
+							
+						
+						</script>
+						
 					</td> 
 				</tr> 
 					<tr> 
@@ -128,7 +141,6 @@
 	window.open("/user/emailCheckForm", "emailwin", "width=400, height=350"); 
 	
 	}
-	//emailCheck() end
 
 	
 	// 유효성 검사!
