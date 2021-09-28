@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-public class RicecServiceImpl implements RiceService{@SuppressWarnings("unchecked")
+public class RiceServiceImpl implements RiceService{@SuppressWarnings("unchecked")
 @Override
 	public List<RiceVO> insertRice(List<MenuVO> meal) {
 	
