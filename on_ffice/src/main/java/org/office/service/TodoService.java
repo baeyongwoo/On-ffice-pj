@@ -6,31 +6,22 @@
 *	오류사항 : 
 *	etc...
 *	
+*	9/21 getInfo작성
 */
-
-package org.office.mapper;
+package org.office.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 
-@Mapper
-public interface MyPageMapper {
+public interface TodoService {
 
-	public UserVO getInfo(String uid);
-
-	public MenuVO getMeal(String dailymeal); 
-	
+	//서비스 하나당 기능 하나
 	public List<TodoVO> getTodoList(int empno);
-	
 	public void insertTodo(TodoVO vo);
-	
 	public void passTodo(TodoVO vo);
-	
 	public TodoVO getTodo(int todo_num);
-
 	public void statTodo(TodoVO vo);
 }
