@@ -15,23 +15,23 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class TodoServiceTests {
-	
+
 	@Autowired
 	private TodoService service;
-	
-	@Test
+
+	// @Test
 	public void testExist() {
 		log.info(service);
 		assertNotNull(service);
 	}
-	
-	//@Test
+
+	// @Test
 	public void testgetTodoList() {
 		log.info(service.getTodoList(1));
-		
+
 	}
-	
-	//@Test
+
+	// @Test
 	public void testInsertTodo() {
 		TodoVO vo = new TodoVO();
 		vo.setChecker(3);
@@ -40,9 +40,9 @@ public class TodoServiceTests {
 		vo.setTodo_content("테스트폼");
 		service.insertTodo(vo);
 		log.info(vo);
-			}
-	
-	//@Test
+	}
+
+	// @Test
 	public void testPassTodo() {
 		TodoVO vo = new TodoVO();
 		vo.setTodo_num(1);
@@ -52,19 +52,19 @@ public class TodoServiceTests {
 		log.info(vo);
 	}
 
-	//@Test
-		public void testgetTodo() {
-			log.info(service.getTodo(2));
-			
-		}
-		
-	//@Test
-		public void teststatTodo() {
-			TodoVO vo = new TodoVO();
-			vo.setTodo_num(4);
-			vo.setComplete("완료!");
-			service.statTodo(vo);
-			log.info(vo);
-			
-		}
+	@Test
+	public void testgetTodo() {
+		log.info(service.getTodo(2));
+
+	}
+
+	// @Test
+	public void teststatTodo() {
+		TodoVO vo = new TodoVO();
+		vo.setTodo_num(4);
+		vo.setComplete("완료!");
+		service.statTodo(vo);
+		log.info(vo);
+
+	}
 }

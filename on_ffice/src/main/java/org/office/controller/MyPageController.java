@@ -10,14 +10,11 @@
 package org.office.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
-import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 import org.office.service.TodoService;
@@ -47,55 +44,51 @@ public class MyPageController {
 	public void getInfo(Model model, HttpServletRequest request) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		HttpSession session = request.getSession();
-		UserVO login_session =  (UserVO) session.getAttribute("login_session");
+		UserVO login_session = (UserVO) session.getAttribute("login_session");
 		String login_time = formatter.format(session.getCreationTime());
-		 
+
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
 		UserVO uservo = user_service.userInfo(login_session.getUid());
 		log.info("받아온 정보 : " + uservo);
 		List<TodoVO> todoList = service.getTodoList(login_session.getEmpno());
-		log.info("받아온 할일 : " +todoList);
+		log.info("받아온 할일 : " + todoList);
 		List<UserVO> userList = user_service.allUserInfo();
 		log.info("전체유저리스트 :" + userList);
-		
-		
+
 		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
-		model.addAttribute("todoList",todoList);
+		model.addAttribute("todoList", todoList);
 		model.addAttribute("users", userList);
-		}
-	
+	}
+
 	@PostMapping("/insertTodo")
-	public String insertTodo
-	(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
+	public String insertTodo(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
 		service.insertTodo(vo);
 		log.info(vo);
 		return "redirect:/mypage/main";
 	}
-	
+
 	@PostMapping("/passTodo")
-	public String passTodo
-	(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
+	public String passTodo(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
 		service.passTodo(vo);
 		log.info(vo);
 		return "redirect:/mypage/main";
 	}
-	
+
 	@PostMapping("/completeTodo")
-	public String completeTodo
-	(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
+	public String completeTodo(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
 		service.statTodo(vo);
 		log.info(vo);
 		return "redirect:/mypage/main";
 	}
-	
+
 	@GetMapping("/detailTodo")
-	public TodoVO getTodo (TodoVO vo, HttpServletRequest request, Model model) {
+	public TodoVO getTodo(TodoVO vo, HttpServletRequest request, Model model) {
 		vo = service.getTodo(vo.getTodo_num());
 		model.addAttribute("getTodo", vo);
 		return vo;
-	
+
 	}
-	
+
 }

@@ -27,36 +27,35 @@ import org.springframework.web.context.WebApplicationContext;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
-					   "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 @Log4j
 @WebAppConfiguration
 public class MyPageControllerTests {
-	
+
 	@Autowired
 	private WebApplicationContext ctx; // MockMvc를 만들기 위한 객체
 	MockHttpSession session = new MockHttpSession();
-	
+
 	private MockMvc mockMvc;
-	
-	@Before //org.junit의 test이전 실행 내용입력 어노테이션
+
+	@Before // org.junit의 test이전 실행 내용입력 어노테이션
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 		session.setAttribute("login_session", "test1");
 		session.setAttribute("name_session", "test1");
 	}
+
 	@After
 	public void clean() {
 		session.clearAttributes();
 	}
-	
+
 	@Test
-	public void testgetInfo() throws Exception{
-		String resultPage = mockMvc
-							.perform(MockMvcRequestBuilders.get("/mypage/main").session(session))
-							.andReturn().getModelAndView().getViewName();
+	public void testgetInfo() throws Exception {
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.get("/mypage/main").session(session)).andReturn()
+				.getModelAndView().getViewName();
 		log.info(resultPage);
 	}
-	
-	
+
 }

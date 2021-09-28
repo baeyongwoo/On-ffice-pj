@@ -13,9 +13,7 @@ package org.office.service;
 
 import java.util.List;
 
-import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
-import org.office.domain.UserVO;
 import org.office.mapper.TodoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,25 +24,24 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-public class TodoServiceImpl implements TodoService{
+public class TodoServiceImpl implements TodoService {
 
 	@Autowired
 	private TodoMapper mapper;
-	
 
 	@Override
-	public List<TodoVO> getTodoList (int empno){
+	public List<TodoVO> getTodoList(int empno) {
 		log.info("TODO 리스트 생성");
 		List<TodoVO> vo = mapper.getTodoList(empno);
 		return vo;
 	}
-	
+
 	@Override
 	public void insertTodo(TodoVO vo) {
 		log.info("해야할일 지시");
 		mapper.insertTodo(vo);
 	}
-	
+
 	@Override
 	public void passTodo(TodoVO vo) {
 		log.info("작업을 넘겨줍니다");
@@ -57,11 +54,12 @@ public class TodoServiceImpl implements TodoService{
 		TodoVO vo = mapper.getTodo(todo_num);
 		return vo;
 	}
+
 	@Override
 	public void statTodo(TodoVO vo) {
 		log.info("TODO상태 변경");
 		mapper.statTodo(vo);
-		
+
 	}
 
 }

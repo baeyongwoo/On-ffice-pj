@@ -12,16 +12,18 @@ package org.office.service;
 
 import java.util.List;
 
-import org.office.domain.MenuVO;
 import org.office.domain.TodoVO;
-import org.office.domain.UserVO;
 
 public interface TodoService {
 
-	//서비스 하나당 기능 하나
+	// 서비스 하나당 기능 하나
 	public List<TodoVO> getTodoList(int empno);
+
 	public void insertTodo(TodoVO vo);
+
 	public void passTodo(TodoVO vo);
+
 	public TodoVO getTodo(int todo_num);
+
 	public void statTodo(TodoVO vo);
 }
