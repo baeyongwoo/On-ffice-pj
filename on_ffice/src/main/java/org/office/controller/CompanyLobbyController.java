@@ -65,17 +65,17 @@ public class CompanyLobbyController {
 		
 		model.addAttribute("dpu_list", us.allUserInfoByDp(dp_codeCI));
 		
-		model.addAttribute("dpc_list", dcs.list());	//dpc 부서 커뮤니티
+		model.addAttribute("dpc_list", dcs.list(""));	//dpc 부서 커뮤니티
 		
 		model.addAttribute("dpinfo", ds.getDpInfo(dp_codeCI));
 		
-		log.info("부서 게시판 : " + dcs.list());
+		log.info("부서 게시판 : " + dcs.list(""));
 		return "/company/dplobby";
 	}
 	
 	@GetMapping("/dpc")
 	public String movedpc() {
-		dcs.list();
+		dcs.list("");
 		
 		return "/dpcommunity/dpclist";
 	}

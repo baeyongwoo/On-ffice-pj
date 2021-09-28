@@ -11,11 +11,18 @@ package org.office.service;
 import java.util.List;
 
 import org.office.domain.DpCommunityVO;
+import org.office.domain.SearchCriteria;
 
 public interface DpCommunityService {
 	
 	// 글 조회 서비스
-	public List<DpCommunityVO> list();
+	public List<DpCommunityVO> list(String keyword);
+	
+	// 페이징 글 목록
+	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri);
+	
+	// 전체 글 개수 가져오기
+	public int getTotalBoard(SearchCriteria cri);
 	
 	// 글 상세보기 서비스
 	public DpCommunityVO DpCdetail(int dc_num);

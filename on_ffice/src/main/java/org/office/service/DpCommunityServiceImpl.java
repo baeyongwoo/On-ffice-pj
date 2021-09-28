@@ -3,6 +3,7 @@ package org.office.service;
 import java.util.List;
 
 import org.office.domain.DpCommunityVO;
+import org.office.domain.SearchCriteria;
 import org.office.mapper.DpCommunityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 	private DpCommunityMapper dpcommunitymapper;
 	
 	@Override
-	public List<DpCommunityVO> list() {
-		List<DpCommunityVO> DpCommunityList = dpcommunitymapper.DpCommunityList();
+	public List<DpCommunityVO> list(String keyword) {
+		List<DpCommunityVO> DpCommunityList = dpcommunitymapper.DpCommunityList("");
 		log.info("service dpcommunitylist" + DpCommunityList);
 		return DpCommunityList;		
 	}
@@ -62,5 +63,19 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 		log.info(dc_num + "번째 글 삭제");
 		dpcommunitymapper.DpCdelete(dc_num);
 		
+	}
+
+	@Override
+	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri) {
+		
+		List<DpCommunityVO> DpCboards = dpcommunitymapper.DpCListPaging(cri);
+		
+		return DpCboards;
+	}
+
+	@Override
+	public int getTotalBoard(SearchCriteria cri) {
+		
+		return dpcommunitymapper.getTotalBoard(cri);
 	}
 }

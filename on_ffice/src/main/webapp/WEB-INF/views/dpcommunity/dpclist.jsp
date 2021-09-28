@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>부서 자유 게시판</title>
 </head>
@@ -24,6 +25,7 @@
 			<th>조회수</th>
 		</tr>
 	</table>
+	
 	<c:forEach items="${dpCommunityList}" var="dpcList">
 			<tr>	
 				<td>${dpcList.dc_num}</td>
@@ -52,5 +54,81 @@
 	<c:set var="user" value="${login_session}" />
 	<a href="/company/dplobby?dp_code=${user.dp_code}"><button>부서로비가기</button></a>
 	<a href="/company/lobby"><button>메인로비로가기</button></a>
+	
+	<nav aria-label="Page navigation example">
+	  <ul class="pagination justify-content-center">
+	  
+	  	<!-- prev버튼 
+	  	btnMaker의 prev가 true일때만 뒤로가기 버튼 출력-->
+	    <c:if test="${btnMaker.prev}">
+	    	<li class="page-item">
+	    		<a class="page-link" 
+	    			href="/board/list?pageNum=${btnMaker.startPage - 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+	    				Previous
+	    		</a>
+	    	</li>
+	  	</c:if>
+	  	
+	  	 <c:forEach begin="${btnMaker.startPage}" 
+	    		   end="${btnMaker.endPage}" 
+	    		   var="pageNum">
+	    	<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ' '}">
+	    		<a class="page-link" 
+	    			href="/board/list?pageNum=${pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+	    				${pageNum}
+	    		</a>
+	    	</li>    	
+	    </c:forEach>
+	    
+	    <!-- next버튼 -->
+	    <c:if test="${btnMaker.next}">
+	    	<li class="page-item">
+	    		<a class="page-link" 
+	    			href="/board/list?pageNum=${btnMaker.endPage + 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+	    				Next
+	    		</a>
+	    	</li>
+	    </c:if>
+	  </ul>
+	</nav>
+	
+	<!-- 검색창 -->
+	<form action="/board/list" method="get">
+		<!-- option태그를 이용해 검색조건 선택창을 만들어주세요. -->
+		<select name="searchType">
+			<option value="null" 
+				<c:out value="${btnMaker.cri.searchType == null ? 'selected': ''}" />>
+				분류 없음 
+			</option>
+			<option value="t" 
+				<c:out value="${btnMaker.cri.searchType eq 't' ? 'selected': ''}" />>
+				제목
+			</option>
+			<option value="c" 
+				<c:out value="${btnMaker.cri.searchType eq 'c' ? 'selected': ''}" />>
+				본문
+			</option>
+			<option value="w" 
+				<c:out value="${btnMaker.cri.searchType eq 'w' ? 'selected': ''}" />>
+				글쓴이
+			</option>
+			<option value="tc" 
+				<c:out value="${btnMaker.cri.searchType eq 'tc' ? 'selected': ''}" />>
+				제목 + 본문
+			</option>
+			<option value="cw" 
+				<c:out value="${btnMaker.cri.searchType eq 'cw' ? 'selected': ''}" />>
+				본문 + 작성자
+			</option>
+			<option value="tcw" 
+				<c:out value="${btnMaker.cri.searchType eq 'tcw' ? 'selected': ''}" />>
+				제목 + 본문 + 작성자
+			</option>
+		</select>
+	
+		<input type="text" name="keyword" id="keywordInput"
+		placeholder="검색어" value="${btnMaker.cri.keyword}">
+		<button id="submit">검색하기</button>
+	</form>
 </body>
 </html>

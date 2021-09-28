@@ -3,6 +3,8 @@ package org.office.controller;
 import java.util.List;
 
 import org.office.domain.DpCommunityVO;
+import org.office.domain.PageDTO;
+import org.office.domain.SearchCriteria;
 import org.office.service.DpCommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +28,17 @@ public class DpCommunityController {
 	private DpCommunityService service;
 	
 	@GetMapping("/dpclist")
-	public void dpCommunityList(Model model) {
+	public void dpCommunityList(SearchCriteria cri, Model model) {
 		
 		log.info("부서 자유 게시판 로직 접속");
-		List<DpCommunityVO> dpCommunityList = service.list();
-		model.addAttribute("dpCommunityList", dpCommunityList);
+		List<DpCommunityVO> DpCListPage = service.DpCListPaging(cri);
+		
+		int total = service.getTotalBoard(cri);
+		
+		PageDTO btnMaker = new PageDTO(cri, total, 10);
+		
+		model.addAttribute("btnMaker", btnMaker);
+		model.addAttribute("dpCommunityList", DpCListPage);
 		
 	}
 	
