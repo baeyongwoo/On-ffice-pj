@@ -2,9 +2,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.office.mapper.DpCommunityMapper">
 
+		<sql id = "search">
+		  	   <if test="searchType != null">
+		        	<if test="searchType == 't'.toString()">
+		        		AND (dtitle like ('%', #{keyword},'%') AND
+		        	</if>
+		        	<if test="searchType == 'c'.toString()">
+		        		AND (dcontent like ('%', #{keyword},'%') AND
+		        	</if>
+		    		<if test="searchType == 'w'.toString()">
+		    			AND (dwriter like ('%', #{keyword},'%') AND
+		    		</if>
+		    		<if test="searchType == 'tc'.toString()">
+		    			AND (dtitle like ('%', #{keyword}, '%') OR
+		    				dcontent like ('%', #{keyword}, '%')) AND
+		    		</if>
+		    		<if test="searchType == 'cw'.toString()">
+		    			AND (dcontent like ('%', #{keyword}, '%') OR
+		    				dwriter like ('%', #{keyword}, '%')) AND
+		    		</if>
+		    		<if test="searchType == 'tcw'.toString()">
+		    			AND (dtitle like ('%', #{keyword}, '%') OR 
+		    				dcontent like ('%', #{keyword}, '%') OR 
+		    				dwriter like ('%', #{keyword}, '%')) AND
+		    		</if>
+		       </if>
+		</sql>
+
+
 <!-- 글 조회 로직 -->
 <select id="DpCommunityList" resultType="org.office.domain.DpCommunityVO">
-	SELECT * FROM depart_community ORDER BY dc_num DESC
+	<![CDATA[
+		SELECT * FROM depart_community WHERE dc_num > 0
+	]]>
+		<include refid="search"></include>
+	<![CDATA[
+	 	ORDER BY dc_num DESC
+	]]>
+	
+</select>
+
+<!-- 페이징 처리 로직 -->
+<select id="DpCListPaging" resultType="org.office.domain.DpCommunityVO">
+	<![CDATA[
+		SELECT * FROM depart_community WHERE dc_num > 0
+	]]>
+		<include refid="search"></include>
+		
+	<![CDATA[
+		ORDER BY dc_num DESC limit #{pageNum}, #{amount}
+	]]>
+</select>
+
+<!-- 글 전체 가져오는 로직 -->
+<select id="getTotalBoard" resultType="int">
+	SELECT COUNT(*) FROM depart_community WHERE dc_num > 0
 </select>
 
 <!-- 글 상세보기 로직 -->
@@ -41,6 +93,7 @@
 <delete id="DpCdelete">
 	DELETE FROM depart_community WHERE dc_num = #{dc_num};
 </delete>
+
 
 
 </mapper>
