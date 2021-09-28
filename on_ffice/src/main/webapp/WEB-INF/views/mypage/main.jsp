@@ -24,6 +24,7 @@
 			<script>
 
 				window.onload = function () {
+					window.open();
 					let result = "${result}"
 					let toggle = document.getElementById("todoToggle");
 					if (result === "insert") { alert("TODO를 생성했습니다.") };
