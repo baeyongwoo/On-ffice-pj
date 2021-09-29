@@ -26,7 +26,7 @@
 	<h2>수정일 : ${DpCd.dupdate}</h2>
 	<h2>조회수 : ${DpCd.dhits}</h2>
 	
-	<a href="/dpcommunity/dpclist"><button class="btn btn-success">게시판으로</button></a>
+	<a href="/dpcommunity/dpclist?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
 		<c:if test="${DpCd.dwriter eq login_session.name}">
 			
 		<form action="/dpcommunity/dpcupdate" method="post">
