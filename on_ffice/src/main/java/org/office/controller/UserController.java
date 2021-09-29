@@ -8,8 +8,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
+import org.office.domain.EmailDTO;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
+import org.office.service.EmailService;
 import org.office.service.TodoService;
 import org.office.service.PositionService;
 import org.office.service.UserService;
@@ -43,7 +45,7 @@ public class UserController {
 		private PositionService ps;
 		
 		@Autowired
-		//private EmailService es;
+		private EmailService es;
 		
 		@GetMapping("/login")
 		private String Gologin() {
@@ -116,47 +118,47 @@ public class UserController {
 			return "/user/emailCheckForm";
 		}
 		
-//		@PostMapping("/emailCheckProc")
-//		private String emailCheckFunction (EmailDTO dto, String email, Model model) {
-//			
-//			
-//			log.info("이메일 중복 체크 기능 실행");
-//			int emailCheckResult = service.emailCheck(email);
-//			log.info("이메일 중복체크 결과값 : "+ emailCheckResult);
-//			if(emailCheckResult==0) {
-//				
-//				List<Integer> codes = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
-//				Collections.shuffle(codes);
-//				
-//				List<Integer> ranCodes = new ArrayList<>(4);
-//				ranCodes.add(0, codes.get(0));
-//				ranCodes.add(1, codes.get(1));
-//				ranCodes.add(2, codes.get(2));
-//				ranCodes.add(3, codes.get(3));
-//				
-//				log.info("생성된 이메일 코드 : "+ ranCodes.toString());
-//				
-//				dto.setSubject("onffice verification code");
-//				dto.setReceiveMail(email);
-//				dto.setMessage("verification code : " + ranCodes.toString());
-//				dto.setSenderName("onffice");
-//				dto.setSenderMail("shinwr7@gmail.com");
-//				log.info("EmailDTO : "+ dto);
-//				es.sendMail(dto);
-//				
-//				String codeString = codes.get(0).toString()+codes.get(1)+codes.get(2)+codes.get(3);
-//				
-//				log.info("4자리 숫자로 변환한 값 : " + codeString);
-//			
-//				model.addAttribute("code", codeString);
-//				model.addAttribute("email", email);
-//				return "/user/emailCheckProc";
-//				
-//			}else {
-//				model.addAttribute("email", "fail");
-//				return "/user/emailCheckProc";
-//			}
-//		}
+		@PostMapping("/emailCheckProc")
+		private String emailCheckFunction (EmailDTO dto, String email, Model model) {
+			
+			
+			log.info("이메일 중복 체크 기능 실행");
+			int emailCheckResult = service.emailCheck(email);
+			log.info("이메일 중복체크 결과값 : "+ emailCheckResult);
+			if(emailCheckResult==0) {
+				
+				List<Integer> codes = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+				Collections.shuffle(codes);
+				
+				List<Integer> ranCodes = new ArrayList<>(4);
+				ranCodes.add(0, codes.get(0));
+				ranCodes.add(1, codes.get(1));
+				ranCodes.add(2, codes.get(2));
+				ranCodes.add(3, codes.get(3));
+				
+				log.info("생성된 이메일 코드 : "+ ranCodes.toString());
+				
+				dto.setSubject("onffice verification code");
+				dto.setReceiveMail(email);
+				dto.setMessage("verification code : " + ranCodes.toString());
+				dto.setSenderName("onffice");
+				dto.setSenderMail("shinwr7@gmail.com");
+				log.info("EmailDTO : "+ dto);
+				es.sendMail(dto);
+				
+				String codeString = codes.get(0).toString()+codes.get(1)+codes.get(2)+codes.get(3);
+				
+				log.info("4자리 숫자로 변환한 값 : " + codeString);
+			
+				model.addAttribute("code", codeString);
+				model.addAttribute("email", email);
+				return "/user/emailCheckProc";
+				
+			}else {
+				model.addAttribute("email", "fail");
+				return "/user/emailCheckProc";
+			}
+		}
 		@GetMapping("/emailCodeCheck")
 		private void emailCodeCheck () {
 			
