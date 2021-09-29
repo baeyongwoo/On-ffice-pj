@@ -1,8 +1,11 @@
 package org.office.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.office.domain.NoticeVO;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
@@ -50,9 +53,9 @@ public class CompanyLobbyController {
 		UserVO vo = new UserVO();
 		vo = (UserVO)session.getAttribute("login_session");
 		model.addAttribute("login_session", vo);
-		
-		log.info("notice 정보 : " + ns.lobbyNList());
-		model.addAttribute("nslist", ns.lobbyNList());
+		List<NoticeVO> nl = ns.lobbyNList();
+		log.info("notice 정보 : " + nl);
+		model.addAttribute("nslist", nl);
 		
 		log.info("rice 정보 : " + rs.selectRice());
 		model.addAttribute("rice", rs.selectRice());
