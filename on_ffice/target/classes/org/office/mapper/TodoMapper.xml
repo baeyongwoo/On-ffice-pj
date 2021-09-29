@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.office.mapper.TodoMapper">
 
-<!-- 
+    <!-- 
 *	작성자 : 고광훈
 *	진행상황 : src/main/java 패키지 생성, office페이지 컨트롤러, Mapper, Service, VO 생성 
 *	변수정리 : 
@@ -12,35 +12,35 @@
  -->
 
 
- <select id="getTodoList" resultType="org.office.domain.TodoVO">
- <![CDATA[
- SELECT todo_num, checker, todo_title, todo_content, recive_time, complete FROM todo WHERE worker=#{worker}
+    <select id="getTodoList" resultType="org.office.domain.TodoVO">
+        <![CDATA[
+ SELECT todo_num, checker, todo_title, todo_content, recive_time, complete FROM todo WHERE worker=#{worker} AND complete="ing"
  ]]>
- </select>
- 
- <insert id="insertTodo">
- <![CDATA[
+    </select>
+
+    <insert id="insertTodo">
+        <![CDATA[
  INSERT INTO todo(worker, checker, todo_title, todo_content, recive_time)
  VALUES (#{worker}, #{checker},#{todo_title}, #{todo_content}, now())
  ]]>
- </insert>
- 
- <update id="passTodo">
- <![CDATA[
+    </insert>
+
+    <update id="passTodo">
+        <![CDATA[
  UPDATE todo SET worker = #{worker}, todo_content = #{todo_content} WHERE todo_num = #{todo_num}
  ]]>
- </update>
- 
- <update id="statTodo">
- <![CDATA[
+    </update>
+
+    <update id="statTodo">
+        <![CDATA[
  UPDATE todo SET complete = #{complete} WHERE todo_num = #{todo_num}
  ]]>
- </update>
- 
-  <select id="getTodo" resultType="org.office.domain.TodoVO">
- <![CDATA[
+    </update>
+
+    <select id="getTodo" resultType="org.office.domain.TodoVO">
+        <![CDATA[
  SELECT * FROM todo WHERE todo_num = #{todo_num}
  ]]>
- </select>
- 
- </mapper>
+    </select>
+
+</mapper>

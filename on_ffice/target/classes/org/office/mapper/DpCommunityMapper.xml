@@ -5,26 +5,26 @@
 		<sql id = "search">
 		  	   <if test="searchType != null">
 		        	<if test="searchType == 't'.toString()">
-		        		AND (dtitle like ('%', #{keyword},'%') AND
+		        		AND dtitle like CONCAT('%', #{keyword},'%')
 		        	</if>
 		        	<if test="searchType == 'c'.toString()">
-		        		AND (dcontent like ('%', #{keyword},'%') AND
+		        		AND dcontent like CONCAT('%', #{keyword},'%') 
 		        	</if>
 		    		<if test="searchType == 'w'.toString()">
-		    			AND (dwriter like ('%', #{keyword},'%') AND
+		    			AND dwriter like CONCAT('%', #{keyword},'%')
 		    		</if>
 		    		<if test="searchType == 'tc'.toString()">
-		    			AND (dtitle like ('%', #{keyword}, '%') OR
-		    				dcontent like ('%', #{keyword}, '%')) AND
+		    			AND (dtitle like CONCAT('%', #{keyword}, '%') OR
+		    				dcontent like CONCAT('%', #{keyword}, '%')) 
 		    		</if>
 		    		<if test="searchType == 'cw'.toString()">
-		    			AND (dcontent like ('%', #{keyword}, '%') OR
-		    				dwriter like ('%', #{keyword}, '%')) AND
+		    			AND (dcontent like CONCAT('%', #{keyword}, '%') OR
+		    				dwriter like CONCAT('%', #{keyword}, '%'))
 		    		</if>
 		    		<if test="searchType == 'tcw'.toString()">
-		    			AND (dtitle like ('%', #{keyword}, '%') OR 
-		    				dcontent like ('%', #{keyword}, '%') OR 
-		    				dwriter like ('%', #{keyword}, '%')) AND
+		    			AND (dtitle like CONCAT('%', #{keyword}, '%') OR 
+		    				dcontent like CONCAT('%', #{keyword}, '%') OR 
+		    				dwriter like CONCAT('%', #{keyword}, '%')) 
 		    		</if>
 		       </if>
 		</sql>
@@ -93,7 +93,5 @@
 <delete id="DpCdelete">
 	DELETE FROM depart_community WHERE dc_num = #{dc_num};
 </delete>
-
-
 
 </mapper>

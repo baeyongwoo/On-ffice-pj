@@ -75,9 +75,13 @@ public class DpCommunityController {
 	}
 	
 	@PostMapping("/Update")
-	public String update(DpCommunityVO vo, RedirectAttributes rttr) {
+	public String update(DpCommunityVO vo, SearchCriteria cri, RedirectAttributes rttr) {
 		log.info("Update에서 받아온 vo : " + vo);
 		service.DpCupdate(vo);
+				
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/dpcommunity/dpcdetail?dc_num=" + vo.getDc_num();
 	}
@@ -102,4 +106,3 @@ public class DpCommunityController {
 	
 		
 }
-

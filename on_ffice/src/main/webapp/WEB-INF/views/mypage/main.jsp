@@ -22,33 +22,60 @@
 				integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
 				crossorigin="anonymous"></script>
 			<script>
-
 				window.onload = function () {
+
+					function currentTime() {
+						let now = new Date();
+						let hours = now.getHours();
+						let minutes = now.getMinutes();
+						let seconds = now.getSeconds();
+						let clock = document.getElementById("clock");
+
+
+						if (hours > 12) {
+							hours -= 12;
+							apm = "오후"
+						} else {
+							apm = "오전"
+						}
+
+						if (hours < 10) {
+							hours = "0" + hours;
+						}
+
+						if (minutes < 10) {
+							minutes = "0" + minutes;
+						}
+
+						if (seconds < 10) {
+							seconds = "0" + seconds;
+						}
+
+						clock.innerHTML = "현재 시간 : " + apm + hours + ":" + minutes + ":" + seconds;
+					}
+					setInterval(currentTime, 1000)
 
 					let result = "${result}"
 					let toggle = document.getElementById("todoToggle");
 
-					if (result === "insert") { alert("TODO를 생성했습니다.") };
-					if (result === "pass") { alert("TODO를 전달했습니다.") };
-					if (result === "complete") { alert("TODO를 완료했습니다.") };
-					
+					if (result === "insert") {
+						alert("TODO를 생성했습니다.")
 					}
+					;
+					if (result === "pass") {
+						alert("TODO를 전달했습니다.")
+					}
+					;
+					if (result === "complete") {
+						alert("TODO를 완료했습니다.")
+					}
+					;
 
 					toggle.onclick = function () {
-					
 						let todoList = document.getElementById("todoList");
-						let visible = 0;
-
-						if (todoList.style.display === 'none' && visible === 0) {
-							todoList.style.display = 'block';
-							visible = 1;
-							console.log(visible);
-						} else {
-							todoList.style.display = 'none';
-							visible = 0;
-							console.log(visible);
-						}
+						todoList.style.display = ((todoList.style.display != 'none') ? 'none' : 'block');
 					}
+				}
 			</script>
 
 			<meta charset="UTF-8">
@@ -57,40 +84,38 @@
 
 		<body>
 			<div class="container">
-				<header>
-
-				</header>
+				<header> </header>
 				<main>
 					<div class="row">
-						<div class="text-center col-md-1">
-							<a href="/company/lobby"><button>Lobby</button></a><br />
-							접속한 시간<br />
+
+						<div class="col-md-3">
+							<a href="/company/lobby"><button class="btn btn-primary">Lobby</button></a><br />
+
+							<div>접속자 : ${info.name }</div>
+							<div>부서 : ${info.dp_code }</div>
+							<div>직급 : ${info.position_code }</div>
+
+							<br /> 접속한 시간<br />
 							${login_time }
-						</div>
-						<div class="col-md-2">
-							접속자 : ${info.name }<br />
-							부서 : ${info.dp_code }<br />
-							직급 : ${info.position_code }<br />
+
+							<div id="clock"></div>
+
 							<form action="/user/userInfo" method="post">
 								<input type="hidden" name="uid" value="${login_session}">
-								<input type="submit" value="회원정보">
+								<input class="btn btn-primary" type="submit" value="회원정보">
 							</form>
 						</div>
 
-						<div class="col-md-9 text-end">
+						<div class="col-md-9">
+
 							<h2 id="todoToggle">나의 TODO 목록</h2>
 							<button type="button" class="btn btn-warning" data-bs-toggle="modal"
 								data-bs-target="#createTodo">
-								TODO생성
-							</button>
+								TODO생성</button>
 							<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-								data-bs-target="#passTodo">
-								작업자전환
-							</button>
+								data-bs-target="#passTodo">작업자전환</button>
 							<button type="button" class="btn btn-danger" data-bs-toggle="modal"
-								data-bs-target="#completeTodo">
-								작업완료
-							</button>
+								data-bs-target="#completeTodo">작업완료</button>
 							<hr>
 
 
@@ -109,8 +134,7 @@
 										<td>${todo.todo_num }</td>
 										<td>${todo.checker }</td>
 										<td><a href="/mypage/detailTodo?todo_num=${todo.todo_num }">
-												${todo.todo_title}
-											</a></td>
+												${todo.todo_title} </a></td>
 										<td>${todo.recive_time }</td>
 										<td>${todo.complete }</td>
 									</tr>
@@ -141,17 +165,14 @@
 									<select class="form-select btn btn-secondar" name="worker">
 										<option selected>작업자를 선택해주세요</option>
 										<c:forEach items="${users}" var="users">
-											<option value="${users.empno}">직원번호[${users.empno}] ${users.dp_code}부서
-												${users.name }</option>
+											<option value="${users.empno}">직원번호[${users.empno}]
+												${users.dp_code}부서 ${users.name }</option>
 										</c:forEach>
-									</select>
-									<span class="input-group-text">작업 제목</span>
-									<input type="text" class="form-control" placeholder="작업명 입력" name="todo_title">
-									<br>
-									<span class="input-group-text">작업내용</span>
+									</select> <span class="input-group-text">작업 제목</span> <input type="text"
+										class="form-control" placeholder="작업명 입력" name="todo_title">
+									<br> <span class="input-group-text">작업내용</span>
 									<textarea class="form-control" placeholder="작업내용 입력" name="todo_content"></textarea>
-									<br />
-									<input type="submit" class="btn btn-primary" value="TODO생성" />
+									<br /> <input type="submit" class="btn btn-primary" value="TODO생성" />
 								</div>
 							</div>
 						</div>
@@ -173,23 +194,19 @@
 									<select class="form-select btn btn-secondar" name="worker">
 										<option selected>넘겨줄 작업자를 선택해주세요</option>
 										<c:forEach items="${users}" var="users">
-											<option value="${users.empno}">직원번호[${users.empno}] ${users.dp_code}부서
-												${users.name }</option>
+											<option value="${users.empno}">직원번호[${users.empno}]
+												${users.dp_code}부서 ${users.name }</option>
 										</c:forEach>
-									</select>
-									<span class="input-group-text">넘겨줄 작업 제목</span>
-									<select class="form-select btn btn-secondar" name="todo_num">
+									</select> <span class="input-group-text">넘겨줄 작업 제목</span> <select
+										class="form-select btn btn-secondar" name="todo_num">
 										<option selected>넘겨줄 작업을 선택해주세요</option>
 										<c:forEach items="${todoList}" var="todo">
-											<option value="${todo.todo_num}">작업번호[${todo.todo_num}] 작업제목 :
-												${todo.todo_title} 담당자 : ${todo.checker }</option>
+											<option value="${todo.todo_num}">작업번호[${todo.todo_num}]
+												작업제목 : ${todo.todo_title} 담당자 : ${todo.checker }</option>
 										</c:forEach>
-									</select>
-									<br />
-									<span class="input-group-text">작업내용</span>
+									</select> <br /> <span class="input-group-text">작업내용</span>
 									<textarea class="form-control" placeholder="작업내용 입력" name="todo_content"></textarea>
-									<br />
-									<input type="submit" class="btn btn-primary" value="작업넘기기" />
+									<br /> <input type="submit" class="btn btn-primary" value="작업넘기기" />
 								</div>
 							</div>
 						</div>
@@ -203,24 +220,23 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">작업의 상태를 변경합니다.</h5>
+									<h5 class="modal-title" id="exampleModalLabel">작업의 상태를
+										변경합니다.</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
 								</div>
 								<div class="modal-body">
 									<select class="form-select btn btn-secondar" name="todo_num">
-										<option selected>넘겨줄 작업을 선택해주세요</option>
+										<option selected>완료할 작업을 선택해주세요</option>
 										<c:forEach items="${todoList}" var="todo">
-											<option value="${todo.todo_num}">작업번호[${todo.todo_num}] 작업제목 :
-												${todo.todo_title} 담당자 : ${todo.checker }</option>
+											<option value="${todo.todo_num}">작업번호[${todo.todo_num}]
+												작업제목 : ${todo.todo_title} 담당자 : ${todo.checker }</option>
 										</c:forEach>
-									</select>
-									<select class="form-select btn btn-secondar" name="complete">
+									</select> <select class="form-select btn btn-secondar" name="complete">
 										<option selected>작업상태 선택</option>
 										<option value="ing">ing</option>
 										<option value="complete">complete</option>
-									</select>
-									<input type="submit" class="btn btn-primary" value="완료하기!" />
+									</select> <input type="submit" class="btn btn-primary" value="완료하기!" />
 								</div>
 							</div>
 						</div>
@@ -228,9 +244,7 @@
 				</form>
 				<!-- Modal -->
 
-				<footer>
-
-				</footer>
+				<footer> </footer>
 			</div>
 		</body>
 
