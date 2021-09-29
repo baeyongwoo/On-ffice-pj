@@ -159,9 +159,30 @@ public class UserController {
 				return "/user/emailCheckProc";
 			}
 		}
-		@GetMapping("/emailCodeCheck")
-		private void emailCodeCheck () {
+		@GetMapping("/emailCheckProc")
+		private void emailcheckResult() {
 			
+			log.info("emailCheckProc으로 이동");
+		}
+		
+		@PostMapping("/emailCodeCheck")
+		private String emailCodeCheck (String email, String codeString, String code, RedirectAttributes rttr) {
+			
+			log.info("입력된 코드값 : "+ code);
+			log.info("발송된 코드값 : "+ codeString);
+			
+			// 발송된 코드, 생성된 코드 비교
+			if(code.equals(codeString)) {
+				
+				rttr.addFlashAttribute("email", email);
+				rttr.addFlashAttribute("email_result", "success");
+			}else {
+				
+				rttr.addFlashAttribute("email_result", "fail");
+			}
+			
+			
+			return "redirect:/user/emailCheckProc";
 		}
 			
 		
@@ -187,7 +208,7 @@ public class UserController {
 				session.setMaxInactiveInterval(60*10);
 				log.info("로그인 세션 정보" + session.getAttribute("login_session"));
 				
-				return "redirect:/company/lobby";	//임시로 noticelist로 가게함
+				return "redirect:/company/lobby";
 			}
 		}
 		

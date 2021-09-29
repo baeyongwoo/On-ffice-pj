@@ -104,7 +104,7 @@
 	<script>
 		
 		function deleteCheck() {
-			var check = confirm('정말로 회원 탈퇴를 진행하시겠습니까?');
+			let check = confirm('정말로 회원 탈퇴를 진행하시겠습니까?');
 			
 			if(check) {
 				window.open("/user/deleteCheckForm", "idwin", "width=400, height=350");

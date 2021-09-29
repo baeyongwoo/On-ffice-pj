@@ -21,7 +21,7 @@
 	// 변수 uid 에 자기 자신의 uid 값을 넣는 구문
 	// trim()은 공백을 모두 없애는 메서드
 	// trim을 이용하여 공백을 없앤 uid 값을 변수 uid에 저장
-		var uid=param.uid.value; 
+		let uid=param.uid.value; 
 			uid=uid.trim(); 
 		
 		// uid의 길이가 5 미만일 경우 아이디는 5자 이상 입력해주세요 경고창 출력

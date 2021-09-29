@@ -115,7 +115,7 @@
 	function regCheck(param) {
 		
 		// 패스워드 길이 5~10 이내 인지 확인
-		var pw = param.upw.value;
+		let pw = param.upw.value;
 		pw = pw.trim();
 		
 		if(pw.length<5 || pw.length>10) {
@@ -125,10 +125,10 @@
 		} // if end
 		
 		// 패스워드와 패스워드 확인이 서로 일치하는지
-		var upw = param.upw.value;
+		let upw = param.upw.value;
 		upw=upw.trim();
 		
-		var rePw= param.rePw.value;
+		let rePw= param.rePw.value;
 		rePw=rePw.trim();
 		
 		if(upw!=rePw) {

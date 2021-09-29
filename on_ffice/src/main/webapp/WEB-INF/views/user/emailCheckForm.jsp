@@ -10,7 +10,7 @@
 	<div style="text-align: center"> 
 		<h3>* 이메일 중복확인 *</h3> 
 		<form method="post" action="/user/emailCheckProc" onsubmit="return blankCheck(this)"> 
-			이메일 : <input type="text" name="email" maxlength="20"> 
+			이메일 : <input type="text" name="email" maxlength="50"> 
 			<input type="submit" value="중복확인"> 
 		</form> 
 	</div> 
@@ -21,7 +21,7 @@
 	// 변수 email 에 자기 자신의 email 값을 넣는 구문
 	// trim()은 공백을 모두 없애는 메서드
 	// trim을 이용하여 공백을 없앤 email 값을 변수 email에 저장
-		var email=param.email.value; 
+		let email=param.email.value; 
 			email=email.trim(); 
 		// email에 '@'가 포함되지 않을 경우 경고창 출력
 		if(email.indexOf('@')==-1){ alert("이메일을 올바르게 입력해주세요."); 
