@@ -14,7 +14,7 @@
 				}
 
 				#todoList {
-					display: none;
+					display: block;
 				}
 			</style>
 
@@ -24,39 +24,31 @@
 			<script>
 
 				window.onload = function () {
-					window.open();
+
 					let result = "${result}"
 					let toggle = document.getElementById("todoToggle");
+
 					if (result === "insert") { alert("TODO를 생성했습니다.") };
 					if (result === "pass") { alert("TODO를 전달했습니다.") };
 					if (result === "complete") { alert("TODO를 완료했습니다.") };
-
-
-					function location() {
-						navigator.geolocation.getCurrentPosition(
-							function (position) {
-								console.log("위도 :", position.coords.latitude);
-								console.log("경도 :", position.coords.latitude)
-							}
-						);
+					
 					}
 
 					toggle.onclick = function () {
+					
 						let todoList = document.getElementById("todoList");
 						let visible = 0;
-						if (todoList.style.display === 'block' && visible === 0) {
-							todoList.style.display = 'none';
-							visible = 0;
-							console.log(visible);
-						} else {
+
+						if (todoList.style.display === 'none' && visible === 0) {
 							todoList.style.display = 'block';
 							visible = 1;
 							console.log(visible);
+						} else {
+							todoList.style.display = 'none';
+							visible = 0;
+							console.log(visible);
 						}
-
 					}
-				}
-
 			</script>
 
 			<meta charset="UTF-8">
