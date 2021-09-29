@@ -96,55 +96,5 @@ public class MyPageController {
 		return vo;
 
 	}
-	
-	@PostMapping("/fileUploadTest")
-	public String fileUpload(MultipartHttpServletRequest request, Model model) {
-		
-		String rootUploadDir =  "C:"+File.separator+"Upload";
-		
-		File dir = new File(rootUploadDir + File.separator + "file");
-		if(!dir.exists()) {
-			dir.mkdirs();
-		}
-		
-		Iterator<String> iterator = request.getFileNames();
-		
-		int fileLoop = 0;
-		String uploadFileName;
-		MultipartFile mFile=null;
-		String orgFileName = "";//원래파일명
-		String sysFileName = "";//변환된파일명
-		
-		
-		ArrayList<String> list = new ArrayList<String>();
-		while(iterator.hasNext()) {
-			fileLoop++;
-			
-			uploadFileName = iterator.next();
-			mFile = request.getFile(uploadFileName);
-			
-			orgFileName = mFile.getOriginalFilename();
-			log.info(orgFileName);
-			
-			
-			if(orgFileName != null && orgFileName.length() !=0) {
-				log.info("파일업로드 조건문 실행");
-				SimpleDateFormat dateformat = new SimpleDateFormat("yyyMMDDHHmmss-" + fileLoop);
-				Calendar calendar = Calendar.getInstance();
-				sysFileName = dateformat.format(calendar.getTime());
-				
-				try {
-					log.info("try 진입");
-					mFile.transferTo(new File(dir + File.separator+sysFileName));
-					list.add("원본파일명 : " + orgFileName + ", 시스템파일명 : " + sysFileName);
-				}catch(Exception e) {
-					list.add("파일 업로드 에러!");
-				}
-			}//if
-		}//while
-		model.addAttribute("list",list);
-		return "fileTest/fileResult";
-		
-	}
 
 }

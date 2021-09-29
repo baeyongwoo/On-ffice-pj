@@ -7,6 +7,11 @@
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
 				integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 				crossorigin="anonymous">
+			<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+				crossorigin="anonymous"></script>
 
 			<style>
 				body {
@@ -18,11 +23,54 @@
 				}
 			</style>
 
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-				crossorigin="anonymous"></script>
+
 			<script>
 				window.onload = function () {
+					let stack = 0;
+					let afk = 0;
+
+
+					function userStat() {
+						let result = document.getElementById("result");
+
+						$('*').on("mousemove", _.throttle(function () {
+							stack++;
+							console.log(stack);
+							result.innerHTML = stack;
+						}, 1000));
+					}
+
+
+					setTimeout(userStat, 1000);
+
+					setInterval(function () {
+						let result = document.getElementById("result");
+						if (stack > 1) {
+							stack = 0;
+							console.log(stack);
+							result.innerHTML = stack;
+						}
+					}, 5000);
+
+					setInterval(function () {
+						if (stack === 0) {
+							if (afk < 10) {
+								afk++;
+								console.log("afk" + afk);
+							}
+							else if (afk === 10) {
+								console.log("부재중입니다");
+								//이 위치에서 컨트롤러 부재중 서비스 호출하는 방법 알아보기
+								afk += 1;
+							}
+
+						} else if (stack > 0) {
+							afk = 0;
+						}
+					}, 1000);
+
+
+
 
 					function currentTime() {
 						let now = new Date();
@@ -99,11 +147,13 @@
 							${login_time }
 
 							<div id="clock"></div>
+							<div id="result"></div>
 
 							<form action="/user/userInfo" method="post">
 								<input type="hidden" name="uid" value="${login_session}">
 								<input class="btn btn-primary" type="submit" value="회원정보">
 							</form>
+							<a href="/mypage/fileUpLoad"><button>자료업로드</button></a>
 						</div>
 
 						<div class="col-md-9">
