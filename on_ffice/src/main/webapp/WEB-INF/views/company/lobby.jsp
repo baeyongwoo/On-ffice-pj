@@ -43,7 +43,8 @@
 	<!-- 익일 생일일 경우 케이크 이미지 나오게 출력 -->
 	<hr>
 	<a href="/notice/noticeList"><button>알림게시판가기</button></a><br>
-	글번호/제목/작성자/작성일/조회수 <br/>
+	 
+	<tr><td>글번호/제목/작성자/작성일/조회수</td></tr><br/>
 	<c:forEach items="${nslist}" var="nl">
 			<tr>	
 				<td>${nl.notice_num}</td>
@@ -55,8 +56,18 @@
 			</tr>
 		<br/>		
 	</c:forEach>
+	<hr>
 	
-		
+	<h2>이번주 식단</h2><a href="/company/menu"><button>구내식당메뉴보기</button></a>
+	<tr><td>메뉴/반찬</td></tr><br/>
+	<c:forEach items="${rice}" var="rice">
+		${rice.main}	
+		${rice.side1}	
+		${rice.side2}	
+		${rice.side3}	
+		${rice.side4}	
+		<br>
+	</c:forEach>
 	
 	
 	<hr>

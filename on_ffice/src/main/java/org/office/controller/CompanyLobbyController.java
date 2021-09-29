@@ -6,7 +6,9 @@ import javax.servlet.http.HttpSession;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
+import org.office.service.MenuService;
 import org.office.service.NoticeService;
+import org.office.service.RiceService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,12 @@ public class CompanyLobbyController {
 	
 	@Autowired
 	NoticeService ns;
+	
+	@Autowired
+	RiceService rs;
+	
+	@Autowired
+	MenuService ms;
 
 	@GetMapping("/lobby")
 	public String showlobby(Model model, HttpSession session) {
@@ -46,7 +54,8 @@ public class CompanyLobbyController {
 		log.info("notice 정보 : " + ns.list());
 		model.addAttribute("nslist", ns.list());
 		
-		
+		log.info("rice 정보 : " + rs.selectRice());
+		model.addAttribute("rice", rs.selectRice());
 		
 		return "/company/lobby";
 	}
@@ -93,4 +102,13 @@ public class CompanyLobbyController {
 		
 		return "/company/users";
 	}
+	
+	@GetMapping("/menu")
+	public String getMenu(Model model) {
+		log.info("메뉴" + ms.menuList());
+		model.addAttribute("menu", ms.menuList());
+		
+		return "/company/menu";
+	}
+	
 }

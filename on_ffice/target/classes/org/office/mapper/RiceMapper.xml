@@ -3,9 +3,12 @@
 <mapper namespace="org.office.mapper.RiceMapper">
 
 	<insert id="riceInsert">
-		insert into rice values(null, "#{main}", #{side1}, #{side2}, #{side3}, #{side4})
+		Insert into rice values(null, #{main}, #{side1}, #{side2}, #{side3}, #{side4})
 	</insert>
 	
+	<select id="riceSelect" resultType="org.office.domain.RiceVO">
+		SELECT * FROM rice;
+	</select>
 </mapper>
 
 

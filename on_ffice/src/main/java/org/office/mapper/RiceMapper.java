@@ -1,5 +1,6 @@
 package org.office.mapper;
 
+
 import java.util.List;
 
 import org.office.domain.RiceVO;
@@ -7,5 +8,8 @@ import org.office.domain.RiceVO;
 public interface RiceMapper {
 
 	//식단 조회받아서 입력처리
-	public List<RiceVO> riceInsert(String main, String side1, String side2, String side3, String side4);
+	public void riceInsert(RiceVO vo);
+	
+	//입력한 것 조회
+	public List<RiceVO> riceSelect();
 }
