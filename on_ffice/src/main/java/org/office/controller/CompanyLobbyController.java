@@ -51,8 +51,8 @@ public class CompanyLobbyController {
 		vo = (UserVO)session.getAttribute("login_session");
 		model.addAttribute("login_session", vo);
 		
-		log.info("notice 정보 : " + ns.list());
-		model.addAttribute("nslist", ns.list());
+		log.info("notice 정보 : " + ns.lobbyNList());
+		model.addAttribute("nslist", ns.lobbyNList());
 		
 		log.info("rice 정보 : " + rs.selectRice());
 		model.addAttribute("rice", rs.selectRice());

@@ -4,7 +4,20 @@
 
 	<!-- 글 조회 로직 -->
 	<select id="noticeList" resultType="org.office.domain.NoticeVO">
-		SELECT * FROM notice ORDER BY notice_num DESC
+	 <![CDATA[
+		select * from notice order by notice_num desc 
+		 ]]>
+	</select>
+	
+	
+	<select id="lobbyNList" resultType="org.office.domain.NoticeVO">
+	 <![CDATA[
+		select * 
+		from notice 
+		where notice_num between (select max(notice_num) - 4 from notice) 
+		and (select max(notice_num) from notice)
+		order by notice_num desc
+		 ]]>
 	</select>
 	
 	<!-- 글 상세보기 로직 -->

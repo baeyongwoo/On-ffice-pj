@@ -7,7 +7,7 @@
 	</insert>
 	
 	<select id="riceSelect" resultType="org.office.domain.RiceVO">
-		SELECT * FROM rice;
+		select * from rice limit 0,5;
 	</select>
 </mapper>
 

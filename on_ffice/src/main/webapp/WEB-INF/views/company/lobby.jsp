@@ -58,7 +58,7 @@
 	</c:forEach>
 	<hr>
 	
-	<h2>이번주 식단</h2><a href="/company/menu"><button>구내식당메뉴보기</button></a>
+	<h2>이번주 식단</h2><a href="/company/menu"><button>구내식당메뉴보기</button></a><br>
 	<tr><td>메뉴/반찬</td></tr><br/>
 	<c:forEach items="${rice}" var="rice">
 		${rice.main}	

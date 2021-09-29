@@ -21,6 +21,9 @@ public interface NoticeService {
 	//글 상세보기 서비스
 	public NoticeVO detail(int notice_num);
 	
+	//로비 글 조회 서비스
+	public List<NoticeVO> lobbyNList();
+	
 	//카테고리 서비스
 	public List<NoticeVO> category(String ncategory);
 	

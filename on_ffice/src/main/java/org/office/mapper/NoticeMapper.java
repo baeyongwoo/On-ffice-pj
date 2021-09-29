@@ -13,6 +13,9 @@ public interface NoticeMapper {
 // 글 상세보기 로직
 	public NoticeVO notice_detail(int notice_num);
 	
+// lobby 글 조회 로직
+	public List<NoticeVO> lobbyNList();
+	
 // 카테고리 로직
 	public List<NoticeVO> category(List<NoticeVO> list, @Param("ncategory")String ncategory);
 	

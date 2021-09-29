@@ -25,7 +25,16 @@ public class NoticeServiceImpl implements NoticeService {
 		log.info("전체 글 목록 조회");
 		return NoticeList;
 	}
+	
+	@Override
+	public List<NoticeVO> lobbyNList() {
+		List<NoticeVO> NoticeList = noticemapper.lobbyNList();
+		log.info("service noticelist" + noticemapper.lobbyNList());
+		log.info("로비 글 목록 조회");
+		return NoticeList;
+	}
 
+	
 	@Override
 	public void write(NoticeVO vo) {
 
@@ -78,6 +87,7 @@ public class NoticeServiceImpl implements NoticeService {
 		List<NoticeVO> nc = noticemapper.category(list, ncategory);
 		return nc;
 	}
+
 
 
 }
