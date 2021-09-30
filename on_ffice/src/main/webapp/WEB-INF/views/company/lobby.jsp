@@ -18,8 +18,6 @@
 		
 	<h1>ict03회사</h1>
 	<a href="/company/intro"><button>회사소개</button></a>
-	<a href="#"><button>회사행사</button></a>
-	<a href="#"><button>회사소통</button></a>
 	회사 관련 이미지<img src="">
 	<c:set var="user" value="${login_session}" />
 	<c:if test="${login_session eq null}">
@@ -58,9 +56,9 @@
 	</c:forEach>
 	<hr>
 	
-	<h2>이번주 식단</h2><a href="/company/menu"><button>구내식당메뉴보기</button></a><br>
 	<tr><td>메뉴/반찬</td></tr><br/>
 	<c:forEach items="${rice}" var="rice">
+		${rice.today}
 		${rice.main}	
 		${rice.side1}	
 		${rice.side2}	

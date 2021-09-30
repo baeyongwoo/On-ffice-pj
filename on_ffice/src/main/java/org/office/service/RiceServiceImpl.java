@@ -62,4 +62,9 @@ public class RiceServiceImpl implements RiceService {
 		return rl;
 	}
 
+	@Override
+	public void DeleteRice() {
+		rm.riceDelete();
+	}
+
 }

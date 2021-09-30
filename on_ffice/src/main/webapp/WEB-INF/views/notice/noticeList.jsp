@@ -42,10 +42,6 @@
 	</c:forEach>
 	<!-- url로 접속할 때 잘못된 주소로 접근하면 error창 처리하는 것 만들기 -->
 	<a href="/company/lobby"><button>로비로가기</button></a>
-	<form action="/user/userInfo" method="post">
- 	<input type="hidden" name="uid" value="${login_session.uid }">
- 	<input type="submit" value="회원정보">
  	
- </form>
 </body>
 </html>
