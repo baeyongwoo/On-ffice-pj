@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>구내식당 총 메뉴 표</h2>
-	<c:forEach items="${menu}" var="menu">
+	<c:forEach items="${week}" var="menu">
 		${menu.mno}
 		${menu.main}
 		${menu.side1}

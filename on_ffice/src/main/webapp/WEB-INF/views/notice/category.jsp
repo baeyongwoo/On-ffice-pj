@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+		<a href="/notice/noticeList"><button>전체보기</button></a>
 		<c:forEach items="${category}" var="cg">
 		<a href="/notice/noticeDetail?notice_num=${cg.notice_num}">${cg.notice_num}</a>
 		${cg.ncategory}

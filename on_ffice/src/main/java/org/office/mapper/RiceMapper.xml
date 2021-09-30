@@ -3,12 +3,19 @@
 <mapper namespace="org.office.mapper.RiceMapper">
 
 	<insert id="riceInsert">
-		Insert into rice values(null, #{main}, #{side1}, #{side2}, #{side3}, #{side4})
+		<selectKey keyProperty="today" order="BEFORE" resultType="int">
+			SELECT IF(ISNULL(today), 1, max(today) + 1) AS today FROM rice
+		</selectKey>
+		Insert into rice values(#{today}, #{main}, #{side1}, #{side2}, #{side3}, #{side4})
 	</insert>
 	
 	<select id="riceSelect" resultType="org.office.domain.RiceVO">
 		select * from rice limit 0,5;
 	</select>
+	
+	<delete id="riceDelete">
+		delete from rice
+	</delete>
 </mapper>
 
 
