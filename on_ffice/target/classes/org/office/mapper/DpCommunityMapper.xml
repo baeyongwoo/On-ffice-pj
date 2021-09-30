@@ -7,24 +7,12 @@
 		        	<if test="searchType == 't'.toString()">
 		        		AND dtitle like CONCAT('%', #{keyword},'%')
 		        	</if>
-		        	<if test="searchType == 'c'.toString()">
-		        		AND dcontent like CONCAT('%', #{keyword},'%') 
-		        	</if>
-		    		<if test="searchType == 'w'.toString()">
-		    			AND dwriter like CONCAT('%', #{keyword},'%')
-		    		</if>
-		    		<if test="searchType == 'tc'.toString()">
+		        	<if test="searchType == 'tc'.toString()">
 		    			AND (dtitle like CONCAT('%', #{keyword}, '%') OR
 		    				dcontent like CONCAT('%', #{keyword}, '%')) 
 		    		</if>
-		    		<if test="searchType == 'cw'.toString()">
-		    			AND (dcontent like CONCAT('%', #{keyword}, '%') OR
-		    				dwriter like CONCAT('%', #{keyword}, '%'))
-		    		</if>
-		    		<if test="searchType == 'tcw'.toString()">
-		    			AND (dtitle like CONCAT('%', #{keyword}, '%') OR 
-		    				dcontent like CONCAT('%', #{keyword}, '%') OR 
-		    				dwriter like CONCAT('%', #{keyword}, '%')) 
+		    		<if test="searchType == 'w'.toString()">
+		    			AND dwriter like CONCAT('%', #{keyword},'%')
 		    		</if>
 		       </if>
 		</sql>

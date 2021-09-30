@@ -15,7 +15,6 @@
 	
 	<table>
 		<tr>
-			<th>글번호</th>
 			<th>부서명</th>
 			<th>사원번호</th>
 			<th>글제목</th>
@@ -25,10 +24,8 @@
 			<th>조회수</th>
 		</tr>
 	</table>
-	
 	<c:forEach items="${dpCommunityList}" var="dpcList">
 			<tr>	
-				<td>${dpcList.dc_num}</td>
 				<c:if test="${dpcList.dp_code eq 1}">
 				<td>인사부</td>
 				</c:if>
@@ -68,25 +65,13 @@
 				<c:out value="${btnMaker.cri.searchType eq 't' ? 'selected': ''}" />>
 				제목
 			</option>
-			<option value="c" 
-				<c:out value="${btnMaker.cri.searchType eq 'c' ? 'selected': ''}" />>
-				본문
-			</option>
-			<option value="w" 
-				<c:out value="${btnMaker.cri.searchType eq 'w' ? 'selected': ''}" />>
-				글쓴이
-			</option>
 			<option value="tc" 
 				<c:out value="${btnMaker.cri.searchType eq 'tc' ? 'selected': ''}" />>
 				제목 + 본문
 			</option>
-			<option value="cw" 
-				<c:out value="${btnMaker.cri.searchType eq 'cw' ? 'selected': ''}" />>
-				본문 + 작성자
-			</option>
-			<option value="tcw" 
-				<c:out value="${btnMaker.cri.searchType eq 'tcw' ? 'selected': ''}" />>
-				제목 + 본문 + 작성자
+			<option value="w" 
+				<c:out value="${btnMaker.cri.searchType eq 'w' ? 'selected': ''}" />>
+				글쓴이
 			</option>
 		</select>
 	
