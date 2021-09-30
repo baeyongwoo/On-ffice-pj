@@ -11,9 +11,10 @@
 	
 	<form action="/notice/Update" method="post">
 		<input type="text" name="notice_num" value="${notice.notice_num}" readonly="readonly"></br>
-		<input type="text" name="ntitle" value="${notice.ntitle}"></br>
-		<textarea rows="10" cols="50" name="ncontent">${notice.ncontent}</textarea></br>
-		<input type="text" name="nwriter" value="${notice.nwriter}" readonly="readonly"></br>
+		<input type="text" name="ntitle" value="${notice.ntitle}"><br>
+		<textarea rows="10" cols="50" name="ncontent">${notice.ncontent}</textarea><br>
+		<input type="text"  value="${login_session.name}" readonly="readonly">
+		<input type="hidden" name="nwriter" value="${notice.nwriter}" readonly="readonly"></br>
 		<input type="submit" value="수정완료">
 	</form>
 	

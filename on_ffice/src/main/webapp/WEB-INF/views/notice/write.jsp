@@ -19,8 +19,9 @@
 		</select>
 		<input type="text" name="ntitle" placeholder="제목" required="required"><br>
 
-		<textarea rows="10" cols="50" name="ncontent" required="required"></textarea><br>
-		<input type="text" name="nwriter" value="${login_session.uid}" placeholder="로그인해주세요" readonly="readonly"></br>
+		<textarea rows="10" cols="50" name="ncontent" required="required"></textarea>
+		<input type="hidden" name="nwriter" value="${login_session.uid}" placeholder="로그인해주세요" readonly="readonly"></br>
+		<input type="text" value="${login_session.name}" placeholder="로그인해주세요" readonly="readonly"></br>
 		<input type="submit" value="작성완료">
 		<input type="reset" value="다시작성">
 	</form>
