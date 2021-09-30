@@ -16,10 +16,12 @@ import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -126,12 +128,17 @@ public class CompanyLobbyController {
 		return "/company/users";
 	}
 	
+	@SuppressWarnings("null")
+	@Scheduled(cron="* * * * * 0") // 초 분 시 일 월 요일 (년)   0 - 일요일 1 - 월요일
 	@GetMapping("/menu")
-	public String getMenu(Model model) {
-		log.info("메뉴" + ms.menuList());
-		model.addAttribute("menu", ms.menuList());
+	public String getMenu() {
 		
-		return "/company/menu";
+		RedirectAttributes rttr =null;
+		rs.DeleteRice();
+		rs.insertRice();
+		
+		rttr.addFlashAttribute("week", rs.selectRice());
+		return "redirect:/company/menu";
 	}
 	
 }

@@ -10,4 +10,6 @@ public interface RiceService {
 	public void insertRice();
 	
 	public List<RiceVO> selectRice();
+	
+	public void DeleteRice();
 }

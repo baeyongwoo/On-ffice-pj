@@ -12,4 +12,6 @@ public interface RiceMapper {
 	
 	//입력한 것 조회
 	public List<RiceVO> riceSelect();
+	
+	public void riceDelete();
 }
