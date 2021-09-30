@@ -1,8 +1,11 @@
 package org.office.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.office.domain.NoticeVO;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
@@ -11,6 +14,8 @@ import org.office.service.NoticeService;
 import org.office.service.RiceService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,9 +55,9 @@ public class CompanyLobbyController {
 		UserVO vo = new UserVO();
 		vo = (UserVO)session.getAttribute("login_session");
 		model.addAttribute("login_session", vo);
-		
-		log.info("notice 정보 : " + ns.lobbyNList());
-		model.addAttribute("nslist", ns.lobbyNList());
+		List<NoticeVO> nl = ns.lobbyNList();
+		log.info("notice 정보 : " + nl);
+		model.addAttribute("nslist", nl);
 		
 		log.info("rice 정보 : " + rs.selectRice());
 		model.addAttribute("rice", rs.selectRice());
@@ -67,20 +72,38 @@ public class CompanyLobbyController {
 	}
 	
 	@GetMapping("/dplobby")
-	public String showdp(String dp_code, Model model) {
-		int dp_codeCI = Integer.parseInt(dp_code);
+	public String showdp(String dp_code, Model model, HttpSession session) {
 		
-		log.info("폼에서 받은 dp_code : " + dp_code);
+		UserVO vo = new UserVO();
+		vo = (UserVO)session.getAttribute("login_session");
 		
-		model.addAttribute("dpu_list", us.allUserInfoByDp(dp_codeCI));
-		
-		model.addAttribute("dpc_list", dcs.list(""));	//dpc 부서 커뮤니티
-		
-		model.addAttribute("dpinfo", ds.getDpInfo(dp_codeCI));
-		
-		log.info("부서 게시판 : " + dcs.list(""));
+		try {
+			int dp_codeCI = Integer.parseInt(dp_code);
+			if(vo.getDp_code() == dp_codeCI) {	//로그인 세션이 있을 경우
+				model.addAttribute("dpu_list", us.allUserInfoByDp(dp_codeCI));
+				
+				model.addAttribute("dpc_list", dcs.list(""));	//dpc 부서 커뮤니티
+				
+				model.addAttribute("dpinfo", ds.getDpInfo(dp_codeCI));
+				
+				log.info("부서 게시판 : " + dcs.list(""));
+					
+				}else {
+					return "redirect:/company/loginNot";
+				}
+		} catch (Exception e) {
+			return "redirect:/company/loginNot";
+		}
 		return "/company/dplobby";
+		
 	}
+	
+	@GetMapping("/loginNot")
+	public ResponseEntity<Void> sendListAuth(){
+		
+		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+	}
+	
 	
 	@GetMapping("/dpc")
 	public String movedpc() {

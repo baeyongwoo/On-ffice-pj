@@ -12,11 +12,10 @@
 	
 	<select id="lobbyNList" resultType="org.office.domain.NoticeVO">
 	 <![CDATA[
-		select * 
-		from notice 
-		where notice_num between (select max(notice_num) - 4 from notice) 
-		and (select max(notice_num) from notice)
+		select *
+		from notice
 		order by notice_num desc
+		limit 0, 5
 		 ]]>
 	</select>
 	
