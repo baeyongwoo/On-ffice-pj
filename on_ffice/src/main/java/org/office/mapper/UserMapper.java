@@ -39,7 +39,8 @@ public interface UserMapper {
 	public void deleteUser(@Param("uid") String uid);
 	
 
-	
+// 유저 상태 변경 매퍼
+	public void updateStat(@Param("stat")String stat, @Param("uid")String uid);
 	
 
 	

@@ -77,5 +77,10 @@ public class UserServiceImpl implements UserService {
 		
 		return mapper.selectUserListByDp(dp_code);
 	}
+	@Override
+	public void updateStat(String uid, String stat) {
+		log.info("유저 상태 변경 서비스 실행");
+		mapper.updateStat(stat, uid);
+	}
 }
 

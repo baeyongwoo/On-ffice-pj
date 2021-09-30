@@ -34,4 +34,6 @@ public interface UserService {
 	// 회원 탈퇴 서비스
 	public void userDelete(String uid);
 	
+	// 회원 상태 변경 서비스
+	public void updateStat(String uid, String stat);
 }
