@@ -9,11 +9,8 @@
 */
 package org.office.controller;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +26,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -55,7 +50,7 @@ public class MyPageController {
 
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
-		UserVO uservo = user_service.userInfo(login_session.getUid());
+		UserVO uservo = user_service.login(login_session.getUid(), login_session.getUpw());
 		log.info("받아온 정보 : " + uservo);
 		List<TodoVO> todoList = service.getTodoList(login_session.getEmpno());
 		log.info("받아온 할일 : " + todoList);
@@ -69,31 +64,42 @@ public class MyPageController {
 	}
 
 	@PostMapping("/insertTodo")
-	public String insertTodo(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
+	public String insertTodo(TodoVO vo, Model model, RedirectAttributes rttr) {
 		service.insertTodo(vo);
 		log.info(vo);
+		rttr.addFlashAttribute("result", "insert");
 		return "redirect:/mypage/main";
 	}
 
 	@PostMapping("/passTodo")
-	public String passTodo(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
+	public String passTodo(TodoVO vo, Model model, RedirectAttributes rttr) {
 		service.passTodo(vo);
 		log.info(vo);
+		rttr.addFlashAttribute("result", "pass");
 		return "redirect:/mypage/main";
 	}
 
 	@PostMapping("/completeTodo")
-	public String completeTodo(TodoVO vo, HttpServletRequest request, RedirectAttributes rttr, Model model) {
+	public String completeTodo(TodoVO vo, Model model, RedirectAttributes rttr) {
 		service.statTodo(vo);
 		log.info(vo);
+		rttr.addFlashAttribute("result", "complete");
 		return "redirect:/mypage/main";
 	}
 
 	@GetMapping("/detailTodo")
-	public TodoVO getTodo(TodoVO vo, HttpServletRequest request, Model model) {
+	public TodoVO getTodo(TodoVO vo, Model model) {
 		vo = service.getTodo(vo.getTodo_num());
 		model.addAttribute("getTodo", vo);
 		return vo;
+
+	}
+
+	@PostMapping("/awayFromKeyboard")
+	public String afk(UserVO vo, Model model) {
+		log.info(vo);
+		user_service.updateStat(vo.getUid(), vo.getStat());
+		return "redirect:/mypage/main";
 
 	}
 

@@ -26,6 +26,19 @@
 
 			<script>
 				window.onload = function () {
+
+					let result = "${result}"
+
+					if (result === "insert") {
+						alert("TODO를 생성했습니다.")
+					};
+					if (result === "pass") {
+						alert("TODO를 전달했습니다.")
+					};
+					if (result === "complete") {
+						alert("TODO를 완료했습니다.")
+					};
+
 					let stack = 0;
 					let afk = 0;
 
@@ -37,9 +50,8 @@
 							stack++;
 							console.log(stack);
 							result.innerHTML = stack;
-						}, 1000));
+						}, 200));
 					}
-
 
 					setTimeout(userStat, 1000);
 
@@ -59,8 +71,24 @@
 								console.log("afk" + afk);
 							}
 							else if (afk === 10) {
+								$('#AFK').modal('show');
+
+								$.ajax({
+									url: "/mypage/awayFromKeyboard",
+									type: "POST",
+									data: {
+										uid: "${info.uid}",
+										stat: "부재중"
+									},
+									success: function (data) {
+
+									},
+									error: function () {
+										alert("에러");
+									}
+								})
 								console.log("부재중입니다");
-								//이 위치에서 컨트롤러 부재중 서비스 호출하는 방법 알아보기
+
 								afk += 1;
 							}
 
@@ -103,22 +131,7 @@
 					}
 					setInterval(currentTime, 1000)
 
-					let result = "${result}"
 					let toggle = document.getElementById("todoToggle");
-
-					if (result === "insert") {
-						alert("TODO를 생성했습니다.")
-					}
-					;
-					if (result === "pass") {
-						alert("TODO를 전달했습니다.")
-					}
-					;
-					if (result === "complete") {
-						alert("TODO를 완료했습니다.")
-					}
-					;
-
 					toggle.onclick = function () {
 						let todoList = document.getElementById("todoList");
 						todoList.style.display = ((todoList.style.display != 'none') ? 'none' : 'block');
@@ -140,8 +153,9 @@
 							<a href="/company/lobby"><button class="btn btn-primary">Lobby</button></a><br />
 
 							<div>접속자 : ${info.name }</div>
-							<div>부서 : ${info.dp_code }</div>
-							<div>직급 : ${info.position_code }</div>
+							<div>직원번호 : ${info.empno}</div>
+							<div>부서 : ${info.depart_name }</div>
+							<div>직급 : ${info.p_name }</div>
 
 							<br /> 접속한 시간<br />
 							${login_time }
@@ -292,8 +306,29 @@
 						</div>
 					</div>
 				</form>
-				<!-- Modal -->
 
+				<!-- Modal AFK -->
+				<div class="modal fade" id="AFK" tabindex="-1" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title" id="exampleModalLabel">
+									부재중입니다.
+								</h3>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<h5>부재중 상태를 해제하려면 아래 버튼을 클릭하세요</h5>
+								<form action="/mypage/awayFromKeyboard" method="post">
+									<input type="hidden" name="stat" value="접속중">
+									<input type="hidden" name="uid" value="${info.uid}">
+									<input type="submit" value="부재중 해제" class="btn btn-success">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 				<footer> </footer>
 			</div>
 		</body>
