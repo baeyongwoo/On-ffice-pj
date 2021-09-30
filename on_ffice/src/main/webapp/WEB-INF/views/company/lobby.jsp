@@ -67,6 +67,28 @@
 		<br>
 	</c:forEach>
 	
+		<h1 class="text-center">이달의 생일</h1>
+		<table class="table">
+		<thaed>
+			<tr>
+				<th scope="col">이름</th>
+				<th scope="col">부서</th>
+				<th scope="col">직급</th>
+				<th scope="col">생일</th>
+			</tr>
+		</thaed>
+		<tbody>	
+			<c:forEach items="${blist }" var="list">
+			<tr>
+				<td>${list.name }</td>
+				<td>${list.dp_code }</td>
+				<td>${list.position_code }</td>
+				<td>${list.birth }</td>
+			</tr>	
+			
+			</c:forEach>
+	  </tbody>		
+		</table>
 	
 	<hr>
 	<p>홈페이지 주소 : http://www.ict03company.com</p>

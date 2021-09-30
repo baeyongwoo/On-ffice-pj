@@ -20,7 +20,7 @@
 			</tr>
 		</thaed>
 		<tbody>	
-			<c:forEach items="${list }" var="list">
+			<c:forEach items="${blist }" var="list">
 			<tr>
 				<td>${list.name }</td>
 				<td>${list.dp_code }</td>

@@ -2,9 +2,8 @@
 
 package org.office.controller;
 
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.office.domain.UserVO;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -28,32 +26,42 @@ public class BdayController {
 	UserService us;
 
 	@GetMapping("/bdaylist")
-	public void list(Model model) {
+	public String list(Model model) {
 		UserVO vo = new UserVO();
-
 		Calendar c = Calendar.getInstance();
-
-		int month = c.get(Calendar.MONTH) + 1;
-		List<UserVO> user = us.allUserInfo();	// 6
-		List<UserVO> birth_user = null;
-		log.info("user 사이즈" + user.size());
-		log.info("이번달 : " + month);
-		for (int i = 0; i <= 5; i++) {
-			log.info(i + "번쨰 사람" + user.get(i).getBirth());
-			String births = user.get(i).getBirth();
-			log.info("생일 " + births);
-			births = births.substring(5, 7);
-			int birth = Integer.parseInt(births);
-			
-			
-			if (month == birth) {
-				
-				birth_user.add(vo);
-				log.info("추가된 유저? " + birth_user);
-				
-			}
+		List<UserVO> user = us.allUserInfo(); // 6
+		List<String> birth_user = new ArrayList<>(); // 생일인 사람 저장하는 list
+		List<UserVO> birth_user_view = new ArrayList<>();
+		String month = null;
+		String temp = null; // user에서 꺼내온 생일 담을 변수
+		int monthi = c.get(Calendar.MONTH);
+		String months = String.valueOf(monthi); // int -> string으로 바꾸기
+		String zero = "0"; // 만약 10월 미만일 경우 두자리 만들어주기 위해
+		log.info("months길이 " + months.length());
+		log.info("이번달 : " + months);
+		log.info("userList갯수 : " + user.size());
+		if (months.length() == 1) {
+			month = zero + months;	//concat으로 해볼까 생각중
 		}
-		model.addAttribute("list", user);
-	}
 
+		for (int i = 0; i <= user.size() - 1; i++) {
+			temp = user.get(i).getBirth();
+			if (temp.substring(5, 7).equals(month) || temp.substring(5, 7).equals(months)) {
+				log.info("한번 실행");
+
+				birth_user.add(user.get(i).getUid());
+			}
+
+		}
+
+		log.info("birth : " + birth_user);
+		log.info("brith_user" + birth_user.size());
+		for (int i = 0; i <= birth_user.size() - 1; i++) {
+			birth_user_view.add(us.userInfo(birth_user.get(i)));
+		}
+		log.info("생일인 사람 : " + birth_user_view);
+		 model.addAttribute("blist", birth_user_view);
+		 
+		 return "/company/lobby";
+	}
 }
