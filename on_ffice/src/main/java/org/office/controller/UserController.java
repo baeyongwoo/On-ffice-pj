@@ -9,9 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.office.domain.EmailDTO;
+import org.office.domain.PhoneDTO;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
 import org.office.service.EmailService;
+import org.office.service.PhoneService;
 import org.office.service.TodoService;
 import org.office.service.PositionService;
 import org.office.service.UserService;
@@ -46,6 +48,9 @@ public class UserController {
 		
 		@Autowired
 		private EmailService es;
+		
+		@Autowired
+		private PhoneService phs;
 		
 		@GetMapping("/login")
 		private String Gologin() {
@@ -184,8 +189,67 @@ public class UserController {
 			
 			return "redirect:/user/emailCheckProc";
 		}
-			
 		
+			
+		@GetMapping("/goPhoneCheckForm")
+		private String GoPhoneCheckForm () {
+			
+			log.info("phoneCheckForm.jsp로 이동");
+			return "/user/phoneCheckForm";
+		}
+		
+		
+		@PostMapping("/phoneCheckForm")
+		private String phoneCheck(String cp, Model model) {
+			List<Integer> codes = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+			Collections.shuffle(codes);
+			
+			List<Integer> ranCodes = new ArrayList<>(4);
+			ranCodes.add(0, codes.get(0));
+			ranCodes.add(1, codes.get(1));
+			ranCodes.add(2, codes.get(2));
+			ranCodes.add(3, codes.get(3));
+			
+			log.info("생성된 인증 코드 : "+ ranCodes.toString());
+			String codeString = codes.get(0).toString()+codes.get(1)+codes.get(2)+codes.get(3);
+			
+			log.info("String변환한 인증코드 : "+codeString);
+			
+			PhoneDTO dto = new PhoneDTO();
+			dto.setTo(cp);
+			
+			dto.setText(ranCodes.toString());
+			
+			try {
+				// phs.sendSMS(dto); 문자 아끼려고 주석처리해버림
+				
+			} catch(Exception e){
+				e.printStackTrace();
+				model.addAttribute("sms_result", "fail");
+			}
+			
+			model.addAttribute("sms_result", "success");
+			model.addAttribute("cp", cp);
+			model.addAttribute("codeString", codeString);
+			
+			return "/user/phoneCheckForm";
+		}
+		
+		@PostMapping("/phoneCheckProc")
+		private String smsCodeCheck(String codeString, String code, String cp, Model model) {
+			log.info("문자 코드 비교 컨트롤러 실행");
+			
+			if(codeString.equals(code)) {
+				
+				
+				model.addAttribute("codeCheck_result", "success");
+				model.addAttribute("cp", cp);
+			}else {
+				model.addAttribute("codeCheck_result", "fail");
+			}
+			
+			return "/user/phoneCheckForm";
+		}
 		
 	
 		@PostMapping("/login")

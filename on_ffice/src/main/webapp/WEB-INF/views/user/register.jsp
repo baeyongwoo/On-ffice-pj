@@ -43,27 +43,15 @@
 				<tr> 
 					<th>*이메일</th> 
 					<td id = "emailTd"> 
-						<input type="text" name="email" id="email" size="30" value="email" required readonly onchange="emailCodeCheck()"> 
+						<input type="text" name="email" id="email" size="30" value="email" required readonly> 
 						<input type="button" value="Email 중복확인" onclick="emailCheck()"> 
-						<script>
-							
-								function emailCodeCheck() {
-									console.log('onchange 이벤트 실행');
-									const btn = document.createElement("button");
-									btn.setAttribute("onclick", "openWindow();");
-									document.getElementById("emailTd").appendChild(btn);
-								}
-									
-							
-						
-						</script>
-						
 					</td> 
 				</tr> 
 					<tr> 
 					<th>전화번호</th> 
 					<td>
-						<input type="tel" name="cp" size="15">
+						<input type="tel" name="cp" size="15" readonly required>
+						<input type="button" value="휴대폰 문자인증" onclick="phoneCheck()">
 					</td> 
 				</tr>
 				
@@ -140,6 +128,14 @@
 	//새창 만들기 
 	window.open("/user/emailCheckForm", "emailwin", "width=400, height=350"); 
 	
+	}
+	
+	// 문자인증
+	
+	function phoneCheck() {
+		
+		window.open("/user/goPhoneCheckForm", "phonewin", "width=400, height=350");
+		
 	}
 
 	
