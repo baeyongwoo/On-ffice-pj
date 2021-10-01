@@ -39,7 +39,7 @@
 						alert("TODO를 완료했습니다.")
 					};
 
-					let stack = 0;
+					let active = false;
 					let afk = 0;
 
 
@@ -47,31 +47,31 @@
 						let result = document.getElementById("result");
 
 						$('*').on("mousemove", _.throttle(function () {
-							stack++;
-							console.log(stack);
-							result.innerHTML = stack;
-						}, 200));
+							active = true;
+							console.log(active);
+							result.innerHTML = active;
+						}, 1000));
 					}
 
-					setTimeout(userStat, 1000);
+					setTimeout(userStat, 0);
 
 					setInterval(function () {
 						let result = document.getElementById("result");
-						if (stack > 1) {
-							stack = 0;
-							console.log(stack);
-							result.innerHTML = stack;
+						if (active != false) {
+							active = false;
+							console.log(active);
+							result.innerHTML = active;
 						}
 					}, 5000);
 
 					setInterval(function () {
-						if (stack === 0) {
+						if (active === false) {
 							if (afk < 10) {
 								afk++;
 								console.log("afk" + afk);
 							}
 							else if (afk === 10) {
-								$('#AFK').modal('show');
+								$('#AFKModal').modal({ backdrop: 'static', keyboard: false });
 
 								$.ajax({
 									url: "/mypage/awayFromKeyboard",
@@ -92,7 +92,7 @@
 								afk += 1;
 							}
 
-						} else if (stack > 0) {
+						} else if (active === true) {
 							afk = 0;
 						}
 					}, 1000);
@@ -308,15 +308,13 @@
 				</form>
 
 				<!-- Modal AFK -->
-				<div class="modal fade" id="AFK" tabindex="-1" aria-hidden="true">
+				<div class="modal fade" id="AFKModal" tabindex="-1" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h3 class="modal-title" id="exampleModalLabel">
 									부재중입니다.
 								</h3>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
 								<h5>부재중 상태를 해제하려면 아래 버튼을 클릭하세요</h5>
