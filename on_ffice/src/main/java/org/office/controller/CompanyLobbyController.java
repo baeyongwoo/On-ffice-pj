@@ -95,11 +95,11 @@ public class CompanyLobbyController {
 			if(vo.getDp_code() == dp_codeCI) {	//로그인 세션이 있을 경우
 				model.addAttribute("dpu_list", us.allUserInfoByDp(dp_codeCI));
 				
-				model.addAttribute("dpc_list", dcs.list(""));	//dpc 부서 커뮤니티
+				model.addAttribute("dpc_list", dcs.list(dp_codeCI));	//dpc 부서 커뮤니티
 				
 				model.addAttribute("dpinfo", ds.getDpInfo(dp_codeCI));
 				
-				log.info("부서 게시판 : " + dcs.list(""));
+				log.info("부서 게시판 : " + dcs.list(dp_codeCI));
 					
 				}else {
 					return "redirect:/company/loginNot";
@@ -117,13 +117,6 @@ public class CompanyLobbyController {
 		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
 	
-	
-	@GetMapping("/dpc")
-	public String movedpc() {
-		dcs.list("");
-		
-		return "/dpcommunity/dpclist";
-	}
 	
 	@GetMapping("/userInfo")
 	public String getInfo(Model model, HttpSession session){

@@ -11,13 +11,13 @@
 <body>
 	<h2>부서 자유 게시판 수정 페이지</h2>
 	
-	<form action="/dpcommunity/Update" method="post">
+	<form action="/dpcommunity/Update?dc_num=${dpcList.dc_num}" method="post">
 		<input type="text" name="dc_num" value="${dpcommunity.dc_num}" readonly="readonly"><br/>
 		<input type="text" name="dp_code" value="${dpcommunity.dp_code}" readonly="readonly"><br/>
 		<input type="text" name="dtitle" value="${dpcommunity.dtitle}"><br/>
-		<input type="hidden" name="pageNum" value="${btnMaker.cri.pageNum}"><br/>
-		<input type="hidden" name="searchType" value="${btnMaker.cri.searchType}"><br/>
-		<input type="hidden" name="keyword" value="${btnMaker.cri.keyword}"><br/>
+		<input type="hidden" name="pageNum" value="${param.pageNum}">
+		<input type="hidden" name="searchType" value="${param.searchType}">
+		<input type="hidden" name="keyword" value="${param.keyword}">
 		<textarea rows="10" cols="50" name="dcontent">${dpcommunity.dcontent}</textarea><br/>
 		<input type="text" name="dwriter" value="${dpcommunity.dwriter}" readonly="readonly"><br/>
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createTodo">수정하기</button>

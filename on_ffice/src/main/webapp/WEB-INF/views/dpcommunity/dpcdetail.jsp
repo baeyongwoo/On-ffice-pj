@@ -31,9 +31,12 @@
 			
 		<form action="/dpcommunity/dpcupdate" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
+			<input type="hidden" name="pageNum" value="${param.pageNum}">
+			<input type="hidden" name="searchType" value="${param.searchType}">
+			<input type="hidden" name="keyword" value="${param.keyword}">
 			<button type="submit" class="btn btn-warning" data-bs-toggle="modal">수정하기</button>
 		</form>
-		<form action="/dpcommunity/dpcdelete" method="post">
+		<form action="/dpcommunity/dpcdelete?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createTodo">삭제하기</button>
 			 

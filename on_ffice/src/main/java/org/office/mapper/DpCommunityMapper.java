@@ -9,7 +9,7 @@ import org.office.domain.SearchCriteria;
 public interface DpCommunityMapper {
 	
 // 글 조회 로직
-	public List<DpCommunityVO> DpCommunityList(String keyword);
+	public List<DpCommunityVO> DpCommunityList(int dp_code);
 	
 // 페이징 처리 로직
 	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri);

@@ -20,8 +20,8 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 	private DpCommunityMapper dpcommunitymapper;
 	
 	@Override
-	public List<DpCommunityVO> list(String keyword) {
-		List<DpCommunityVO> DpCommunityList = dpcommunitymapper.DpCommunityList("");
+	public List<DpCommunityVO> list(int dp_code) {
+		List<DpCommunityVO> DpCommunityList = dpcommunitymapper.DpCommunityList(dp_code);
 		log.info("service dpcommunitylist" + DpCommunityList);
 		return DpCommunityList;		
 	}

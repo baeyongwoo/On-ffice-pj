@@ -18,16 +18,11 @@
 		</sql>
 
 
-<!-- Lobby에서 사용하논 로직 -->
-<!-- 글 조회 로직 -->
+<!-- 부서로비에서 글 조회하는 로직 -->
 <select id="DpCommunityList" resultType="org.office.domain.DpCommunityVO">
-	<![CDATA[
-		SELECT * FROM depart_community WHERE dc_num > 0
-	]]>
-		<include refid="search"></include>
-	<![CDATA[
-	 	ORDER BY dc_num DESC
-	]]>
+	
+	SELECT * FROM depart_community WHERE dp_code = #{dp_code} ORDER BY dc_num DESC limit 0, 5
+
 </select>
 
 <!-- 페이징 처리 로직 -->
