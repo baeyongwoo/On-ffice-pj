@@ -20,7 +20,7 @@
 				
 		 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createTodo">작성하기</button>	
 		 <button type="reset" class="btn btn-warning">초기화</button>
-		<!-- <input type="reset" value="초기화"> -->
+		
 		<!-- Modal -->
    			<div class="modal fade" id="createTodo" tabindex="-1" aria-hidden="true">
 			  <div class="modal-dialog">

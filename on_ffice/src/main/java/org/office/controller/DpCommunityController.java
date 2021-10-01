@@ -30,6 +30,9 @@ public class DpCommunityController {
 	@GetMapping("/dpclist")
 	public void dpCommunityList(SearchCriteria cri, Model model) {
 		
+		int pageNum = cri.getPageNum();
+		cri.setPageNum((pageNum*10)-9);
+		
 		log.info("부서 자유 게시판 로직 접속");
 		List<DpCommunityVO> DpCListPage = service.DpCListPaging(cri);
 		

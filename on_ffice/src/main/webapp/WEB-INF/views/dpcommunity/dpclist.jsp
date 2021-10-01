@@ -77,8 +77,8 @@
 	
 		<input type="text" name="keyword" id="keywordInput"
 		placeholder="검색어" value="${btnMaker.cri.keyword}">
-		<button id="submit">검색하기</button>
-				
+		<button id="searchBtn">검색하기</button>
+					
 	</form>
 		
 	<nav aria-label="Page navigation example">

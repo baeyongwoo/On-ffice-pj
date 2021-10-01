@@ -18,6 +18,7 @@
 		</sql>
 
 
+<!-- Lobby에서 사용하논 로직 -->
 <!-- 글 조회 로직 -->
 <select id="DpCommunityList" resultType="org.office.domain.DpCommunityVO">
 	<![CDATA[
@@ -27,7 +28,6 @@
 	<![CDATA[
 	 	ORDER BY dc_num DESC
 	]]>
-	
 </select>
 
 <!-- 페이징 처리 로직 -->
@@ -38,13 +38,16 @@
 		<include refid="search"></include>
 		
 	<![CDATA[
-		ORDER BY dc_num DESC limit #{pageNum}, #{amount}
+		ORDER BY dc_num DESC limit #{pageNum}, #{amount} 
 	]]>
 </select>
 
 <!-- 글 전체 가져오는 로직 -->
 <select id="getTotalBoard" resultType="int">
-	SELECT COUNT(*) FROM depart_community WHERE dc_num > 0
+	<![CDATA[
+		SELECT COUNT(*) FROM depart_community WHERE dc_num > 0
+	]]>
+		<include refid="search"></include>
 </select>
 
 <!-- 글 상세보기 로직 -->
