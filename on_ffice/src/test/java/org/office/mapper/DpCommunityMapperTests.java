@@ -29,7 +29,7 @@ public class DpCommunityMapperTests {
 		log.info(dpcommunityMapper.DpCdetail(5));
 	}
 	
-	@Test
+	//@Test
 	public void testDpCWrite() {
 		
 		DpCommunityVO vo = new DpCommunityVO();
@@ -59,10 +59,5 @@ public class DpCommunityMapperTests {
 		log.info("부서 게시글 삭제중...");
 		dpcommunityMapper.DpCdelete(7);
 	}
-	
-	
-	
-	
-	
 	
 }

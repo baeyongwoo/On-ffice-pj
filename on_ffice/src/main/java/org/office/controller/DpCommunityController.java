@@ -30,12 +30,16 @@ public class DpCommunityController {
 	@GetMapping("/dpclist")
 	public void dpCommunityList(SearchCriteria cri, Model model) {
 		
+		int pageNum = cri.getPageNum();
+		cri.setPageNum((pageNum*10)-9);
+		
 		log.info("부서 자유 게시판 로직 접속");
 		List<DpCommunityVO> DpCListPage = service.DpCListPaging(cri);
 		
 		int total = service.getTotalBoard(cri);
 		
 		PageDTO btnMaker = new PageDTO(cri, total, 10);
+		
 		
 		model.addAttribute("btnMaker", btnMaker);
 		model.addAttribute("dpCommunityList", DpCListPage);
@@ -87,19 +91,26 @@ public class DpCommunityController {
 	}
 	
 	@PostMapping("/dpcupdate")
-	public String DpCupdate(int dc_num, Model model) {
+	public String DpCupdate(SearchCriteria cri, int dc_num, Model model, RedirectAttributes rttr) {
 		DpCommunityVO vo = service.DpCdetail(dc_num);
 		log.info("dpcUpdate에서 받아온 vo : " + vo);
 		model.addAttribute("dpcommunity", vo);
 		
-		return "/dpcommunity/dpcupdate";
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+				
+		return "redirect:/dpcommunity/dpc";
 	}
 	
 	@PostMapping("/dpcdelete")
-	public String DpCdelete(int dc_num, RedirectAttributes rttr) {
+	public String DpCdelete(SearchCriteria cri, int dc_num, RedirectAttributes rttr) {
 		service.DpCdelete(dc_num);
 		rttr.addFlashAttribute("result", "success");
 		rttr.addFlashAttribute("dc_num", dc_num);
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/dpcommunity/dpclist";
 	}

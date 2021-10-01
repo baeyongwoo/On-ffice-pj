@@ -16,7 +16,7 @@ import org.office.domain.SearchCriteria;
 public interface DpCommunityService {
 	
 	// 글 조회 서비스
-	public List<DpCommunityVO> list(String keyword);
+	public List<DpCommunityVO> list(int dp_code);
 	
 	// 페이징 글 목록
 	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri);

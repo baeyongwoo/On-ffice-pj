@@ -13,6 +13,7 @@
 <body>
 	<h1>부서 자유 게시판</h1>
 	
+	
 	<table>
 		<tr>
 			<th>부서명</th>
@@ -25,6 +26,7 @@
 		</tr>
 	</table>
 	<c:forEach items="${dpCommunityList}" var="dpcList">
+		<c:if test="${dpcList.dp_code eq login_session.dp_code}">
 			<tr>	
 				<c:if test="${dpcList.dp_code eq 1}">
 				<td>인사부</td>
@@ -47,6 +49,7 @@
 				<td>${dpcList.dhits}</td>
 			</tr>
 		<br/>		
+		</c:if>
 	</c:forEach>
 	<a href="/dpcommunity/dpcwrite"><button>게시글 작성</button></a>
 	<c:set var="user" value="${login_session}" />
@@ -77,8 +80,8 @@
 	
 		<input type="text" name="keyword" id="keywordInput"
 		placeholder="검색어" value="${btnMaker.cri.keyword}">
-		<button id="submit">검색하기</button>
-				
+		<button id="searchBtn">검색하기</button>
+					
 	</form>
 		
 	<nav aria-label="Page navigation example">
