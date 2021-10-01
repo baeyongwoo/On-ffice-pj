@@ -42,7 +42,9 @@ public class MyPageController {
 	private UserService user_service;
 
 	@GetMapping("/main")
-	public void getInfo(Model model, HttpServletRequest request) {
+	public String getInfo(Model model, HttpServletRequest request) {
+		
+		try{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		HttpSession session = request.getSession();
 		UserVO login_session = (UserVO) session.getAttribute("login_session");
@@ -61,6 +63,14 @@ public class MyPageController {
 		model.addAttribute("login_time", login_time);
 		model.addAttribute("todoList", todoList);
 		model.addAttribute("users", userList);
+
+		return "/mypage/main";
+		
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return "/user/logintry_req";
+		}
 	}
 
 	@PostMapping("/insertTodo")
