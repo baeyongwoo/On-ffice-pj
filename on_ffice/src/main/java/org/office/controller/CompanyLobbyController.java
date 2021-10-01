@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.office.domain.NoticeVO;
 import org.office.domain.UserVO;
+import org.office.service.BirthService;
 import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
 import org.office.service.MenuService;
@@ -51,6 +52,9 @@ public class CompanyLobbyController {
 	
 	@Autowired
 	MenuService ms;
+	
+	@Autowired
+	BirthService bs;
 
 	@GetMapping("/lobby")
 	public String showlobby(Model model, HttpSession session) {
@@ -66,40 +70,10 @@ public class CompanyLobbyController {
 		log.info("rice 정보 : " + rs.selectRice());
 		model.addAttribute("rice", rs.selectRice());
 		
-		Calendar c = Calendar.getInstance();
-		List<UserVO> user = us.allUserInfo(); // 6
-		List<String> birth_user = new ArrayList<>(); // 생일인 사람 저장하는 list
-		List<UserVO> birth_user_view = new ArrayList<>();
-		String month = null;
-		String temp = null; // user에서 꺼내온 생일 담을 변수
-		int monthi = c.get(Calendar.MONTH) + 1;
-		String months = String.valueOf(monthi); // int -> string으로 바꾸기
-		String zero = "0"; // 만약 10월 미만일 경우 두자리 만들어주기 위해
-		log.info("months길이 " + months.length());
-		log.info("이번달 : " + months);
-		log.info("userList갯수 : " + user.size());
-		if (months.length() == 1) {
-			month = zero + months;	//concat으로 해볼까 생각중
-		}
-
-		for (int i = 0; i <= user.size() - 1; i++) {
-			temp = user.get(i).getBirth();
-			if (temp.substring(5, 7).equals(month) || temp.substring(5, 7).equals(months)) {
-				log.info("한번 실행");
-
-				birth_user.add(user.get(i).getUid());
-			}
-
-		}
-
-		log.info("birth : " + birth_user);
-		log.info("brith_user" + birth_user.size());
-		for (int i = 0; i <= birth_user.size() - 1; i++) {
-			birth_user_view.add(us.userInfo(birth_user.get(i)));
-		}
-		log.info("생일인 사람 : " + birth_user_view);
-		 model.addAttribute("blist", birth_user_view);
-		 
+		List<UserVO> birth_user_view = bs.getBirth();
+		log.info("birth 서비스에서 받아온 정보 : " + birth_user_view);
+		model.addAttribute("blist", birth_user_view);
+	
 		
 		return "/company/lobby";
 	}
@@ -166,7 +140,7 @@ public class CompanyLobbyController {
 	}
 	
 	@SuppressWarnings("null")
-	@Scheduled(cron="* * * * * 0") // 초 분 시 일 월 요일 (년)   0 - 일요일 1 - 월요일
+	@Scheduled(cron="0 0 0 * * 1") // 초 분 시 일 월 요일 (년)   0 - 일요일 1 - 월요일
 	@GetMapping("/menu")
 	public String getMenu() {
 		
