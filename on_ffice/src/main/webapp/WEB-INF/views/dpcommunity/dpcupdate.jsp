@@ -11,7 +11,7 @@
 <body>
 	<h2>부서 자유 게시판 수정 페이지</h2>
 	
-	<form action="/dpcommunity/Update?dc_num=${dpcList.dc_num}" method="post">
+	<form action="/dpcommunity/Update" method="post">
 		<input type="text" name="dc_num" value="${dpcommunity.dc_num}" readonly="readonly"><br/>
 		<input type="text" name="dp_code" value="${dpcommunity.dp_code}" readonly="readonly"><br/>
 		<input type="text" name="dtitle" value="${dpcommunity.dtitle}"><br/>

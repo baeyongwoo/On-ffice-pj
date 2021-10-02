@@ -83,24 +83,23 @@ public class DpCommunityController {
 		log.info("Update에서 받아온 vo : " + vo);
 		service.DpCupdate(vo);
 				
+		rttr.addAttribute("dc_num", vo.getDc_num());
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		
-		return "redirect:/dpcommunity/dpcdetail?dc_num=" + vo.getDc_num();
+		return "redirect:/dpcommunity/dpcdetail";
 	}
 	
 	@PostMapping("/dpcupdate")
-	public String DpCupdate(SearchCriteria cri, int dc_num, Model model, RedirectAttributes rttr) {
+	public String DpCupdate(int dc_num, Model model) {
+		
 		DpCommunityVO vo = service.DpCdetail(dc_num);
 		log.info("dpcUpdate에서 받아온 vo : " + vo);
+		
 		model.addAttribute("dpcommunity", vo);
 		
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("searchType", cri.getSearchType());
-		rttr.addAttribute("keyword", cri.getKeyword());
-				
-		return "redirect:/dpcommunity/dpc";
+		return "/dpcommunity/dpcupdate";
 	}
 	
 	@PostMapping("/dpcdelete")

@@ -28,7 +28,7 @@ public class DpCommunityServiceTests {
 	//@Test
 	public void testDpCList() {
 		
-		service.list("");
+		service.list(1);
 	}
 	
 	//@Test

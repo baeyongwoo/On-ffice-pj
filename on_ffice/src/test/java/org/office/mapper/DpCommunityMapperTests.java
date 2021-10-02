@@ -20,7 +20,7 @@ public class DpCommunityMapperTests {
 	//@Test
 	public void testDpCList() {
 		log.info("부서 게시글 조회중...");
-		log.info(dpcommunityMapper.DpCommunityList(""));
+		log.info(dpcommunityMapper.DpCommunityList(1));
 	}
 	
 	//@Test
