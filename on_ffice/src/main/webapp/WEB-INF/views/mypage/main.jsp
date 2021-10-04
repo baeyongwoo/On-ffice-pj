@@ -71,7 +71,7 @@
 								console.log("afk" + afk);
 							}
 							else if (afk === 10) {
-								$('#AFKModal').modal({ backdrop: 'static', keyboard: false });
+								$('#AFKModal').modal('show');
 
 								$.ajax({
 									url: "/mypage/awayFromKeyboard",
@@ -204,6 +204,10 @@
 									</tr>
 								</c:forEach>
 							</table>
+							<c:forEach items="${page }" var="page">
+							${page }
+							</c:forEach>
+							${btnMaker }
 						</div>
 					</div>
 					<div class="row">

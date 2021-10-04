@@ -12,12 +12,13 @@ package org.office.service;
 
 import java.util.List;
 
+import org.office.domain.TodoCri;
 import org.office.domain.TodoVO;
 
 public interface TodoService {
 
 	// 서비스 하나당 기능 하나
-	public List<TodoVO> getTodoList(int empno);
+	public List<TodoVO> getTodoList(TodoCri cri);
 
 	public void insertTodo(TodoVO vo);
 
@@ -26,4 +27,6 @@ public interface TodoService {
 	public TodoVO getTodo(int todo_num);
 
 	public void statTodo(TodoVO vo);
+	
+	public int todoCnt();
 }

@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.office.domain.MenuVO;
+import org.office.domain.TodoCri;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 
@@ -24,7 +25,7 @@ public interface TodoMapper {
 
 	public MenuVO getMeal(String dailymeal); 
 	
-	public List<TodoVO> getTodoList(int empno);
+	public List<TodoVO> getTodoList(TodoCri cri);
 	
 	public void insertTodo(TodoVO vo);
 	
@@ -33,4 +34,6 @@ public interface TodoMapper {
 	public TodoVO getTodo(int todo_num);
 
 	public void statTodo(TodoVO vo);
+	
+	public int todoCnt();
 }

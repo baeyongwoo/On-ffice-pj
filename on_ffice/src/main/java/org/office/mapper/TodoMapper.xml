@@ -14,7 +14,9 @@
 
     <select id="getTodoList" resultType="org.office.domain.TodoVO">
         <![CDATA[
- SELECT todo_num, checker, todo_title, todo_content, recive_time, complete FROM todo WHERE worker=#{worker} AND complete="ing"
+ SELECT todo_num, checker, todo_title, todo_content, recive_time, complete FROM todo
+WHERE worker=#{worker} AND complete="ing"
+ORDER BY todo_num DESC LIMIT #{pageNum}, #{amount}
  ]]>
     </select>
 
@@ -40,6 +42,12 @@
     <select id="getTodo" resultType="org.office.domain.TodoVO">
         <![CDATA[
  SELECT * FROM todo WHERE todo_num = #{todo_num}
+ ]]>
+    </select>
+
+  <select id="todoCnt" resultType="int">
+        <![CDATA[
+SELECT COUNT(todo_num) FROM todo
  ]]>
     </select>
 

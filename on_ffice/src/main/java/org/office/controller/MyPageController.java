@@ -16,6 +16,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.office.domain.TodoCri;
+import org.office.domain.TodoDTO;
 import org.office.domain.TodoVO;
 import org.office.domain.UserVO;
 import org.office.service.TodoService;
@@ -42,19 +44,24 @@ public class MyPageController {
 	private UserService user_service;
 
 	@GetMapping("/main")
-	public String getInfo(Model model, HttpServletRequest request) {
+	public String getInfo(Model model, HttpServletRequest request, TodoCri cri) {
 		
 		try{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		HttpSession session = request.getSession();
 		UserVO login_session = (UserVO) session.getAttribute("login_session");
-		String login_time = formatter.format(session.getCreationTime());
-
+		String login_time = formatter.format(session.getCreationTime());	
+		cri.setPageNum(0);
+		cri.setWorker(login_session.getEmpno());
+		int totalPage = service.todoCnt();
+		TodoDTO btnMaker = new TodoDTO(cri, totalPage, 10);
+		
+		
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
 		UserVO uservo = user_service.login(login_session.getUid(), login_session.getUpw());
 		log.info("받아온 정보 : " + uservo);
-		List<TodoVO> todoList = service.getTodoList(login_session.getEmpno());
+		List<TodoVO> todoList = service.getTodoList(cri);
 		log.info("받아온 할일 : " + todoList);
 		List<UserVO> userList = user_service.allUserInfo();
 		log.info("전체유저리스트 :" + userList);
@@ -63,7 +70,8 @@ public class MyPageController {
 		model.addAttribute("login_time", login_time);
 		model.addAttribute("todoList", todoList);
 		model.addAttribute("users", userList);
-
+		model.addAttribute("btnMaker", btnMaker);
+		
 		return "/mypage/main";
 		
 		}

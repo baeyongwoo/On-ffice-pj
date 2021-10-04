@@ -13,6 +13,7 @@ package org.office.service;
 
 import java.util.List;
 
+import org.office.domain.TodoCri;
 import org.office.domain.TodoVO;
 import org.office.mapper.TodoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,9 @@ public class TodoServiceImpl implements TodoService {
 	private TodoMapper mapper;
 
 	@Override
-	public List<TodoVO> getTodoList(int empno) {
+	public List<TodoVO> getTodoList(TodoCri cri) {
 		log.info("TODO 리스트 생성");
-		List<TodoVO> vo = mapper.getTodoList(empno);
+		List<TodoVO> vo = mapper.getTodoList(cri);
 		return vo;
 	}
 
@@ -60,6 +61,12 @@ public class TodoServiceImpl implements TodoService {
 		log.info("TODO상태 변경");
 		mapper.statTodo(vo);
 
+	}
+
+	@Override
+	public int todoCnt() {
+		return mapper.todoCnt();
+		
 	}
 
 }
