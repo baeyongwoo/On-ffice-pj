@@ -37,11 +37,11 @@ public class DpCommunityControllerTests {
 		
 		log.info(
 				mockMvc.perform(
-						MockMvcRequestBuilders.get("/user/dpCommunityList"))
+						MockMvcRequestBuilders.get("/dpcommunity/dpclist"))
 						.andReturn()
 						.getModelAndView()
 						.getModelMap()
 						);
 	}
-
+	
 }

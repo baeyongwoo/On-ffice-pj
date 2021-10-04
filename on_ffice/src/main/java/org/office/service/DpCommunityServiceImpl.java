@@ -67,8 +67,8 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 
 	@Override
 	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri) {
-				
-		return dpcommunitymapper.DpCListPaging(cri);
+		List<DpCommunityVO> DpCList = dpcommunitymapper.DpCListPaging(cri);
+		return DpCList;
 	}
 
 	@Override

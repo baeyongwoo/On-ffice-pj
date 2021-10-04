@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.office.domain.DpCommunityVO;
+import org.office.domain.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -67,6 +68,13 @@ public class DpCommunityServiceTests {
 		service.DpCdelete(6);
 	}
 	
+	@Test
+	public void testDpCAllList() {
+		SearchCriteria cri = new SearchCriteria();
+		
+		service.DpCListPaging(cri);
+		
+	}
 	
 }
 

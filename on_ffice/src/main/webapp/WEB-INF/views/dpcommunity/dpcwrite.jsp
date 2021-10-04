@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>부서 자유 게시판 작성 창</h2>
+	<h2>부서 자유 게시글 작성 창</h2>
 	
 	<form action="/dpcommunity/dpcwrite" method="post">
 		<input type="hidden" name="dp_code" value="${login_session.dp_code}" readonly="readonly"><br/>
@@ -18,11 +18,11 @@
 		<textarea rows="10" cols="50" name="dcontent" required="required"></textarea><br/>
 		<input type="text" name="dwriter" value="${login_session.name}" readonly="readonly"><br/>
 				
-		 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createTodo">작성하기</button>	
-		 <button type="reset" class="btn btn-warning">초기화</button>
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#write">작성하기</button>
+		<button type="reset" class="btn btn-warning">초기화</button>
 		
 		<!-- Modal -->
-   			<div class="modal fade" id="createTodo" tabindex="-1" aria-hidden="true">
+   			<div class="modal fade" id="write" tabindex="-1" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -30,7 +30,7 @@
 			      </div>
 			      	<div class="modal-body"> 
 			      	<input type="submit" value="작성완료">
-			      	<button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#createTodo" aria-label="Close">취소</button> 
+			      	<button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#write" aria-label="Close">취소</button> 
 					</div>
 			      </div>
 			    </div>

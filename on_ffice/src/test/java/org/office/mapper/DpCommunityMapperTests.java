@@ -3,6 +3,7 @@ package org.office.mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.office.domain.DpCommunityVO;
+import org.office.domain.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -58,6 +59,14 @@ public class DpCommunityMapperTests {
 	public void testDpCDelete() {
 		log.info("부서 게시글 삭제중...");
 		dpcommunityMapper.DpCdelete(7);
+	}
+	
+	@Test
+	public void testDpCAllList() {
+		SearchCriteria cri = new SearchCriteria();
+		
+		log.info("부서 전체 글 조회중...");
+		dpcommunityMapper.DpCListPaging(cri);
 	}
 	
 }
