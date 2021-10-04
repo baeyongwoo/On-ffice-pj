@@ -2,7 +2,9 @@ package org.office.controller;
 
 import java.util.List;
 
+import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
+import org.office.domain.PageDTO;
 import org.office.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,17 +28,23 @@ public class NoticeController {
 	private NoticeService service;
 	
 	@GetMapping("/noticeList")
-	public void noticeList(Model model) {
+	public void noticeList(Criteria cri, Model model) {
 			
 		log.info("게시글 로직 접속");
-		List<NoticeVO> noticeList = service.list();
+		List<NoticeVO> noticeList = service.list(cri);
+		
+		int total = service.getTotalNotice();
+		PageDTO btnMaker = new PageDTO(cri, total, 10);
+		
 		model.addAttribute("noticeList",noticeList);
+		model.addAttribute("btnMaker", btnMaker);
+		log.info("btnMaker" + btnMaker);
 	}
 	
 	@GetMapping("/category")
-	public void category(String ncategory, Model model) {
+	public void category(String ncategory, Model model, Criteria cri) {
 		log.info("form에서 받은 데이터 : " + ncategory);
-		model.addAttribute("category", service.category(ncategory));
+		model.addAttribute("category", service.category(ncategory, cri));
 
 	}
 	

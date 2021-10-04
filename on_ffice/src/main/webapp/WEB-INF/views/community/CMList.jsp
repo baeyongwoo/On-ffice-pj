@@ -24,13 +24,36 @@
 	</c:forEach>
 	<a href="/company/lobby">로비로가기</a>
 	<!-- url로 접속할 때 잘못된 주소로 접근하면 error창 처리하는 것 만들기 -->
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+			<c:if test="${btnMaker.prev}">
+				<li class="page-item">
+				<a class="page-link" href="/notice/noticeList?pageNum=${btnMaker.startPage - 1}">
+				Previous</a>
+				</li>
+			</c:if>
+			
+			<c:forEach begin="${btnMaker.startPage}"
+						end="${btnMaker.endPage}"
+						var="pageNum">
+				<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ''}">
+				<a class="page-link" href="/notice/noticeList?pageNum=${pageNum}">${pageNum}</a>
+				</li>
+			</c:forEach>
+			
+			<c:if test="${btnMaker.next}">
+				<li class="page-item">
+				<a class="page-link" href="/notice/noticeList?pageNum=${btnMaker.endPage + 1}">Next</a></li>	
+			</c:if>
+		</ul>
+	</nav>
 
  <script>
  	var ccode = "${community_num}";
  	console.log(ccode);
  
  </script>
- 
+ 	
 
  
 </body>

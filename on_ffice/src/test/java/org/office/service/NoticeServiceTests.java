@@ -28,7 +28,7 @@ public class NoticeServiceTests {
 	//@Test
 	public void testList() {
 		
-		service.list();
+		//service.list();
 	}
 	
 	@Test

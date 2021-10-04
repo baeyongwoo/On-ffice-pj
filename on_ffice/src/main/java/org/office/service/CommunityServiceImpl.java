@@ -3,6 +3,7 @@ package org.office.service;
 import java.util.List;
 
 import org.office.domain.CommunityVO;
+import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
 import org.office.mapper.CommunityMapper;
 import org.office.mapper.NoticeMapper;
@@ -21,12 +22,18 @@ public class CommunityServiceImpl implements CommunityService{
 	private CommunityMapper CM;
 	
 	@Override
-	public List<CommunityVO> list() {
-		List<CommunityVO> CommunityList = CM.CommunityList();
+	public List<CommunityVO> list(Criteria cri) {
+		List<CommunityVO> CommunityList = CM.CommunityList(cri);
 		log.info("service Communitylist" + CommunityList);
 		log.info("전체 글 목록 조회");
 		return CommunityList;
 	}
+	
+	@Override
+	public int getTotalCommunity() {
+		return CM.getTotalNotice();
+	}
+
 	
 	@Override
 	public void write(CommunityVO vo) {
@@ -67,6 +74,7 @@ public class CommunityServiceImpl implements CommunityService{
 		log.info("글 조회수 증가");
 		CM.chit_up(community_num);;
 	}
+
 
 
 }

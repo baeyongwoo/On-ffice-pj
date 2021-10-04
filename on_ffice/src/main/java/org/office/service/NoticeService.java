@@ -11,13 +11,16 @@ package org.office.service;
 
 import java.util.List;
 
+import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
 
 public interface NoticeService {
 	
 	//글 조회 서비스
-	public List<NoticeVO> list();
+	public List<NoticeVO> list(Criteria cri);
 	
+	//글 전체 갯수 가져오기
+	public int getTotalNotice();
 	//글 상세보기 서비스
 	public NoticeVO detail(int notice_num);
 	
@@ -25,7 +28,7 @@ public interface NoticeService {
 	public List<NoticeVO> lobbyNList();
 	
 	//카테고리 서비스
-	public List<NoticeVO> category(String ncategory);
+	public List<NoticeVO> category(String ncategory, Criteria cri);
 	
 	// 글 작성 서비스
 	public void write(NoticeVO vo);

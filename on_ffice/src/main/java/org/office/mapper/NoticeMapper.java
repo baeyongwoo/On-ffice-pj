@@ -3,21 +3,25 @@ package org.office.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
 
 public interface NoticeMapper {
 
 // 글 조회 로직
-	public List<NoticeVO> noticeList();
+	public List<NoticeVO> noticeList(Criteria cri);
+
+// 전체 글 가져오는 로직
+	public int getTotalNotice();
 
 // 글 상세보기 로직
 	public NoticeVO notice_detail(int notice_num);
 	
 // lobby 글 조회 로직
 	public List<NoticeVO> lobbyNList();
-	
+		
 // 카테고리 로직
-	public List<NoticeVO> category(List<NoticeVO> list, @Param("ncategory")String ncategory);
+	public List<NoticeVO> category(List<NoticeVO> list, @Param("ncategory")String ncategory, Criteria cri);
 	
 // 글 작성 로직
 	//public void write(NoticeVO vo);

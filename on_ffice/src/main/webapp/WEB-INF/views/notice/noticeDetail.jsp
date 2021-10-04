@@ -9,9 +9,9 @@
 </head>
 <body>
 	<c:set var="nd" value="${noticeDetail}"></c:set>
-	<h2>${nd.notice_num}번쨰 게시글 입니다</h2>
-	<h2>제목 :  ${nd.ntitle}</h2>
-	<h2>내용 : ${nd.ncontent}</h2>
+	<h2><c:out value="${nd.notice_num}"/>${nd.notice_num}번쨰 게시글 입니다</h2>
+	<h2>제목 :  <c:out value="${nd.ntitle}" /></h2>
+	<h2>내용 : <c:out value="${nd.ncontent}" /></h2>
 	<h2>작성자 : ${login_session.name}</h2>
 	<h2>작성일 : ${nd.ndate}</h2>
 	<h2>최근 업데이트 : ${nd.nupdate}</h2>

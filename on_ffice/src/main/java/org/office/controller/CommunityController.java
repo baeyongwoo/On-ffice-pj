@@ -3,6 +3,8 @@ package org.office.controller;
 import java.util.List;
 
 import org.office.domain.CommunityVO;
+import org.office.domain.Criteria;
+import org.office.domain.PageDTO;
 import org.office.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +28,15 @@ public class CommunityController {
 	private CommunityService cs;
 
 	@GetMapping("/CMList")
-	public void csList(Model model) {
+	public void csList(Model model, Criteria cri) {
 
 		log.info("게시글 로직 접속");
-		List<CommunityVO> communityList = cs.list();
+		List<CommunityVO> communityList = cs.list(cri);
+		int total = cs.getTotalCommunity();
+		PageDTO btnMaker = new PageDTO(cri, total, 10);
 		model.addAttribute("cmList", communityList);
+		model.addAttribute("btnMaker", btnMaker);
+		
 	}
 	@PostMapping("/write")
 	public String write(CommunityVO vo, RedirectAttributes rttr) {

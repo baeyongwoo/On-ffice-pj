@@ -2,6 +2,7 @@ package org.office.service;
 
 import java.util.List;
 
+import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
 import org.office.mapper.NoticeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,16 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeMapper noticemapper;
 
 	@Override
-	public List<NoticeVO> list() {
-		List<NoticeVO> NoticeList = noticemapper.noticeList();
+	public List<NoticeVO> list(Criteria cri) {
+		List<NoticeVO> NoticeList = noticemapper.noticeList(cri);
 		log.info("service noticelist" + NoticeList);
 		log.info("전체 글 목록 조회");
 		return NoticeList;
+	}
+	
+	@Override
+	public int getTotalNotice() {
+		return noticemapper.getTotalNotice();
 	}
 	
 	@Override
@@ -81,12 +87,14 @@ public class NoticeServiceImpl implements NoticeService {
 
 	
 	@Override
-	public List<NoticeVO> category(String ncategory) {
+	public List<NoticeVO> category(String ncategory, Criteria cri) {
 		log.info(ncategory + "만 보기");
-		List<NoticeVO> list = noticemapper.noticeList();
-		List<NoticeVO> nc = noticemapper.category(list, ncategory);
+		List<NoticeVO> list = noticemapper.noticeList(cri);
+		List<NoticeVO> nc = noticemapper.category(list, ncategory, cri);
 		return nc;
 	}
+
+
 
 
 

@@ -29,7 +29,7 @@ public class CMSTest {
 	//@Test
 	public void testList() {
 		
-		cs.list();
+		//cs.list();
 	}
 	
 	//@Test

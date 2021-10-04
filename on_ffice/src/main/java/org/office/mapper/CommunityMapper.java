@@ -3,11 +3,15 @@ package org.office.mapper;
 import java.util.List;
 
 import org.office.domain.CommunityVO;
+import org.office.domain.Criteria;
 
 public interface CommunityMapper {
 
 // 글 조회 로직
-	public List<CommunityVO> CommunityList();
+	public List<CommunityVO> CommunityList(Criteria cri);
+
+// 글 전체 갯수 가져오는 로직
+	public int getTotalNotice();
 
 // 글 상세보기 로직
 	public CommunityVO Community_detail(int community_num);

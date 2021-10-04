@@ -12,11 +12,15 @@ package org.office.service;
 import java.util.List;
 
 import org.office.domain.CommunityVO;
+import org.office.domain.Criteria;
 
 public interface CommunityService {
 	
 	//글 조회 서비스
-	public List<CommunityVO> list();
+	public List<CommunityVO> list(Criteria cri);
+	
+	//글 전체 가져오는 서비스
+	public int getTotalCommunity();
 	
 	//글 상세보기 서비스
 	public CommunityVO detail(int community_num);
