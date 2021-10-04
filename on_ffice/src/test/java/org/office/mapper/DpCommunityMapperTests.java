@@ -66,7 +66,7 @@ public class DpCommunityMapperTests {
 		SearchCriteria cri = new SearchCriteria();
 		
 		log.info("부서 전체 글 조회중...");
-		dpcommunityMapper.DpCListPaging(cri);
+		dpcommunityMapper.getTotalBoard(cri);
 	}
 	
 }

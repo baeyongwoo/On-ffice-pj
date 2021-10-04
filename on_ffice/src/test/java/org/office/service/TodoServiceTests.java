@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.office.domain.TodoCri;
 import org.office.domain.TodoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,7 +28,8 @@ public class TodoServiceTests {
 
 	// @Test
 	public void testgetTodoList() {
-		log.info(service.getTodoList(1));
+		TodoCri cri = new TodoCri();
+		log.info(service.getTodoList(cri));
 
 	}
 

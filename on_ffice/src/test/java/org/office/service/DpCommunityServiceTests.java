@@ -72,7 +72,7 @@ public class DpCommunityServiceTests {
 	public void testDpCAllList() {
 		SearchCriteria cri = new SearchCriteria();
 		
-		service.DpCListPaging(cri);
+		service.getTotalBoard(cri);
 		
 	}
 	
