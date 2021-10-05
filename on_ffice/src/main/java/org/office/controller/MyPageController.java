@@ -46,14 +46,13 @@ public class MyPageController {
 	@GetMapping("/main")
 	public String getInfo(Model model, HttpServletRequest request, TodoCri cri) {
 		
-		try{
+//		try{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		HttpSession session = request.getSession();
 		UserVO login_session = (UserVO) session.getAttribute("login_session");
 		String login_time = formatter.format(session.getCreationTime());
-		cri.setPageNum(cri.getPageStart());
-		log.info(cri.getPageNum());
 		cri.setWorker(login_session.getEmpno());
+		cri.setStartPage((cri.getPageNum() -1) * cri.getAmount());
 		int totalPage = service.todoCnt();
 		TodoDTO btnMaker = new TodoDTO(cri, totalPage, 10);
 		
@@ -75,11 +74,11 @@ public class MyPageController {
 		
 		return "/mypage/main";
 		
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			return "/user/logintry_req";
-		}
+//		}
+//		catch(Exception e) {
+//			e.printStackTrace();
+//			return "/user/logintry_req";
+//		}
 	}
 
 	@PostMapping("/insertTodo")

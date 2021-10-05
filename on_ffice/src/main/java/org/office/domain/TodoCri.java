@@ -7,8 +7,20 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class TodoCri extends SearchCriteria{
+public class TodoCri extends SearchCriteria {
 
+	private int pageNum;
+	private int amount;
 	private int worker;
-	
+	private int startPage;
+
+	public TodoCri() {
+		this(1, 10);
+	}
+
+	public TodoCri (int pageNum, int amount) {
+		this.pageNum = pageNum;
+		this.amount = amount;
+	}
+
 }
