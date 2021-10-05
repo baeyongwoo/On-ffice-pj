@@ -21,6 +21,10 @@ public class Criteria {
 		this.amount = amount;
 	}
 	
+	public int getPageStart() {
+		return (pageNum -1) * amount;
+	}
+	
 	
 
 }

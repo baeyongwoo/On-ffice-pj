@@ -35,16 +35,22 @@ public class NoticeController {
 		
 		int total = service.getTotalNotice();
 		PageDTO btnMaker = new PageDTO(cri, total, 10);
-		
 		model.addAttribute("noticeList",noticeList);
 		model.addAttribute("btnMaker", btnMaker);
 		log.info("btnMaker" + btnMaker);
 	}
 	
 	@GetMapping("/category")
-	public void category(String ncategory, Model model, Criteria cri) {
+	public void category(Criteria cri, String ncategory, Model model) {
 		log.info("form에서 받은 데이터 : " + ncategory);
-		model.addAttribute("category", service.category(ncategory, cri));
+		List<NoticeVO> noticeCate = service.category(cri, ncategory);
+		
+		int total = service.getTotalCategory(ncategory);
+		PageDTO btnMaker = new PageDTO(cri, total, 10);
+		
+		model.addAttribute("category", noticeCate);
+		model.addAttribute("btnMaker", btnMaker);
+		log.info("btnMaker" + btnMaker);
 
 	}
 	

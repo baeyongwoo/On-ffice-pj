@@ -87,14 +87,17 @@ public class NoticeServiceImpl implements NoticeService {
 
 	
 	@Override
-	public List<NoticeVO> category(String ncategory, Criteria cri) {
+	public List<NoticeVO> category(Criteria cri, String ncategory) {
 		log.info(ncategory + "만 보기");
-		List<NoticeVO> list = noticemapper.noticeList(cri);
-		List<NoticeVO> nc = noticemapper.category(list, ncategory, cri);
+		List<NoticeVO> nc = noticemapper.category(cri.getPageStart(), cri.getAmount(), ncategory);
 		return nc;
 	}
 
-
+	@Override
+	public int getTotalCategory(String ncategory) {
+		return noticemapper.getTotalNoticeCate(ncategory);
+		
+	}
 
 
 

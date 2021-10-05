@@ -3,15 +3,12 @@
 <mapper namespace="org.office.mapper.CommunityMapper">
 
 	<!-- 글 조회 로직 -->
-	<select id="CommunityList" resultType="org.office.domain.CommunityVO">
-		SELECT * FROM community ORDER BY community_num DESC
-	</select>
-	
+
 	<select id="CommunityList" resultType="org.office.domain.CommunityVO">
 	 <![CDATA[
 		
 		select * from community where community_num > 0
-		order by community_num desc limit #{pageNum}, #{amount};
+		order by community_num desc limit #{pageStart}, #{amount}
 		 ]]>
 	</select>
 	

@@ -28,7 +28,10 @@ public interface NoticeService {
 	public List<NoticeVO> lobbyNList();
 	
 	//카테고리 서비스
-	public List<NoticeVO> category(String ncategory, Criteria cri);
+	public List<NoticeVO> category(Criteria cri, String ncategory);
+	
+	//카테고리에 의해 갯수
+	public int getTotalCategory(String ncategory);
 	
 	// 글 작성 서비스
 	public void write(NoticeVO vo);

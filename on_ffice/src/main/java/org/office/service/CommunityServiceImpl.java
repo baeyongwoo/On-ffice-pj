@@ -31,7 +31,7 @@ public class CommunityServiceImpl implements CommunityService{
 	
 	@Override
 	public int getTotalCommunity() {
-		return CM.getTotalNotice();
+		return CM.getTotalCommunity();
 	}
 
 	

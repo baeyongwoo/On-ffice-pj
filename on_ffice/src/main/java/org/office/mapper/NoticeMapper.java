@@ -13,6 +13,7 @@ public interface NoticeMapper {
 
 // 전체 글 가져오는 로직
 	public int getTotalNotice();
+	
 
 // 글 상세보기 로직
 	public NoticeVO notice_detail(int notice_num);
@@ -21,7 +22,11 @@ public interface NoticeMapper {
 	public List<NoticeVO> lobbyNList();
 		
 // 카테고리 로직
-	public List<NoticeVO> category(List<NoticeVO> list, @Param("ncategory")String ncategory, Criteria cri);
+	//public List<NoticeVO> category(List<NoticeVO> list, @Param("ncategory")String ncategory, Criteria cri);
+	public List<NoticeVO> category(@Param("PageStart") int PageStart,@Param("amount")int amount, @Param("ncategory") String ncategory);
+
+// 카테고리에 의해 게시글 갯수
+	public int getTotalNoticeCate(String ncategory);
 	
 // 글 작성 로직
 	//public void write(NoticeVO vo);

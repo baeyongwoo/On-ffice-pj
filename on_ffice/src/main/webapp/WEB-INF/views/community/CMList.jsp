@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
 		<ul class="pagination">
 			<c:if test="${btnMaker.prev}">
 				<li class="page-item">
-				<a class="page-link" href="/notice/noticeList?pageNum=${btnMaker.startPage - 1}">
+				<a class="page-link" href="/community/CMList?pageNum=${btnMaker.startPage - 1}">
 				Previous</a>
 				</li>
 			</c:if>
@@ -37,13 +38,13 @@
 						end="${btnMaker.endPage}"
 						var="pageNum">
 				<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ''}">
-				<a class="page-link" href="/notice/noticeList?pageNum=${pageNum}">${pageNum}</a>
+				<a class="page-link" href="/community/CMList?pageNum=${pageNum}">${pageNum}</a>
 				</li>
 			</c:forEach>
 			
 			<c:if test="${btnMaker.next}">
 				<li class="page-item">
-				<a class="page-link" href="/notice/noticeList?pageNum=${btnMaker.endPage + 1}">Next</a></li>	
+				<a class="page-link" href="/community/CMList?pageNum=${btnMaker.endPage + 1}">Next</a></li>	
 			</c:if>
 		</ul>
 	</nav>

@@ -5,9 +5,8 @@
 	<!-- 글 조회 로직 -->
 	<select id="noticeList" resultType="org.office.domain.NoticeVO">
 	 <![CDATA[
-		select * from (select notice_num nn, notice.* from notice
-			where notice_num <= #{pageNum} * #{amount}) tbl
-            where nn > (#{pageNum}-1) * #{amount};
+			select * from notice where notice_num > 0
+			order by notice_num desc limit #{pageStart}, #{amount}
 		 ]]>
 	</select>
 	
@@ -33,10 +32,15 @@
 	<!-- 글 카테고리 로직 -->
 	<select id="category" resultType="org.office.domain.NoticeVO">
 	 <![CDATA[
-		select * from notice
-		where notice_num > 0
-		order by notice_num desc limit #{pageNum}, #{amount};
+	select * from notice  
+	where notice_num >0 and ncategory=#{ncategory} 
+	order by notice_num desc 
+	limit #{PageStart}, #{amount}
      ]]>
+	</select>
+	
+	<select id="getTotalNoticeCate" resultType="int">
+		SELECT count(*) FROM notice WHERE ncategory=#{ncategory}
 	</select>
 	
 	<!-- 글 조회수 증가 로직 -->

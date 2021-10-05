@@ -11,7 +11,7 @@ public interface CommunityMapper {
 	public List<CommunityVO> CommunityList(Criteria cri);
 
 // 글 전체 갯수 가져오는 로직
-	public int getTotalNotice();
+	public int getTotalCommunity();
 
 // 글 상세보기 로직
 	public CommunityVO Community_detail(int community_num);
