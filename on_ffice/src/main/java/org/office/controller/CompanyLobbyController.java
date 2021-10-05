@@ -133,7 +133,8 @@ public class CompanyLobbyController {
 	}
 	
 	@SuppressWarnings("null")
-	@Scheduled(cron="0 0 0 * * 1") // 초 분 시 일 월 요일 (년)   0 - 일요일 1 - 월요일
+	@Scheduled(cron="10 * * * * *") // 초 분 시 일 월 요일 (년)   0 - 일요일 1 - 월요일
+	// 나중에 "0 0 0 * * 1로 바꿀것"
 	@GetMapping("/menu")
 	public String getMenu() {
 		

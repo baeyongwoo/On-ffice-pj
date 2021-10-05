@@ -28,7 +28,7 @@ public class BirthSerivceImpl implements BirthService{
 		List<UserVO> birth_user_view = new ArrayList<>();
 		String month = null;
 		String temp = null; // user에서 꺼내온 생일 담을 변수
-		int monthi = c.get(Calendar.MONTH);
+		int monthi = c.get(Calendar.MONTH) + 1;
 		String months = String.valueOf(monthi); // int -> string으로 바꾸기
 		String zero = "0"; // 만약 10월 미만일 경우 두자리 만들어주기 위해
 		log.info("months길이 " + months.length());
