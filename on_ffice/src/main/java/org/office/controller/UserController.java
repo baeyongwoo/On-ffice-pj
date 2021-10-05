@@ -74,6 +74,9 @@ public class UserController {
 			
 			session.setAttribute("ip", ip);
 			
+			log.info("받아온 ip : "+ ip);
+			
+			
 			return "/company/lobby";
 		}
 		
