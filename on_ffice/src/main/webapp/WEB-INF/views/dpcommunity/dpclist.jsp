@@ -84,7 +84,7 @@
 		<button id="searchBtn">검색하기</button>
 					
 	</form>
-		
+	
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
 			<c:if test="${btnMaker.prev}">
@@ -105,7 +105,7 @@
 			
 			<c:if test="${btnMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/dpcommunity/dpcist?pageNum=${btnMaker.endPage + 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.endPage + 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
 						Next
 					</a>
 				</li>	
