@@ -27,7 +27,7 @@ public class DpCommunityController {
 	@Autowired
 	private DpCommunityService service;
 	
-	@GetMapping("/dpclist1")
+	@GetMapping("/dpclist")
 	public void dpCommunityList(SearchCriteria cri, Model model) {
 				
 		log.info("부서 자유 게시판 로직 접속");
