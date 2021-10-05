@@ -48,8 +48,6 @@
 
 						$('*').on("mousemove", _.throttle(function () {
 							active = true;
-							console.log(active);
-							result.innerHTML = active;
 						}, 1000));
 					}
 
@@ -59,8 +57,6 @@
 						let result = document.getElementById("result");
 						if (active != false) {
 							active = false;
-							console.log(active);
-							result.innerHTML = active;
 						}
 					}, 5000);
 
@@ -68,7 +64,7 @@
 						if (active === false) {
 							if (afk < 10) {
 								afk++;
-								console.log("afk" + afk);
+							
 							}
 							else if (afk === 10) {
 								$('#AFKModal').modal('show');
@@ -158,10 +154,8 @@
 							<div>직급 : ${info.p_name }</div>
 
 							<br /> 접속한 시간<br />
-							${login_time }
-
+							${login_time }<br/>
 							<div id="clock"></div>
-							<div id="result"></div>
 
 							<form action="/user/userInfo" method="post">
 								<input type="hidden" name="uid" value="${login_session}">
