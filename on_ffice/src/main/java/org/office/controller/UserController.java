@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -13,6 +14,7 @@ import org.office.domain.PhoneDTO;
 import org.office.domain.UserVO;
 import org.office.service.DepartService;
 import org.office.service.EmailService;
+import org.office.service.GetIpService;
 import org.office.service.PhoneService;
 import org.office.service.TodoService;
 import org.office.service.PositionService;
@@ -52,6 +54,9 @@ public class UserController {
 		@Autowired
 		private PhoneService phs;
 		
+		@Autowired
+		private GetIpService iservice;
+		
 		@GetMapping("/login")
 		private String Gologin() {
 			
@@ -60,7 +65,23 @@ public class UserController {
 			return "/user/login";
 		}
 		
+		@GetMapping("/guestIn")
+		private String GuestIn(HttpSession session, HttpServletRequest httr, Model model) {
+			
+			log.info("게스트입장 컨트롤러 실행");
+			
+			String ip = iservice.getIp(httr);
+			
+			session.setAttribute("ip", ip);
+			
+			log.info("받아온 ip : "+ ip);
+			
+			
+			return "/company/lobby";
+		}
+		
 		// 회원가입 폼으로 입장하기 위한 컨트롤러 
+		
 		
 		@GetMapping("/register")
 		private String GoRegister(Model model) {

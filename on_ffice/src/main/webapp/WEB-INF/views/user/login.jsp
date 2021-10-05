@@ -78,7 +78,7 @@
 			<div class="row">&nbsp;</div>
 			</div>
 			<div class="col-md-12">
-			<input type="button" value="게스트" onclick="location.href='/company/lobby'">
+			<input type="button" value="게스트" onclick="location.href='/user/guestIn'">
 			<div class="row">&nbsp;</div>
 			</div>
 			<div class="col-md-12">
