@@ -18,8 +18,8 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public List<ReplyVO> listReply(int bno) {
-		return rm.getList(bno);
+	public List<ReplyVO> listReply(int notice) {
+		return rm.getList(notice);
 		
 	}
 

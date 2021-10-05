@@ -8,7 +8,7 @@ public interface ReplyService {
 
 	public void addreply(ReplyVO vo);
 	
-	public List<ReplyVO> listReply(int bno);
+	public List<ReplyVO> listReply(int notice);
 	
 	public void modifyReply(ReplyVO vo);
 	

@@ -6,7 +6,7 @@ import org.office.domain.ReplyVO;
 
 public interface ReplyMapper {
 	
-	public List<ReplyVO> getList(int bno);
+	public List<ReplyVO> getList(int notice);
 	
 	public void create (ReplyVO vo);
 	
