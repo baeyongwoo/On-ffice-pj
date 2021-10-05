@@ -19,7 +19,7 @@ public interface DpCommunityService {
 	public List<DpCommunityVO> list(int dp_code);
 	
 	// 페이징 글 목록
-	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri);
+	public List<DpCommunityVO> DpCListPage(SearchCriteria cri);
 	
 	// 전체 글 개수 가져오기
 	public int getTotalBoard(SearchCriteria cri);

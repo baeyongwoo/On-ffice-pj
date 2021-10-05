@@ -33,7 +33,7 @@
 		<include refid="search"></include>
 		
 	<![CDATA[
-		ORDER BY dc_num DESC limit #{pageNum}, #{amount} 
+		ORDER BY dc_num DESC limit #{PageStart}, #{amount} 
 	]]>
 </select>
 

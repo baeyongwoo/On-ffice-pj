@@ -12,7 +12,7 @@ public interface DpCommunityMapper {
 	public List<DpCommunityVO> DpCommunityList(int dp_code);
 	
 // 페이징 처리 로직
-	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri);
+	public List<DpCommunityVO> DpCList(SearchCriteria cri);
 	
 // 글 전체 개수 가져오는 로직
 	public int getTotalBoard(SearchCriteria cri);

@@ -27,19 +27,16 @@ public class DpCommunityController {
 	@Autowired
 	private DpCommunityService service;
 	
-	@GetMapping("/dpclist")
+	@GetMapping("/dpclist1")
 	public void dpCommunityList(SearchCriteria cri, Model model) {
 				
 		log.info("부서 자유 게시판 로직 접속");
-		List<DpCommunityVO> DpCListPage = service.DpCListPaging(cri);
+		List<DpCommunityVO> DpCList = service.DpCListPage(cri);
 		
 		int total = service.getTotalBoard(cri);
-		
 		PageDTO btnMaker = new PageDTO(cri, total, 10);
-		
-		
 		model.addAttribute("btnMaker", btnMaker);
-		model.addAttribute("dpCommunityList", DpCListPage);
+		model.addAttribute("dpCommunityList", DpCList);
 		
 	}
 	
