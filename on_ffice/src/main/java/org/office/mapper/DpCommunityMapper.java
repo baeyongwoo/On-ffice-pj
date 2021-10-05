@@ -2,8 +2,8 @@ package org.office.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.office.domain.DpCommunityVO;
-import org.office.domain.PageDTO;
 import org.office.domain.SearchCriteria;
 
 public interface DpCommunityMapper {
@@ -12,7 +12,7 @@ public interface DpCommunityMapper {
 	public List<DpCommunityVO> DpCommunityList(int dp_code);
 	
 // 페이징 처리 로직
-	public List<DpCommunityVO> DpCListPaging(SearchCriteria cri);
+	public List<DpCommunityVO> DpCList(@Param("PageStart") int PageStart, @Param("amount") int amount, @Param("searchType") String searchType, @Param("keyword") String keyword, SearchCriteria cri);
 	
 // 글 전체 개수 가져오는 로직
 	public int getTotalBoard(SearchCriteria cri);
