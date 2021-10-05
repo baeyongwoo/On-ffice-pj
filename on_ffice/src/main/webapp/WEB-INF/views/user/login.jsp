@@ -3,9 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	body { text-align: center;}
+	.g-recaptcha { display: table; margin-left: auto; margin-right: auto;}
+</style>
+
+<h1 class="text-center">로그인</h1>
+
+		<hr/>
 </head>
 <body>
 <script src='https://www.google.com/recaptcha/api.js'></script> 
@@ -22,8 +31,7 @@
 	}
 
  </script>
- 
-	<h2>로그인 창입니다.</h2>
+
 	<c:if test="${register_result eq 'success' }">
 		<script>
 			alert('회원 가입이 정상적으로 진행되었습니다.');
@@ -36,18 +44,69 @@
 		
 		</script>
 	</c:if>
-	
-	<form action ="/user/login" method="post" onsubmit="return FormSubmit();">
-		아이디<input type="text" name="uid" placeholder="ID" required><br/>
-		비밀번호<input type="password" name="upw" placeholder="PASSWORD" required><br/>
-		<input type="submit" value="로그인">
-		<input type="reset" value="초기화"><br/>
-		<input type="button" value="회원가입" onclick ="location.href ='/user/register'">
+	<div class="container text-center">
+		<div class="row">&nbsp;</div>
+
+		
+
+		<form action ="/user/login" method="post" onsubmit="return FormSubmit();">
+
+		<div class="md-3">
+			<label for="uid" class="form-laber">아이디</label>
+			<input type="text" name="uid" placeholder="ID" id="uid" required>
+		</div>
+
+		<div class="row">&nbsp;</div>
+
+		<div class="md-3">
+			<label for="upw" class="form-laber">비밀번호</label>
+			<input type="password" name="upw" placeholder="PASSWORD" id="upw" required>
+		</div>
+
+		<div class="row">&nbsp;</div>
+
 		<div class="g-recaptcha" data-sitekey="6LezJokcAAAAAGeSI922uGsecDbO3MCUTxplIzLj"></div>
+
+		<div class="row">&nbsp;</div>
+		
+		<div class="row">
+		<p>" 환영합니다. <strong>로그인</strong>을 해주세요! "</p>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<input type="submit" value="로그인">
+			<div class="row">&nbsp;</div>
+			</div>
+			<div class="col-md-12">
+			<input type="button" value="게스트" onclick="location.href='/company/lobby'">
+			<div class="row">&nbsp;</div>
+			</div>
+			<div class="col-md-12">
+				<input type="reset" value="초기화">
+			</div>
+		</div>
+			
 	</form>
-	
-	<a href="/company/lobby"><button>게스트입장</button></a>
-	
+
+	<div class="row">&nbsp;</div>
+
+
+	</div>
+
 	
 </body>
+
+<footer>
+
+		<hr/>
+
+		<div class="row">
+			
+			<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+			<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+			<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+		</div>
+
+	</footer>
+	
 </html>
