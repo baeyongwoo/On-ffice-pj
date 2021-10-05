@@ -5,114 +5,134 @@
 <html>
 
 <head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<style>
+	body{
+		align-items: center;
+	}
+</style>
 <meta charset="UTF-8">
 <title>회원가입</title>
 </head>
 <body>
-											<!-- onsubmit="false"면 submit을 차단 -->
-	<form name="regForm" method="post" action="/user/register" onsubmit="return regCheck(this)"> 
-		<span style="color:red; font-weight: bold">* 필수입력</span> <br> 
-		<table border="1"> 
-			<tr> 
-				<th>*아이디</th> 
-				<td> 
-					<input type="text" name="uid" id="id" size="15" readonly required> 
-					<input type="button" value="ID중복확인" onclick="idCheck()"> 
-				</td> 
-			</tr> 
-			
-			<tr> 
-				<th>*비밀번호</th> 
-				<td>
-					<input type="password" name="upw" id="upw" size="15" required>
-				</td> 
-			</tr> 
-			
-			<tr> 
-				<th>*비밀번호 확인</th> 
-				<td>
-					<input type="password" name="rePw" id="rePw" size="15" required>
-				</td> 
-			</tr>
-			<tr> 
-				<th>*이름</th> 
-				<td>
-					<input type="text" name="name" id="name" size="15" required>
-				</td>
-			</tr> 
-				<tr> 
-					<th>*이메일</th> 
-					<td id = "emailTd"> 
-						<input type="text" name="email" id="email" size="30" value="email" required readonly> 
-						<input type="button" value="Email 중복확인" onclick="emailCheck()"> 
-					</td> 
-				</tr> 
-					<tr> 
-					<th>전화번호</th> 
-					<td>
-						<input type="tel" name="cp" size="15" readonly required>
-						<input type="button" value="휴대폰 문자인증" onclick="phoneCheck()">
-					</td> 
-				</tr>
-				
-				<tr> 
-					<th>프로필 사진</th> 
-					<td>
-						<input type="radio" name="profile_img" size="15" value="/resources/img/p1.PNG"> <img width="50px" height="50px" src="/resources/img/p1.PNG">
-						<input type="radio" name="profile_img" size="15" value="/resources/img/p2.PNG"> <img width="50px" height="50px" src="/resources/img/p2.PNG">
-						<input type="radio" name="profile_img" size="15" value="/resources/img/p3.PNG"> <img width="50px" height="50px" src="/resources/img/p3.PNG">
-						<input type="radio" name="profile_img" size="15" value="/resources/img/p4.PNG"> <img width="50px" height="50px" src="/resources/img/p4.PNG">
-						<input type="radio" name="profile_img" size="15" value="/resources/img/p5.PNG"> <img width="50px" height="50px" src="/resources/img/p5.PNG">
-					</td> 
-				</tr>
-				
-				<tr> 
-					<th>성별</th> 
-					<td>
-						남<input type="radio" name="gender" value="남" size="15">
-						여<input type="radio" name="gender" value="여" size="15">
-					</td> 
-				</tr>
-				
-				<tr> 
-					<th>생일</th> 
-					<td>
-						<label for="start">Start date:</label>
+	<header>
+		<h1 class="text-center">회원가입</h1>
+		<hr>
+	</header>
+	<main>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xs-3 w-50 p-3">
+				<form name="regForm" method="post" action="/user/register" onsubmit="return regCheck(this)"> 
+					<span style="color:red; font-weight: bold">* 필수입력</span> <br> 
 					
-						<input type="date" id="start" name="birth"
-					       value="2021-09-15"
-					       min="1900-01-01" max="2020-12-31">
-					</td> 
-				</tr>
-				<tr> 
-					<th>부서</th> 
-					<td>
-					<select name="dp_code">
-					<c:forEach var="depart" items="${dpList }">
-					    <option value="${depart.dp_code }">${depart.depart_name }</option>
-					</c:forEach>
-					</select>
-					</td> 
-				</tr>
-				<tr> 
-					<th>직위</th> 
-					<td>
-					<select name="position_code">
-					<c:forEach var="position" items="${positionList }">
-					    <option value="${position.p_code}">${position.p_name }</option>
-					</c:forEach>
-					</select>
-					</td> 
-				</tr>
-			<tr> 
-				<td colspan="2"> 
-					<input type="submit" value="회원가입"/> 
-					<input type="reset" value="취소" /> 
-				</td> 
-			</tr>
+					
+								<div>*아이디</div>
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="basic-addon1">
+										<input type="button" value="ID중복확인" onclick="idCheck()" class="btn btn-dark">
+									</span>
+									<input type="text" name="uid" id="id" size="15" readonly required class="form-control" placeholder="Username" aria-describedby="basic-addon1"> 
+								</div>
+						
+					
+						
+					
+								<div>*비밀번호</div>
+								<div class="input-group mb-3">
+									<input type="password" name="upw" id="upw" size="15" required class="form-control">
+								</div>
+							
+						 
+								<div>*비밀번호 확인</div>
+								<div class="input-group mb-3">
+									<input type="password" name="rePw" id="rePw" size="15" required class="form-control">
+								</div>
+						
+					
+								<div>*이름</div>
+							
+								<div class="input-group mb-3">
+									<input type="text" name="name" id="name" size="15" required class="form-control">
+								</div>
+							
+								<div>*이메일</div>
+										<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">
+										<input type="button" value="Email 중복확인" onclick="emailCheck()" class="btn btn-dark">
+										</span>
+										<input type="text" name="email" id="email" size="30" value="email" required readonly class="form-control" aria-describedby="basic-addon1"> 
+									</div>
+							 
+						
+									<div>전화번호</div>
+										<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">
+										<input type="button" value="휴대폰 문자인증" onclick="phoneCheck()"class="btn btn-dark" aria-describedby="basic-addon1">
+										</span>
+										<input type="tel" name="cp" size="15" readonly required class="form-control">
+									</div>
 
-		</table>
-	</form>
+									<div>프로필 사진</div>
+										<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+										<input type="radio" class="btn-check" id="btnradio1" autocomplete="off" name="profile_img" size="15" value="/resources/img/p1.PNG"> <label class="btn btn-outline-dark" for="btnradio1" checked> <img width="50px" height="50px" src="/resources/img/p1.PNG"> </label>
+										<input type="radio" class="btn-check" id="btnradio2" autocomplete="off" name="profile_img" size="15" value="/resources/img/p2.PNG"> <label class="btn btn-outline-dark" for="btnradio2"> <img width="50px" height="50px" src="/resources/img/p2.PNG"> </label>
+										<input type="radio" class="btn-check" id="btnradio3" autocomplete="off" name="profile_img" size="15" value="/resources/img/p3.PNG"> <label class="btn btn-outline-dark" for="btnradio3"> <img width="50px" height="50px" src="/resources/img/p3.PNG"> </label>
+										<input type="radio" class="btn-check" id="btnradio4" autocomplete="off" name="profile_img" size="15" value="/resources/img/p4.PNG"> <label class="btn btn-outline-dark" for="btnradio4"> <img width="50px" height="50px" src="/resources/img/p4.PNG"> </label>
+										<input type="radio" class="btn-check" id="btnradio5" autocomplete="off" name="profile_img" size="15" value="/resources/img/p5.PNG"> <label class="btn btn-outline-dark" for="btnradio5"> <img width="50px" height="50px" src="/resources/img/p5.PNG"> </label>
+									</div>
+								
+								<div>성별</div>							
+									<input type="radio" name="gender" value="남" size="15" class="btn-check" id="gender1"> <label class="btn btn-outline-dark" for="gender1">남</label>
+									<input type="radio" name="gender" value="여" size="15" class="btn-check" id="gender2"> <label class="btn btn-outline-dark" for="gender2">여</label>
+									
+								<div>생년월일</div>
+									<input type="date" id="start" name="birth" class="form-control"
+											   value="2021-09-15" min="1900-01-01" max="2020-12-31">
+							
+							   <div>부서</div>
+								<select name="dp_code" class="form-select form-select-sm">
+								<c:forEach var="depart" items="${dpList }">
+									<option value="${depart.dp_code }">${depart.depart_name }</option>
+								</c:forEach>
+								</select>
+
+								<div>직위</div>
+								<select name="position_code" class="form-select form-select-sm">
+								<c:forEach var="position" items="${positionList }">
+									<option value="${position.p_code}">${position.p_name }</option>
+								</c:forEach>
+								</select>
+								<br>
+							<div colspan="2" class="text-center"> 
+								<input type="submit" class="btn btn-success" value="회원가입"/> 
+								<input type="reset" class="btn btn-danger" value="취소" /> 
+							<div> 
+						
+			
+					
+				</form>
+
+			</div>
+		</div>
+
+
+		</div>									<!-- onsubmit="false"면 submit을 차단 -->
+		
+
+		</main>
+
+		<footer>
+
+			<div class="row">
+				<hr>
+				<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+				<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+				<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+			</div>
+	
+		</footer>
+
 <script type="text/javascript">
 	// id 중복체크
 	function idCheck(){ 
