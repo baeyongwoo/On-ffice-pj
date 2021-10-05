@@ -239,7 +239,7 @@ public class UserController {
 			dto.setText(ranCodes.toString());
 			
 			try {
-				// phs.sendSMS(dto); 문자 아끼려고 주석처리해버림
+				 phs.sendSMS(dto); //문자 아끼려고 주석처리해버림
 				
 			} catch(Exception e){
 				e.printStackTrace();

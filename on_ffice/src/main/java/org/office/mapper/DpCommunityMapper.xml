@@ -26,14 +26,14 @@
 </select>
 
 <!-- 페이징 처리 로직 -->
-<select id="DpCListPaging" resultType="org.office.domain.DpCommunityVO">
+<select id="DpCList" resultType="org.office.domain.DpCommunityVO">
 	<![CDATA[
 		SELECT * FROM depart_community WHERE dc_num > 0
 	]]>
 		<include refid="search"></include>
 		
 	<![CDATA[
-		ORDER BY dc_num DESC limit #{pageNum}, #{amount} 
+		ORDER BY dc_num DESC limit #{PageStart}, #{amount} 
 	]]>
 </select>
 
