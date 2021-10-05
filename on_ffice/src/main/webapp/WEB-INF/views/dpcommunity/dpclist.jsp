@@ -99,7 +99,7 @@
 						end="${btnMaker.endPage}"
 						var="pageNum">
 				<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ''}">
-				<a class="page-link" href="/dpcommunity/dpclist?pageNum=${pageNum}">${pageNum}</a>
+				<a class="page-link" href="/dpcommunity/dpclist?pageNum=${pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">${pageNum}</a>
 				</li>
 			</c:forEach>
 			
