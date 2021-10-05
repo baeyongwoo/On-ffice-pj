@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
 <meta charset="UTF-8">
 <title>부서 자유 게시판</title>
 </head>
 <script>
+
 </script>
 <body>
 	<h1>부서 자유 게시판</h1>
@@ -39,13 +41,13 @@
 				<c:if test="${dpcList.dp_code eq 4}">
 				<td>마케팅부</td>
 				</c:if>
-				<td>${dpcList.empno}</td>
+				<td><c:out value="${dpcList.empno}"/></td>
 				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
-					&keyword=${btnMaker.cri.keyword}">${dpcList.dtitle}</a></td>
-				<td>${dpcList.dwriter}</td>
-				<td>${dpcList.ddate}</td>
-				<td>${dpcList.dupdate}</td>
-				<td>${dpcList.dhits}</td>
+					&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
+				<td><c:out value="${dpcList.dwriter}"/></td>
+				<td><c:out value="${dpcList.ddate}"/></td>
+				<td><c:out value="${dpcList.dupdate}"/></td>
+				<td><c:out value="${dpcList.dhits}"/></td>
 			</tr>
 		<br/>		
 		</c:if>
@@ -84,40 +86,31 @@
 	</form>
 		
 	<nav aria-label="Page navigation example">
-	  <ul class="pagination justify-content-center">
-	  
-	  	<!-- prev버튼 
-	  	btnMaker의 prev가 true일때만 뒤로가기 버튼 출력-->
-	    <c:if test="${btnMaker.prev}">
-	    	<li class="page-item">
-	    		<a class="page-link" 
-	    			href="/dpcommunity/dpclist?pageNum=${btnMaker.startPage - 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
-	    				Previous
-	    		</a>
-	    	</li>
-	  	</c:if>
-	  	
-	  	 <c:forEach begin="${btnMaker.startPage}" 
-	    		   end="${btnMaker.endPage}" 
-	    		   var="pageNum">
-	    	<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ' '}">
-	    		<a class="page-link" 
-	    			href="/dpcommunity/dpclist?pageNum=${pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
-	    				${pageNum}
-	    		</a>
-	    	</li>    	
-	    </c:forEach>
-	    
-	    <!-- next버튼 -->
-	    <c:if test="${btnMaker.next}">
-	    	<li class="page-item">
-	    		<a class="page-link" 
-	    			href="/dpcommunity/dpclist?pageNum=${btnMaker.endPage + 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
-	    				Next
-	    		</a>
-	    	</li>
-	    </c:if>
-	  </ul>
+		<ul class="pagination">
+			<c:if test="${btnMaker.prev}">
+				<li class="page-item">
+					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.startPage - 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+						Prev
+					</a>
+				</li>
+			</c:if>
+			
+			<c:forEach begin="${btnMaker.startPage}"
+						end="${btnMaker.endPage}"
+						var="pageNum">
+				<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ''}">
+				<a class="page-link" href="/dpcommunity/dpclist?pageNum=${pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">${pageNum}</a>
+				</li>
+			</c:forEach>
+			
+			<c:if test="${btnMaker.next}">
+				<li class="page-item">
+					<a class="page-link" href="/dpcommunity/dpcist?pageNum=${btnMaker.endPage + 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+						Next
+					</a>
+				</li>	
+			</c:if>
+		</ul>
 	</nav>
 	
 
