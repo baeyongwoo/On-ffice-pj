@@ -13,14 +13,13 @@
 </head>
 <body>
 	<h1>자유 게시판</h1>
-	<a href="/community/write"><button>글쓰러가기</button></a></br>	
-	
+	<a href="/community/write"><button>글쓰러가기</button></a><br>	
 	<c:forEach items="${cmList}" var="cl">
 		<a href="/community/CMDetail?community_num=${cl.community_num}">${cl.community_num}</a>
-		${cl.ctitle}
-		${cl.cwriter}
-		${cl.cdate}
-		${cl.chits}
+		<c:out value="${cl.ctitle}"/>
+		<c:out value="${cl.cwriter}"/>
+		<c:out value="${cl.cdate}"/>
+		<c:out value="${cl.chits}"/>
 		</br>
 	</c:forEach>
 	<a href="/company/lobby">로비로가기</a>
