@@ -50,8 +50,9 @@ public class MyPageController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		HttpSession session = request.getSession();
 		UserVO login_session = (UserVO) session.getAttribute("login_session");
-		String login_time = formatter.format(session.getCreationTime());	
-		cri.setPageNum(0);
+		String login_time = formatter.format(session.getCreationTime());
+		cri.setPageNum(cri.getPageStart());
+		log.info(cri.getPageNum());
 		cri.setWorker(login_session.getEmpno());
 		int totalPage = service.todoCnt();
 		TodoDTO btnMaker = new TodoDTO(cri, totalPage, 10);
