@@ -217,8 +217,13 @@
 			<version>2.13.0</version>
 		</dependency>
 
-
-
+		<!-- 스프링 웹소켓 -->
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        
 	</dependencies>
 	<build>
 		<plugins>
