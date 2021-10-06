@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class GetIpService {
 	
-	public String getIp (HttpServletRequest httr) {
+	public String getIp (HttpServletRequest request) {
 		log.info("getIp 서비스 실행");
 		
 		// getRemoteAddr()은 web server에서 프록시나 로드 밸런서를 통해 was에 요청하기 때문에
@@ -27,8 +27,23 @@ public class GetIpService {
 		// 클라이언트의 원 IP 주소를 식별하는 표준 헤더로 쓰이고 있다. 그래서 프록시나 로드밸런스 등을 사용할 경우 
 		// Apache/Nginx에서 설정이 되어있다는 가정하에 클라이언트의 실제 접속 IP를 가져올 수 있다.
 		
-		String ip = httr.getHeader("X-Forwarded-For");
-	    if (ip == null) ip = httr.getRemoteAddr();
+		String ip = request.getHeader("X-Forwarded-For");
+		
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("Proxy-Client-IP");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("WL-Proxy-Client-IP");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("HTTP_CLIENT_IP");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getRemoteAddr();  
+        }
 	    
 	    return ip;
 
