@@ -9,12 +9,12 @@
 
 <script>
 window.onload = function(){
-#("#sendBtn").click(function(){
+$("#sendBtn").click(function(){
 	sendMessage();
 	$('#message').val('');
 });
 
-let sock = new SockJS("/chat")
+let sock = new SockJS("http://localhost:8181/chat");
 	sock.onmessage=onMessage;
 	sock.onclose = onClose;
 	//메세지 전송

@@ -5,17 +5,22 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+
 @RequestMapping("/chat")
 public class EchoHandler extends TextWebSocketHandler{
     //세션 리스트
     private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
-
+    
     private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
 
     //클라이언트가 연결 되었을 때 실행
