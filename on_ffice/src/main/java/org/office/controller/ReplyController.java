@@ -18,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j;
+
 @RestController
 @RequestMapping("/replies")
+@Log4j
 public class ReplyController {
 
 	@Autowired
@@ -29,6 +32,7 @@ public class ReplyController {
 	public ResponseEntity<String> register(@RequestBody ReplyVO vo){
 		ResponseEntity<String> entity = null;
 		try {
+			log.info("reply vo : " + vo );
 			rs.addreply(vo);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		}catch (Exception e) {
@@ -38,11 +42,12 @@ public class ReplyController {
 		return entity;
 	}
 	
-	@GetMapping(value="all/{bno}", produces = {MediaType.APPLICATION_XML_VALUE,
+	@GetMapping(value="/all/{notice}", produces = {MediaType.APPLICATION_XML_VALUE,
 												MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ReplyVO>> list(@PathVariable("notice") int notice){
 		ResponseEntity<List<ReplyVO>> entity = null;
 		
+		log.info("조회 글 번호 : " + notice);
 		try {
 			entity = new ResponseEntity<>(rs.listReply(notice), HttpStatus.OK);
 		} catch (Exception e) {

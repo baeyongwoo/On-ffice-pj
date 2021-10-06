@@ -6,11 +6,11 @@
 	</select>
 	
 	<insert id="create">
-		<selectKey keyProperty="reply_num" order="BEFORE"
+		<selectKey keyProperty="rno" order="BEFORE"
 			resultType="int">
 			SELECT IF(ISNULL(rno), 1, max(rno) + 1) AS reply_num FROM reply_notice
 		</selectKey>
-		INSERT INTO reply_notice (rno, notice, reply, replyer) VALUES(#{reply_num}, #{notice}, #{reply}, #{replyer})
+		INSERT INTO reply_notice (rno, notice, reply, replyer) VALUES(#{rno}, #{notice}, #{reply}, #{replyer})
 	</insert>
 	
 	<update id="update">
