@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.log4j.Log4j;
 
 @RestController
-@RequestMapping("/replies")
+@RequestMapping("/notice/noticeDetail/replies")
 @Log4j
 public class ReplyController {
 
@@ -43,7 +43,7 @@ public class ReplyController {
 	}
 	
 	@GetMapping(value="/all/{notice}", produces = {MediaType.APPLICATION_XML_VALUE,
-												MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
+												MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<ReplyVO>> list(@PathVariable("notice") int notice){
 		ResponseEntity<List<ReplyVO>> entity = null;
 		
