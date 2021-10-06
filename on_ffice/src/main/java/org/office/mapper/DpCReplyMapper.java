@@ -12,6 +12,6 @@ public interface DpCReplyMapper {
 	
 	public void update(DpCReplyVO vo);
 	
-	public void delete(int dp_community);
+	public void delete(int dno);
 
 }

@@ -13,25 +13,27 @@ public class DpCReplyServiceImpl implements DpCReplyService {
 	
 	@Override
 	public void addDpCreply(DpCReplyVO vo) {
-		// TODO Auto-generated method stub
+		drm.create(vo);
 		
 	}
 
 	@Override
-	public List<DpCReplyVO> listDpCReply(int dc_num) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DpCReplyVO> listDpCReply(int dp_community) {
+
+		return drm.getList(dp_community);
 	}
 
 	@Override
 	public void modifyDpCReply(DpCReplyVO vo) {
-		// TODO Auto-generated method stub
+		
+		drm.update(vo);
 		
 	}
 
 	@Override
-	public void removeDpCReply(int dc_num) {
-		// TODO Auto-generated method stub
+	public void removeDpCReply(int dno) {
+		
+		drm.delete(dno);
 		
 	}
 	

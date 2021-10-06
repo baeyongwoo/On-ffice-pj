@@ -7,8 +7,10 @@
 	</select>
 	
 	<insert id="create">
-		INSERT INTO reply_depart_community(dno, dp_community, reply, replyer)
-			VALUES (#{dno}, #{dp_community}, #{reply}, #{replyer})
+		<selectKey keyProperty="dno" order="BEFORE" resultType="int">
+			SELECT IF(ISNULL(dno), 1, max(dno) + 1) AS dpcreply_num FROM reply_depart_community 
+		</selectKey>
+		INSERT INTO reply_depart_community(dno, dp_community, reply, replyer) VALUES(#{dno}, #{dp_community}, #{reply}, #{replyer})
 	</insert>
 	
 	<update id="update">
