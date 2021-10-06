@@ -6,12 +6,12 @@ import org.office.domain.DpCReplyVO;
 
 public interface DpCReplyMapper {
 	
-	public List<DpCReplyVO> getList(int dc_num);
+	public List<DpCReplyVO> getList(int dp_community);
 	
 	public void create(DpCReplyVO vo);
 	
 	public void update(DpCReplyVO vo);
 	
-	public void delete(int dc_num);
+	public void delete(int dno);
 
 }
