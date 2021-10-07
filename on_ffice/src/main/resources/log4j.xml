@@ -15,6 +15,18 @@
 		<level value="info" />
 	</logger>
 	
+	<logger name="org.office.service">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.office.mapper">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.office.socket">
+		<level value="info" />
+	</logger>
+	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
