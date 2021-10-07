@@ -53,9 +53,7 @@ public class UserController {
 		
 		@Autowired
 		private PhoneService phs;
-		
-		@Autowired
-		private GetIpService iservice;
+	
 		
 		@GetMapping("/login")
 		private String Gologin() {
@@ -66,11 +64,11 @@ public class UserController {
 		}
 		
 		@GetMapping("/guestIn")
-		private String GuestIn(HttpSession session, HttpServletRequest httr, Model model) {
+		private String GuestIn(GetIpService iservice, HttpSession session, Model model) throws Exception {
 			
 			log.info("게스트입장 컨트롤러 실행");
 			
-			String ip = iservice.getIp(httr);
+			String ip = iservice.getIp();
 			
 			session.setAttribute("ip", ip);
 			

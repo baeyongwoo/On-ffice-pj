@@ -25,6 +25,9 @@ public interface CommunityService {
 	//글 상세보기 서비스
 	public CommunityVO detail(int community_num);
 	
+	//ip 분리하는 서비스
+	public String splitIp(CommunityVO vo);
+	
 	// 글 작성 서비스
 	public void write(CommunityVO vo);
 	
@@ -36,6 +39,8 @@ public interface CommunityService {
 	
 	// 글 조회수 증가 서비스
 	public void chit_up(int community_num);
+
+	
 
 
 }

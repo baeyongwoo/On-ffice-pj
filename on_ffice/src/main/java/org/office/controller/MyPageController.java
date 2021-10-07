@@ -120,5 +120,10 @@ public class MyPageController {
 		return "redirect:/mypage/main";
 
 	}
+	
+	@GetMapping("/chat")
+	public void goChat() {
+		
+	}
 
 }

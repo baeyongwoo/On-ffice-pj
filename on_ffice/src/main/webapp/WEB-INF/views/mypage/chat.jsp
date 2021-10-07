@@ -9,17 +9,18 @@
 
 <script>
 window.onload = function(){
-#("#sendBtn").click(function(){
+$("#sendBtn").click(function(){
 	sendMessage();
 	$('#message').val('');
 });
 
-let sock = new SockJS("/chat")
+let sock = new SockJS("http://localhost:8181/chat");
 	sock.onmessage=onMessage;
 	sock.onclose = onClose;
 	//메세지 전송
 	function sendMessage(){
-		sock.send($("#message").val());
+		sock.send($("#session_name").val() + ' : ' +  $("#message").val());
+		
 	}
 	//서버로부터 메세지를 받을때
 	function onMessage(msg){
@@ -37,6 +38,7 @@ let sock = new SockJS("/chat")
 </head>
 <body>
 <input type="text" id="message" />
+<input type="hidden" id="session_name" value="${login_session.name }">
 	<input type="button" id="sendBtn" value="submit"/>
 	<div id="messageArea"></div>
 </body>

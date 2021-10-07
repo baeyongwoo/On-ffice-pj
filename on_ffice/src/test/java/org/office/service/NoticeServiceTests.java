@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,13 +26,14 @@ public class NoticeServiceTests {
 		assertNotNull(service);
 	}
 	
-	//@Test
+	@Test
 	public void testList() {
-		
-		//service.list();
+		Criteria cri = new Criteria();
+		log.info("testlist");
+		log.info("testList : " + service.list(cri));
 	}
 	
-	@Test
+	//@Test
 	public void testWrite() {
 		
 		NoticeVO vo = new NoticeVO();
