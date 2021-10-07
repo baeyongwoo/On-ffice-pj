@@ -169,10 +169,10 @@
 
     <div class="carousel-inner" role="listbox">
     <div class="item active">
-    <c:forEach items="${rice}" var="rice">
+    
     <div class="item">
         <ul><h3>월요일</h3></ul>
-        
+    <c:forEach items="${rice}" var="rice">    
             <li>${rice.today}</li>
             <li>${rice.main}</li>
             <li>${rice.side1}</li>
@@ -182,7 +182,7 @@
 		</div>
         </c:forEach>
 </div>
-<%-- 
+
 <div class="item">
   
     <ul><h3>화요일</h3></ul>
@@ -229,7 +229,7 @@
     <li>${rice.side2}</li>
     <li>${rice.side3}</li>
     <li>${rice.side4}</li>
-</c:forEach>  --%>
+</c:forEach>  
 </div>
 </div> 
             </div>
