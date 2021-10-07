@@ -14,17 +14,17 @@
     
 
     .header {
-        height: 150px;
+        height: 250px;
         display: grid;
-        grid-template-columns: 150px 1fr 1fr 1fr 1fr;
-        grid-template-rows: 150px;
+        grid-template-columns: 250px 1fr 1fr 1fr 1fr;
+        grid-template-rows: 250px;
         padding: 0px;
         text-align: center;
     }
     .container {
         display: table;
         width: 100%;
-        height: 100%;
+        height: 50%;
         margin: -100px auto;
         padding: 100px 0;
         
@@ -32,7 +32,7 @@
     .side {
         display: table-cell;
         width: 399px;
-        height: 100%;
+        height: 50%;
         border: 1px solid black;
         background-color: skyblue;
         
@@ -40,7 +40,7 @@
     .content {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 500px 500px;
         
          
     }
@@ -75,10 +75,12 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
-    .rogin {
+    .login {
         background-image: url('https://previews.123rf.com/images/yupiramos/yupiramos1709/yupiramos170927668/86857106-%EA%B0%9C%EC%9D%B8-%EA%B8%B0%ED%98%B8-%EB%B3%B4%ED%98%B8%EC%99%80-%EA%B0%9C%EC%9D%B8-%EC%A0%95%EB%B3%B4-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B0%A9%ED%8C%A8-%EC%9D%B8%EC%A6%9D-%EB%B3%B4%EC%95%88-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%85%98.jpg');
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
+        justify-content: center;
     }
     .mypage {
         border: 1px solid black;
@@ -90,7 +92,7 @@
     .dppage {
         border: 1px solid black;
         text-align: center;
-        background-image: url('https://previews.123rf.com/images/artisticco/artisticco1502/artisticco150200034/36384881-%EC%82%AC%EB%AC%B4%EC%8B%A4%EC%97%90%EC%84%9C-%EA%B7%BC%EB%AC%B4%ED%95%98%EB%8A%94-%EC%A0%8A%EC%9D%80-%EC%82%AC%EB%9E%8C%EB%93%A4%EC%9D%98-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4-%EC%85%98.jpg');
+        background-image: url('https://st2.depositphotos.com/8080374/12533/v/600/depositphotos_125338664-stock-illustration-isometric-office-floor-interior-departments.jpg');
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -109,6 +111,15 @@
         background-repeat: no-repeat;
         
     }
+
+    ul,li { list-style: none;
+            padding-left: 0px;
+            color: white;
+            text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+            margin-top: 30px;}
+    h2 { margin-top: 25%;}    
+    .a { margin-top: 30px;
+        font-weight: bold;}
 </style>
 <script>
 </script>
@@ -120,7 +131,7 @@
 
         <div class="header">
             <div class="company">
-                <h2 class="text-center">Onffice</h2> 
+                <h2 class="text-center" style="font-weight: bold;">Onffice</h2> 
             </div>
             <div class="introduce">
                 <h2><a href="/company/intro">회사소개</a></h2></div>
@@ -128,26 +139,27 @@
                 <h2><a href="/community/CMList">자유게시판</a></h2></div>
             <div class="noticeboard">
                 <h2><a href="/notice/noticeList">알림게시판</a></h2></div>
-            <div class="rogin">
+            <div class="login">
 	<c:set var="user" value="${login_session}" />
 	<c:if test="${login_session eq null}">
                 <h2><a href="/user/login">로그인</a></h2>
 	</c:if>
 	<c:if test="${login_session ne null}">
-	    <h2><a href="/user/logout">로그아웃</a></h2></div>
+	    <h2><a href="/user/logout">로그아웃</a></h2>
 	    </c:if> 
+    </div>
         </div>
         <div class="container"> 
-            <div class="side">사이드 바</div>
+            <div class="side">뉴스</div>
             <div class="content"> 
                 <div class="mypage"><a href="/mypage/main"><h2>마이페이지</h2></a></div>
                 <div class="dppage"><a href="/company/dplobby?dp_code=${user.dp_code}"><h2>부서페이지</h2></a></div>
-                <div class="birth"> <h2>이달의 생일</h2>
-                    <a href="/bday/bdaylist"><img src="https://cdn.crowdpic.net/list-thumb/thumb_l_36E02FCA9051376724F589C917B34346.png"padding=100px margin=100px width="500ox" height="500px"></a></div>
-                <div class="food"><h2>이번주 식단</h2>
+                <div class="birth"> <h2 class="a">이달의 생일</h2>
+                    <a href="/bday/bdaylist"><img src="https://cdn.crowdpic.net/list-thumb/thumb_l_36E02FCA9051376724F589C917B34346.png"padding=100px margin=100px width="350px" height="350px"></a></div>
+                <div class="food"><h2 class="a">이번주 식단</h2>
                  
 <!-- carousel를 구성할 영역 설정 -->
-<div style="width:100px; margin: 100px;">
+<div class="justify-content-center">
     <!-- carousel를 사용하기 위해서는 class에 carousel와 slide 설정한다. -->
     <!-- carousel는 특이하게 id를 설정해야 한다.-->
     <div id="carousel-example-generic" class="carousel slide" >
@@ -169,74 +181,79 @@
 
     <div class="carousel-inner" role="listbox">
     <div class="item active">
-    
-    <div class="item">
-        <ul><h3>월요일</h3></ul>
-    <c:forEach items="${rice}" var="rice">    
-            <li>${rice.today}</li>
-            <li>${rice.main}</li>
-            <li>${rice.side1}</li>
-            <li>${rice.side2}</li>
-            <li>${rice.side3}</li>
-            <li>${rice.side4}</li>	
-		</div>
+        <ul><h1>월요일</h1></ul>
+    <c:forEach items="${rice}" var="rice" begin="0" end="0">    
+        <h3>
+        <li>${rice.main}</li>
+		<li>${rice.side1}</li>
+		<li>${rice.side2}</li>
+		<li>${rice.side3}</li>
+		<li>${rice.side4}</li>
+        </h3>
         </c:forEach>
-</div>
+    </div>
+
 
 <div class="item">
   
-    <ul><h3>화요일</h3></ul>
-	<c:forEach items="${rice}" var="rice">
-        <li>${rice.today}</li>
+    <ul><h1>화요일</h1></ul>
+	<c:forEach items="${rice}" var="rice" begin="1" end="1">
+        <h3>
 		<li>${rice.main}</li>
 		<li>${rice.side1}</li>
 		<li>${rice.side2}</li>
 		<li>${rice.side3}</li>
 		<li>${rice.side4}</li>
-	</c:forEach>
+        </h3>
+    </c:forEach>
 </div>
 <div class="item">
   
-    <ul><h3>수요일</h3></ul>
-	<c:forEach items="${rice}" var="rice">
-		<li>${rice.today}</li>
-		<li>${rice.main}</li>
+    <ul><h1>수요일</h1></ul>
+	<c:forEach items="${rice}" var="rice" begin="2" end="2">
+	    </h3>	
+        <li>${rice.main}</li>
 		<li>${rice.side1}</li>
 		<li>${rice.side2}</li>
 		<li>${rice.side3}</li>
 		<li>${rice.side4}</li>
-	</c:forEach>
+        </h3>
+    </c:forEach>
 </div>
 <div class="item">
   
-  <ul><h3>목요일</h3></ul>
-  <c:forEach items="${rice}" var="rice">
-    <li>${rice.today}</li>
-    <li>${rice.main}</li>
-    <li>${rice.side1}</li>
-    <li>${rice.side2}</li>
-    <li>${rice.side3}</li>
-    <li>${rice.side4}</li>
+  <ul><h1>목요일</h1></ul>
+  <c:forEach items="${rice}" var="rice" begin="3" end="3">
+        </h3>	
+        <li>${rice.main}</li>
+        <li>${rice.side1}</li>
+        <li>${rice.side2}</li>
+        <li>${rice.side3}</li>
+        <li>${rice.side4}</li>
+        </h3>
 </c:forEach>
 </div>
 <div class="item">
  
-  <ul><h3>금요일</h3></ul>
-  <c:forEach items="${rice}" var="rice">
-    <li>${rice.today}</li>
-    <li>${rice.main}</li>
-    <li>${rice.side1}</li>
-    <li>${rice.side2}</li>
-    <li>${rice.side3}</li>
-    <li>${rice.side4}</li>
+  <ul><h1>금요일</h1></ul>
+  <c:forEach items="${rice}" var="rice" begin="4" end="4">
+        </h3>	
+        <li>${rice.main}</li>
+        <li>${rice.side1}</li>
+        <li>${rice.side2}</li>
+        <li>${rice.side3}</li>
+        <li>${rice.side4}</li>
+        </h3>
 </c:forEach>  
+</div>
 </div>
 </div> 
             </div>
             </div>
             </div>
             
-           
+        </div>
+        </div>   
 
        
 
