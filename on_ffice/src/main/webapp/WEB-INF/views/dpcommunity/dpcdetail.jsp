@@ -92,7 +92,7 @@
 					+ "<button>수정/삭제</button></li>";
 			});
 			
-			$("#replies").html(str);
+			$("#dpcreplies").html(str);
 			
 			});
 		}
