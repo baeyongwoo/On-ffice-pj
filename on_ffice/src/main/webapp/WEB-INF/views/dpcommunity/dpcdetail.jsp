@@ -48,7 +48,7 @@
 			      </div>
 			    </div>
 			  </div>
-			 	
+	
 		</form>
 		</c:if>
 		
@@ -93,11 +93,12 @@
 				console.log(date);
 				// data 내부의 시간을 형식(format)화 해서 출력
 				var formattedTime = "댓글 게시일 : " + date.getFullYear() // 년도 추출
-											+ "/" + (date.getMonth()) // month는 0월부터 시작
+											+ "/" + (date.getMonth()+1) // month는 0월부터 시작
 											+ "/" + date.getDate() // 날짜 추출
 											+ "/" + date.getHours() // 시간 추출
 											+ ":" + date.getMinutes() // 분 추출
 											+ ":" + date.getSeconds() // 초 추출
+				console.log(updatedate);
 								
 				str += "<li data-dno='" + this.dno + "' class='replyList'>"
 					+ this.dno + ":" + this.reply + ":" + this.replyer + formattedTime
