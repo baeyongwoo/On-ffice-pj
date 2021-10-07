@@ -1,7 +1,6 @@
 
 public class LocalhostTest {
 
-	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		
 		try (java.util.Scanner s = new java.util.Scanner(new java.net.URL("https://api.ipify.org").openStream(), "UTF-8").useDelimiter("\\A")) {

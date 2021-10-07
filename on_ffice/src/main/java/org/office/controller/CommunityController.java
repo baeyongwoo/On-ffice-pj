@@ -1,7 +1,11 @@
 package org.office.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.HttpResponse;
 import org.office.domain.CommunityVO;
 import org.office.domain.Criteria;
 import org.office.domain.PageDTO;
@@ -28,18 +32,29 @@ public class CommunityController {
 	private CommunityService cs;
 
 	@GetMapping("/CMList")
-	public void csList(Model model, Criteria cri) {
+	public String csList(Model model, Criteria cri, RedirectAttributes rttr){
 
 		log.info("게시글 로직 접속");
-		List<CommunityVO> communityList = cs.list(cri);
-		String ip = communityList.get(0).getCwriter().toString();
-		String ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
 		
-		int total = cs.getTotalCommunity();
-		PageDTO btnMaker = new PageDTO(cri, total, 10);
-		model.addAttribute("cmList", communityList);
-		model.addAttribute("ip", ip2);
-		model.addAttribute("btnMaker", btnMaker);
+		try {
+			String ip = null;
+			String ip2 = null;
+			List<CommunityVO> communityList = cs.list(cri);
+			for(int i = 0; i < communityList.size(); i++) {
+				ip = communityList.get(i).getCwriter().toString();
+				ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
+			}
+			int total = cs.getTotalCommunity();
+			PageDTO btnMaker = new PageDTO(cri, total, 10);
+			model.addAttribute("cmList", communityList);
+			model.addAttribute("ip", ip2);
+			model.addAttribute("btnMaker", btnMaker);
+			
+		} catch (Exception e) {
+			log.info("글이 한개도 없어서 바로 글쓰기 창으로");
+			return "/community/CMwrite";
+		}
+			return "/community/CMList";
 		
 	}
 	@PostMapping("/write")
