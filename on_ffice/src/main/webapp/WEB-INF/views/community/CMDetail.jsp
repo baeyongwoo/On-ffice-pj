@@ -14,7 +14,7 @@
 	<h2><c:out value="${cd.community_num}"/>번쨰 게시글 입니다</h2>
 	<h2>제목 :  <c:out value="${cd.ctitle}"/></h2>
 	<h2>내용 : <c:out value="${cd.ccontent}"/></h2>
-	<h2>작성자 : ${cd.cwriter}</h2>
+	<h2>작성자 :<c:out value="${cd.cwriter}"/></h2>
 	<h2>작성일 : ${cd.cdate}</h2>
 	<h2>최근 업데이트 : ${cd.cupdate}</h2>
 	<h2>조회수 : ${cd.chits}</h2>

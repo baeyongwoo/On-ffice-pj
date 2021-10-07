@@ -96,10 +96,25 @@ public class CommunityController {
 		// 사용자가 주소창에
 		log.info("form에서 받은 데이터 : " + community_num);
 		try {
-			model.addAttribute("csDetail", cs.detail(community_num));
+			CommunityVO vo = new CommunityVO();
+			
+			vo = cs.detail(community_num);
+			
+			String ip = null;
+			String ip2 = null;
+			
+			if(vo.getCwriter().toString().contains(".")) {
+				ip = vo.getCwriter().toString();
+				ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
+				vo.setCwriter(ip2);
+			}
+			
+			model.addAttribute("csDetail", vo);
+			
 		} catch (Exception e) {
 			// 주소창으로 table에 없는 글 번호로 접근할 경우 오류가 뜨기 때문에 redirect시킴
 			// 올바르지 않는 구문을 입력할경우 클라이언트에러는 에러페이지 구현해서 처리하기
+			e.printStackTrace();
 			return "redirect:/community/CMList";
 		}
 

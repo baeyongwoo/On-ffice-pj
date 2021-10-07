@@ -63,9 +63,6 @@ public class CommunityServiceImpl implements CommunityService{
 		log.info(community_num + "번째 글 상세보기 요청");
 		log.info("글 상세보기 실행");
 		CommunityVO vo = CM.Community_detail(community_num);
-		String ip = vo.getCwriter().toString();
-		String ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
-		vo.setCwriter(ip2);
 		return vo;
 		
 		
