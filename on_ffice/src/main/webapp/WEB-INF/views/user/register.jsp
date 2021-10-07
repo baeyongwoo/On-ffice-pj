@@ -61,7 +61,7 @@
 										<span class="input-group-text" id="basic-addon1">
 										<input type="button" value="Email 중복확인" onclick="emailCheck()" class="btn btn-dark">
 										</span>
-										<input type="text" name="email" id="email" size="30" value="email" required readonly class="form-control" aria-describedby="basic-addon1"> 
+										<input type="text" name="email" id="email" size="30" required readonly class="form-control" aria-describedby="basic-addon1"> 
 									</div>
 							 
 						
@@ -184,6 +184,7 @@
 			param.upw.focus();
 			return false;
 		} // if end 
+		
 		
 		
 	}

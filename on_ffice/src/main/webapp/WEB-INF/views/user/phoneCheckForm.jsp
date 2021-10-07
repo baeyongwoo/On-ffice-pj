@@ -4,20 +4,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	
 <div style="text-align: center">
+	<div class="col-xs-3 w-70 p-3">
 		<c:choose>
 			<c:when test="${sms_result eq null }">
-			<h3>* 전화번호 문자인증 *</h3> 
+			<h3> 전화번호 문자인증 </h3> 
 		<form method="post" action="/user/phoneCheckForm"> 
-			전화번호 : <input type="tel" name="cp" maxlength="50" required> 
-			<input type="submit" value="인증문자 전송"> 
+			<input type="tel" name="cp" maxlength="50" required autofocus class="form-control" placeholder="전화번호를 입력해주세요" style="text-align: center">
+			<br/>
+			<input type="submit" value="인증문자 전송" class="btn btn-dark"> 
 		</form> 
-			
+	</div>
 			</c:when>
 			<c:when test="${sms_result eq 'success'}">
 				<script>

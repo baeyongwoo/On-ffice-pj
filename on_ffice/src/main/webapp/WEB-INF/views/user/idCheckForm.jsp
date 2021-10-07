@@ -3,17 +3,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="col-xs-3 w-70 p-3">
 	<div style="text-align: center"> 
-		<h3>* 아이디 중복확인 *</h3> 
+		<h3>아이디 중복확인</h3> 
 		<form method="post" action="/user/idCheckProc" onsubmit="return blankCheck(this)"> 
-			아이디 : <input type="text" name="uid" maxlength="10" autofocus> 
-			<input type="submit" value="중복확인"> 
+			<input type="text" name="uid" maxlength="10" autofocus class="form-control" placeholder="아이디를 입력해주세요" style="text-align: center"> 
+			<br/>
+			<input type="submit" value="중복확인" class="btn btn-dark"> 
 		</form> 
 	</div> 
+</div>
+	</body>
 <script> 
 	// blankCheck 함수 시작
 	// 파라미터로 자기 자신을 받고,
