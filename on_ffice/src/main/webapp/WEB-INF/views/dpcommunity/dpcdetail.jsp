@@ -86,7 +86,7 @@
 			var str = "";
 			
 			$(data).each(function(){
-				
+								
 				str += "<li data-dno='" + this.dno + "' class='replyList'>"
 					+ this.dno + ":" + this.reply + ":" + this.replyer
 					+ "<button>수정/삭제</button></li>";
@@ -120,6 +120,7 @@
 				success : function(result){
 					if(result == 'SUCCESS'){
 						alert("댓글 등록 완료");
+						$("#newReply").val("");
 						getAllList();
 					}
 				}
