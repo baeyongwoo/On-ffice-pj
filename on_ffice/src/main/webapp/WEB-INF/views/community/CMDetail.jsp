@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	
 	<c:set var="cd" value="${csDetail}"></c:set>
 	<h2><c:out value="${cd.community_num}"/>번쨰 게시글 입니다</h2>
 	<h2>제목 :  <c:out value="${cd.ctitle}"/></h2>

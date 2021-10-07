@@ -32,9 +32,13 @@ public class CommunityController {
 
 		log.info("게시글 로직 접속");
 		List<CommunityVO> communityList = cs.list(cri);
+		String ip = communityList.get(0).getCwriter().toString();
+		String ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
+		
 		int total = cs.getTotalCommunity();
 		PageDTO btnMaker = new PageDTO(cri, total, 10);
 		model.addAttribute("cmList", communityList);
+		model.addAttribute("ip", ip2);
 		model.addAttribute("btnMaker", btnMaker);
 		
 	}
@@ -59,7 +63,6 @@ public class CommunityController {
 		// 사용자가 주소창에
 		log.info("form에서 받은 데이터 : " + community_num);
 		try {
-			cs.chit_up(community_num);
 			model.addAttribute("csDetail", cs.detail(community_num));
 		} catch (Exception e) {
 			// 주소창으로 table에 없는 글 번호로 접근할 경우 오류가 뜨기 때문에 redirect시킴

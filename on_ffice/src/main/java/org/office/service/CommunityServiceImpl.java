@@ -63,7 +63,9 @@ public class CommunityServiceImpl implements CommunityService{
 		log.info(community_num + "번째 글 상세보기 요청");
 		log.info("글 상세보기 실행");
 		CommunityVO vo = CM.Community_detail(community_num);
-	
+		String ip = vo.getCwriter().toString();
+		String ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
+		vo.setCwriter(ip2);
 		return vo;
 		
 		
@@ -73,6 +75,13 @@ public class CommunityServiceImpl implements CommunityService{
 	public void chit_up(int community_num) {
 		log.info("글 조회수 증가");
 		CM.chit_up(community_num);;
+	}
+
+	@Override
+	public String splitIp(CommunityVO vo) {
+		String ip = vo.getCwriter().toString();
+		String ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
+		return ip2;
 	}
 
 

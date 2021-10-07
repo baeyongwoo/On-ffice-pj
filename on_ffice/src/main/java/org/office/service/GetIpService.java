@@ -3,7 +3,7 @@ package org.office.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+import org.apache.http.client.utils.HttpClientUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -59,6 +59,7 @@ public class GetIpService {
         }  
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
             ip = request.getRemoteAddr();  
+        
         }
 	    
 	    return ip;
