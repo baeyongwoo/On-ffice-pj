@@ -17,7 +17,7 @@
 	<c:forEach items="${cmList}" var="cl">
 		<a href="/community/CMDetail?community_num=${cl.community_num}">${cl.community_num}</a>
 		<c:out value="${cl.ctitle}"/>
-		<c:out value="(${ip})"/>
+		<c:out value="${cl.cwriter}"/>
 		<c:out value="${cl.cdate}"/>
 		<c:out value="${cl.chits}"/>
 		</br>

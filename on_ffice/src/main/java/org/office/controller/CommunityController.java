@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.http.HttpResponse;
 import org.office.domain.CommunityVO;
@@ -32,7 +33,7 @@ public class CommunityController {
 	private CommunityService cs;
 
 	@GetMapping("/CMList")
-	public String csList(Model model, Criteria cri, RedirectAttributes rttr){
+	public String csList(HttpSession session, Model model, Criteria cri, RedirectAttributes rttr){
 
 		log.info("게시글 로직 접속");
 		
@@ -40,19 +41,36 @@ public class CommunityController {
 			String ip = null;
 			String ip2 = null;
 			List<CommunityVO> communityList = cs.list(cri);
-			for(int i = 0; i < communityList.size(); i++) {
-				ip = communityList.get(i).getCwriter().toString();
-				ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
-			}
+			
+	
+			log.info("커뮤니티 사이즈 : " +communityList.size());
+			
+			
+				for(int i = 0; i < communityList.size(); i++) {
+						
+					// 자유게시판은 비회원(글쓴이가 ip형식), 회원(글쓴이가 이름)둘 다 사용하는 게시판이므로
+					// 아이피형식을 가지는 비회원의 ip를 잘라내는 로직을 실행하기 위해
+					// 조건문으로 비회원인지, 회원인지를 확인하기 위해
+					// if문 안에 contains(".")을 이용했다. 즉, .이 들어가면 ip 형식이므로 
+					// 변환 로직 실행 !
+					
+					if(communityList.get(i).getCwriter().toString().contains(".")) {
+						ip = communityList.get(i).getCwriter().toString();
+						ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
+						communityList.get(i).setCwriter(ip2);
+					}
+					}
+					
+
 			int total = cs.getTotalCommunity();
 			PageDTO btnMaker = new PageDTO(cri, total, 10);
 			model.addAttribute("cmList", communityList);
-			model.addAttribute("ip", ip2);
 			model.addAttribute("btnMaker", btnMaker);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.info("글이 한개도 없어서 바로 글쓰기 창으로");
-			return "/community/CMwrite";
+			return "/community/CMList";
 		}
 			return "/community/CMList";
 		
