@@ -12,7 +12,6 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 
-
 @RequestMapping("/chat")
 public class EchoHandler extends TextWebSocketHandler{
     //세션 리스트
@@ -25,7 +24,7 @@ public class EchoHandler extends TextWebSocketHandler{
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         sessionList.add(session);
-        logger.info("{} 연결됨", session.getId()); 
+        logger.info("{} 연결됨", session.getId());
        
     }
 
