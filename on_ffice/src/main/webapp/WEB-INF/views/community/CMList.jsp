@@ -76,6 +76,8 @@ body{margin: 50px;}
  	console.log(ccode);
  
  </script>
+ 
+ 
  	<footer>
 
         <div class="row">
