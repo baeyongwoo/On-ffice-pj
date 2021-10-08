@@ -126,6 +126,63 @@
 				}
 			})
 		});
+		
+		$("#replyModBtn").on("click", function() {
+			
+			var dno = $(".modal-title").html();
+			var reply = $("#reply").val();
+			
+			$.ajax({
+				type : 'patch',
+				url : '/dpcreplies/' + dno,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "PATCH"
+				},
+				dataType : 'text',
+				data : JSON.stringify({reply:reply}),
+				success : function(result) {
+					if(result === 'SUCCESS') {
+						alert(dno + "번 댓글 수정 완료");
+						$("#modDiv").hide("slow");
+						getAllList();
+					}
+				}
+			})
+		});
+		
+		$("#replyDelBtn").on("click", function() {
+			
+			var dno = $(".modal-title").html();
+			
+			$.ajax({
+				type : 'delete',
+				url : '/dpcreplies/' + dno,
+				success : function(result) {
+					if(result === 'SUCCESS') {
+						alert(dno + "번 댓글 삭제 완료");
+						$("#modDiv").hide("slow");
+						getAllList();
+					}
+				} 
+			})
+		});
+		
+		$("#dpcreplies").on("click", ".replyLi button", function() {
+			
+			var replyLi = $(this).parent();
+			var dno = replyLi.attr("data-dno");
+			var reply = $(this).parent().siblings(".reply").text();
+			
+			console.log(dno + ":" + reply);
+			$(".modal-title").html(dno);
+			$("#replytext").val(reply);
+			$("#modDiv").show("slow");
+		});
+		
+		$("#closeBtn").on("click", function() {
+			$("#modDiv").hide("slow");
+		})
 		</script>
 </body>
 </html>
