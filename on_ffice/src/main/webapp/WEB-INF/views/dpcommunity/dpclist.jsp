@@ -99,34 +99,6 @@ placeholder="검색어" value="${btnMaker.cri.keyword}">
 <button id="searchBtn">검색하기</button>
 
 </form>
-
-<nav aria-label="Page navigation example">
-	<ul class="pagination">
-		<c:if test="${btnMaker.prev}">
-			<li class="page-item">
-				<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.startPage - 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
-					Prev
-				</a>
-			</li>
-		</c:if>
-		
-		<c:forEach begin="${btnMaker.startPage}"
-		end="${btnMaker.endPage}"
-		var="pageNum">
-		<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ''}">
-			<a class="page-link" href="/dpcommunity/dpclist?pageNum=${pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">${pageNum}</a>
-		</li>
-	</c:forEach>
-	
-	<c:if test="${btnMaker.next}">
-		<li class="page-item">
-			<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.endPage + 1}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
-				Next
-			</a>
-		</li>	
-	</c:if>
-</ul>
-</nav>
 <a href="/dpcommunity/dpcwrite"><button class="btn btn-dark">게시글 작성</button></a>
 
 </main>
