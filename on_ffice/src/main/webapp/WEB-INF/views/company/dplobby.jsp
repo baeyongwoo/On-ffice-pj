@@ -36,7 +36,7 @@
 	<c:if test="${dpcl.dp_code eq login_session.dp_code}">
 			<tr>	
 				<td>${dpcl.dc_num}</td>
-				<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcl.dc_num}">${dpcl.dtitle}</a></td>
+				<td>${dpcl.dtitle}</td>
 				<td>${dpcl.dwriter}</td>
 				<td>${dpcl.ddate}</td>
 				<td>${dpcl.dhits}</td>

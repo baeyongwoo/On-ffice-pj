@@ -20,6 +20,7 @@
 				
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#write">작성하기</button>
 		<button type="reset" class="btn btn-warning">초기화</button>
+		<a href="/dpcommunity/dpclist" class="btn btn-dark">돌아가기</a>
 		
 		<!-- Modal -->
    			<div class="modal fade" id="write" tabindex="-1" aria-hidden="true">

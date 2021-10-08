@@ -69,9 +69,9 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public void chit_up(int community_num) {
+	public int chit_up(int community_num) {
 		log.info("글 조회수 증가");
-		CM.chit_up(community_num);;
+		return CM.chit_up(community_num);
 	}
 
 	@Override

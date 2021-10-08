@@ -95,6 +95,7 @@
 				success : function(result){
 					if(result == 'SUCCESS'){
 						alert("등록 완료");
+						$("#newReply").val("");
 						getAllList();
 					}
 				}

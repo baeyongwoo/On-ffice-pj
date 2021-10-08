@@ -27,7 +27,7 @@ public interface CommunityMapper {
 	public void update(CommunityVO vo);
 
 // 글 조회수 증가 로직
-	public void chit_up(int community_num);
+	public int chit_up(int community_num);
 	
 
 }
