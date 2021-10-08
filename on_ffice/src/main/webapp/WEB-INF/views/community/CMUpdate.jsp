@@ -15,18 +15,9 @@
 		<input type="text" name="ctitle" value="${cm.ctitle}"></br>
 		<textarea rows="10" cols="50" name="ccontent">${cm.ccontent}</textarea></br>
 		<input type="hidden" name="cwriter" value="${cm.cwriter}">
-		<input type="text" value="" readonly onsubmit="false">
 		<input type="password" name="cpwck" placeholder="비밀번호 입력" required="required">
 		<input type="submit" value="수정완료">
 	</form>
-	
-<script>
-	var writer = updateForm.cwriter.value;
-	if(writer.indexOf('.')==0){
-		var ip_writer=writer.split('.');
-	}
-	
-</script>
 
 </body>
 </html>
