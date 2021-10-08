@@ -38,7 +38,7 @@ public interface CommunityService {
 	public void update(CommunityVO vo);
 	
 	// 글 조회수 증가 서비스
-	public void chit_up(int community_num);
+	public int chit_up(int community_num);
 
 	
 

@@ -1,12 +1,9 @@
 package org.office.controller;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.http.HttpResponse;
 import org.office.domain.CommunityVO;
 import org.office.domain.Criteria;
 import org.office.domain.PageDTO;
@@ -98,7 +95,9 @@ public class CommunityController {
 		try {
 			CommunityVO vo = new CommunityVO();
 			
+			cs.chit_up(community_num);
 			vo = cs.detail(community_num);
+			
 			
 			String ip = null;
 			String ip2 = null;
