@@ -1,8 +1,6 @@
 package org.office.controller;
 
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -145,5 +143,12 @@ public class CompanyLobbyController {
 		rttr.addFlashAttribute("week", rs.selectRice());
 		return "redirect:/company/menu";
 	}
+	
+	@GetMapping("/bdaylist")
+	public void getBirth(Model model) {
+		
+		model.addAttribute("blist", bs.getBirth());
+	}
+	
 	
 }
