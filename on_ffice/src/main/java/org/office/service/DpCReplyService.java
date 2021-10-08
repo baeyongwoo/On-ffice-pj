@@ -12,6 +12,6 @@ public interface DpCReplyService {
 	
 	public void modifyDpCReply(DpCReplyVO vo);
 	
-	public void removeDpCReply(int dp_community);
+	public void removeDpCReply(int dno);
 
 }

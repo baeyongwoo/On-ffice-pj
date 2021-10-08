@@ -80,6 +80,21 @@ body{margin: 50px;}
  	console.log(ccode);
  
  </script>
+<<<<<<< HEAD
+=======
+ 
+ 
+ 	<footer>
+
+        <div class="row">
+			<hr>
+            <h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+            <h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+            <h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+        </div>
+
+    </footer>
+>>>>>>> b96918943b331e6d0ab67f55292a56371ff18989
 
  
 </body>
