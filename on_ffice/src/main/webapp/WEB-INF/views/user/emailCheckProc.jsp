@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -15,23 +16,30 @@
 </style>
 <body>
 	<div style="text-align: center"></div> 
-	<h3>* 이메일 중복 확인 결과 *</h3> 
+	<h3 class="text-center">* 이메일 중복 확인 결과 *</h3> 
 	<c:choose>
 		<c:when test = "${email eq 'fail'}">
 			해당 이메일은 사용할 수 없습니다.
 		</c:when>
 		
 		<c:otherwise>
+			<p class="text-center">
 			해당 이메일을 사용할 수 있습니다. <br/>
 			이메일을 확인하여 인증 코드를 입력해주세요.<br/>
-			
+		    </p>
 			<form action ="/user/emailCodeCheck" method="post">
-				<input type="text" name="code">
+				<input type="text" name="code" autofocus class="form-control" style="text-align: center">
 				<input type="hidden" name="email" value="${email }">
-				<input type="hidden" name ="codeString" value="${code }">
-				<input type="submit" value="인증하기" onsubmit="emailCodeCheck(this)">
+				<input type="hidden" name ="codeString" value="${code }"><br/>
+				<input type="submit" value="인증하기" onsubmit="emailCodeCheck(this)" class="btn btn-dark">
 			</form>
-			<a id = "applyBtn" href='javascript:apply("${email }")'>적용</a>
+			&nbsp;
+			<div>
+			<a href="javascript:history.back()" class="btn btn-danger">다시시도</a> 
+			&nbsp;
+			<a href="javascript:window.close()" class="btn btn-primary">창닫기</a> 
+			</div>
+			<a id = "applyBtn" href='javascript:apply("${email }")' class="btn btn-success">적용</a>
 		</c:otherwise>
 		
 	</c:choose>
@@ -67,9 +75,7 @@
 		 
 </script>
 
-<a href="javascript:history.back()">[다시시도]</a> 
-&nbsp; &nbsp; 
-<a href="javascript:window.close()">[창닫기]</a>
+
 
 
 </body>

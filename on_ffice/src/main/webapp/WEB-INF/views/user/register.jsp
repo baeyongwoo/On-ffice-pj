@@ -104,14 +104,18 @@
 								</c:forEach>
 								</select>
 								<br>
-							<div colspan="2" class="text-center"> 
+							<div colspan="3" class="text-center"> 
 								<input type="submit" class="btn btn-success" value="회원가입"/> 
-								<input type="reset" class="btn btn-danger" value="취소" /> 
+								<input type="reset" class="btn btn-danger" value="재작성" /> 
+							</form>
+				                <a href="/user/login"><input type="button" class="btn btn-primary" value="뒤로가기" /></a>
 							<div> 
 						
 			
 					
 				</form>
+
+			
 
 			</div>
 		</div>

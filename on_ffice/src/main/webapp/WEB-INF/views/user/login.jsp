@@ -78,12 +78,17 @@
 			<div class="row">&nbsp;</div>
 			</div>
 			<div class="col-md-12">
-			<input type="button" value="게스트" onclick="location.href='/user/guestIn'">
+			<input type="button" value="회원가입" onclick="location.href='/user/register'">
 			<div class="row">&nbsp;</div>
 			</div>
 			<div class="col-md-12">
 				<input type="reset" value="초기화">
+				<div class="row">&nbsp;</div>
 			</div>
+			<div class="col-md-12">
+				<input type="button" value="게스트" onclick="location.href='/user/guestIn'">
+				<div class="row">&nbsp;</div>
+				</div>
 		</div>
 			
 	</form>

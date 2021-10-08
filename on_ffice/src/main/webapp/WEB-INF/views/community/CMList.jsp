@@ -18,10 +18,14 @@ body{margin: 50px;}
 	<header>
 	<a href="/company/lobby"><button class="btn btn-dark">로비로가기</button></a>
 	
-	</header>
 	<div class="text-center">
 		<h1>자유 게시판</h1>
 	</div>
+
+	<hr/>
+
+	</header>
+	
 
 	<table class="table table-dark table-hover text-center">
 		<tr>
@@ -68,7 +72,7 @@ body{margin: 50px;}
 			</ul>
 		</nav>
 		<div>
-		<a href="/community/write"><button class="btn btn-dark">글쓰러가기</button></a></div><br><br>
+		<a href="/community/write"><button class="btn btn-dark">글쓰러가기</button></a></div><br/><br/>
 	
 	</div>
  <script>
@@ -76,6 +80,8 @@ body{margin: 50px;}
  	console.log(ccode);
  
  </script>
+<<<<<<< HEAD
+=======
  
  
  	<footer>
@@ -88,7 +94,20 @@ body{margin: 50px;}
         </div>
 
     </footer>
+>>>>>>> b96918943b331e6d0ab67f55292a56371ff18989
 
  
 </body>
+
+<footer>
+
+	<div class="row">
+		<hr>
+		<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+		<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+		<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+	</div>
+
+</footer>
+
 </html>

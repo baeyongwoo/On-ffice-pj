@@ -8,14 +8,17 @@
 <title>회사 소개</title>
 </head>
 <body>
-	<div class="container">
+	
 		<div class="row text-center">
 			<div class="col-xs-12"></div>
-		
+			<header>
+		&nbsp;
 	<h2>ON-FFICE PROJECT</h2>	<!-- 추후에 회사 소개창으로 -->
-	<br/>
 	<h3>[프로젝트 과정]</h3>
-	<br/>
+	&nbsp;
+</header>
+	<hr/>
+	<div class="container">
 	<div>
 		<p>~  테이블 구축, 기획서 작성</p>
 		<p>2021.09.18일 - 프로젝트 생성 & 깃허브 생성</p>
@@ -33,7 +36,19 @@
 	<div>
 		<a href="/company/lobby"><button class="btn btn-dark">돌아가기</button></a>
 	</div>	
+	&nbsp;
 </div>
 </div>
 </body>
+
+<footer>
+
+	<div class="row">
+		<hr>
+		<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+		<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+		<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+	</div>
+
+</footer>
 </html>
