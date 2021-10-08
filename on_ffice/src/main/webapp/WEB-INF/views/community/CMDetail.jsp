@@ -106,7 +106,6 @@
 												
 				str +="<li data-cno='" + this.cno + "' class='replyLi'>"
 				+ "<div class='reply'>" + this.cno + ":" + this.reply + ":" + this.replyer + "</div>"
-				+ this.cno + ":" + this.reply + ":" + this.replyer
 				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>";
 			});
 			
@@ -147,12 +146,12 @@
 		
 		$("#replyModBtn").on("click", function() {
 			
-			var dno = $(".modal-title").html();
-			var reply = $("#replytes").val();
-			console.log(dno);
+			var cno = $(".modal-title").html();
+			var reply = $("#replytext").val();
+			console.log(cno);
 			$.ajax({
 				type : 'patch',
-				url : '/dpcommunity/dpcdetail/dpcreplies/' + dno,
+				url : '/community/CMDetail/cmreplies/' + cno,
 				headers : {
 					"Content-Type" : "application/json",
 					"X-HTTP-Method-Override" : "PATCH"
@@ -161,7 +160,7 @@
 				data : JSON.stringify({reply:reply}),
 				success : function(result) {
 					if(result === 'SUCCESS') {
-						alert(dno + "번 댓글 수정 완료");
+						alert(cno + "번 댓글 수정 완료");
 						$("#modDiv").hide("slow");
 						getAllList();
 					}
@@ -171,14 +170,14 @@
 		
 		$("#replyDelBtn").on("click", function() {
 			
-			var dno = $(".modal-title").html();
+			var cno = $(".modal-title").html();
 			
 			$.ajax({
 				type : 'delete',
-				url : '/dpcommunity/dpcdetail/dpcreplies/' + dno,
+				url : '/community/CMDetail/cmreplies/' + cno,
 				success : function(result) {
 					if(result === 'SUCCESS') {
-						alert(dno + "번 댓글 삭제 완료");
+						alert(cno + "번 댓글 삭제 완료");
 						$("#modDiv").hide("slow");
 						getAllList();
 					}
@@ -186,13 +185,13 @@
 			})
 		});
 		
-		$("#dpcreplies").on("click", ".replyLi button", function() {
+		$("#cmreplies").on("click", ".replyLi button", function() {
 			var replyLi = $(this).parent();
-			var dno = replyLi.attr("data-dno");
+			var cno = replyLi.attr("data-cno");
 			var reply = $(this).parent().siblings(".reply").text();
 						
-			console.log(dno + ":" + reply);
-			$(".modal-title").html(dno);
+			console.log(cno + ":" + reply);
+			$(".modal-title").html(cno);
 			$("#replytext").val(reply);
 			$("#modDiv").show("slow");
 		});
