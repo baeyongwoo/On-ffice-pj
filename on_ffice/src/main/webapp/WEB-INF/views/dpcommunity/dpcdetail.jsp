@@ -23,7 +23,7 @@
 	
 	<a href="/dpcommunity/dpclist?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
 		<c:if test="${DpCd.dwriter eq login_session.name}">
-						
+
 		<form action="/dpcommunity/dpcupdate?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			<input type="hidden" name="pageNum" value="${param.pageNum}">
