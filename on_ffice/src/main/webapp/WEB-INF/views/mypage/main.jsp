@@ -72,7 +72,7 @@ body {
 				if (afk < 10) {
 					afk++;
 
-				} else if (afk === 10) {
+				} else if (afk === 300) {
 					$('#AFKModal').modal('show');
 
 					$.ajax({
@@ -151,7 +151,6 @@ body {
 
 				<div class="col-md-3">
 					<a href="/company/lobby"><button class="btn btn-primary">Lobby</button></a><br />
-					<div>자바에서 보낸 now: ${now }</div>
 					<div>접속자 : ${info.name }</div>
 					<div>직원번호 : ${info.empno}</div>
 					<div>부서 : ${info.depart_name }</div>
@@ -178,9 +177,6 @@ body {
 					<button type="button" class="btn btn-danger" data-bs-toggle="modal"
 						data-bs-target="#completeTodo">작업완료</button>
 					<select name="searchType">
-						<option value="n"
-							<c:out value="${cri.searchType == null ? 'selected' :''}"/>>
-						</option>
 						<option value="tc"
 							<c:out value="${cri.searchType eq 'tc' ? 'selected' :''}"/>>
 							제목+내용</option>
@@ -191,7 +187,7 @@ body {
 							<c:out value="${cri.searchType eq 'c' ? 'selected' :''}"/>>
 							내용</option>
 					</select>
-					<hr>					${btnMaker}
+					<hr>${btnMaker}
 
 
 					<table id=todoList class="text-center table table-hover">
@@ -306,16 +302,39 @@ body {
 									<option value="${users.empno}">직원번호[${users.empno}]
 										${users.dp_code}부서 ${users.name }</option>
 								</c:forEach>
-							</select> <span class="input-group-text">넘겨줄 작업 제목</span> <select
-								class="form-select btn btn-secondar" name="todo_num">
+							</select> <span class="input-group-text">넘겨줄 작업 제목</span>
+							<select	class="form-select btn btn-secondar" name="todo_num" id="todoSelect">
 								<option selected>넘겨줄 작업을 선택해주세요</option>
 								<c:forEach items="${todoList}" var="todo">
 									<option value="${todo.todo_num}">작업번호[${todo.todo_num}]
 										작업제목 : ${todo.todo_title} 담당자 : ${todo.checker }</option>
 								</c:forEach>
-							</select> <br /> <span class="input-group-text">작업내용</span>
+								</select>
+								
+								<script>
+					$("#todoSelect").change(function(){
+						let todo_num = $("#todoSelect option:selected").val();
+						$.ajax({
+						url : "/mypage/detailTodo",
+						type : "GET",
+						data : {
+							todo_num : todo_num
+						},
+						success : function(data) {
+						$("#todo_con").html(data.substring(data.indexOf("content=")+8, data.lastIndexOf(", complete=")));
+						},
+						error : function() {
+							
+						}
+								})
+					
+					});
+								</script>
+
+								<br /> <span class="input-group-text">작업내용</span>
 							<textarea class="form-control" placeholder="작업내용 입력"
-								name="todo_content"></textarea>
+								name="todo_content" id="todo_con" rows="30">
+								</textarea>
 							<br /> <input type="submit" class="btn btn-primary"
 								value="작업넘기기" />
 						</div>
@@ -356,11 +375,11 @@ body {
 		</form>
 
 		<!-- Modal AFK -->
-		<div class="modal fade" id="AFKModal" tabindex="-1" aria-hidden="true">
+		<div class="modal fade" id="AFKModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLabel">부재중입니다.</h3>
+						<h3 class="modal-title" id="staticBackdropLabel">부재중입니다.</h3>
 					</div>
 					<div class="modal-body">
 						<h5>부재중 상태를 해제하려면 아래 버튼을 클릭하세요</h5>

@@ -28,6 +28,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -46,7 +47,7 @@ public class MyPageController {
 	@GetMapping("/main")
 	public String getInfo(Model model, HttpServletRequest request, TodoCri cri) {
 		
-//		try{
+		try{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		HttpSession session = request.getSession();
 		UserVO login_session = (UserVO) session.getAttribute("login_session");
@@ -74,11 +75,11 @@ public class MyPageController {
 		
 		return "/mypage/main";
 		
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//			return "/user/logintry_req";
-//		}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return "/user/logintry_req";
+		}
 	}
 
 	@PostMapping("/insertTodo")
@@ -106,9 +107,10 @@ public class MyPageController {
 	}
 
 	@GetMapping("/detailTodo")
-	public TodoVO getTodo(TodoVO vo, Model model) {
+	public TodoVO getTodo(TodoVO vo, Model model) throws Exception {
 		vo = service.getTodo(vo.getTodo_num());
 		model.addAttribute("getTodo", vo);
+		log.info(vo);
 		return vo;
 
 	}
