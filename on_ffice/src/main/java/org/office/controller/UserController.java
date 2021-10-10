@@ -288,7 +288,7 @@ public class UserController {
 				rttr.addFlashAttribute("login_result", "success");
 	
 				session.setAttribute("login_session", vo);
-				session.setMaxInactiveInterval(60*10);
+				session.setMaxInactiveInterval(60*100000);
 				log.info("로그인 세션 정보" + session.getAttribute("login_session"));
 				
 				return "redirect:/company/lobby";

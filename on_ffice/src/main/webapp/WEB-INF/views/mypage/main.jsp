@@ -151,7 +151,7 @@ body {
 
 				<div class="col-md-3">
 					<a href="/company/lobby"><button class="btn btn-primary">Lobby</button></a><br />
-
+					<div>자바에서 보낸 now: ${now }</div>
 					<div>접속자 : ${info.name }</div>
 					<div>직원번호 : ${info.empno}</div>
 					<div>부서 : ${info.depart_name }</div>

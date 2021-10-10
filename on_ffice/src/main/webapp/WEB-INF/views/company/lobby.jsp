@@ -14,10 +14,11 @@
     
 
     .header {
-        height: 250px;
+       
+        height: 150px;
         display: grid;
-        grid-template-columns: 250px 1fr 1fr 1fr 1fr;
-        grid-template-rows: 250px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 150px;
         padding: 0px;
         text-align: center;
     }
@@ -28,52 +29,65 @@
         margin: -100px auto;
         padding: 100px 0;
         
+        
     }
     .side {
         display: table-cell;
         width: 399px;
         height: 50%;
-        border: 1px solid black;
-        background-color: skyblue;
         
+        background-color: skyblue;
+        border-style: solid;
+        border-width: 2px 2px 0px 2px;
     }
     .content {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 500px 500px;
-        
+        border-style: solid;
+        border-width: 2px 0px 0px 0px;
          
     }
     .footer {
         background-color: gray;
-        height: 100px;  
+        height: 100px;
+        border-style: solid;
+        border-width: 2px 0px 0px 0px;  
     }
     .company {
         
         background-image: url('https://png.pngtree.com/element_our/20190601/ourmid/pngtree-blue-building-house-free-illustration-image_1373123.jpg');
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
+        justify-content: center;
     }
     .introduce {
-        border: 1px solid black;
+     
         text-align: center;
         background-image: url('https://www.urbanbrush.net/web/wp-content/uploads/edd/2020/04/urbanbrush-20200429142434662995.jpg');
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
+        justify-content: center;
     }
     .freeboard {
-        border: 1px solid black;
+       
         text-align: center;
         background-image: url('https://littledeep.com/wp-content/uploads/2021/05/notice-board-illustration-main-1024x607.png');
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
+        justify-content: center;
     }
     .noticeboard {
-        border: 1px solid black;
+      
         text-align: center;
         background-image: url('https://littledeep.com/wp-content/uploads/2021/05/notice-board-illustration-main-1024x607.png');
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
+        justify-content: center;
     }
     .login {
         background-image: url('https://previews.123rf.com/images/yupiramos/yupiramos1709/yupiramos170927668/86857106-%EA%B0%9C%EC%9D%B8-%EA%B8%B0%ED%98%B8-%EB%B3%B4%ED%98%B8%EC%99%80-%EA%B0%9C%EC%9D%B8-%EC%A0%95%EB%B3%B4-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B0%A9%ED%8C%A8-%EC%9D%B8%EC%A6%9D-%EB%B3%B4%EC%95%88-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%85%98.jpg');
@@ -83,31 +97,31 @@
         justify-content: center;
     }
     .mypage {
-        border: 1px solid black;
+       
         text-align: center;
         background-image: url('https://www.urbanbrush.net/web/wp-content/uploads/edd/2019/07/urbanbrush-20190719004812478595.png');
         background-size: cover;
         background-repeat: no-repeat;
     }
     .dppage {
-        border: 1px solid black;
+      
         text-align: center;
         background-image: url('https://st2.depositphotos.com/8080374/12533/v/600/depositphotos_125338664-stock-illustration-isometric-office-floor-interior-departments.jpg');
         background-size: cover;
         background-repeat: no-repeat;
     }
     .food {
-        border: 1px solid black;
+        
         text-align: center;
         background-image: url('https://blog.kakaocdn.net/dn/kHnPi/btqFdm3xHXm/25bjduUOc9zVJffKZ7MsF1/img.png');
         background-size: cover;
         background-repeat: no-repeat;
     }
     .birth {
-        border: 1px solid black;
-        text-align: center;
         
-        background-size: cover;
+        text-align: center;
+        background-image: url('https://us.123rf.com/450wm/fotoidee/fotoidee1803/fotoidee180300132/96855533-%EC%83%9D%EC%9D%BC-%EC%B6%95%ED%95%98-%EB%B0%B0%EB%84%88-%ED%8E%B8%EC%A7%91-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%85%98.jpg?ver=6');
+        background-size: contain;
         background-repeat: no-repeat;
         
     }
@@ -117,9 +131,11 @@
             color: white;
             text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
             margin-top: 30px;}
-    h2 { margin-top: 25%;}    
-    .a { margin-top: 30px;
+    h2 { margin-top: 10%;}    
+    .a { margin-top: 50px;
         font-weight: bold;}
+    a { text-decoration:none !important }
+    a:hover {color: brown;}
 </style>
 <script>
 </script>
@@ -152,10 +168,10 @@
         <div class="container"> 
             <div class="side">뉴스</div>
             <div class="content"> 
-                <div class="mypage"><a href="/mypage/main"><h2>마이페이지</h2></a></div>
-                <div class="dppage"><a href="/company/dplobby?dp_code=${user.dp_code}"><h2>부서페이지</h2></a></div>
-                <div class="birth"> <h2 class="a">이달의 생일</h2>
-                    <a href="/bday/bdaylist"><img src="https://cdn.crowdpic.net/list-thumb/thumb_l_36E02FCA9051376724F589C917B34346.png"padding=100px margin=100px width="350px" height="350px"></a></div>
+                <a class="mypage" href="/mypage/main"><h2 class="a">마이페이지</h2><div class="mypage"></div></a>
+                <a class="dppage" href="/company/dplobby?dp_code=${user.dp_code}"><h2 class="a">부서페이지</h2><div class="dppage"></div></a>
+                <div class="birth">
+                    <a href="/company/bdaylist"><br><br><br><br><br><img src="https://cdn.crowdpic.net/list-thumb/thumb_l_36E02FCA9051376724F589C917B34346.png"width="400px" height="300px"><h2 class="a">이달의 생일</h2></a></div>
                 <div class="food"><h2 class="a">이번주 식단</h2>
                  
 <!-- carousel를 구성할 영역 설정 -->
@@ -211,7 +227,7 @@
   
     <ul><h1>수요일</h1></ul>
 	<c:forEach items="${rice}" var="rice" begin="2" end="2">
-	    </h3>	
+	    <h3>	
         <li>${rice.main}</li>
 		<li>${rice.side1}</li>
 		<li>${rice.side2}</li>
@@ -224,7 +240,7 @@
   
   <ul><h1>목요일</h1></ul>
   <c:forEach items="${rice}" var="rice" begin="3" end="3">
-        </h3>	
+        <h3>	
         <li>${rice.main}</li>
         <li>${rice.side1}</li>
         <li>${rice.side2}</li>
@@ -237,7 +253,7 @@
  
   <ul><h1>금요일</h1></ul>
   <c:forEach items="${rice}" var="rice" begin="4" end="4">
-        </h3>	
+        <h3>	
         <li>${rice.main}</li>
         <li>${rice.side1}</li>
         <li>${rice.side2}</li>

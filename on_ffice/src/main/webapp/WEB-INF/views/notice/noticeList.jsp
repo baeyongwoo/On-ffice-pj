@@ -14,14 +14,20 @@
 
 	}
 </script>
+<style>
+	body{margin: 50px;}
+</style>
 </head>
 <body>
 
-	<h1>알림 게시판</h1>
-	<c:set var="position" value="${login_session.position_code}" />
-	<c:if test="${position >= 6}">
-		<a href="/notice/write"><button>글쓰러가기</button></a>
-	</c:if>
+	<a href="/company/lobby"><button class="btn btn-dark">로비로가기</button></a>
+	
+	<div class="text-center">
+		<h1>알림 게시판</h1>
+	</div>
+
+	<hr/>
+
 
 	<select id="select" onchange="selectreq()">
 		<option value="" selected="disalbed">--선택--</option>
@@ -32,20 +38,33 @@
 	</select>
 	<br>
 	
-	<c:forEach items="${noticeList}" var="nl">
-		<a href="/notice/noticeDetail?notice_num=${nl.notice_num}">${nl.notice_num}</a>
-		<c:out value="${nl.ncategory}" />
-		<c:out value="${nl.ntitle}" />
-		<c:out value="${nl.nwriter}" />
-		<c:out value="${nl.ndate}" />
-		<c:out value="${nl.nhits}" />
-		<br />
-	</c:forEach>
+	<table class="table table-dark table-hover text-center">
+		<tr>
+			<th>글번호</th>
+			<th>카테고리</th>
+			<th>글제목</th>
+			<th>글쓴이</th>
+			<th>쓴날짜</th>
+			<th>조회수</th>
+		</tr>
+		<c:forEach items="${noticeList}" var="nl">
+		<tr>
+				<td><a href="/notice/noticeDetail?notice_num=${nl.notice_num}">${nl.notice_num}</a></td>
+				<td><c:out value="${nl.ncategory}" /></td>
+				<td><c:out value="${nl.ntitle}" /></td>
+				<td><c:out value="${nl.nwriter}" /></td>
+				<td><c:out value="${nl.ndate}" /></td>
+				<td><c:out value="${nl.nhits}" /></td>
+			</tr>
+		</c:forEach>
+		</br>
+
+	</table>
 	<!-- url로 접속할 때 잘못된 주소로 접근하면 error창 처리하는 것 만들기 -->
-	<a href="/company/lobby"><button>로비로가기</button></a>
 	
+	<div class="row text-center justify-content-center">
 	<nav aria-label="Page navigation example">
-		<ul class="pagination">
+		<ul class="pagination justify-content-center">
 			<c:if test="${btnMaker.prev}">
 				<li class="page-item">
 				<a class="page-link" href="/notice/noticeList?pageNum=${btnMaker.startPage - 1}">
@@ -65,9 +84,31 @@
 				<li class="page-item">
 				<a class="page-link" href="/notice/noticeList?pageNum=${btnMaker.endPage + 1}">Next</a></li>	
 			</c:if>
-			
+		
+			<c:set var="position" value="${login_session.position_code}" />
+
 		</ul>
 	</nav>
 
+	<div>
+		<c:if test="${position >= 6}">
+			<a href="/notice/write"><button class="btn btn-dark">글쓰러가기</button></a><br/><br/>
+		</c:if>
+	</div>
+
+</div>
+
 </body>
+
+<footer>
+
+	<div class="row">
+		<hr>
+		<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+		<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+		<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+	</div>
+
+</footer>
+
 </html>

@@ -9,37 +9,77 @@
 
 <script>
 window.onload = function(){
+	let sock;
+	let userid;
+	
 $("#sendBtn").click(function(){
 	sendMessage();
 	$('#message').val('');
 });
-
-let sock = new SockJS("http://localhost:8181/chat");
-	sock.onmessage=onMessage;
-	sock.onclose = onClose;
+}
+function connect() {
+	sock = new SockJS("http://localhost:8181/chat");
+	sock.onopen = function() {
+		console.log('연결 생성');
+		register();
+	};
+	
+	sock.onmessage = function(e) {
+		console.log('메시지 받음');
+		let data = e.data;
+		addMsg(data);
+	};
+	
+	sock.onclose = function() {
+		console.log('연결 끊김');
+	};
+	
+}
+	function addMsg(msg) {
+		let chat = $('#msgArea').val();
+		chat = chat + "\n"+ $("#targetUser").val() +" : " +  msg;
+		$('#msgArea').val(chat);
+	}
 	//메세지 전송
-	function sendMessage(){
-		sock.send($("#session_name").val() + ' : ' +  $("#message").val());
-		
+	function register(){
+		let msg = {
+				type : "register",
+				userid : $("#userId").val()
+		};
+		sock.send(JSON.stringify(msg));
 	}
 	//서버로부터 메세지를 받을때
-	function onMessage(msg){
-		let data = msg.data;
-		$("#messageArea").append(data + "<br/>");
-	}
+	function sendMsg(){
+		let msg = {
+				type : "chat", 
+				target : $("#targetUser").val(),
+				message : $("#chatMsg").val()
+		};
+		sock.send(JSON.stringify(msg));
+	};
 	
-	function onClose(evt){
-		$("#messageArea").append("연결끊김");
-	}
-}
+	$(function() {
+		connect();
+		$('#btnSend').on("click", function() {
+			let chat = $("#msgArea").val();
+			chat = chat + "\n"+$("#userId").val()+" : " + $("#chatMsg").val();
+			$("#msgArea").val(chat);
+			sendMsg();
+			$("#chatMsg").val("");
+		})
+	});
 </script>
+	
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<input type="text" id="message" />
-<input type="hidden" id="session_name" value="${login_session.name }">
-	<input type="button" id="sendBtn" value="submit"/>
-	<div id="messageArea"></div>
+	<textarea rows="5" cols="30" id="msgArea">
+	</textarea>
+	<input type="hidden" id="userId" value="${login_session.uid}">
+	<br> 메시지 : <input type="text" id="chatMsg">
+	<br> 상대 아이디 : <input type="text" id="targetUser">
+	<br>
+	<input type="button" value="전송" id="btnSend">
 </body>
 </html>
