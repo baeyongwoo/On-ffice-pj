@@ -43,6 +43,7 @@ body {
 				<div class="text-center">
 					<c:forEach items="${dpu_list}" var="dl">
 						<c:if test="${dl.dp_code eq login_session.dp_code}">
+						<div class="fs-6">
 							접속자 정보 -  
 							사원번호:[${dl.empno}] /
 							직급:${dl.p_name} /
@@ -52,6 +53,7 @@ body {
 							이메일:${dl.email} /
 							성별:${dl.gender} /
 							생년월일:${dl.birth}
+							</div>
 						</c:if>
 					</c:forEach>
 				</div>

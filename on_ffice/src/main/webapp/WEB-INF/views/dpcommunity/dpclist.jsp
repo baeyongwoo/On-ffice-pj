@@ -34,17 +34,21 @@
 				<main>
 				<table class="table table-dark table-hover text-center">
 					<tr>
+						<th>글번호</th>
+						<th>글제목</th>
 						<th>부서명</th>
 						<th>사원번호</th>
-						<th>글제목</th>
 						<th>작성자</th>
 						<th>작성일</th>
 						<th>수정일</th>
 						<th>조회수</th>
 					</tr>
-			<c:forEach items="${dpCommunityList}" var="dpcList">
-				<c:if test="${dpcList.dp_code eq login_session.dp_code}">
+					<c:forEach items="${dpCommunityList}" var="dpcList">
 					<tr>	
+						<td><c:out value="${dpcList.dc_num }"/></td>
+						<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
+							&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
+						<c:if test="${dpcList.dp_code eq login_session.dp_code}">
 						<c:if test="${dpcList.dp_code eq 1}">
 							<td>인사부</td>
 						</c:if>
@@ -57,23 +61,23 @@
 						<c:if test="${dpcList.dp_code eq 4}">
 							<td>마케팅부</td>
 						</c:if>
+							</c:if>
+						
 						<td><c:out value="${dpcList.empno}"/></td>
-						<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
-							&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
+							
 							<td><c:out value="${dpcList.dwriter}"/></td>
 							<td><c:out value="${dpcList.ddate}"/></td>
 							<td><c:out value="${dpcList.dupdate}"/></td>
 							<td><c:out value="${dpcList.dhits}"/></td>
 						</tr>
-					</c:if>
 				</c:forEach>
 			</table>
 			<br/>		
 				
 				
-				
+			
 				<!-- 검색창 -->
-				<form action="/dpcommunity/dpclist" method="get">
+				<form action="/dpcommunity/dpclist" method="get" class="text-center">
 					<!-- option태그를 이용해 검색조건 선택창을 만들어주세요. -->
 					<select name="searchType">
 						<option value="null" 
@@ -98,9 +102,36 @@
 placeholder="검색어" value="${btnMaker.cri.keyword}">
 <button id="searchBtn">검색하기</button>
 
+	<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+			<c:if test="${btnMaker.prev}">
+				<li class="page-item">
+					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.startPage - 1}
+								&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+						Prev</a>
+					</li>
+				</c:if>
+				
+				<c:forEach begin="${btnMaker.startPage}"
+				end="${btnMaker.endPage}"
+				var="pageNum">
+				<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ''}">
+					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${pageNum}
+								&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">${pageNum}</a>
+				</li>
+			</c:forEach>
+			
+			<c:if test="${btnMaker.next}">
+				<li class="page-item">
+					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.endPage + 1}
+								&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">Next</a></li>	
+				</c:if>
+			</ul>
+		</nav>
 </form>
+<div class="text-center">
 <a href="/dpcommunity/dpcwrite"><button class="btn btn-dark">게시글 작성</button></a>
-
+</div>
 </main>
 <footer>
 	

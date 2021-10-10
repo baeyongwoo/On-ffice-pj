@@ -11,7 +11,28 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 	<style>
-		#modDiv {
+	body{
+		margin-top:50px;
+		margin-left: 100px;
+		margin-right: 100px;
+	}
+	.cmargin{
+		margin-left:20%;
+		margin-right:20%;
+	}
+	.content{
+		margin-left : auto;
+		margin-right : auto;
+		font-size: 30px;
+		text-align: justify;
+		background-color: gray;
+	}
+	
+	.form{
+		display: inline-block;
+	}
+	
+	#modDiv {
 			width: 300px;
 			height: 100px;
 			background-color: green;
@@ -26,20 +47,40 @@
 	</style>
 </head>
 <body>
-	
+	<header>
+		<a href="/dpcommunity/dpclist?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
+	</header>
 	<c:set var="DpCd" value="${dpcdetail}"></c:set>
-	<h2>${DpCd.dc_num}번 게시글 입니다.</h2>
-	<h2>부서번호 : ${DpCd.dp_code}</h2>
-	<h2>글제목 : ${DpCd.dtitle}</h2>
-	<h2>글본문 : ${DpCd.dcontent}</h2>
-	<h2>글쓴이 : ${DpCd.dwriter}</h2>
-	<h2>작성일 : ${DpCd.ddate}</h2>
-	<h2>수정일 : ${DpCd.dupdate}</h2>
-	<h2>조회수 : ${DpCd.dhits}</h2>
+	<div class="text-center">
+		<div class="form-inline">
+		<figure class="text-center">
+  <blockquote class="blockquote">
+    <h1>${DpCd.dtitle}</h1>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    ${DpCd.dc_num}번 글
+  </figcaption>
+</figure>
+	 
 	
-	<a href="/dpcommunity/dpclist?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
+	부서번호 : ${DpCd.dp_code} /
+	글쓴이 : ${DpCd.dwriter} /
+	작성일 : ${DpCd.ddate} /
+	수정일 : ${DpCd.dupdate} /
+	조회수 : [${DpCd.dhits}]
+	</div>
+	<hr>
+	</div>
+	<div class = "cmargin">
+	<div class="content">
+	${DpCd.dcontent}
+	</div>
+	</div>
+	<hr>
+	
 		<c:if test="${DpCd.dwriter eq login_session.name}">
-
+<div class="text-end">
+	<div class="form">
 		<form action="/dpcommunity/dpcupdate?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			<input type="hidden" name="pageNum" value="${param.pageNum}">
@@ -47,10 +88,11 @@
 			<input type="hidden" name="keyword" value="${param.keyword}">
 			<input type="submit" value="수정하기" class="btn btn-warning" data-bs-toggle="modal">
 		</form>
+		</div>
+		<div class="form">
 		<form action="/dpcommunity/dpcdelete?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createTodo">삭제하기</button>
-			 
 			 <div class="modal fade" id="createTodo" tabindex="-1" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
@@ -64,32 +106,35 @@
 			      </div>
 			    </div>
 			  </div>
-	
-		</form>
+			</form>
+			</div>
+			</div>
 		</c:if>
 		
-		<hr>
-		
-		<h2>댓글 등록</h2>
+		<div class="fs-5">댓글 입력</div>
 		
 			<div>
 				<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
 			</div>
-			<div>
+			<div class="form-inline">
+				<div class="w-70">
 				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
-				id="newReply">
-			<button id="replyAddBtn">댓글 등록</button>
+				id="newReply" class="form-control fs-6"><br/>
+				</div>
+			<div class="text-end">
+				<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
+			</div>
 			</div>
 			<div id="modDiv" style="display:none;">
 				<div class="modal-title"></div>			
 					<div>
 						<input type="text" id="replytext">
 					</div>
-				<div>
+				
 					<button type="button" id="replyModBtn">댓글 수정</button>
 					<button type="button" id="replyDelBtn">댓글 삭제</button>
 					<button type="button" id="closeBtn">창 닫기</button>
-				</div>
+			
 			</div>
 		
 		<hr>
