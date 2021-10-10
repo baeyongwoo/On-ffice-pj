@@ -31,7 +31,7 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 		DpCommunityVO vo = dpcommunitymapper.DpCdetail(dc_num);
 		log.info(dc_num + "번째 부서글 상세보기 요청");
 		log.info("부서글 상세보기 실행");
-		int hits = vo.getDhits();
+		int dhits = vo.getDhits();
 		
 		return vo;
 	}
