@@ -25,6 +25,7 @@
 				<c:set var="user" value="${login_session}" />
 				<a href="/company/dplobby?dp_code=${user.dp_code}"><button class="btn btn-dark">부서로비가기</button></a>
 				<a href="/company/lobby"><button class="btn btn-dark">메인로비로가기</button></a>
+				<a href="/dpcommunity/dpcwrite"><button class="btn btn-dark">게시글 작성</button></a>
 				</div>
 			</div>
 			<div class="text-center">
@@ -129,9 +130,6 @@ placeholder="검색어" value="${btnMaker.cri.keyword}">
 			</ul>
 		</nav>
 </form>
-<div class="text-center">
-<a href="/dpcommunity/dpcwrite"><button class="btn btn-dark">게시글 작성</button></a>
-</div>
 </main>
 <footer>
 	

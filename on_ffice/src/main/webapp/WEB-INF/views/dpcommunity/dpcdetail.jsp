@@ -63,10 +63,10 @@
 </figure>
 	 
 	
-	부서번호 : ${DpCd.dp_code} /
-	글쓴이 : ${DpCd.dwriter} /
-	작성일 : ${DpCd.ddate} /
-	수정일 : ${DpCd.dupdate} /
+	부서번호 : ${DpCd.dp_code} 
+	글쓴이 : ${DpCd.dwriter} 
+	작성일 : ${DpCd.ddate} 
+	수정일 : ${DpCd.dupdate} 
 	조회수 : [${DpCd.dhits}]
 	</div>
 	<hr>
@@ -134,15 +134,15 @@
 					<button type="button" id="replyModBtn">댓글 수정</button>
 					<button type="button" id="replyDelBtn">댓글 삭제</button>
 					<button type="button" id="closeBtn">창 닫기</button>
-			
 			</div>
-		
+			
 		<hr>
 		
 		<h2>댓글 창</h2>
 			
 		<hr>
 		<ul id="dpcreplies">
+		
 		
 		</ul>
 	
@@ -162,7 +162,7 @@
 												
 				str +="<li data-dno='" + this.dno + "' class='replyLi'>"
 					+ "<div class='reply'>" + this.dno + ":" + this.reply + ":" + this.replyer + "</div>"
-					+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>";
+					+ "<button type='button' class='btn btn-primary'>수정/삭제</button></li>";
 			});
 			
 			$("#dpcreplies").html(str);
