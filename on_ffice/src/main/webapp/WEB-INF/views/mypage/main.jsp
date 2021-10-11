@@ -214,7 +214,7 @@ body {
 					<c:forEach items="${page }" var="page">
 							${page }
 							</c:forEach>
-					<nav aria-label="Page navigation example">
+					<nav aria-label="Page navigation">
 						<ul class="pagination">
 
 							<c:if test="${btnMaker.prev }">
@@ -265,16 +265,16 @@ body {
 						<div class="modal-body">
 							<input type="hidden" name="checker" value="${info.empno }">
 							<select class="form-select btn btn-secondar" name="worker">
-								<option selected>작업자를 선택해주세요</option>
+								<option selected disabled="disabled" value="">작업자를 선택해주세요</option>
 								<c:forEach items="${users}" var="users">
 									<option value="${users.empno}">직원번호[${users.empno}]
 										${users.dp_code}부서 ${users.name }</option>
 								</c:forEach>
 							</select> <span class="input-group-text">작업 제목</span> <input type="text"
-								class="form-control" placeholder="작업명 입력" name="todo_title">
+								class="form-control" placeholder="작업명 입력" name="todo_title" required>
 							<br> <span class="input-group-text">작업내용</span>
 							<textarea class="form-control" placeholder="작업내용 입력"
-								name="todo_content"></textarea>
+								name="todo_content" required></textarea>
 							<br /> <input type="submit" class="btn btn-primary"
 								value="TODO생성" />
 						</div>
@@ -297,14 +297,14 @@ body {
 						</div>
 						<div class="modal-body">
 							<select class="form-select btn btn-secondar" name="worker">
-								<option selected>넘겨줄 작업자를 선택해주세요</option>
+								<option selected disabled="disabled" value="">넘겨줄 작업자를 선택해주세요</option>
 								<c:forEach items="${users}" var="users">
 									<option value="${users.empno}">직원번호[${users.empno}]
 										${users.dp_code}부서 ${users.name }</option>
 								</c:forEach>
-							</select> <span class="input-group-text">넘겨줄 작업 제목</span>
+							</select>
 							<select	class="form-select btn btn-secondar" name="todo_num" id="todoSelect">
-								<option selected>넘겨줄 작업을 선택해주세요</option>
+								<option selected disabled="disabled" value="">넘겨줄 작업을 선택해주세요</option>
 								<c:forEach items="${todoList}" var="todo">
 									<option value="${todo.todo_num}">작업번호[${todo.todo_num}]
 										작업제목 : ${todo.todo_title} 담당자 : ${todo.checker }</option>
@@ -314,6 +314,7 @@ body {
 								<script>
 					$("#todoSelect").change(function(){
 						let todo_num = $("#todoSelect option:selected").val();
+						
 						$.ajax({
 						url : "/mypage/detailTodo",
 						type : "GET",
@@ -331,12 +332,13 @@ body {
 					});
 								</script>
 
-								<br /> <span class="input-group-text">작업내용</span>
-							<textarea class="form-control" placeholder="작업내용 입력"
-								name="todo_content" id="todo_con" rows="30">
-								</textarea>
-							<br /> <input type="submit" class="btn btn-primary"
-								value="작업넘기기" />
+								<br /> <span class="input-group-text">↓기존작업내용</span>
+							<textarea class="form-control" name="already_todo_content"
+							id="todo_con" rows="5" readonly="readonly" style="overflow-y:scroll"></textarea>
+								<br /> <span class="input-group-text">↓추가/변경된내용</span>
+								<textarea class="form-control" name="todo_content"
+							rows="10" style="overflow-y:scroll" required></textarea>
+								<input type="submit" class="btn btn-primary" value="작업넘기기" />
 						</div>
 					</div>
 				</div>
@@ -358,16 +360,14 @@ body {
 						</div>
 						<div class="modal-body">
 							<select class="form-select btn btn-secondar" name="todo_num">
-								<option selected>완료할 작업을 선택해주세요</option>
+								<option selected disabled="disabled" value="">완료할 작업을 선택해주세요</option>
 								<c:forEach items="${todoList}" var="todo">
 									<option value="${todo.todo_num}">작업번호[${todo.todo_num}]
 										작업제목 : ${todo.todo_title} 담당자 : ${todo.checker }</option>
 								</c:forEach>
-							</select> <select class="form-select btn btn-secondar" name="complete">
-								<option selected>작업상태 선택</option>
-								<option value="ing">ing</option>
-								<option value="complete">complete</option>
-							</select> <input type="submit" class="btn btn-primary" value="완료하기!" />
+							</select>
+							<input type="hidden" name="complete" value="complete">
+							<input type="submit" class="btn btn-primary" value="완료하기!"/>
 						</div>
 					</div>
 				</div>

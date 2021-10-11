@@ -10,7 +10,7 @@
 package org.office.controller;
 
 import java.text.SimpleDateFormat;
-
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +28,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -91,7 +90,14 @@ public class MyPageController {
 	}
 
 	@PostMapping("/passTodo")
-	public String passTodo(TodoVO vo, Model model, RedirectAttributes rttr) {
+	public String passTodo(TodoVO vo, Model model, RedirectAttributes rttr, HttpServletRequest req) {
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String formDate = formatter.format(date);
+		StringBuilder sb = new StringBuilder();
+		sb.append(req.getParameter("already_todo_content"));
+		sb.append("\r["+ formDate + " 추가내용]\r" + req.getParameter("todo_content"));
+		vo.setTodo_content(sb.toString());
 		service.passTodo(vo);
 		log.info(vo);
 		rttr.addFlashAttribute("result", "pass");
