@@ -26,6 +26,13 @@ body {
 #todoList {
 	display: block;
 }
+
+.userListDiv{
+	height : 150px;
+	overflow-x:hidden; 
+	overflow-y:scroll; 
+}
+
 </style>
 
 
@@ -164,6 +171,28 @@ body {
 						<input class="btn btn-primary" type="submit" value="회원정보">
 					</form>
 					<a href="/mypage/fileUpLoad"><button>자료업로드</button></a>
+					<br/><br/><br/><br/><br/>
+					
+					
+					<!-- 회원 리스트 들어올 곳! -->
+					<h3>유저리스트</h3>
+					<div class="userListDiv">
+						<ol class="list-group">
+						<c:forEach items="${users }" var="users">
+						  <li class="list-group-item d-flex justify-content-between align-items-start">
+						    <div class="ms-2 me-auto">
+						      <div class="fw-bold">${users.name }(${users.uid})</div>
+						      ${users.depart_name }
+						    </div>
+						    	<button onclick ="window.open('/mypage/chat?targetUser=${users.uid}&targetName=${users.name }', 'Chat', 'width=300, height=250')"
+						    	class="badge rounded-pill bg-primary" id ="submit">Go Chat</button>
+						  </li>
+						</c:forEach>
+						 </ol>
+					</div>
+
+					<!-- 회원 리스트 끝 -->
+					
 				</div>
 
 				<div class="col-md-9">

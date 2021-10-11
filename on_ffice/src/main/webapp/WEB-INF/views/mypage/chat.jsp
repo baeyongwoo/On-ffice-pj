@@ -37,7 +37,7 @@ function connect() {
 }
 	function addMsg(msg) {
 		let chat = $('#msgArea').val();
-		chat = chat + "\n"+ $("#targetUser").val() +" : " +  msg;
+		chat = chat + "\n"+ $("#targetName").val() +" : " +  msg;
 		$('#msgArea').val(chat);
 	}
 	//메세지 전송
@@ -59,10 +59,11 @@ function connect() {
 	};
 	
 	$(function() {
+		console.log("connect 함수 실행?");
 		connect();
 		$('#btnSend').on("click", function() {
 			let chat = $("#msgArea").val();
-			chat = chat + "\n"+$("#userId").val()+" : " + $("#chatMsg").val();
+			chat = chat + "\n"+$("#userName").val()+" : " + $("#chatMsg").val();
 			$("#msgArea").val(chat);
 			sendMsg();
 			$("#chatMsg").val("");
@@ -74,11 +75,14 @@ function connect() {
 <title>Insert title here</title>
 </head>
 <body>
-	<textarea rows="5" cols="30" id="msgArea">
+	<h2>${param.targetName}과의 대화</h2>
+	<textarea rows="5" cols="30" id="msgArea" readonly>
 	</textarea>
 	<input type="hidden" id="userId" value="${login_session.uid}">
+	<input type="hidden" id="userName" value="${login_session.name}">
 	<br> 메시지 : <input type="text" id="chatMsg">
-	<br> 상대 아이디 : <input type="text" id="targetUser">
+	<br> <input type="hidden" id="targetName" value="${param.targetName }" readonly>
+	<br> <input type="hidden" id="targetUser" value="${param.targetUser }" readonly>
 	<br>
 	<input type="button" value="전송" id="btnSend">
 </body>

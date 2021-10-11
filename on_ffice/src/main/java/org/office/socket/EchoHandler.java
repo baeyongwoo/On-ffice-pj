@@ -32,6 +32,7 @@ public class EchoHandler extends TextWebSocketHandler{
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
     	log.info("TextWebSocketHandler : 연결 생성!");
     	users.add(session);
+    	log.info("발급된 소켓세션 : "+ session);
     	
     	}
     
@@ -46,6 +47,7 @@ public class EchoHandler extends TextWebSocketHandler{
     		String user = object.getString("userid");
     		
     		userMap.put(user, session);
+    		log.info("매핑된 유저 : " + user);
     		
     	}else {
     		String target = object.getString("target");
@@ -59,7 +61,7 @@ public class EchoHandler extends TextWebSocketHandler{
     
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception{
-    	log.info("tTextWebSocketHandler : 연결 종료");
+    	log.info("TextWebSocketHandler : 연결 종료");
     	users.remove(session);
     }
     
