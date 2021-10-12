@@ -70,7 +70,7 @@ public class UserController {
 			log.info("받아온 ip : "+ ip);
 			
 			
-			return "/company/lobby";
+			return "redirect:/company/lobby";
 		}
 		
 		// 회원가입 폼으로 입장하기 위한 컨트롤러 
