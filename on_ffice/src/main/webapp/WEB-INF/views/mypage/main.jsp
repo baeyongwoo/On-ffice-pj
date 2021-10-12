@@ -39,8 +39,8 @@ body {
 <script>
 	window.onload = function() {
 
-		let csrfHeaderName = ${_csrf.headerName}";
-		let csrfTokenValue = ${_csrf.token}";
+		let csrfHeaderName = "${_csrf.headerName}";
+		let csrfTokenValue = "${_csrf.token}";
 		let result = "${result}"
 
 		if (result === "insert") {
@@ -81,7 +81,7 @@ body {
 				if (afk < 10) {
 					afk++;
 
-				} else if (afk === 300) {
+				} else if (afk === 10) {
 					$('#AFKModal').modal('show');
 
 					$.ajax({
@@ -351,8 +351,8 @@ body {
 								<script>
 					$("#todoSelect").change(function(){
 						
-						let csrfHeaderName = ${_csrf.headerName}";
-						let csrfTokenValue = ${_csrf.token}";
+						let csrfHeaderName = "${_csrf.headerName}";
+						let csrfTokenValue = "${_csrf.token}";
 						let todo_num = $("#todoSelect option:selected").val();
 						
 						$.ajax({
