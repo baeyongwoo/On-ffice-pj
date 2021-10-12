@@ -91,9 +91,17 @@
 	</nav>
 
 	<div>
-		<c:if test="${position >= 6}">
-			<a href="/notice/write"><button class="btn btn-dark">글쓰러가기</button></a><br/><br/>
+		<form action="/notice/gowrite" method="post">
+				<c:if test="${position >= 6}">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</c:if>
+				<input type="submit" value="글쓰러가기">
+		</form>
+		
+		
+	
+		
+		
 	</div>
 
 </div>
