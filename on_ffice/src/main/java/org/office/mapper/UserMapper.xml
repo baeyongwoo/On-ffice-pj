@@ -18,7 +18,7 @@
         from positions
         where p_code=users.position_code) as p_name
         FROM users
-        WHERE uid = #{uid} AND upw = #{upw}
+        WHERE uid = #{uid}
 </select>
 
 <!-- id 중복검사 로직 -->

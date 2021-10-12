@@ -6,6 +6,8 @@ import java.util.List;
 import org.office.domain.UserVO;
 import org.office.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper mapper;
 	
+	@Autowired
+	private PasswordEncoder pwen;
+	
 	@Override
 	public void register(UserVO vo) {
 		
@@ -28,9 +33,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserVO login(String uid, String upw) {
-		UserVO user = mapper.select(uid, upw);
-		log.info("로그인 service 실행");
-		return user;
+
+			UserVO user = mapper.select(uid, upw);
+			log.info("user 조회 값 : " + user);
+			log.info("로그인 service 실행");
+			return user;
+
 	}
 
 	@Override
@@ -56,6 +64,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void userModify(UserVO vo) {
 		log.info("유저 정보 수정 service 실행");
+		log.info("유저 vo 값 : " + vo.getUpw());
 		mapper.updateUser(vo);
 	}
 	

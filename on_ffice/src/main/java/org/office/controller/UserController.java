@@ -20,6 +20,7 @@ import org.office.service.TodoService;
 import org.office.service.PositionService;
 import org.office.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,14 +55,8 @@ public class UserController {
 		@Autowired
 		private PhoneService phs;
 	
-		
-		@GetMapping("/login")
-		private String Gologin() {
-			
-			log.info("login.jsp로 이동");
-			
-			return "/user/login";
-		}
+		@Autowired
+		private PasswordEncoder pwen;
 		
 		@GetMapping("/guestIn")
 		private String GuestIn(GetIpService iservice, HttpSession session, Model model) throws Exception {
@@ -270,17 +265,29 @@ public class UserController {
 			return "/user/phoneCheckForm";
 		}
 		
-	
+		@GetMapping("/login")
+		private String Gologin(String error, String logout, Model model) {
+			log.info("error여부 : " + error);
+			log.info("logout 여부 : " + logout);
+			
+			if(logout != null) {
+				model.addAttribute("logout", "로그아웃 했습니다.");
+			}
+			log.info("login.jsp로 이동");
+			
+			return "/user/login";
+		}
+		
 		@PostMapping("/login")
 		private String login(String uid, String upw, Model model, HttpSession session, RedirectAttributes rttr) {
-			UserVO vo = service.login(uid, upw);
 			log.info("login로직 접속");
 			log.info("받아온 uid : " + uid);
 			log.info("받아온 upw : " + upw);
 			
+			UserVO vo = service.login(uid, upw);
 			
-		
-			if(vo == null) {
+			if(vo == null || !pwen.matches(upw, vo.getUpw())) {
+				
 				model.addAttribute("login_result", "fail");
 				return "/user/login";
 			} else {
@@ -292,22 +299,30 @@ public class UserController {
 				log.info("로그인 세션 정보" + session.getAttribute("login_session"));
 				
 				return "redirect:/company/lobby";
+				
 			}
 		}
 		
-		@GetMapping("/logout")
-		private String login(HttpSession session) {
-			
-			Object object = session.getAttribute("login_session");
-			if(object == null) {
-				UserVO user = (UserVO) object;
-				session.removeAttribute("login_session");
-				log.info("로그아웃 컨트롤러 실행");
-				return "/user/logout";
-			}
-			session.invalidate();
-			return "/user/login";
+		@PostMapping("/logout")
+		public void logoutPost() {
+			log.info("포스트 방식으로 로그아웃요청 처리");
 		}
+		
+		@GetMapping("/logout")
+		public void logout(HttpSession session) {
+			
+			log.info("로그아웃 폼으로 이동");
+//			Object object = session.getAttribute("login_session");
+//			if(object == null) {
+//				UserVO user = (UserVO) object;
+//				session.removeAttribute("login_session");
+//				log.info("로그아웃 컨트롤러 실행");
+//				return "/user/logout";
+//			}
+//			session.invalidate();
+//			return "/user/login";
+		}
+		
 		
 		@PostMapping("/userInfo")
 		private String userInfo(String uid, Model model) {

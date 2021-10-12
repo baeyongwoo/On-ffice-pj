@@ -47,7 +47,8 @@
 	<div class="container text-center">
 		<div class="row">&nbsp;</div>
 
-		
+		<c:out value="${error }" />
+		<c:out value="${logout}" />
 
 		<form action ="/user/login" method="post" onsubmit="return FormSubmit();">
 
@@ -65,7 +66,7 @@
 
 		<div class="row">&nbsp;</div>
 
-		<div class="g-recaptcha" data-sitekey="6LezJokcAAAAAGeSI922uGsecDbO3MCUTxplIzLj"></div>
+		<!-- <div class="g-recaptcha" data-sitekey="6LezJokcAAAAAGeSI922uGsecDbO3MCUTxplIzLj"></div> -->
 
 		<div class="row">&nbsp;</div>
 		
@@ -91,6 +92,7 @@
 				</div>
 		</div>
 			
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 	</form>
 
 	<div class="row">&nbsp;</div>

@@ -166,10 +166,12 @@ body {
 					<br /> 접속한 시간<br /> ${login_time }<br />
 					<div id="clock"></div>
 
-					<form action="/user/userInfo" method="post">
+					<a href="/user/userInfo">내 정보보기</a>
+					<!-- <form action="/user/userInfo" method="post">
 						<input type="hidden" name="uid" value="${login_session}">
 						<input class="btn btn-primary" type="submit" value="회원정보">
 					</form>
+					 -->
 					<a href="/mypage/fileUpLoad"><button>자료업로드</button></a>
 					<br/><br/><br/><br/><br/>
 					

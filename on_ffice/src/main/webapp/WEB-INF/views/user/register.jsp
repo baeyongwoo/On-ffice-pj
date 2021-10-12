@@ -104,23 +104,18 @@
 								</c:forEach>
 								</select>
 								<br>
-							<div colspan="3" class="text-center"> 
+							<div class="text-center"> 
 								<input type="submit" class="btn btn-success" value="회원가입"/> 
 								<input type="reset" class="btn btn-danger" value="재작성" /> 
+								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+								</div>
 							</form>
 				                <a href="/user/login"><input type="button" class="btn btn-primary" value="뒤로가기" /></a>
-							<div> 
 						
-			
-					
-				</form>
-
-			
 
 			</div>
-		</div>
 
-
+			</div>
 		</div>									<!-- onsubmit="false"면 submit을 차단 -->
 		
 

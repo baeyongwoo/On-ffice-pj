@@ -54,7 +54,7 @@
 		<session-timeout>1</session-timeout>
 	</session-config>
 	
-	<!-- 
+	
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -70,5 +70,4 @@
 			/WEB-INF/spring/security-context.xml
 		</param-value>
 	</context-param>
-	 -->
 </web-app>

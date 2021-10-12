@@ -7,11 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script>
-		alert("자동 로그아웃되었습니다.")
-	</script>
 	
-	<h2><a href="/user/login">로그인창</a></h2>
+	
+	<h1>로그아웃 페이지</h1>
+	<p>오늘 할일 끝내셧나요?? 로그아웃하실려면 아래 눌러주세요</p>
+	<form action="/user/logout" method="post">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+		<input type="submit" value="로그아웃">
+	</form>
 	
 </body>
 </html>
