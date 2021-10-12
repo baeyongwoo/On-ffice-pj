@@ -15,6 +15,7 @@
 			<input type="text" name="email" maxlength="50" autofocus class="form-control" placeholder ="이메일을 입력해주세요" style="text-align: center"> 
 			<br/>
 			<input type="submit" value="중복확인" class="btn btn-dark"> 
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		</form> 
 	</div> 
 </div>

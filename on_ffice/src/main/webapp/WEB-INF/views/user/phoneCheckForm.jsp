@@ -11,17 +11,18 @@
 <body>
 	
 <div style="text-align: center">
-	<div class="col-xs-3 w-70 p-3">
 		<c:choose>
+	<div class="col-xs-3 w-70 p-3">
 			<c:when test="${sms_result eq null }">
 			<h3> 전화번호 문자인증 </h3> 
 		<form method="post" action="/user/phoneCheckForm"> 
 			<input type="tel" name="cp" maxlength="50" required autofocus class="form-control" placeholder="전화번호를 입력해주세요" style="text-align: center">
 			<br/>
 			<input type="submit" value="인증문자 전송" class="btn btn-dark"> 
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		</form> 
-	</div>
 			</c:when>
+	</div>
 			<c:when test="${sms_result eq 'success'}">
 				<script>
 					alert('인증 코드를 전송하였습니다.');
@@ -31,6 +32,7 @@
 					<input type="hidden" name="cp" value="${cp }">
 					<input type="hidden" name="codeString" value="${codeString }">
 					<input type="submit" value="제출">
+					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 				</form>
 			</c:when>
 			

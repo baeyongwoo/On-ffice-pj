@@ -32,6 +32,7 @@
 				<input type="hidden" name="email" value="${email }">
 				<input type="hidden" name ="codeString" value="${code }"><br/>
 				<input type="submit" value="인증하기" onsubmit="emailCodeCheck(this)" class="btn btn-dark">
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 			</form>
 			&nbsp;
 			<div>

@@ -17,7 +17,7 @@
 		<input type="hidden" name="uid" value="${login_session.uid }">
 		<input type="hidden" name="upwSession" value="${login_session.upw }">
 		<input type="submit" value="회원탈퇴" onclick="redirect()">
-		
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 	</form>
 	
 		<script>
