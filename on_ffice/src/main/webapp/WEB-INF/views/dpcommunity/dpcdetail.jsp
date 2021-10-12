@@ -164,9 +164,17 @@
 			var str = "";
 			
 			$(data).each(function(){
-												
+				
+				var timestamp = this.updatedate;
+				var date = new Date(timestamp);
+				
+				console.log(date);
+				var formattedTime = "댓글 게시일 : " + date.getFullYear() 
+			 						+ "/" + (date.getMonth() + 1)
+				 					+ "/" + date.getDate()	 								
+				
 				str +="<li data-dno='" + this.dno + "' class='replyLi'>"
-					+ "<div class='reply'>" + this.dno + ":" + this.reply + ":" + this.replyer + "</div>"
+					+ "<div class='reply'>" + this.dno + ":" + this.reply + ":" + this.replyer + "<br/>" + formattedTime + "</div>"
 					+ "<button type='button' class='btn btn-primary'>수정/삭제</button></li>";
 			});
 			
