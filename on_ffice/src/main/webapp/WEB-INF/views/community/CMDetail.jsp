@@ -54,6 +54,7 @@
 			<input type="hidden" name="community_num" value="${cd.community_num}">
 <<<<<<< HEAD
 <<<<<<< HEAD
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 			<input type="submit" value="삭제하기" class="btn btn-danger">
 =======
 =======
@@ -128,7 +129,6 @@
 		
 	<script>
 	
-
 		var community = "${cd.community_num}";
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
@@ -164,9 +164,6 @@
 			$.ajax({
 				beforeSend: function(xhr) {
 				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-				},
-				beforeSend: function(xhr) {
-			    	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 				},
 				type : 'post',
 				url : '/community/CMDetail/cmreplies',

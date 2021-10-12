@@ -113,7 +113,7 @@
 			</div>
 		</c:if>
 		
-		<div class="fs-5">댓글 입력</div>
+		<div class="fs-5">댓글 등록</div>
 		
 			<div>
 				<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
