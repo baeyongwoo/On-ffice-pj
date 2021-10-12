@@ -166,7 +166,11 @@
     </div>
         </div>
         <div class="container"> 
-            <div class="side">뉴스</div>
+            <div class="side">
+            날씨정보 :${weather}
+            
+            
+            </div>
             <div class="content"> 
                 <a class="mypage" href="/mypage/main"><h2 class="a">마이페이지</h2><div class="mypage"></div></a>
                 <a class="dppage" href="/company/dplobby?dp_code=${user.dp_code}"><h2 class="a">부서페이지</h2><div class="dppage"></div></a>
@@ -197,70 +201,69 @@
 
     <div class="carousel-inner" role="listbox">
     <div class="item active">
-        <ul><h1>월요일</h1></ul>
+        <h1>월요일</h1>
+        <ul>
     <c:forEach items="${rice}" var="rice" begin="0" end="0">    
-        <h3>
-        <li>${rice.main}</li>
-		<li>${rice.side1}</li>
-		<li>${rice.side2}</li>
-		<li>${rice.side3}</li>
-		<li>${rice.side4}</li>
-        </h3>
+        <li><h3>${rice.main}</h3></li>
+		<li><h3>${rice.side1}</h3></li>
+		<li><h3>${rice.side2}</h3></li>
+		<li><h3>${rice.side3}</h3></li>
+		<li><h3>${rice.side4}</h3></li>
         </c:forEach>
+		
+        </ul>
     </div>
 
 
 <div class="item">
   
-    <ul><h1>화요일</h1></ul>
+    <h1>화요일</h1>
+    <ul>
+    </ul>
 	<c:forEach items="${rice}" var="rice" begin="1" end="1">
-        <h3>
-		<li>${rice.main}</li>
-		<li>${rice.side1}</li>
-		<li>${rice.side2}</li>
-		<li>${rice.side3}</li>
-		<li>${rice.side4}</li>
-        </h3>
+		<li><h3>${rice.main}</h3></li>
+		<li><h3>${rice.side1}</h3></li>
+		<li><h3>${rice.side2}</h3></li>
+		<li><h3>${rice.side3}</h3></li>
+		<li><h3>${rice.side4}</h3></li>
     </c:forEach>
 </div>
 <div class="item">
-  
-    <ul><h1>수요일</h1></ul>
+  	<h1>수요일</h1>
+    <ul>
 	<c:forEach items="${rice}" var="rice" begin="2" end="2">
-	    <h3>	
-        <li>${rice.main}</li>
-		<li>${rice.side1}</li>
-		<li>${rice.side2}</li>
-		<li>${rice.side3}</li>
-		<li>${rice.side4}</li>
-        </h3>
+        <li><h3>${rice.main}</h3></li>
+		<li><h3>${rice.side1}</h3></li>
+		<li><h3>${rice.side2}</h3></li>
+		<li><h3>${rice.side3}</h3></li>
+		<li><h3>${rice.side4}</h3></li>
     </c:forEach>
+        </ul>
 </div>
 <div class="item">
-  
-  <ul><h1>목요일</h1></ul>
+  <h1>목요일</h1>
+  <ul>
   <c:forEach items="${rice}" var="rice" begin="3" end="3">
-        <h3>	
-        <li>${rice.main}</li>
-        <li>${rice.side1}</li>
-        <li>${rice.side2}</li>
-        <li>${rice.side3}</li>
-        <li>${rice.side4}</li>
-        </h3>
+        <li><h3>${rice.main}</h3></li>
+        <li><h3>${rice.side1}</h3></li>
+        <li><h3>${rice.side2}</h3></li>
+        <li><h3>${rice.side3}</h3></li>
+        <li><h3>${rice.side4}</h3></li>
 </c:forEach>
+        </ul>
 </div>
 <div class="item">
- 
-  <ul><h1>금요일</h1></ul>
+ <h1>금요일</h1>
+  <ul>
   <c:forEach items="${rice}" var="rice" begin="4" end="4">
-        <h3>	
-        <li>${rice.main}</li>
-        <li>${rice.side1}</li>
-        <li>${rice.side2}</li>
-        <li>${rice.side3}</li>
-        <li>${rice.side4}</li>
-        </h3>
-</c:forEach>  
+        <li><h3>${rice.main}</h3></li>
+        <li><h3>${rice.side1}</h3></li>
+        <li><h3>${rice.side2}</h3></li>
+        <li><h3>${rice.side3}</h3></li>
+        <li><h3>${rice.side4}</h3></li>
+        
+</c:forEach> 
+</ul> 
 </div>
 </div>
 </div> 
@@ -272,8 +275,7 @@
         </div>   
 
        
-
-    </div> <!-- wrap 닫기-->
+ <!-- wrap 닫기-->
      <script>
         $(function(){
         // 이미지 슬라이드 컨트롤를 사용하기 위해서는 carousel를 실행해야한다.

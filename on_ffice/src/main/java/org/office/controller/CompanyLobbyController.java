@@ -1,6 +1,7 @@
 package org.office.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.office.domain.NoticeVO;
 import org.office.domain.UserVO;
 import org.office.service.BirthService;
+import org.office.service.CrawlingService;
 import org.office.service.DepartService;
 import org.office.service.DpCommunityService;
 import org.office.service.MenuService;
@@ -53,6 +55,9 @@ public class CompanyLobbyController {
 	
 	@Autowired
 	BirthService bs;
+	
+	@Autowired
+	CrawlingService cs;
 
 	@GetMapping("/lobby")
 	public String showlobby(Model model, HttpSession session) {
@@ -72,7 +77,8 @@ public class CompanyLobbyController {
 		log.info("birth 서비스에서 받아온 정보 : " + birth_user_view);
 		model.addAttribute("blist", birth_user_view);
 	
-		
+		log.info(cs.weather());
+		model.addAttribute("weather", cs.weather());
 		return "/company/lobby";
 	}
 	
@@ -149,6 +155,5 @@ public class CompanyLobbyController {
 		
 		model.addAttribute("blist", bs.getBirth());
 	}
-	
 	
 }
