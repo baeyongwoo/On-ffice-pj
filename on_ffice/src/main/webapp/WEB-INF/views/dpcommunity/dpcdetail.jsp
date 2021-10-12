@@ -87,6 +87,7 @@
 			<input type="hidden" name="searchType" value="${param.searchType}">
 			<input type="hidden" name="keyword" value="${param.keyword}">
 			<input type="submit" value="수정하기" class="btn btn-warning" data-bs-toggle="modal">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		</form>
 		</div>
 		<div class="form">
@@ -101,6 +102,7 @@
 			      </div>
 			      	<div class="modal-body"> 
 			      	<input type="submit" value="삭제하기">
+			      	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 			      	<button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#createTodo" aria-label="Close">취소</button> 
 					</div>
 			      </div>
@@ -118,7 +120,8 @@
 			</div>
 			<div class="form-inline">
 				<div class="w-70">
-				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
+				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다."
+				 
 				id="newReply" class="form-control fs-6"><br/>
 				</div>
 			<div class="text-end">
@@ -148,6 +151,8 @@
 	
 	<script>
 		var dp_community = "${DpCd.dc_num}";
+		var csrfHeaderName = ${_csrf.headerName}";
+		var csrfTokenValue = ${_csrf.token}";
 		
 		function getAllList(){
 		
@@ -178,6 +183,9 @@
 			console.log(replyer + "/" + reply);
 			
 			$.ajax({
+				beforeSend: function(xhr) {
+				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				type : 'post',
 				url : '/dpcommunity/dpcdetail/dpcreplies',
 				headers: {
@@ -205,6 +213,9 @@
 			var dno = $(".modal-title").html();
 			var reply = $("#replytext").val();
 				$.ajax({
+					beforeSend: function(xhr) {
+					    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
 				type : 'patch',
 				url : '/dpcommunity/dpcdetail/dpcreplies/' + dno,
 				headers : {
@@ -228,6 +239,9 @@
 			var dno = $(".modal-title").html();
 			
 			$.ajax({
+				beforeSend: function(xhr) {
+				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				type : 'delete',
 				url : '/dpcommunity/dpcdetail/dpcreplies/' + dno,
 				success : function(result) {
