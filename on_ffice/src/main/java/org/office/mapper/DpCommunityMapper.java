@@ -3,10 +3,14 @@ package org.office.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.office.domain.DepartVO;
 import org.office.domain.DpCommunityVO;
 import org.office.domain.SearchCriteria;
 
 public interface DpCommunityMapper {
+
+// 부서코드, 부서이름, 부서 인원 조회
+	public DepartVO selectDpInfo(int dp_code);
 	
 // 글 조회 로직
 	public List<DpCommunityVO> DpCommunityList(int dp_code);

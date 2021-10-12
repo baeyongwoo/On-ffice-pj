@@ -50,19 +50,8 @@
 						<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
 							&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
 						<c:if test="${dpcList.dp_code eq login_session.dp_code}">
-						<c:if test="${dpcList.dp_code eq 1}">
-							<td>인사부</td>
+							
 						</c:if>
-						<c:if test="${dpcList.dp_code eq 2}">
-							<td>회계부</td>
-						</c:if>
-						<c:if test="${dpcList.dp_code eq 3}">
-							<td>IT부</td>
-						</c:if>
-						<c:if test="${dpcList.dp_code eq 4}">
-							<td>마케팅부</td>
-						</c:if>
-							</c:if>
 						
 						<td><c:out value="${dpcList.empno}"/></td>
 							

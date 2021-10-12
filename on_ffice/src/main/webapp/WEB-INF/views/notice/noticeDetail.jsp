@@ -40,14 +40,14 @@
 	
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
-			<input type="submit" value="삭제하기">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="삭제하기">
 		</form>
 		
 		<form action="/notice/noticeUpdate" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
-			<input type="submit" value="수정하기">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="수정하기">
 		</form>
 	</c:if>
 		<hr>
@@ -85,6 +85,8 @@
 	
 	<script>
 		var notice = "${nd.notice_num}";
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
 		function getAllList(){
 		
 		$.getJSON("/notice/noticeDetail/replies/all/" + notice ,function(data) {
@@ -114,6 +116,9 @@
 			console.log(replyer + "/" + reply);
 			
 			$.ajax({
+				beforeSend: function(xhr) {
+				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				type : 'post',
 				url : '/notice/noticeDetail/replies/',
 				headers: {
@@ -141,6 +146,9 @@
 			var rno = $(".modal-title").html();
 			var reply = $("#replytext").val();
 				$.ajax({
+					beforeSend: function(xhr) {
+					    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
 				type : 'patch',
 				url : '/notice/noticeDetail/replies/' + rno,
 				headers : {
@@ -164,6 +172,9 @@
 			var rno = $(".modal-title").html();
 			
 			$.ajax({
+				beforeSend: function(xhr) {
+				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				type : 'delete',
 				url : '/notice/noticeDetail/replies/' + rno,
 				success : function(result) {

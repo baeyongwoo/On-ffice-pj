@@ -2,8 +2,10 @@ package org.office.service;
 
 import java.util.List;
 
+import org.office.domain.DepartVO;
 import org.office.domain.DpCommunityVO;
 import org.office.domain.SearchCriteria;
+import org.office.mapper.DepartMapper;
 import org.office.mapper.DpCommunityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,17 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 	
 	@Autowired
 	private DpCommunityMapper dpcommunitymapper;
+	
+	@Autowired
+	DepartMapper mapper;
+	
+	@Override
+	public DepartVO getDpInfo(int dp_code) {
+		
+		log.info("부서 정보 조회 서비스 실행");
+		return mapper.selectDpInfo(dp_code);
+		
+	}
 	
 	@Override
 	public List<DpCommunityVO> list(int dp_code) {

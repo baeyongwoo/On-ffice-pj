@@ -39,13 +39,14 @@
 	
 		<form action="/community/deleteCheck" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 			<input type="submit" value="삭제하기">
 		</form>
 		
 		<form action="/community/CMUpdate" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
-			<input type="submit" value="수정하기">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="수정하기">
 		</form>
 		
 	<hr>
@@ -95,9 +96,10 @@
 	<script>
 	
 
-		var csrfHeaderName = ${_csrf.headerName}";
-		var csrfTokenValue = ${_csrf.token}";
 		var community = "${cd.community_num}";
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		
 		function getAllList(){
 		
 		$.getJSON("/community/CMDetail/cmreplies/all/" + community ,function(data) {
@@ -127,6 +129,9 @@
 			console.log(replyer + "/" + reply);
 			
 			$.ajax({
+				beforeSend: function(xhr) {
+				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				beforeSend: function(xhr) {
 			    	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 				},
@@ -158,6 +163,9 @@
 			var reply = $("#replytext").val();
 			console.log(cno);
 			$.ajax({
+				beforeSend: function(xhr) {
+				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				type : 'patch',
 				url : '/community/CMDetail/cmreplies/' + cno,
 				headers : {
@@ -181,6 +189,9 @@
 			var cno = $(".modal-title").html();
 			
 			$.ajax({
+				beforeSend: function(xhr) {
+				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				type : 'delete',
 				url : '/community/CMDetail/cmreplies/' + cno,
 				success : function(result) {

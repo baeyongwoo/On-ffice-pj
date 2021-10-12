@@ -10,6 +10,7 @@ package org.office.service;
 */
 import java.util.List;
 
+import org.office.domain.DepartVO;
 import org.office.domain.DpCommunityVO;
 import org.office.domain.SearchCriteria;
 
@@ -20,6 +21,9 @@ public interface DpCommunityService {
 	
 	// 페이징 글 목록
 	public List<DpCommunityVO> DpCListPage(SearchCriteria cri);
+	
+	// 사원 정보 가져오는 로직
+	public DepartVO getDpInfo(int dp_code); 
 	
 	// 전체 글 개수 가져오기
 	public int getTotalBoard(SearchCriteria cri);

@@ -151,8 +151,8 @@
 	
 	<script>
 		var dp_community = "${DpCd.dc_num}";
-		var csrfHeaderName = ${_csrf.headerName}";
-		var csrfTokenValue = ${_csrf.token}";
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
 		
 		function getAllList(){
 		
