@@ -65,7 +65,7 @@ public class NoticeController {
 		return "redirect:/notice/noticeList";
 	}
 	
-	@GetMapping("/write")
+	@PostMapping("/gowrite")
 	public String write() {
 		return "/notice/write";
 	}

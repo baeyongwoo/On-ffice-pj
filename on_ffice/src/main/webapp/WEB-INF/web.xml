@@ -70,4 +70,20 @@
 			/WEB-INF/spring/security-context.xml
 		</param-value>
 	</context-param>
+	
+	<error-page>
+
+    	<error-code>405</error-code>
+    	<location>/WEB-INF/views/errorPage/error405.jsp</location>
+
+	</error-page>
+	<!-- 
+	<error-page>
+    	<error-code>500</error-code>
+    	<location>/WEB-INF/views/common/error500.jsp</location>
+
+	</error-page>
+	 -->
+
+
 </web-app>
