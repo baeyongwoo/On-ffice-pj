@@ -25,12 +25,13 @@
 				<c:set var="user" value="${login_session}" />
 				<a href="/company/dplobby?dp_code=${user.dp_code}"><button class="btn btn-dark">부서로비가기</button></a>
 				<a href="/company/lobby"><button class="btn btn-dark">메인로비로가기</button></a>
-				<a href="/dpcommunity/dpcwrite"><button class="btn btn-dark">게시글 작성</button></a>
 				</div>
 			</div>
 			<div class="text-center">
 				<h1>부서 자유 게시판</h1>
 			</div>
+
+			<hr/>
 		</header>
 				<main>
 				<table class="table table-dark table-hover text-center">
@@ -92,6 +93,8 @@
 placeholder="검색어" value="${btnMaker.cri.keyword}">
 <button id="searchBtn">검색하기</button>
 
+</form>
+
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
 			<c:if test="${btnMaker.prev}">
@@ -118,17 +121,28 @@ placeholder="검색어" value="${btnMaker.cri.keyword}">
 				</c:if>
 			</ul>
 		</nav>
-</form>
+
+<div class="text-center">
+	<a href="/dpcommunity/dpcwrite"><button class="btn btn-dark">게시글 작성</button></a>
+	</div>
+
+	&nbsp;
+
 </main>
+
+</div>
+</body>
 <footer>
 	
+	<hr/>
+
 	<div class="row">
 		<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
 		<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
 		<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
 	</div>
+
+
 	
 </footer>
-</div>
-</body>
 </html>

@@ -21,37 +21,65 @@
 			padding: 10px;
 			z-index: 1000;
 		}
+		.a { background-color: gray;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		width: 800px;
+	 	margin-left: 30%;
+		}
 	</style>
 </head>
 <body>
+	<div class="text-center">
 	<c:set var="nd" value="${noticeDetail}"></c:set>
-	<h2><c:out value="${nd.notice_num}"/>번쨰 게시글 입니다</h2>
-	<h2>제목 :  <c:out value="${nd.ntitle}" /></h2>
-	<h2>내용 : <c:out value="${nd.ncontent}" /></h2>
-	<h2>작성자 : ${nd.nwriter}</h2>
-	<h2>작성일 : ${nd.ndate}</h2>
-	<h2>최근 업데이트 : ${nd.nupdate}</h2>
-	<h2>조회수 : ${nd.nhits}</h2>
-	
-	<a href="/notice/noticeList">목록으로</a>
+	<header>
+	<h2>"<c:out value="${nd.notice_num}"/>번째 게시글" </h2>
+	</header>
+	<hr/>
+	<h2>제목 :  <input type="text" disabled value="${nd.ntitle}">
+		작성자 : <input type="text" disabled value="${nd.nwriter}">
+	</h2>
+	<h2 class="a">내용 : <c:out value="${nd.ncontent}" /></h2>
+</div>
 
+</div>
+<div class="text-center">
+	<a href="/notice/noticeList" class="btn btn-dark">목록으로</a>
+</div>
+&nbsp;
+<div class="text-center">
 	
 	<c:if test="${nd.nwriter eq login_session.uid}">
 	
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
+<<<<<<< HEAD
+<<<<<<< HEAD
+			<input type="submit" value="삭제하기" class="btn btn-danger">
+=======
+>>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
+=======
+>>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<input type="submit" value="삭제하기">
 		</form>
-		
+		&nbsp;
 		<form action="/notice/noticeUpdate" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
+<<<<<<< HEAD
+<<<<<<< HEAD
+			<input type="submit" value="수정하기" class="btn btn-primary">
+=======
+>>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
+=======
+>>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<input type="submit" value="수정하기">
 		</form>
-	</c:if>
+		</c:if>
+	
 		<hr>
-		
+		<div class="text-center"></div>
 		<h2>댓글 등록</h2>
 		
 			<div>
@@ -59,9 +87,13 @@
 			</div>
 			<div>
 				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
-				id="newReply">
-			<button id="replyAddBtn">댓글 등록</button>
-			</div>
+				id="newReply"><br/>
+				</div>
+				&nbsp;
+			<div>
+			<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
+		</div>	
+		
 			<div id="modDiv" style="display:none;">
 				<div class="modal-title"></div>			
 					<div>
@@ -202,9 +234,22 @@
 			$("#modDiv").hide("slow");
 		})
 	</script>
-	
+	</div>
 
 	
 	
 </body>
+<footer>
+	
+	<hr/>
+
+	<div class="row">
+		<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+		<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+		<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+	</div>
+
+
+	
+</footer>
 </html>
