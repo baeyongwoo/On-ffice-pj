@@ -39,6 +39,8 @@ body {
 <script>
 	window.onload = function() {
 
+		let csrfHeaderName = ${_csrf.headerName}";
+		let csrfTokenValue = ${_csrf.token}";
 		let result = "${result}"
 
 		if (result === "insert") {
@@ -83,6 +85,9 @@ body {
 					$('#AFKModal').modal('show');
 
 					$.ajax({
+						beforeSend: function(xhr) {
+						    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+						},
 						url : "/mypage/awayFromKeyboard",
 						type : "POST",
 						data : {
@@ -290,6 +295,7 @@ body {
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel">TODO를 생성합니다</h5>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<button type="button" class="btn-close" data-bs-dismiss="modal"
 								aria-label="Close"></button>
 						</div>
@@ -344,9 +350,15 @@ body {
 								
 								<script>
 					$("#todoSelect").change(function(){
+						
+						let csrfHeaderName = ${_csrf.headerName}";
+						let csrfTokenValue = ${_csrf.token}";
 						let todo_num = $("#todoSelect option:selected").val();
 						
 						$.ajax({
+							beforeSend: function(xhr) {
+							    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+							},
 						url : "/mypage/detailTodo",
 						type : "GET",
 						data : {
@@ -369,6 +381,7 @@ body {
 								<br /> <span class="input-group-text">↓추가/변경된내용</span>
 								<textarea class="form-control" name="todo_content"
 							rows="10" style="overflow-y:scroll" required></textarea>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 								<input type="submit" class="btn btn-primary" value="작업넘기기" />
 						</div>
 					</div>
@@ -398,6 +411,7 @@ body {
 								</c:forEach>
 							</select>
 							<input type="hidden" name="complete" value="complete">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<input type="submit" class="btn btn-primary" value="완료하기!"/>
 						</div>
 					</div>
@@ -415,9 +429,10 @@ body {
 					<div class="modal-body">
 						<h5>부재중 상태를 해제하려면 아래 버튼을 클릭하세요</h5>
 						<form action="/mypage/awayFromKeyboard" method="post">
-							<input type="hidden" name="stat" value="접속중"> <input
-								type="hidden" name="uid" value="${info.uid}"> <input
-								type="submit" value="부재중 해제" class="btn btn-success">
+							<input type="hidden" name="stat" value="접속중">
+							<input type="hidden" name="uid" value="${info.uid}">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							<input type="submit" value="부재중 해제" class="btn btn-success">
 						</form>
 					</div>
 				</div>
