@@ -16,6 +16,7 @@
 		<input type="text"  value="${login_session.name}" readonly="readonly">
 		<input type="hidden" name="nwriter" value="${notice.nwriter}" readonly="readonly"></br>
 		<input type="submit" value="수정완료">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 	
 </body>

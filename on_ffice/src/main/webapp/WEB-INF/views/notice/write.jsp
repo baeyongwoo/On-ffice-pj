@@ -24,6 +24,7 @@
 		<input type="text" value="${login_session.name}" placeholder="로그인해주세요" readonly="readonly"></br>
 		<input type="submit" value="작성완료">
 		<input type="reset" value="다시작성">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 </body>
 </html>

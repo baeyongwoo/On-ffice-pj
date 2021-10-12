@@ -35,6 +35,7 @@ margin:20px;
 		<input type="submit" value="작성완료" class ="btn btn-dark">
 		<input type="reset" value="다시작성" class ="btn btn-warning">
 		</div>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
         </div>
     </div>

@@ -17,6 +17,7 @@
 		<input type="hidden" name="cwriter" value="${cm.cwriter}">
 		<input type="password" name="cpwck" placeholder="비밀번호 입력" required="required">
 		<input type="submit" value="수정완료">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 
 </body>
