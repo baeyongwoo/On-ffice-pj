@@ -13,7 +13,7 @@
 		비밀번호<input type="password" name="cpwck" id="cpwck">
 		<input type="hidden" name="community_num" value="${community.community_num}">
 		<input type="submit" value="글삭제">
-		
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 	
 		<script>

@@ -45,6 +45,7 @@
 		<form action="/community/CMUpdate" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
 			<input type="submit" value="수정하기">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
 		
 	<hr>
@@ -92,6 +93,10 @@
 		</ul>
 		
 	<script>
+	
+
+		var csrfHeaderName = ${_csrf.headerName}";
+		var csrfTokenValue = ${_csrf.token}";
 		var community = "${cd.community_num}";
 		function getAllList(){
 		
@@ -122,6 +127,9 @@
 			console.log(replyer + "/" + reply);
 			
 			$.ajax({
+				beforeSend: function(xhr) {
+			    	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
 				type : 'post',
 				url : '/community/CMDetail/cmreplies',
 				headers: {
