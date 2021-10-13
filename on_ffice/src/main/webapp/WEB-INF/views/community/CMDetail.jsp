@@ -52,29 +52,22 @@
 <div class="text-center">
 		<form action="/community/deleteCheck" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 			<input type="submit" value="삭제하기" class="btn btn-danger">
-=======
-=======
->>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
+
 			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 			<input type="submit" value="삭제하기">
->>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
+
 		</form>
 	
 		&nbsp;
 
 		<form action="/community/CMUpdate" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 			<input type="submit" value="수정하기" class="btn btn-primary">
-=======
->>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
-=======
->>>>>>> 2a136c998a927afe64d4696cba0739b1447cbb9b
+
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<input type="submit" value="수정하기">
 		</form>

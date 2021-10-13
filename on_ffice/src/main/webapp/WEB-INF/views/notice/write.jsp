@@ -3,15 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	
+
 	<h2>알림 게시판 작성 창</h2>
 	
 	<form action="/notice/write" method="post">
-		<select name="ncategory">
-			<option value="" selected="disalbed">--선택--</option>
+		<select name="ncategory" id="check" required="required">
+			<option value= >--선택--</option>
 			<option value="공지">공지</option>
 			<option value="행사">행사</option>
 			<option value="자료">자료</option>
@@ -26,5 +30,6 @@
 		<input type="reset" value="다시작성">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
+
 </body>
 </html>
