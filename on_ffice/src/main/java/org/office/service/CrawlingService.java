@@ -4,5 +4,6 @@ import java.util.HashMap;
 
 public interface CrawlingService {
 
-	public HashMap<String, Object> weather();
+	public HashMap<String, Object> crawling();
+
 }
