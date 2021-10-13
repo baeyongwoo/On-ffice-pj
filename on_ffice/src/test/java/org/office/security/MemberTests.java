@@ -30,15 +30,16 @@ public class MemberTests {
 	
 	@Test
 	public void testCryptDefaultDB() {
-		String [] idList = {"dyddn30612"};
+		String [] idList = {"test1"};
 		String sql = "UPDATE USERS set upw=? WHERE uid=?";
 		
+		//test1 비밀번호는 test1
 		try {
 			Connection con = ds.getConnection();
 			
 			for(String id : idList) {
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, pwen.encode("test12345!"));
+				pstmt.setString(1, pwen.encode("test1"));
 				pstmt.setString(2, id);
 				pstmt.executeUpdate();
 			}

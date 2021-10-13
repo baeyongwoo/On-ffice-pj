@@ -8,12 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${delete_result eq 'fail'}">
 		<script>
-			window.close();
+			var result = "${delete_result}";
+			
+			if(result==="fail"){
+				alert('비밀번호가 올바르지 않습니다.');
+			}else if(result==="success"){
+				opener.parent.location.replace("/user/login");
+			}
+			
+			setTimeout(function() {
+				window.close();
+			}, 1);
+			
 		</script>
-		
-	</c:if>
+
 	<c:if test="${modify_result eq 'success'}">
 		<script>
 			alert('회원 정보 수정이 완료되었습니다.');
@@ -109,7 +118,7 @@
 			
 			if(check) {
 				window.open("/user/deleteCheckForm", "idwin", "width=400, height=350");
-				
+									
 			}
 			else {
 				return false;
