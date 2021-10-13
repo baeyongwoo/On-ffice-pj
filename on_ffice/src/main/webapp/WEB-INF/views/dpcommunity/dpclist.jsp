@@ -29,6 +29,7 @@
 			</div>
 			<div class="text-center">
 				<h1>부서 자유 게시판</h1>
+				
 			</div>
 
 			<hr/>
@@ -46,12 +47,11 @@
 						<th>조회수</th>
 					</tr>
 					<c:forEach items="${dpCommunityList}" var="dpcList">
-						<c:if test="${dpcList.dp_code eq login_session.dp_code}">
 						<tr>	
 							<td><c:out value="${dpcList.dc_num }"/></td>
-							<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
-							&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
-							<td><c:out value="${user.depart_name}"/></td>
+							<td><a href="/dpcommunity/dpcdetail?dp_code=${user.dp_code}&dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+								<c:out value="${dpcList.dtitle}"/></a></td>
+							<td><c:out value="${login_session.depart_name}"/></td>
 							<td><c:out value="${dpcList.empno}"/></td>
 							
 							<td><c:out value="${dpcList.dwriter}"/></td>
@@ -59,13 +59,10 @@
 							<td><c:out value="${dpcList.dupdate}"/></td>
 							<td><c:out value="${dpcList.dhits}"/></td>
 						</tr>
-				</c:if>
-				</c:forEach>
+					</c:forEach>
 			</table>
 			<br/>		
 				
-				
-			
 				<!-- 검색창 -->
 				<form action="/dpcommunity/dpclist" method="get" class="text-center">
 					<!-- option태그를 이용해 검색조건 선택창을 만들어주세요. -->
@@ -98,7 +95,7 @@ placeholder="검색어" value="${btnMaker.cri.keyword}">
 		<ul class="pagination justify-content-center">
 			<c:if test="${btnMaker.prev}">
 				<li class="page-item">
-					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.startPage - 1}
+					<a class="page-link" href="/dpcommunity/dpclist?dp_code=${user.dp_code}&pageNum=${btnMaker.startPage - 1}
 								&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
 						Prev</a>
 					</li>
@@ -108,14 +105,14 @@ placeholder="검색어" value="${btnMaker.cri.keyword}">
 				end="${btnMaker.endPage}"
 				var="pageNum">
 				<li class="page-item ${btnMaker.cri.pageNum == pageNum ? 'active' : ''}">
-					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${pageNum}
+					<a class="page-link" href="/dpcommunity/dpclist?dp_code=${user.dp_code}&pageNum=${pageNum}
 								&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">${pageNum}</a>
 				</li>
 			</c:forEach>
 			
 			<c:if test="${btnMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/dpcommunity/dpclist?pageNum=${btnMaker.endPage + 1}
+					<a class="page-link" href="/dpcommunity/dpclist?dp_code=${user.dp_code}&pageNum=${btnMaker.endPage + 1}
 								&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">Next</a></li>	
 				</c:if>
 			</ul>

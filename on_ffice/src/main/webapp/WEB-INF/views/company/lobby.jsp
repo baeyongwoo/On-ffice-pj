@@ -167,9 +167,13 @@
         </div>
         <div class="container"> 
             <div class="side">
-            날씨정보 :${weather}
-            
-            
+            <div class="text-center">
+            <h1>${crawl.temp}</h1>
+            ${crawl.weather }<br/>
+           ${crawl.dust }<br/>
+            <h1>헤드라인뉴스</h1>
+            ${crawl.headLine }
+            </div>
             </div>
             <div class="content"> 
                 <a class="mypage" href="/mypage/main"><h2 class="a">마이페이지</h2><div class="mypage"></div></a>

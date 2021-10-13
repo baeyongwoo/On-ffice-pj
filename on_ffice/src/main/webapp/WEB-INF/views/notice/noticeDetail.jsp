@@ -33,13 +33,13 @@
 	<div class="text-center">
 	<c:set var="nd" value="${noticeDetail}"></c:set>
 	<header>
-	<h2>"<c:out value="${nd.notice_num}"/>번째 게시글" </h2>
+	<h2>"<c:out value="${nd.notice_num}"/>번 게시글" </h2>
 	</header>
 	<hr/>
 	<h2>제목 :  <input type="text" disabled value="${nd.ntitle}">
 		작성자 : <input type="text" disabled value="${nd.nwriter}">
 	</h2>
-	<h2 class="a">내용 : <c:out value="${nd.ncontent}" /></h2>
+	<h2 class="a"><c:out value="${nd.ncontent}" /></h2>
 </div>
 
 </div>
@@ -53,18 +53,14 @@
 	
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
-
 			<input type="submit" value="삭제하기" class="btn btn-danger">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="삭제하기">
 		</form>
 		&nbsp;
 		<form action="/notice/noticeUpdate" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
 			<input type="submit" value="수정하기" class="btn btn-primary">
-
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="수정하기">
 		</form>
 		</c:if>
 	
@@ -73,7 +69,12 @@
 		<h2>댓글 등록</h2>
 		
 			<div>
-				<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
+				<c:if test="${login_session ne null}">
+					<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
+				</c:if>
+				<c:if test="${login_session eq null}">
+					<input type="hidden" name="replyer" value="${ip}" id="newReplyWriter">
+				</c:if>
 			</div>
 			<div>
 				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 

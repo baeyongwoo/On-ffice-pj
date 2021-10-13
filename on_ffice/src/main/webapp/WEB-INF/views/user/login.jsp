@@ -30,6 +30,18 @@
 			} 
 	}
 
+	var result = "${delete_result}";
+	console.log(result);
+	
+	if(result==="success"){
+		alert("탈퇴가 정상적으로 되었습니다");
+		
+		setTimeout(function() {
+			window.close();
+		}, 1);
+	}
+
+
  </script>
 
 	<c:if test="${register_result eq 'success' }">

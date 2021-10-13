@@ -1,7 +1,6 @@
 package org.office.controller;
 
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -77,8 +76,8 @@ public class CompanyLobbyController {
 		log.info("birth 서비스에서 받아온 정보 : " + birth_user_view);
 		model.addAttribute("blist", birth_user_view);
 	
-		log.info(cs.weather());
-		model.addAttribute("weather", cs.weather());
+		Model crawl = model.addAttribute("crawl", cs.crawling());
+		log.info(cs.crawling());
 		return "/company/lobby";
 	}
 	

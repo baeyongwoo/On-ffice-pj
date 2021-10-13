@@ -24,7 +24,7 @@ body {
 				<div class="row">
 				<div class="form inline">
 					<a href="/company/lobby"><button class="btn btn-dark">로비로가기</button></a>
-					<a href="/dpcommunity/dpclist"><button class="btn btn-success">부서게시판으로가기</button></a>
+					<a href="/dpcommunity/dpclist?dp_code=${login_session.dp_code}"><button class="btn btn-success">부서게시판으로가기</button></a>
 					<a href="/mypage/main"><button class="btn btn-info">마이페이지로</button> </a>
 				</div>
 				</div>
