@@ -8,9 +8,14 @@
 </head>
 <body>
 
+	<header>
 	<!-- error 404 페이지 -->
-	<h1>주소창으로 접근하실수 없습니다.</h1>
-	<a href="javascript:history.back();">이전 페이지로 이동</a>
+	<h1 class="text-center">주소창으로 접근하실수 없습니다.</h1>
+</header>
+<hr>
 
+<div class="text-center">
+	<a href="javascript:history.back();" class="btn btn-dark">이전 페이지로 이동</a>
+</div>
 </body>
 </html>

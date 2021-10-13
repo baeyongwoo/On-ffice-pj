@@ -34,7 +34,7 @@
 	<div class="text-center">
 	<c:set var="cd" value="${csDetail}"></c:set>
 	<header>
-	<h1>"<c:out value="${cd.community_num}"/>번째 게시글"</h1>
+	<h1>"<c:out value="${cd.community_num}"/>번 게시글"</h1>
 	</header>
 	<hr/>
 	<h2>제목 : <input type="text" disabled value="${cd.ctitle}">
@@ -52,12 +52,8 @@
 <div class="text-center">
 		<form action="/community/deleteCheck" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
-
 			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 			<input type="submit" value="삭제하기" class="btn btn-danger">
-
-			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-			<input type="submit" value="삭제하기">
 
 		</form>
 	
@@ -65,11 +61,9 @@
 
 		<form action="/community/CMUpdate" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
-
 			<input type="submit" value="수정하기" class="btn btn-primary">
-
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="수정하기">
+			
 		</form>
 		</div>
 		

@@ -33,13 +33,13 @@
 	<div class="text-center">
 	<c:set var="nd" value="${noticeDetail}"></c:set>
 	<header>
-	<h2>"<c:out value="${nd.notice_num}"/>번째 게시글" </h2>
+	<h2>"<c:out value="${nd.notice_num}"/>번 게시글" </h2>
 	</header>
 	<hr/>
 	<h2>제목 :  <input type="text" disabled value="${nd.ntitle}">
 		작성자 : <input type="text" disabled value="${nd.nwriter}">
 	</h2>
-	<h2 class="a">내용 : <c:out value="${nd.ncontent}" /></h2>
+	<h2 class="a"><c:out value="${nd.ncontent}" /></h2>
 </div>
 
 </div>
@@ -53,18 +53,14 @@
 	
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
-
 			<input type="submit" value="삭제하기" class="btn btn-danger">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="삭제하기">
 		</form>
 		&nbsp;
 		<form action="/notice/noticeUpdate" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
 			<input type="submit" value="수정하기" class="btn btn-primary">
-
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="수정하기">
 		</form>
 		</c:if>
 	
