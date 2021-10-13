@@ -320,8 +320,8 @@ body {
 						</div>
 						<div class="modal-body">
 							<input type="hidden" name="checker" value="${info.empno }">
-							<select class="form-select btn btn-secondar" name="worker">
-								<option selected disabled="disabled" value="">작업자를 선택해주세요</option>
+							<select class="form-select btn btn-secondar" name="worker" required>
+								<option selected disabled="disabled" value=>작업자를 선택해주세요</option>
 								<c:forEach items="${users}" var="users">
 									<option value="${users.empno}">직원번호[${users.empno}]
 										${users.dp_code}부서 ${users.name }</option>
@@ -352,15 +352,15 @@ body {
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<select class="form-select btn btn-secondar" name="worker">
-								<option selected disabled="disabled" value="">넘겨줄 작업자를 선택해주세요</option>
+							<select class="form-select btn btn-secondar" name="worker" required>
+								<option selected disabled="disabled" value=>넘겨줄 작업자를 선택해주세요</option>
 								<c:forEach items="${users}" var="users">
 									<option value="${users.empno}">직원번호[${users.empno}]
 										${users.dp_code}부서 ${users.name }</option>
 								</c:forEach>
 							</select>
-							<select	class="form-select btn btn-secondar" name="todo_num" id="todoSelect">
-								<option selected disabled="disabled" value="">넘겨줄 작업을 선택해주세요</option>
+							<select	class="form-select btn btn-secondar" name="todo_num" id="todoSelect" required>
+								<option selected disabled="disabled" value=>넘겨줄 작업을 선택해주세요</option>
 								<c:forEach items="${todoList}" var="todo">
 									<option value="${todo.todo_num}">작업번호[${todo.todo_num}]
 										작업제목 : ${todo.todo_title} 담당자 : ${todo.checker }</option>
@@ -422,8 +422,8 @@ body {
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<select class="form-select btn btn-secondar" name="todo_num">
-								<option selected disabled="disabled" value="">완료할 작업을 선택해주세요</option>
+							<select class="form-select btn btn-secondar" name="todo_num" required>
+								<option selected disabled="disabled" value=>완료할 작업을 선택해주세요</option>
 								<c:forEach items="${todoList}" var="todo">
 									<option value="${todo.todo_num}">작업번호[${todo.todo_num}]
 										작업제목 : ${todo.todo_title} 담당자 : ${todo.checker }</option>
