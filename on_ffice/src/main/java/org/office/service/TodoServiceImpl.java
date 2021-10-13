@@ -69,4 +69,12 @@ public class TodoServiceImpl implements TodoService {
 		
 	}
 
+	@Override
+	public List<TodoVO> getTodoComplete(TodoCri cri) {
+		log.info("완료 목록 생성");
+		List<TodoVO> vo =mapper.getTodoComplete(cri);
+		return vo;
+	}
+
+
 }

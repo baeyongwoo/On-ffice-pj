@@ -12,6 +12,7 @@ public class TodoCri extends SearchCriteria {
 	private int pageNum;
 	private int amount;
 	private int worker;
+	private int checker;
 	private int startPage;
 
 	public TodoCri() {

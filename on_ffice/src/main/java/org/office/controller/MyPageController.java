@@ -52,10 +52,10 @@ public class MyPageController {
 		UserVO login_session = (UserVO) session.getAttribute("login_session");
 		String login_time = formatter.format(session.getCreationTime());
 		cri.setWorker(login_session.getEmpno());
+		cri.setChecker(login_session.getEmpno());
 		cri.setStartPage((cri.getPageNum() -1) * cri.getAmount());
-		int totalPage = service.todoCnt();
-		TodoDTO btnMaker = new TodoDTO(cri, totalPage, 10);
-		
+		int totalTodo = service.todoCnt();
+		TodoDTO btnMaker = new TodoDTO(cri, totalTodo, 10);
 		
 		log.info("유저 메인페이지 접속");
 		log.info("받아온 세션 : " + login_session);
@@ -63,12 +63,15 @@ public class MyPageController {
 		log.info("받아온 정보 : " + uservo);
 		List<TodoVO> todoList = service.getTodoList(cri);
 		log.info("받아온 할일 : " + todoList);
+		List<TodoVO> completeList = service.getTodoComplete(cri);
+		log.info("완료된 목록 : " + completeList);
 		List<UserVO> userList = user_service.allUserInfo();
 		log.info("전체유저리스트 :" + userList);
 
 		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
 		model.addAttribute("todoList", todoList);
+		model.addAttribute("completeList", completeList);
 		model.addAttribute("users", userList);
 		model.addAttribute("btnMaker", btnMaker);
 		
@@ -91,12 +94,14 @@ public class MyPageController {
 
 	@PostMapping("/passTodo")
 	public String passTodo(TodoVO vo, Model model, RedirectAttributes rttr, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		UserVO login_session = (UserVO) session.getAttribute("login_session");
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String formDate = formatter.format(date);
 		StringBuilder sb = new StringBuilder();
 		sb.append(req.getParameter("already_todo_content"));
-		sb.append("\r["+ formDate + " 추가내용]\r" + req.getParameter("todo_content"));
+		sb.append("\r["+ formDate +" "+ login_session.getName() + " 추가]\r" + req.getParameter("todo_content"));
 		vo.setTodo_content(sb.toString());
 		service.passTodo(vo);
 		log.info(vo);

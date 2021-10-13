@@ -27,6 +27,8 @@ public interface TodoMapper {
 	
 	public List<TodoVO> getTodoList(TodoCri cri);
 	
+	public List<TodoVO> getTodoComplete(TodoCri cri);
+
 	public void insertTodo(TodoVO vo);
 	
 	public void passTodo(TodoVO vo);
@@ -36,4 +38,5 @@ public interface TodoMapper {
 	public void statTodo(TodoVO vo);
 	
 	public int todoCnt();
+	
 }

@@ -19,6 +19,8 @@ public interface TodoService {
 
 	// 서비스 하나당 기능 하나
 	public List<TodoVO> getTodoList(TodoCri cri);
+	
+	public List<TodoVO> getTodoComplete(TodoCri cri);
 
 	public void insertTodo(TodoVO vo);
 
@@ -29,4 +31,5 @@ public interface TodoService {
 	public void statTodo(TodoVO vo);
 	
 	public int todoCnt();
+	
 }

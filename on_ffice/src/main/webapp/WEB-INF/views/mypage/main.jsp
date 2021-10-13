@@ -39,6 +39,7 @@ body {
 <script>
 	window.onload = function() {
 
+
 		let csrfHeaderName = "${_csrf.headerName}";
 		let csrfTokenValue = "${_csrf.token}";
 		let result = "${result}"
@@ -204,7 +205,7 @@ body {
 
 				<div class="col-md-9">
 
-					<h2 id="todoToggle">나의 TODO 목록</h2>
+					<h2 id="todoToggle">TODO</h2>
 					<button type="button" class="btn btn-warning"
 						data-bs-toggle="modal" data-bs-target="#createTodo">
 						TODO생성</button>
@@ -212,21 +213,10 @@ body {
 						data-bs-toggle="modal" data-bs-target="#passTodo">작업자전환</button>
 					<button type="button" class="btn btn-danger" data-bs-toggle="modal"
 						data-bs-target="#completeTodo">작업완료</button>
-					<select name="searchType">
-						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc' ? 'selected' :''}"/>>
-							제목+내용</option>
-						<option value="t"
-							<c:out value="${cri.searchType eq 't' ? 'selected' :''}"/>>
-							제목</option>
-						<option value="c"
-							<c:out value="${cri.searchType eq 'c' ? 'selected' :''}"/>>
-							내용</option>
-					</select>
-					<hr>${btnMaker}
-
-
-					<table id=todoList class="text-center table table-hover">
+					<hr>
+					<div id="todoList">
+					나의 업무
+					<table class="text-center table table-hover">
 						<thead>
 							<tr>
 								<th>업무번호</th>
@@ -247,9 +237,6 @@ body {
 							</tr>
 						</c:forEach>
 					</table>
-					<c:forEach items="${page }" var="page">
-							${page }
-							</c:forEach>
 					<nav aria-label="Page navigation">
 						<ul class="pagination">
 
@@ -277,6 +264,38 @@ body {
 
 						</ul>
 					</nav>
+					</div>
+					<div class="row">
+					<div class="completeList">
+					
+					내가 생성한 업무(완료목록 최근5개)
+					<table id=completeList class="text-center table table-hover">
+						<thead>
+							<tr>
+								<th>업무번호</th>
+								<th>작업자</th>
+								<th>업무제목</th>
+								<th>완료시간</th>
+								<th>완료여부</th>
+							</tr>
+						</thead>
+						<c:forEach items="${completeList}" var="comp">
+							<tr>
+								<td>${comp.todo_num }</td>
+								<td>${comp.worker }</td>
+								<td><a href="/mypage/detailTodo?todo_num=${comp.todo_num }">
+										${comp.todo_title} </a></td>
+								<td>${comp.complete_time }</td>
+								<td>${comp.complete }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+				</div>
+				
+									
+
+					
 				</div>
 			</div>
 			<div class="row">

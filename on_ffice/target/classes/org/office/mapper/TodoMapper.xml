@@ -19,6 +19,13 @@ WHERE worker=#{worker} AND complete="ing"
 ORDER BY todo_num DESC LIMIT #{startPage}, #{amount}
  ]]>
     </select>
+    
+        <select id="getTodoComplete" resultType="org.office.domain.TodoVO">
+        <![CDATA[
+ SELECT todo_num, worker, todo_title, todo_content, complete_time, complete FROM todo
+WHERE checker=#{checker} AND complete="complete" ORDER BY complete_time DESC LIMIT 0, 5
+ ]]>
+    </select>
 
     <insert id="insertTodo">
         <![CDATA[
@@ -35,7 +42,7 @@ ORDER BY todo_num DESC LIMIT #{startPage}, #{amount}
 
     <update id="statTodo">
         <![CDATA[
- UPDATE todo SET complete = #{complete} WHERE todo_num = #{todo_num}
+ UPDATE todo SET complete = #{complete}, complete_time = now() WHERE todo_num = #{todo_num}
  ]]>
     </update>
 
@@ -47,7 +54,7 @@ ORDER BY todo_num DESC LIMIT #{startPage}, #{amount}
 
   <select id="todoCnt" resultType="int">
         <![CDATA[
-SELECT COUNT(todo_num) FROM todo
+SELECT COUNT(todo_num) FROM todo WHERE complete="ing"
  ]]>
     </select>
 
