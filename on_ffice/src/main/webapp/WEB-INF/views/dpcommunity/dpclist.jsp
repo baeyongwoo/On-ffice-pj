@@ -46,21 +46,20 @@
 						<th>조회수</th>
 					</tr>
 					<c:forEach items="${dpCommunityList}" var="dpcList">
-					<tr>	
-						<td><c:out value="${dpcList.dc_num }"/></td>
-						<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
-							&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
 						<c:if test="${dpcList.dp_code eq login_session.dp_code}">
-							
-						</c:if>
-						
-						<td><c:out value="${dpcList.empno}"/></td>
+						<tr>	
+							<td><c:out value="${dpcList.dc_num }"/></td>
+							<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
+							&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
+							<td><c:out value="${user.depart_name}"/></td>
+							<td><c:out value="${dpcList.empno}"/></td>
 							
 							<td><c:out value="${dpcList.dwriter}"/></td>
 							<td><c:out value="${dpcList.ddate}"/></td>
 							<td><c:out value="${dpcList.dupdate}"/></td>
 							<td><c:out value="${dpcList.dhits}"/></td>
 						</tr>
+				</c:if>
 				</c:forEach>
 			</table>
 			<br/>		
