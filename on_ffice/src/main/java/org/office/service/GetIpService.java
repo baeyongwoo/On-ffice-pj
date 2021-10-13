@@ -67,6 +67,7 @@ public class GetIpService {
 			
 			System.out.println("ip : " + ip.split("[.]")[0].concat("." + ip.split("[.]")[1]));
 			
+			
 		} catch (java.io.IOException e) {
 		    e.printStackTrace();
 		}
