@@ -57,6 +57,7 @@ public class UserController {
 	
 		@Autowired
 		private PasswordEncoder pwen;
+
 		
 		@GetMapping("/guestIn")
 		private String GuestIn(GetIpService iservice, HttpSession session, Model model) throws Exception {
@@ -291,6 +292,7 @@ public class UserController {
 				model.addAttribute("login_result", "fail");
 				return "/user/login";
 			} else {
+				service.updateStat(uid, "온라인");
 				
 				rttr.addFlashAttribute("login_result", "success");
 	
@@ -312,15 +314,9 @@ public class UserController {
 		public void logout(HttpSession session) {
 			
 			log.info("로그아웃 폼으로 이동");
-//			Object object = session.getAttribute("login_session");
-//			if(object == null) {
-//				UserVO user = (UserVO) object;
-//				session.removeAttribute("login_session");
-//				log.info("로그아웃 컨트롤러 실행");
-//				return "/user/logout";
-//			}
-//			session.invalidate();
-//			return "/user/login";
+			UserVO vo = (UserVO)session.getAttribute("login_session");
+			service.updateStat(vo.getUid(), "오프라인");
+			
 		}
 		
 		

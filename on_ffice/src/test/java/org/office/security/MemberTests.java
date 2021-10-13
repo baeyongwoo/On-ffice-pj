@@ -30,7 +30,7 @@ public class MemberTests {
 	
 	@Test
 	public void testCryptDefaultDB() {
-		String [] idList = {"eastar93","test1"};
+		String [] idList = {"dyddn30612"};
 		String sql = "UPDATE USERS set upw=? WHERE uid=?";
 		
 		try {
@@ -38,18 +38,11 @@ public class MemberTests {
 			
 			for(String id : idList) {
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, pwen.encode("123456"));
+				pstmt.setString(1, pwen.encode("test12345!"));
 				pstmt.setString(2, id);
 				pstmt.executeUpdate();
 			}
-			String pw = "123456";
-			if(pwen.matches("123456",pwen.encode(pw))) {
-				pw = pwen.encode(pw);
-				log.info(pw);
-				log.info("일치");
-			} else {
-				log.info("불일치");
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
