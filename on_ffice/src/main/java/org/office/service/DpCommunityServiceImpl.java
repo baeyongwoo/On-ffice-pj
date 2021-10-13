@@ -79,8 +79,8 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 	}
 
 	@Override
-	public List<DpCommunityVO> DpCListPage(SearchCriteria cri) {
-		List<DpCommunityVO> DpCList = dpcommunitymapper.DpCList(cri.getPageStart(), cri.getAmount(), cri.getSearchType(), cri.getKeyword(), cri);
+	public List<DpCommunityVO> DpCListPage(SearchCriteria cri, DpCommunityVO vo) {
+		List<DpCommunityVO> DpCList = dpcommunitymapper.DpCList(cri.getPageStart(), cri.getAmount(), cri.getSearchType(), cri.getKeyword(), vo.getDp_code(), cri);
 		return DpCList;
 	}
 

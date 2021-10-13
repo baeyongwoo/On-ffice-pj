@@ -69,7 +69,12 @@
 		<h2>댓글 등록</h2>
 		
 			<div>
-				<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
+				<c:if test="${login_session ne null}">
+					<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
+				</c:if>
+				<c:if test="${login_session eq null}">
+					<input type="hidden" name="replyer" value="${ip}" id="newReplyWriter">
+				</c:if>
 			</div>
 			<div>
 				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 

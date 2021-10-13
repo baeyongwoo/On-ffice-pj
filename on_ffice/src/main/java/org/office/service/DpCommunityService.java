@@ -20,7 +20,7 @@ public interface DpCommunityService {
 	public List<DpCommunityVO> list(int dp_code);
 	
 	// 페이징 글 목록
-	public List<DpCommunityVO> DpCListPage(SearchCriteria cri);
+	public List<DpCommunityVO> DpCListPage(SearchCriteria cri, DpCommunityVO vo);
 	
 	// 사원 정보 가져오는 로직
 	public DepartVO getDpInfo(int dp_code); 

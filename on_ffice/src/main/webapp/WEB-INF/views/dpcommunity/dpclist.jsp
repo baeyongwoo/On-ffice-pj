@@ -49,8 +49,8 @@
 						<c:if test="${dpcList.dp_code eq login_session.dp_code}">
 						<tr>	
 							<td><c:out value="${dpcList.dc_num }"/></td>
-							<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}
-							&keyword=${btnMaker.cri.keyword}"><c:out value="${dpcList.dtitle}"/></a></td>
+							<td><a href="/dpcommunity/dpcdetail?dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+								<c:out value="${dpcList.dtitle}"/></a></td>
 							<td><c:out value="${user.depart_name}"/></td>
 							<td><c:out value="${dpcList.empno}"/></td>
 							

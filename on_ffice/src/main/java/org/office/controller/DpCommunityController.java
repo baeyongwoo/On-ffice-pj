@@ -28,10 +28,10 @@ public class DpCommunityController {
 	private DpCommunityService service;
 	
 	@GetMapping("/dpclist")
-	public void dpCommunityList(SearchCriteria cri, Model model) {
+	public void dpCommunityList(SearchCriteria cri, DpCommunityVO vo, Model model) {
 				
 		log.info("부서 자유 게시판 로직 접속");
-		List<DpCommunityVO> DpCList = service.DpCListPage(cri);
+		List<DpCommunityVO> DpCList = service.DpCListPage(cri, vo);
 		
 		int total = service.getTotalBoard(cri);
 		PageDTO btnMaker = new PageDTO(cri, total, 10);

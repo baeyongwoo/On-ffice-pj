@@ -25,12 +25,6 @@
 
 </select>
 
-<!-- 각 부서 정보 조회(dp_code, depart_name, count) -->
-<select id = "selectDpInfo" resultType="org.office.domain.DepartVO">
-	select depart.dp_code, depart.depart_name as depart_name, count(*) as count from users, depart
-    where users.dp_code = depart.dp_code group by users.dp_code having users.dp_code = #{dp_code}
-</select>
-
 <!-- 페이징 처리 로직 -->
 <select id="DpCList" resultType="org.office.domain.DpCommunityVO">
 	<![CDATA[
