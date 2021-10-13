@@ -34,7 +34,7 @@
 <!-- 페이징 처리 로직 -->
 <select id="DpCList" resultType="org.office.domain.DpCommunityVO">
 	<![CDATA[
-		SELECT * FROM depart_community WHERE dc_num > 0
+		SELECT * FROM depart_community WHERE dp_code = #{dp_code}
 	]]>
 		<include refid="search"></include>
 		
