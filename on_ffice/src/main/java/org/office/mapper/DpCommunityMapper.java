@@ -16,7 +16,7 @@ public interface DpCommunityMapper {
 	public List<DpCommunityVO> DpCommunityList(int dp_code);
 	
 // 페이징 처리 로직
-	public List<DpCommunityVO> DpCList(@Param("PageStart") int PageStart, @Param("amount") int amount, @Param("searchType") String searchType, @Param("keyword") String keyword, @Param("dp_code") int dp_code, SearchCriteria cri);
+	public List<DpCommunityVO> DpCList(@Param("PageStart") int PageStart, @Param("amount") int amount, @Param("searchType") String searchType, @Param("keyword") String keyword, @Param("dp_code") Long dp_code, SearchCriteria cri);
 	
 // 글 전체 개수 가져오는 로직
 	public int getTotalBoard(SearchCriteria cri);
