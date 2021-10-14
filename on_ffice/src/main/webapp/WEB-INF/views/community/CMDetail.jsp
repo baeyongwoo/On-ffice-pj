@@ -27,6 +27,11 @@
 		width: 800px;
 	 	margin-left: 30%;
 		}
+		.btn1 { margin-right:5px;}
+		.btn3 { margin-left: 5px;}
+		ul{
+   list-style:none;
+   }
 	</style>
 </head>
 <body>
@@ -45,30 +50,31 @@
 
 
 </div>
-	<div class="text-center">
-	<a href="/community/CMList" class="btn btn-dark">목록으로</a>
-	</div>
-	&nbsp;
 <div class="text-center">
-		<form action="/community/deleteCheck" method="post">
+	<div class="btn-group">
+	<a href="/community/CMList" class="btn1 btn btn-dark">목록으로</a>
+	
+	<form action="/community/deleteCheck" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
 			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-			<input type="submit" value="삭제하기" class="btn btn-danger">
+			<input type="submit" value="삭제하기" class="btn2 btn btn-danger">
 
-		</form>
-	
-		&nbsp;
+	</form>
 
-		<form action="/community/CMUpdate" method="post">
+	<form action="/community/CMUpdate" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
-			<input type="submit" value="수정하기" class="btn btn-primary">
+			<input type="submit" value="수정하기" class="btn3 btn btn-primary">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			
-		</form>
+	</form>
+	
+	</div>
 		</div>
-		
 	<hr>
 		<div class="text-center">
+
+			<h3>댓글</h3>
+
 		<h2>댓글 등록</h2>
 			<div>
 			<c:if test="${login_session ne null}">
@@ -80,40 +86,46 @@
 			</div>
 			<div>
 				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
-				id="newReply"><br/>
+				id="newReply" required="required"><br/>
 			</div>
 			&nbsp;
+
 			<div>
-			<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
-			</div>
-			<div id="modDiv" style="display:none;">
-				<div class="modal-title"></div>			
-					<div>
-						<input type="text" id="replytext">
-					</div>
-				<div>
-					<button type="button" id="replyModBtn">댓글 수정</button>
-					<button type="button" id="replyDelBtn">댓글 삭제</button>
-					<button type="button" id="closeBtn">창 닫기</button>
+				<c:if test="${login_session ne null}">
+					<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
+				</c:if>
+				<c:if test="${login_session eq null}">
+					<input type="hidden" name="replyer" value="${ip}" id="newReplyWriter">
+				</c:if>
 				</div>
-			</div>
-		
-		<script>
-		var result = "${update}";
-		console.log(result);
-		
-		if(result==="success"){
-			alert("수정완료했습니다.")
-		}else if(result==="fail")(
-			alert("비밀번호가 달라 수정 실패했습니다.")
-		)
-		</script>
-		
-		<hr>
-		
-		<h2>댓글 창</h2>
+				<div>
+					<input type="text" style="width:800px" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
+					id="newReply">
+				<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
+				</div>
+				<div id="modDiv" style="display:none;">
+					<div class="modal-title"></div>			
+						<div>
+							<input type="text" id="replytext">
+						</div>
+					<div>
+						<button type="button" id="replyModBtn">댓글 수정</button>
+						<button type="button" id="replyDelBtn">댓글 삭제</button>
+						<button type="button" id="closeBtn">창 닫기</button>
+					</div>
+				</div>
 			
-		<hr>
+			<script>
+			var result = "${update}";
+			console.log(result);
+			
+			if(result==="success"){
+				alert("수정완료했습니다.")
+			}else if(result==="fail")(
+				alert("비밀번호가 달라 수정 실패했습니다.")
+			)
+			</script>
+			<hr>
 		<ul id="cmreplies">
 		
 		</ul>
@@ -136,8 +148,8 @@
 			$(data).each(function(){
 												
 				str +="<li data-cno='" + this.cno + "' class='replyLi'>"
-				+ "<div class='reply'>" + this.cno + ":" + this.reply + ":" + this.replyer + "</div>"
-				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>";
+				+ "<div class='reply'>" + this.cno + " : " + this.reply + " : " + this.replyer 
+				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>" + "<br/></div>";
 			});
 			
 			$("#cmreplies").html(str);

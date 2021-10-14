@@ -59,14 +59,5 @@ public class DpCommunityMapperTests {
 	public void testDpCDelete() {
 		log.info("부서 게시글 삭제중...");
 		dpcommunityMapper.DpCdelete(7);
-	}
-	
-	@Test
-	public void testDpCAllList() {
-		SearchCriteria cri = new SearchCriteria();
-		
-		log.info("부서 전체 글 조회중...");
-		dpcommunityMapper.getTotalBoard(cri);
-	}
-	
+	}	
 }

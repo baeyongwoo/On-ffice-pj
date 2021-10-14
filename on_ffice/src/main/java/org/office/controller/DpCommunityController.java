@@ -33,9 +33,10 @@ public class DpCommunityController {
 		log.info("부서 자유 게시판 로직 접속");
 		List<DpCommunityVO> DpCList = service.DpCListPage(cri, dp_code);
 		
-		int total = service.getTotalBoard(cri);
+		int total = service.getTotalBoard(cri, dp_code);
 		PageDTO btnMaker = new PageDTO(cri, total, 10);
 		model.addAttribute("btnMaker", btnMaker);
+		model.addAttribute("dp_code", dp_code);
 		model.addAttribute("dpCommunityList", DpCList);
 		
 	}
@@ -45,9 +46,8 @@ public class DpCommunityController {
 		
 		service.DpCwrite(vo);
 		log.info(vo);
-		
+		rttr.addAttribute("dp_code", vo.getDp_code());
 		rttr.addFlashAttribute("dc_num", vo.getDc_num());
-				
 		return "redirect:/dpcommunity/dpclist";
 	}
 	
@@ -97,14 +97,14 @@ public class DpCommunityController {
 	}
 	
 	@PostMapping("/dpcdelete")
-	public String DpCdelete(SearchCriteria cri, int dc_num, RedirectAttributes rttr) {
+	public String DpCdelete(SearchCriteria cri, int dc_num, DpCommunityVO vo, RedirectAttributes rttr) {
 		service.DpCdelete(dc_num);
 		rttr.addFlashAttribute("result", "success");
 		rttr.addFlashAttribute("dc_num", dc_num);
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
-		
+		rttr.addAttribute("dp_code", vo.getDp_code());
 		return "redirect:/dpcommunity/dpclist";
 	}
 	

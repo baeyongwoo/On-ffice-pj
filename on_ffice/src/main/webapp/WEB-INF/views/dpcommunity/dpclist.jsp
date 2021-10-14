@@ -49,7 +49,8 @@
 					<c:forEach items="${dpCommunityList}" var="dpcList">
 						<tr>	
 							<td><c:out value="${dpcList.dc_num }"/></td>
-							<td><a href="/dpcommunity/dpcdetail?dp_code=${user.dp_code}&dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+							<td><a href="/dpcommunity/dpcdetail?dp_code=${user.dp_code}&dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}
+												&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
 								<c:out value="${dpcList.dtitle}"/></a></td>
 							<td><c:out value="${login_session.depart_name}"/></td>
 							<td><c:out value="${dpcList.empno}"/></td>
@@ -84,7 +85,8 @@
 		글쓴이
 	</option>
 </select>
-
+<!-- 검색하기 버튼을 눌렀을때 dp_code와 keyword와 searchType을 담아서 dpclist로 보낸다 -->
+<input type="hidden" name="dp_code" value="${login_session.dp_code}">
 <input type="text" name="keyword" id="keywordInput"
 placeholder="검색어" value="${btnMaker.cri.keyword}">
 <button id="searchBtn">검색하기</button>

@@ -40,7 +40,7 @@
 <!-- 글 전체 가져오는 로직 -->
 <select id="getTotalBoard" resultType="int">
 	<![CDATA[
-		SELECT COUNT(*) FROM depart_community WHERE dc_num > 0
+		SELECT COUNT(*) FROM depart_community WHERE dp_code = #{dp_code}
 	]]>
 		<include refid="search"></include>
 </select>

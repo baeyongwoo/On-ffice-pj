@@ -48,7 +48,8 @@
 </head>
 <body>
 	<header>
-		<a href="/dpcommunity/dpclist?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
+		<a href="/dpcommunity/dpclist?dp_code=${login_session.dp_code}&dc_num=${param.dc_num}
+			&pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
 	</header>
 	<c:set var="DpCd" value="${dpcdetail}"></c:set>
 	<div class="text-center">
@@ -81,7 +82,8 @@
 		<c:if test="${DpCd.dwriter eq login_session.name}">
 <div class="text-end">
 	<div class="form">
-		<form action="/dpcommunity/dpcupdate?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
+		<form action="/dpcommunity/dpcupdate?dc_num=${param.dc_num}&pageNum=${param.pageNum}
+						&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			<input type="hidden" name="pageNum" value="${param.pageNum}">
 			<input type="hidden" name="searchType" value="${param.searchType}">
@@ -91,7 +93,8 @@
 		</form>
 		</div>
 		<div class="form">
-		<form action="/dpcommunity/dpcdelete?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
+		<form action="/dpcommunity/dpcdelete?dp_code=${login_session.dp_code}&dc_num=${param.dc_num}&pageNum=${param.pageNum}
+						&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createTodo">삭제하기</button>
 			 <div class="modal fade" id="createTodo" tabindex="-1" aria-hidden="true">
@@ -122,7 +125,7 @@
 				<div class="w-70">
 				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다."
 				 
-				id="newReply" class="form-control fs-6"><br/>
+				id="newReply" class="form-control fs-6" required="required"><br/>
 				</div>
 			<div class="text-end">
 				<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
@@ -136,7 +139,7 @@
 				
 					<button type="button" id="replyModBtn">댓글 수정</button>
 					<button type="button" id="replyDelBtn">댓글 삭제</button>
-					<button type="button" id="closeBtn">창 닫기</button>
+					<button type="button" id="closeB	tn">창 닫기</button>
 			</div>
 			
 		<hr>
@@ -174,7 +177,7 @@
 				 					+ "/" + date.getDate()	 								
 				
 				str +="<li data-dno='" + this.dno + "' class='replyLi'>"
-					+ "<div class='reply'>" + this.dno + ":" + this.reply + ":" + this.replyer + "<br/>" + formattedTime + "</div>"
+					+ "<div class='reply'>" + "댓글내용 : " + this.reply + "<br/>" + "글쓴이 : " + this.replyer + "<br/>" + formattedTime + " " 
 					+ "<button type='button' class='btn btn-primary'>수정/삭제</button></li>";
 			});
 			

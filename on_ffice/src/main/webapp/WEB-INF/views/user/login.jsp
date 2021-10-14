@@ -95,18 +95,12 @@
 		<div class="row">
 		<p>" 환영합니다. <strong>로그인</strong>을 해주세요! "</p>
 		</div>
+		<div class="row">&nbsp;</div>
 		<div class="row">
 			<div class="col-md-12">
 			<input type="submit" value="로그인">
-			<div class="row">&nbsp;</div>
-			</div>
-			<div class="col-md-12">
 			<input type="button" value="회원가입" onclick="location.href='/user/register'">
 			<div class="row">&nbsp;</div>
-			</div>
-			<div class="col-md-12">
-				<input type="reset" value="초기화">
-				<div class="row">&nbsp;</div>
 			</div>
 			<div class="col-md-12">
 				<input type="button" value="게스트" onclick="location.href='/user/guestIn'">

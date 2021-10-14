@@ -68,13 +68,6 @@ public class DpCommunityServiceTests {
 		service.DpCdelete(6);
 	}
 	
-	@Test
-	public void testDpCAllList() {
-		SearchCriteria cri = new SearchCriteria();
-		
-		service.getTotalBoard(cri);
-		
-	}
 	
 }
 

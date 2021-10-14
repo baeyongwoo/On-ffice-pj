@@ -85,8 +85,8 @@ public class DpCommunityServiceImpl implements DpCommunityService{
 	}
 
 	@Override
-	public int getTotalBoard(SearchCriteria cri) {
+	public int getTotalBoard(SearchCriteria cri, Long dp_code) {
 		
-		return dpcommunitymapper.getTotalBoard(cri);
+		return dpcommunitymapper.getTotalBoard(cri, dp_code, cri.getSearchType(), cri.getKeyword());
 	}
 }

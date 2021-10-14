@@ -21,7 +21,7 @@ body{
 	<main>
 		<div class="d-flex justify-content-center">
 		
-		<form action="/dpcommunity/Update" method="post" class="w-50">
+		<form action="/dpcommunity/Update/" method="post" class="w-50">
 
 		${dpcommunity.dp_code}게시판의 ${dpcommunity.dc_num}번 글 수정하기<br/>
 		<div class="d-flex justify-content-center">
