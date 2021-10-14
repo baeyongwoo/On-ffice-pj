@@ -13,13 +13,17 @@
 			
 			if(result==="fail"){
 				alert('비밀번호가 올바르지 않습니다.');
+				setTimeout(function() {
+					window.close();
+				}, 1000);
 			}else if(result==="success"){
 				opener.parent.location.replace("/user/login");
+				setTimeout(function() {
+					window.close();
+				}, 1000);
 			}
 			
-			setTimeout(function() {
-				window.close();
-			}, 1);
+		
 			
 		</script>
 
