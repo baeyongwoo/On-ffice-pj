@@ -33,7 +33,7 @@ public class DpCommunityController {
 		log.info("부서 자유 게시판 로직 접속");
 		List<DpCommunityVO> DpCList = service.DpCListPage(cri, dp_code);
 		
-		int total = service.getTotalBoard(cri);
+		int total = service.getTotalBoard(cri, dp_code);
 		PageDTO btnMaker = new PageDTO(cri, total, 10);
 		model.addAttribute("btnMaker", btnMaker);
 		model.addAttribute("dpCommunityList", DpCList);
@@ -65,7 +65,7 @@ public class DpCommunityController {
 			
 		} catch (Exception e) {
 			
-			return "redirect:/dpcommunity/dpclist";
+			return "redirect:/dpcommunity/dpclist?dp_code=${dp_code}";
 		}
 		
 		return "/dpcommunity/dpcdetail";
@@ -105,7 +105,7 @@ public class DpCommunityController {
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		
-		return "redirect:/dpcommunity/dpclist";
+		return "redirect:/dpcommunity/dpclist?dp_code=${dp_code}";
 	}
 	
 		

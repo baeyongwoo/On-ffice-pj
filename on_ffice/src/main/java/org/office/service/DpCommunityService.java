@@ -26,7 +26,7 @@ public interface DpCommunityService {
 	public DepartVO getDpInfo(int dp_code); 
 	
 	// 전체 글 개수 가져오기
-	public int getTotalBoard(SearchCriteria cri);
+	public int getTotalBoard(SearchCriteria cri, Long dp_code);
 	
 	// 글 상세보기 서비스
 	public DpCommunityVO DpCdetail(int dc_num);
