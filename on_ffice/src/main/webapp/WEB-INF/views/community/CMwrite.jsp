@@ -31,7 +31,7 @@ margin:20px;
 		<textarea rows="10" cols="50" name="ccontent" required="required" class="form-control"></textarea><br>
 		<input type="hidden" name="cwriter" value="${login_session.name}" placeholder="작성자입력" readonly class="form-control w-25 p-3">
 		<div class="text-center">
-		<input type="password" name="cpw" placeholder="PW입력" class="form-control w-25 p-3 "/> <br>
+		<input type="password" name="cpw" placeholder="PW입력(수정, 삭제할때 사용합니다.)" required="required" class="form-control w-25 p-3 "/> <br>
 		<input type="submit" value="작성완료" class ="btn btn-dark">
 		<input type="reset" value="다시작성" class ="btn btn-warning">
 		</div>

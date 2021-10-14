@@ -138,6 +138,12 @@
     a:hover {color: brown;}
 </style>
 <script>
+	var result = "${login_result}";
+	var name = "${uid}";
+	
+	if(result==="success"){
+		alert(name + "님 환영합니다.");
+	}
 </script>
 <title></title>
 </head>

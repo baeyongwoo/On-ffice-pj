@@ -459,6 +459,39 @@ body {
 		</div>
 		<footer> </footer>
 	</div>
+	<!-- 가입 요청 받는 곳 -->
+	<c:if test="${info.dp_code eq '1'}">
+		<h3>가입 요청유저리스트</h3>
+					<div class="userListDiv">
+						<ol class="list-group">
+						<c:forEach items="${users }" var="users">
+						  <li class="list-group-item d-flex justify-content-between align-items-start">
+						    <div class="ms-2 me-auto">
+						    
+						    <c:if test="${users.stat eq null}">
+						      <div class="fw-bold">${users.name }(${users.uid})</div>
+						      ${users.depart_name }
+						    	<form action="/user/permit" method="post">
+						    		<input type="text" name="uid" value="${users.uid }">
+						    		<input type="submit" value="가입승인">
+						    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						    	</form>
+						    	</c:if>
+						  
+						   </div>
+						  </li>
+						</c:forEach>
+						 </ol>
+					</div>
+			</c:if>
+			
+		<script type="text/javascript">
+				var permit = "${permit}";
+				if(permit==="ok"){
+					alert("가입승인 완료되었습니다.");
+				}
+			</script>
+	
 </body>
 
 </html>

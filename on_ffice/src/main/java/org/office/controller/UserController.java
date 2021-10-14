@@ -286,10 +286,16 @@ public class UserController {
 			model.addAttribute("login_result", "fail");
 			return "/user/login";
 		} else {
+			
+			if(vo.getStat() == null) {
+				//처음 회원가입하고 로그인 할 경우
+				rttr.addFlashAttribute("check", "no");
+				return "redirect:/user/login";
+			}
 			service.updateStat(uid, "온라인");
 
 			rttr.addFlashAttribute("login_result", "success");
-
+			rttr.addFlashAttribute("uid", vo.getName());
 			session.setAttribute("login_session", vo);
 			session.setMaxInactiveInterval(60 * 100000);
 			log.info("로그인 세션 정보" + session.getAttribute("login_session"));
@@ -368,5 +374,18 @@ public class UserController {
 	private String deleteCheckForm() {
 		log.info("비밀번호 재확인 페이지 진입");
 		return "/user/deleteCheckForm";
+	}
+	
+
+	@PostMapping("/permit")
+	private String permit(String uid, RedirectAttributes rttr) {
+		log.info("폼에서 날려온 데이터 : " + uid);
+		UserVO user = new UserVO();
+		user.setUid(uid);
+		
+		service.updateStat(user.getUid(), "가입승인");
+		
+		rttr.addFlashAttribute("permit", "ok");
+		return "redirect:/mypage/main";
 	}
 }

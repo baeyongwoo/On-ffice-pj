@@ -40,7 +40,12 @@
 			window.close();
 		}, 1);
 	}
-
+	
+	var check= "${check}";
+	
+	if(check==="no"){
+		alert("승인이 필요합니다. 로그인 실패하였습니다.");
+	}
 
  </script>
 

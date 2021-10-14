@@ -76,8 +76,13 @@ body{margin: 50px;}
 	
 	</div>
  <script>
- 	var ccode = "${community_num}";
- 	console.log(ccode);
+	var result = "${result}"
+	
+	if(result==="success"){
+		alert("삭제가 정상적으로 진행되었습니다.");
+	}else if(result==="fail"){
+		alert("비밀번호가 달라 삭제 실패하였습니다.");
+	}
  
  </script> 
 
