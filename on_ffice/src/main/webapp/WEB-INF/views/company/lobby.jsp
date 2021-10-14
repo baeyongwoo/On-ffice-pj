@@ -33,10 +33,10 @@
     }
     .side {
         display: table-cell;
-        width: 399px;
+        width: 450px;
         height: 50%;
         
-        background-color: skyblue;
+        background-color: #B0C4DE;
         border-style: solid;
         border-width: 2px 2px 0px 2px;
     }
@@ -174,11 +174,10 @@
         <div class="container"> 
             <div class="side">
             <div class="text-center">
-            <h1>${crawl.temp}</h1>
-            ${crawl.weather }<br/>
-           ${crawl.dust }<br/>
-            <h1>헤드라인뉴스</h1>
-            ${crawl.headLine }
+            <h1>${crawl.temp} ${crawl.weather }</h1>
+           <h5>${crawl.dust }</h3><br/>
+            <h1>헤드라인뉴스</h1><br/>
+            <c:forEach items="${crawl.headLine }" var="hL">${hL}<br/><br/></c:forEach>
             </div>
             </div>
             <div class="content"> 

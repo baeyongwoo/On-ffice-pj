@@ -29,12 +29,12 @@ public class CrawlingServiceImpl implements CrawlingService {
 		try {
 			doc = Jsoup.connect("https://weather.naver.com/today")
 					.userAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36")
-					.timeout(5000)
+					.timeout(1000)
                     .get();
 			
 			doc2 = Jsoup.connect("https://news.naver.com/")
 					.userAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36")
-					.timeout(5000)
+					.timeout(1000)
                     .get();
 			
 		}catch(IOException e) {
@@ -44,22 +44,15 @@ public class CrawlingServiceImpl implements CrawlingService {
 		String weather = doc.select(".weather").text();
 		String dust = doc.select(".today_chart_list").text();
 		
-		Elements hL = doc2.select(".hdline_article_tit");
+		List<String> hL = doc2.select(".hdline_article_tit").eachText();
 		List<Object> headLine = new ArrayList<Object>();
+		log.info(hL);
 		log.info(hL.size());
-		for(int i = 0; i<hL.size() ; i++) {
-			headLine.add(i, hL.indexOf(i));			
-		}
-		
-			
-		
-		
-		
 		
 		map.put("temp", temp.toString());
 		map.put("weather", weather.toString());
 		map.put("dust", dust.toString());
-		map.put("headLine", headLine);
+		map.put("headLine", hL);
 		
 		return map;
 	
