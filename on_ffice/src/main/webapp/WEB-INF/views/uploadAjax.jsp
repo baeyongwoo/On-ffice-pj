@@ -119,13 +119,26 @@
 				$(uploadResultArr).each(function(i, obj) {
 					
 					if(!obj.image) {
-						str+= "<li><img src='/resources/attachment.png'>"
-							+ obj.fileName + "</li>";
+						
+						let fileCallPath = encodeURIComponent(
+								obj.uploadPath+"/"+
+								obj.uuid + "_" + obj.fileName);
+						
+						str+= "<li><a href='/download?fileName=" + fileCallPath
+								+"'>" + "<img src='/resources/attachment.png'>"
+							+ obj.fileName + "</a>" 
+							+ "<span data-file=\'" + fileCallPath + "\' data-type='file'> X </span>"
+							+ "</li>";
+							
 					} else {
 						
 						let fileCallPath = encodeURIComponent(obj.uploadPath + "//s_" +
 															obj.uuid + "_" + obj.fileName);
-						str += "<li><img src='/display?fileName=" + fileCallPath+"'></li>";
+						str += "<li><a href='/download?fileName=" + fileCallPath
+								+"'>" + "<img src='/display?fileName=" + fileCallPath+"'>"
+										+ obj.fileName + "</a>"
+										+ "<span data-file=\'" + fileCallPath + "\'data-type='image'> X </span>" 
+										+ "</li>";
 					}
 					
 				});
