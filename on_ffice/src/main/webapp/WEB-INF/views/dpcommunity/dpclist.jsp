@@ -49,7 +49,8 @@
 					<c:forEach items="${dpCommunityList}" var="dpcList">
 						<tr>	
 							<td><c:out value="${dpcList.dc_num }"/></td>
-							<td><a href="/dpcommunity/dpcdetail?dp_code=${user.dp_code}&dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
+							<td><a href="/dpcommunity/dpcdetail?dp_code=${user.dp_code}&dc_num=${dpcList.dc_num}&pageNum=${btnMaker.cri.pageNum}
+												&searchType=${btnMaker.cri.searchType}&keyword=${btnMaker.cri.keyword}">
 								<c:out value="${dpcList.dtitle}"/></a></td>
 							<td><c:out value="${login_session.depart_name}"/></td>
 							<td><c:out value="${dpcList.empno}"/></td>
@@ -64,7 +65,7 @@
 			<br/>		
 				
 				<!-- 검색창 -->
-				<form action="/dpcommunity/dpclist/dp_code=${login_session.dp_code}" method="get" class="text-center">
+				<form action="/dpcommunity/dpclist?dp_code=${dpcList.dp_code}" method="get" class="text-center">
 					<!-- option태그를 이용해 검색조건 선택창을 만들어주세요. -->
 					<select name="searchType">
 						<option value="null" 

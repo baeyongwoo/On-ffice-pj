@@ -45,9 +45,8 @@ public class DpCommunityController {
 		
 		service.DpCwrite(vo);
 		log.info(vo);
-		
+		rttr.addAttribute("dp_code", vo.getDp_code());
 		rttr.addFlashAttribute("dc_num", vo.getDc_num());
-				
 		return "redirect:/dpcommunity/dpclist";
 	}
 	
@@ -65,7 +64,7 @@ public class DpCommunityController {
 			
 		} catch (Exception e) {
 			
-			return "redirect:/dpcommunity/dpclist?dp_code=${dp_code}";
+			return "redirect:/dpcommunity/dpclist";
 		}
 		
 		return "/dpcommunity/dpcdetail";

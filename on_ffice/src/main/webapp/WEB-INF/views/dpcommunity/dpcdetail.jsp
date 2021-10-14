@@ -48,7 +48,8 @@
 </head>
 <body>
 	<header>
-		<a href="/dpcommunity/dpclist?dp_code=${login_session.dp_code}&dc_num=${param.dc_num}pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
+		<a href="/dpcommunity/dpclist?dp_code=${login_session.dp_code}&dc_num=${param.dc_num}
+			&pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}"><button class="btn btn-success">게시판으로</button></a>
 	</header>
 	<c:set var="DpCd" value="${dpcdetail}"></c:set>
 	<div class="text-center">
@@ -81,7 +82,8 @@
 		<c:if test="${DpCd.dwriter eq login_session.name}">
 <div class="text-end">
 	<div class="form">
-		<form action="/dpcommunity/dpcupdate?pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
+		<form action="/dpcommunity/dpcupdate?dc_num=${param.dc_num}&pageNum=${param.pageNum}
+						&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			<input type="hidden" name="pageNum" value="${param.pageNum}">
 			<input type="hidden" name="searchType" value="${param.searchType}">
@@ -91,7 +93,8 @@
 		</form>
 		</div>
 		<div class="form">
-		<form action="/dpcommunity/dpcdelete?dp_code=${login_session.dp_code}&dc_num=${param.dc_num}&pageNum=${param.pageNum}&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
+		<form action="/dpcommunity/dpcdelete?dc_num=${param.dc_num}&pageNum=${param.pageNum}
+						&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createTodo">삭제하기</button>
 			 <div class="modal fade" id="createTodo" tabindex="-1" aria-hidden="true">
@@ -136,7 +139,7 @@
 				
 					<button type="button" id="replyModBtn">댓글 수정</button>
 					<button type="button" id="replyDelBtn">댓글 삭제</button>
-					<button type="button" id="closeBtn">창 닫기</button>
+					<button type="button" id="closeB	tn">창 닫기</button>
 			</div>
 			
 		<hr>
@@ -174,7 +177,7 @@
 				 					+ "/" + date.getDate()	 								
 				
 				str +="<li data-dno='" + this.dno + "' class='replyLi'>"
-					+ "<div class='reply'>" + this.dno + ":" + this.reply + "<br/>" + "글쓴이" + ":" + this.replyer + "<br/>" + formattedTime + " " 
+					+ "<div class='reply'>" + "댓글내용 : " + this.reply + "<br/>" + "글쓴이 : " + this.replyer + "<br/>" + formattedTime + " " 
 					+ "<button type='button' class='btn btn-primary'>수정/삭제</button></li>";
 			});
 			
