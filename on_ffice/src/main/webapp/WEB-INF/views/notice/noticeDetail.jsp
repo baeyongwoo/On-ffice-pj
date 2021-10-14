@@ -73,7 +73,7 @@
 		
 			<div>
 				<c:if test="${login_session ne null}">
-					<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
+					<input type="hidden" name="replyer" value="${login_session.uid}" id="newReplyWriter">
 				</c:if>
 				<c:if test="${login_session eq null}">
 					<input type="hidden" name="replyer" value="${ip}" id="newReplyWriter">
