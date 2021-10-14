@@ -76,8 +76,8 @@ public class CompanyLobbyController {
 		log.info("birth 서비스에서 받아온 정보 : " + birth_user_view);
 		model.addAttribute("blist", birth_user_view);
 	
-		Model crawl = model.addAttribute("crawl", cs.crawling());
-		log.info(cs.crawling());
+		model.addAttribute("crawl", cs.crawling());
+		log.info("크롤링데이터 호출");
 		return "/company/lobby";
 	}
 	
