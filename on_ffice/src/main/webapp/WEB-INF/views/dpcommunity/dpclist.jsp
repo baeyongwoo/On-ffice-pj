@@ -85,7 +85,7 @@
 		글쓴이
 	</option>
 </select>
-
+<!-- 검색하기 버튼을 눌렀을때 dp_code와 keyword와 searchType을 담아서 dpclist로 보낸다 -->
 <input type="hidden" name="dp_code" value="${login_session.dp_code}">
 <input type="text" name="keyword" id="keywordInput"
 placeholder="검색어" value="${btnMaker.cri.keyword}">
