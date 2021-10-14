@@ -472,8 +472,12 @@ body {
 						      <div class="fw-bold">${users.name }(${users.uid})</div>
 						      ${users.depart_name }
 						    	<form action="/user/permit" method="post">
-						    		<input type="text" name="uid" value="${users.uid }">
-						    		<input type="submit" value="가입승인">
+						    		<input type="hidden" name="uid" value="${users.uid }">
+						    		<select name="permit">
+						    			<option value="ok">승인</option>
+						    			<option value="no">거절</option>
+						    		</select>
+						    		<input type="submit" value="처리">
 						    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						    	</form>
 						    	</c:if>

@@ -291,6 +291,13 @@ public class UserController {
 				//처음 회원가입하고 로그인 할 경우
 				rttr.addFlashAttribute("check", "no");
 				return "redirect:/user/login";
+				
+			}
+			
+			if(vo.getStat().equals("가입거절")) {
+				//가입 거절 회원
+				rttr.addFlashAttribute("permit", "fail");
+				return "redirect:/user/login";
 			}
 			service.updateStat(uid, "온라인");
 
@@ -378,14 +385,20 @@ public class UserController {
 	
 
 	@PostMapping("/permit")
-	private String permit(String uid, RedirectAttributes rttr) {
+	private String permit(String uid, String permit, RedirectAttributes rttr) {
 		log.info("폼에서 날려온 데이터 : " + uid);
 		UserVO user = new UserVO();
 		user.setUid(uid);
+		if(permit.equals("ok")) {
 		
-		service.updateStat(user.getUid(), "가입승인");
+			service.updateStat(user.getUid(), "가입승인");
 		
-		rttr.addFlashAttribute("permit", "ok");
+			rttr.addFlashAttribute("permit", "ok");
+			
+		}else if(permit.equals("no")) {
+			service.updateStat(user.getUid(), "가입거절");
+			rttr.addFlashAttribute("permit", "no");
+		}
 		return "redirect:/mypage/main";
 	}
 }

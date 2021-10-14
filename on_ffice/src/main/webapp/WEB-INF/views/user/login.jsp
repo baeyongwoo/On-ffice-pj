@@ -46,6 +46,11 @@
 	if(check==="no"){
 		alert("승인이 필요합니다. 로그인 실패하였습니다.");
 	}
+	
+	var permit="${permit}";
+	if(permit==="fail"){
+		alert("가입 거절되었습니다. 관리자에게 문의하세요");
+	}
 
  </script>
 
