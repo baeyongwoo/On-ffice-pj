@@ -110,8 +110,10 @@
 								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 								</div>
 							</form>
+							<br>
+							<div class="text-center">
 				                <a href="/user/login"><input type="button" class="btn btn-primary" value="뒤로가기" /></a>
-						
+						</div>
 
 			</div>
 

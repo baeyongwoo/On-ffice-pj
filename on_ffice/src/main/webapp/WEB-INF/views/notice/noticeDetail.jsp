@@ -27,6 +27,11 @@
 		width: 800px;
 	 	margin-left: 30%;
 		}
+		.btn1 { margin-right:5px;}
+		.btn3 { margin-left: 5px;}
+		ul{
+   list-style:none;
+   }
 	</style>
 </head>
 <body>
@@ -42,31 +47,29 @@
 	<h2 class="a"><c:out value="${nd.ncontent}" /></h2>
 </div>
 
-</div>
 <div class="text-center">
-	<a href="/notice/noticeList" class="btn btn-dark">목록으로</a>
-</div>
-&nbsp;
-<div class="text-center">
+	<div class="btn-group">
+	<a href="/notice/noticeList" class="btn1 btn btn-dark">목록으로</a>
 	
 	<c:if test="${nd.nwriter eq login_session.uid}">
 	
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
-			<input type="submit" value="삭제하기" class="btn btn-danger">
+			<input type="submit" value="삭제하기" class="btn2 btn btn-danger">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
-		&nbsp;
+		
 		<form action="/notice/noticeUpdate" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
-			<input type="submit" value="수정하기" class="btn btn-primary">
+			<input type="submit" value="수정하기" class="btn3 btn btn-primary">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
 		</c:if>
-	
+	</div>
+</div>
 		<hr>
-		<div class="text-center"></div>
-		<h2>댓글 등록</h2>
+		<div class="text-center">
+		<h3>댓글</h3>
 		
 			<div>
 				<c:if test="${login_session ne null}">
@@ -77,11 +80,8 @@
 				</c:if>
 			</div>
 			<div>
-				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
-				id="newReply"><br/>
-				</div>
-				&nbsp;
-			<div>
+				<input type="text" style="width:800px" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
+				id="newReply">
 			<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
 		</div>	
 		
@@ -97,11 +97,8 @@
 				</div>
 			</div>
 		
-		<hr>
+	
 		
-		<h2>댓글 창</h2>
-			
-		<hr>
 		<ul id="replies">
 		
 		</ul>
@@ -122,8 +119,8 @@
 			$(data).each(function(){
 				
 				str +="<li data-rno='" + this.rno + "' class='replyLi'>"
-				+ "<div class='reply'>" + this.rno + ":" + this.reply + ":" + this.replyer + "</div>"
-				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>";
+				+ "<div class='reply'>" + this.rno + " : " + this.reply + " : " + this.replyer 
+				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>" + "<br/></div>";
 			});
 			
 			$("#replies").html(str);
