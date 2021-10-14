@@ -9,14 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="text-center mx-auto w-75">
 	<h2>부서 자유 게시글 작성 창</h2>
 	
 	<form action="/dpcommunity/dpcwrite" method="post">
 		<input type="hidden" name="dp_code" value="${login_session.dp_code}" readonly="readonly"><br/>
 		<input type="hidden" name="empno" value="${login_session.empno}" readonly="readonly"><br/>
-		<input type="text" name="dtitle" placeholder="글 제목" required="required"><br/>
-		<textarea rows="10" cols="50" name="dcontent" required="required"></textarea><br/>
-		<input type="text" name="dwriter" value="${login_session.name}" readonly="readonly"><br/>
+		<input type="text" name="dtitle" placeholder="글 제목" required="required" class="form-control"><br/>
+		<textarea rows="10" cols="50" placeholder="글 내용" name="dcontent" required="required" class="form-control"></textarea><br/>
+		<input type="text" name="dwriter" value="${login_session.name}" readonly="readonly" class="form-control w-50"><br/>
 				
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#write">작성하기</button>
 		<button type="reset" class="btn btn-warning">초기화</button>
@@ -39,6 +40,7 @@
 			  
 			 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		</form>
+		</div>
 		<!-- Modal -->
 </body>
 </html>

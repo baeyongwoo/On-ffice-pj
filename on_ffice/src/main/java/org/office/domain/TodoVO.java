@@ -15,5 +15,4 @@ public class TodoVO {
 	public String complete;
 	public Date recive_time;
 	public Date complete_time;
-	public String name;
 }

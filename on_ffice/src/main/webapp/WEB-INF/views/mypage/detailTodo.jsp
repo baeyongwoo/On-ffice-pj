@@ -10,21 +10,40 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
+<style>
+body{
+	margin: 50px;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
-	${getTodo }
-	<div class="container">
-				<h1>[${getTodo.todo_num }]번 작업</h1>
+<div class="container">
+	<header>
+    <div class="row">
+			<a href="/mypage/main"><button class="btn btn-dark">돌아가기</button></a>
+        </div>
+	</header>
+    <div class="row d-flex align-items-center h-100">
+        <div class="col-xs-12 text-center">
+       	
+				<h1>[${getTodo.todo_num }]번 작업 상세정보</h1>
 				<br>
-				<h2>작업명 : ${getTodo.todo_title}</h2>
-				<h3>작업내용: ${getTodo.todo_content }</h3>
+				<h3>작업명</h3>
+				<h2>${getTodo.todo_title}</h2>
+				<hr>
+				<h3>작업내용</h3>
+				<div class="w-75 mx-auto">
+				<h4 style="font-weight: bold"><span class="인덱스">${getTodo.todo_content }</span></h4>
+				</div>
+				<hr>
 				<h4>작업생성시간 - ${getTodo.recive_time }</h4>
-			</div>
-
-			<button>돌아가기</button>
-
-		</div>
-	</div>
-</body>
+		
+        </div>
+    </div>
+</div>
+	<main>
+			
+	</main>
+	</body>
 </html>

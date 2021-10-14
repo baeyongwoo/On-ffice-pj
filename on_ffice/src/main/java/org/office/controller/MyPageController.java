@@ -86,6 +86,7 @@ public class MyPageController {
 
 	@PostMapping("/insertTodo")
 	public String insertTodo(TodoVO vo, Model model, RedirectAttributes rttr) {
+		vo.setTodo_content("<pre>"+vo.getTodo_content()+"</pre>");
 		service.insertTodo(vo);
 		log.info(vo);
 		rttr.addFlashAttribute("result", "insert");
@@ -101,7 +102,7 @@ public class MyPageController {
 		String formDate = formatter.format(date);
 		StringBuilder sb = new StringBuilder();
 		sb.append(req.getParameter("already_todo_content"));
-		sb.append("<br/>\r["+ formDate +" "+ login_session.getName() + " 추가]\r<br/>" + req.getParameter("todo_content"));
+		sb.append("<br>\r["+ formDate +" "+ login_session.getName() + " 추가]\r</br>" + req.getParameter("todo_content"));
 		vo.setTodo_content(sb.toString());
 		service.passTodo(vo);
 		log.info(vo);
@@ -116,7 +117,7 @@ public class MyPageController {
 		rttr.addFlashAttribute("result", "complete");
 		return "redirect:/mypage/main";
 	}
-
+	
 	@GetMapping("/detailTodo")
 	public TodoVO getTodo(TodoVO vo, Model model) throws Exception {
 		vo = service.getTodo(vo.getTodo_num());

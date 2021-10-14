@@ -229,7 +229,7 @@ body {
 						<c:forEach items="${todoList}" var="todo">
 							<tr>
 								<td>${todo.todo_num }</td>
-								<td>[${todo.checker }]${todo.name }</td>
+								<td>${todo.checker }</td>
 								<td><a href="/mypage/detailTodo?todo_num=${todo.todo_num }">
 										${todo.todo_title} </a></td>
 								<td>${todo.recive_time }</td>
@@ -282,7 +282,7 @@ body {
 						<c:forEach items="${completeList}" var="comp">
 							<tr>
 								<td>${comp.todo_num }</td>
-								<td>[${comp.worker }]${comp.name }</td>
+								<td>${comp.worker }</td>
 								<td><a href="/mypage/detailTodo?todo_num=${comp.todo_num }">
 										${comp.todo_title} </a></td>
 								<td>${comp.complete_time }</td>
@@ -384,7 +384,8 @@ body {
 							todo_num : todo_num
 						},
 						success : function(data) {
-						$("#todo_con").html(data.substring(data.indexOf("content=")+8, data.lastIndexOf(", complete=")));
+						$("#todo_con").html(data.substring(data.indexOf("인덱스")+5, data.lastIndexOf("/span>")-1));
+						console.log(data);
 						},
 						error : function() {
 							
@@ -457,7 +458,7 @@ body {
 				</div>
 			</div>
 		</div>
-		<footer> </footer>
+		
 	</div>
 	<!-- 가입 요청 받는 곳 -->
 	<c:if test="${info.dp_code eq '1'}">
@@ -495,7 +496,7 @@ body {
 					alert("가입승인 완료되었습니다.");
 				}
 			</script>
-	
+	<footer> </footer>
 </body>
 
 </html>

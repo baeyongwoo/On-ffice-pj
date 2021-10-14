@@ -40,8 +40,8 @@
 	
 	<table class="table table-dark table-hover text-center">
 		<tr>
-			<th>글번호</th>
 			<th>카테고리</th>
+			<th>글번호</th>
 			<th>글제목</th>
 			<th>글쓴이</th>
 			<th>쓴날짜</th>
@@ -49,9 +49,9 @@
 		</tr>
 		<c:forEach items="${noticeList}" var="nl">
 		<tr>
-				<td><a href="/notice/noticeDetail?notice_num=${nl.notice_num}">${nl.notice_num}</a></td>
 				<td><c:out value="${nl.ncategory}" /></td>
-				<td><c:out value="${nl.ntitle}" /></td>
+				<td><c:out value="${nl.notice_num}"/></td>
+				<td><a href="/notice/noticeDetail?notice_num=${nl.notice_num}"><c:out value="${nl.ntitle}" /></a></td>
 				<td><c:out value="${nl.nwriter}" /></td>
 				<td><c:out value="${nl.ndate}" /></td>
 				<td><c:out value="${nl.nhits}" /></td>
@@ -95,7 +95,7 @@
 				<c:if test="${position >= 6}">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</c:if>
-				<input type="submit" value="글쓰러가기">
+				<input type="submit" value="글쓰러가기" class="btn btn-dark">
 		</form>
 		
 		

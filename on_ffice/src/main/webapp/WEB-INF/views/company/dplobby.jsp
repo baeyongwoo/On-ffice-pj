@@ -41,18 +41,14 @@ body {
 				<!-- 부서 커뮤니티 연결 -->
 				<hr>
 				<div class="text-center">
+							<h2>${dpinfo.depart_name} 소속 인원</h2>
 					<c:forEach items="${dpu_list}" var="dl">
 						<c:if test="${dl.dp_code eq login_session.dp_code}">
 						<div class="fs-6">
-							접속자 정보 -  
 							사원번호:[${dl.empno}] /
 							직급:${dl.p_name} /
 							이름:${dl.name} /
-							아이디:${dl.uid} /
-							전화번호:${dl.cp} /
-							이메일:${dl.email} /
-							성별:${dl.gender} /
-							생년월일:${dl.birth}
+							아이디:${dl.uid}
 							</div>
 						</c:if>
 					</c:forEach>
@@ -63,7 +59,7 @@ body {
 
 		<main>
 			<div class="row text-center">
-				<h2>회사 게시판</h2>
+				<h2>${dpinfo.depart_name} 최근 업로드 게시글</h2>
 			</div>
 			<div class="row text-center">
 				<table class="table table-dark table-hover">

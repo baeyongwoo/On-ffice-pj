@@ -44,7 +44,7 @@
 	<h2>제목 :  <input type="text" disabled value="${nd.ntitle}">
 		작성자 : <input type="text" disabled value="${nd.nwriter}">
 	</h2>
-	<h2 class="a"><c:out value="${nd.ncontent}" /></h2>
+	<h2 class="mx-auto w-75" style="background-color: gray"><c:out value="${nd.ncontent}" /></h2>
 </div>
 
 <div class="text-center">

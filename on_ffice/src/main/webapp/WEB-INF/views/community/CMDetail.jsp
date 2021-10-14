@@ -45,7 +45,7 @@
 	<h2>제목 : <input type="text" disabled value="${cd.ctitle}">
 	작성자 : <input type="text" disabled value="${cd.cwriter}"></h2>
 	
-	<h2 class="a"><c:out value="${cd.ccontent}"/></h2>
+	<h2 class="mx-auto w-75" style="background-color: gray"><c:out value="${cd.ccontent}"/></h2>
 
 
 

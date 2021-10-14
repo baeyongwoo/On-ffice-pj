@@ -14,7 +14,7 @@
 
     <select id="getTodoList" resultType="org.office.domain.TodoVO">
         <![CDATA[
- SELECT todo_num, checker, todo_title, todo_content, recive_time, complete, name FROM todo, users
+ SELECT todo_num, checker, todo_title, todo_content, recive_time, complete FROM todo
 WHERE worker=#{worker} AND complete="ing"
 ORDER BY todo_num DESC LIMIT #{startPage}, #{amount}
  ]]>
@@ -22,7 +22,7 @@ ORDER BY todo_num DESC LIMIT #{startPage}, #{amount}
     
         <select id="getTodoComplete" resultType="org.office.domain.TodoVO">
         <![CDATA[
- SELECT todo_num, worker, todo_title, todo_content, complete_time, complete, name FROM todo, users
+ SELECT todo_num, worker, todo_title, todo_content, complete_time, complete FROM todo
 WHERE checker=#{checker} AND complete="complete" ORDER BY complete_time DESC LIMIT 0, 5
  ]]>
     </select>
