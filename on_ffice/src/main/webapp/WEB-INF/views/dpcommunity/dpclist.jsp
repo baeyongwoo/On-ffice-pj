@@ -65,7 +65,7 @@
 			<br/>		
 				
 				<!-- 검색창 -->
-				<form action="/dpcommunity/dpclist?dp_code=${dpcList.dp_code}" method="get" class="text-center">
+				<form action="/dpcommunity/dpclist" method="get" class="text-center">
 					<!-- option태그를 이용해 검색조건 선택창을 만들어주세요. -->
 					<select name="searchType">
 						<option value="null" 
@@ -86,6 +86,7 @@
 	</option>
 </select>
 
+<input type="hidden" name="dp_code" value="${login_session.dp_code}">
 <input type="text" name="keyword" id="keywordInput"
 placeholder="검색어" value="${btnMaker.cri.keyword}">
 <button id="searchBtn">검색하기</button>

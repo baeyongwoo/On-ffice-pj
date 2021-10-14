@@ -36,6 +36,7 @@ public class DpCommunityController {
 		int total = service.getTotalBoard(cri, dp_code);
 		PageDTO btnMaker = new PageDTO(cri, total, 10);
 		model.addAttribute("btnMaker", btnMaker);
+		model.addAttribute("dp_code", dp_code);
 		model.addAttribute("dpCommunityList", DpCList);
 		
 	}
@@ -96,15 +97,15 @@ public class DpCommunityController {
 	}
 	
 	@PostMapping("/dpcdelete")
-	public String DpCdelete(SearchCriteria cri, int dc_num, RedirectAttributes rttr) {
+	public String DpCdelete(SearchCriteria cri, int dc_num, DpCommunityVO vo, RedirectAttributes rttr) {
 		service.DpCdelete(dc_num);
 		rttr.addFlashAttribute("result", "success");
 		rttr.addFlashAttribute("dc_num", dc_num);
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
-		
-		return "redirect:/dpcommunity/dpclist?dp_code=${dp_code}";
+		rttr.addAttribute("dp_code", vo.getDp_code());
+		return "redirect:/dpcommunity/dpclist";
 	}
 	
 		

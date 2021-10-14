@@ -93,7 +93,7 @@
 		</form>
 		</div>
 		<div class="form">
-		<form action="/dpcommunity/dpcdelete?dc_num=${param.dc_num}&pageNum=${param.pageNum}
+		<form action="/dpcommunity/dpcdelete?dp_code=${login_session.dp_code}&dc_num=${param.dc_num}&pageNum=${param.pageNum}
 						&searchType=${param.searchType}&keyword=${param.keyword}" method="post">
 			<input type="hidden" name="dc_num" value="${DpCd.dc_num}">
 			 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createTodo">삭제하기</button>
