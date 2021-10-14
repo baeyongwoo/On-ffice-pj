@@ -80,8 +80,16 @@
 				</c:if>
 			</div>
 			<div>
+
 				<input type="text" style="width:800px" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
 				id="newReply">
+
+				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
+				id="newReply" required="required"><br/>
+				</div>
+				&nbsp;
+			<div>
+
 			<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
 		</div>	
 		
