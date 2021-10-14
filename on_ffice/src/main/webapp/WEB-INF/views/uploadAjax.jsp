@@ -5,10 +5,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.uploadResult {
+		width: 100%;
+		background-color : gray;
+	}
+	
+	.uploadResult ul {
+		display:flex;
+		flex-flow: row;
+		justify-content : center;
+		align-items : center;
+	}
+	
+	.uploadResult ul li {
+		list-style : none;
+		padding : 10px;
+	}
+	
+	.uploadResult ul li img {
+		width : 20px;
+	}
+</style>
+
 </head>
 <body>
 	<div class="uploadDiv">
 		<input type="file" name="uploadFile" multiple>
+	</div>
+	
+	<div class="uploadResult">
+		<ul>
+			<!-- 업로드된 파일이 들어갈 자리 -->
+		</ul>
 	</div>
 	
 	<button id="uploadBtn">Upload</button>
@@ -34,6 +63,8 @@
 				return true;
 			}
 			
+			let cloneObj = $(".uploadDiv").clone();
+			
 			$('#uploadBtn').on("click", function(e) {
 				
 				let formData = new FormData();
@@ -53,18 +84,54 @@
 					
 					formData.append("uploadFile", files[i]);
 				}
+				let csrfHeaderName = "${_csrf.headerName}";
+				let csrfTokenValue = "${_csrf.token}";
 				
 				$.ajax({
+					
+					beforeSend: function(xhr) {
+					    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
+					
 					url : '/uploadAjaxAction',
 					processData: false,
 					contentType: false,
 					data: formData,
 					type: 'POST',
+					dataType:'json',
 					success: function(result) {
+						console.log(result);
+						
+						showUploadedFile(result);
+						
+						$(".uploadDiv").html(cloneObj.html());
+						
 						alert("Uploaded");
 					}
 				}); // ajax
-			});
+			}); // onclick uploadBtn
+			
+			let uploadResult = $(".uploadResult ul");
+			
+			function showUploadedFile(uploadResultArr) {
+				let str = "";
+				
+				$(uploadResultArr).each(function(i, obj) {
+					
+					if(!obj.image) {
+						str+= "<li><img src='/resources/attachment.png'>"
+							+ obj.fileName + "</li>";
+					} else {
+						
+						let fileCallPath = encodeURIComponent(obj.uploadPath + "//s_" +
+															obj.uuid + "_" + obj.fileName);
+						str += "<li><img src='/display?fileName=" + fileCallPath+"'></li>";
+					}
+					
+				});
+				
+				uploadResult.append(str);
+			} // showUploadedFile
 		});
 	</script>
 </body>
