@@ -19,7 +19,7 @@ public interface DpCommunityMapper {
 	public List<DpCommunityVO> DpCList(@Param("PageStart") int PageStart, @Param("amount") int amount, @Param("searchType") String searchType, @Param("keyword") String keyword, @Param("dp_code") Long dp_code, SearchCriteria cri);
 	
 // 글 전체 개수 가져오는 로직
-	public int getTotalBoard(SearchCriteria cri);
+	public int getTotalBoard(SearchCriteria cri, @Param("dp_code") Long dp_code, @Param("searchType") String searchType, @Param("keyword") String keyword);
 	
 // 글 상세보기 로직
 	public DpCommunityVO DpCdetail(int dc_num);

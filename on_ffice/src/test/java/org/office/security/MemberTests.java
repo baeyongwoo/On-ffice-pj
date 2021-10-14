@@ -30,7 +30,7 @@ public class MemberTests {
 	
 	@Test
 	public void testCryptDefaultDB() {
-		String [] idList = {"test5"};
+		String [] idList = {"test1", "test2", "test3", "test4", "test5", "test6", "test7"};
 		String sql = "UPDATE USERS set upw=? WHERE uid=?";
 		
 		//test1 비밀번호는 test1
@@ -39,7 +39,7 @@ public class MemberTests {
 			
 			for(String id : idList) {
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, pwen.encode("test5"));
+				pstmt.setString(1, pwen.encode("test"));
 				pstmt.setString(2, id);
 				pstmt.executeUpdate();
 			}

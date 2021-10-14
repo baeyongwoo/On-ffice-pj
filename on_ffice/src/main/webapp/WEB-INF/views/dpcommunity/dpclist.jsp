@@ -64,7 +64,7 @@
 			<br/>		
 				
 				<!-- 검색창 -->
-				<form action="/dpcommunity/dpclist" method="get" class="text-center">
+				<form action="/dpcommunity/dpclist/dp_code=${login_session.dp_code}" method="get" class="text-center">
 					<!-- option태그를 이용해 검색조건 선택창을 만들어주세요. -->
 					<select name="searchType">
 						<option value="null" 

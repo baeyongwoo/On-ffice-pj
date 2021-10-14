@@ -98,8 +98,9 @@
 
 	<div class="text-center">
 		<form action="/notice/gowrite" method="post">
-				
+				<c:if test="${login_session.position_code >= 6}">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</c:if>
 		
 				<input type="submit" value="글쓰러가기">
 		</form>
