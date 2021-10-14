@@ -229,7 +229,7 @@ body {
 						<c:forEach items="${todoList}" var="todo">
 							<tr>
 								<td>${todo.todo_num }</td>
-								<td>${todo.checker }</td>
+								<td>[${todo.checker }]${todo.name }</td>
 								<td><a href="/mypage/detailTodo?todo_num=${todo.todo_num }">
 										${todo.todo_title} </a></td>
 								<td>${todo.recive_time }</td>
@@ -282,7 +282,7 @@ body {
 						<c:forEach items="${completeList}" var="comp">
 							<tr>
 								<td>${comp.todo_num }</td>
-								<td>${comp.worker }</td>
+								<td>[${comp.worker }]${comp.name }</td>
 								<td><a href="/mypage/detailTodo?todo_num=${comp.todo_num }">
 										${comp.todo_title} </a></td>
 								<td>${comp.complete_time }</td>

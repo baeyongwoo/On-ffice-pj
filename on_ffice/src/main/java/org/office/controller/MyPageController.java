@@ -101,7 +101,7 @@ public class MyPageController {
 		String formDate = formatter.format(date);
 		StringBuilder sb = new StringBuilder();
 		sb.append(req.getParameter("already_todo_content"));
-		sb.append("\r["+ formDate +" "+ login_session.getName() + " 추가]\r" + req.getParameter("todo_content"));
+		sb.append("<br/>\r["+ formDate +" "+ login_session.getName() + " 추가]\r<br/>" + req.getParameter("todo_content"));
 		vo.setTodo_content(sb.toString());
 		service.passTodo(vo);
 		log.info(vo);
