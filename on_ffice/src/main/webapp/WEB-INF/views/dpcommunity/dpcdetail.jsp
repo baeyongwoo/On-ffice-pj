@@ -154,6 +154,7 @@
 		var dp_community = "${DpCd.dc_num}";
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
+		
 		function getAllList(){
 		
 		$.getJSON("/dpcommunity/dpcdetail/dpcreplies/all/" + dp_community ,function(data) {

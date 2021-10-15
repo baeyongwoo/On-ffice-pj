@@ -143,13 +143,14 @@
 			console.log(data.length);
 			
 			var str = "";
-			var timestamp = this.updatedate;
-			var date = new Date(timestamp);
-			var formattedTime = "댓글 게시일 : " + date.getFullYear() 
-			 						+ "/" + (date.getMonth() + 1)
-				 					+ "/" + date.getDate()
 			
 			$(data).each(function(){
+				
+				var timestamp = this.updatedate;
+				var date = new Date(timestamp);
+				var formattedTime = "댓글 게시일 : " + date.getFullYear() 
+											+ "/" + (date.getMonth() + 1)
+											+ "/" + date.getDate()
 												
 				str +="<li data-cno='" + this.cno + "' class='replyLi'>"
 				+ "<div class='reply'>" +  "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " "
