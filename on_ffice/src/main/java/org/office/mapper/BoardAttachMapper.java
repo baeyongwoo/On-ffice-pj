@@ -13,4 +13,6 @@ public interface BoardAttachMapper {
 	
 	public List<BoardAttachVO> findByNotice_num(int notice_num);
 	
+	public void deleteAll (int notice_num);
+	
 }

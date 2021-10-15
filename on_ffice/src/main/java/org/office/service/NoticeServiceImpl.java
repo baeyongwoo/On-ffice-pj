@@ -75,10 +75,22 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public void update(NoticeVO vo) {
+	public boolean update(NoticeVO vo) {
 		log.info(vo.getNotice_num() + "번째 글 갱신 요청");
 		log.info("글 갱신 실행");
-		noticemapper.update(vo);
+		
+		attachmapper.deleteAll(vo.getNotice_num());
+		
+		boolean modifyResult = noticemapper.update(vo) == true;
+		
+		if(modifyResult && vo.getAttachList().size()>0) {
+			vo.getAttachList().forEach(attach -> {
+				attach.setNotice_num(vo.getNotice_num());
+				attachmapper.insert(attach);
+			});
+			
+		}
+		return noticemapper.update(vo) == true;
 	}
 
 	@Override

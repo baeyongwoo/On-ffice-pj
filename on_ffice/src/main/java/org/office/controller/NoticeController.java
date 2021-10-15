@@ -1,5 +1,9 @@
 package org.office.controller;
 
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.office.domain.BoardAttachVO;
@@ -132,6 +136,35 @@ public class NoticeController {
 		
 		return new ResponseEntity<>(service.getAttachList(notice_num), HttpStatus.OK);
 				
+	}
+	
+	private void deleteFiles(List<BoardAttachVO> attachList) {
+		if(attachList == null || attachList.size() == 0) {
+			return;
+		}
+		
+		log.info(attachList);
+		
+		attachList.forEach(attach -> {
+			try {
+				Path file = Paths.get("c:\\upload_data\\temp\\" + attach.getUploadPath() +
+								"\\" + attach.getUuid() + "_" + attach.getFileName());
+				
+				Files.deleteIfExists(file);
+				
+				if(Files.probeContentType(file).startsWith("image")) {
+					Path thumbNail = Paths.get("C:\\upload_data\\temp\\" + attach.getUploadPath() + 
+											"\\s_" + attach.getUuid() + "_" + attach.getFileName());
+					
+					Files.delete(thumbNail);
+				}
+				
+				
+			} catch(Exception e) {
+				log.error(e.getMessage());
+			} // end catch
+			
+		}); // end foreach
 	}
 	
 

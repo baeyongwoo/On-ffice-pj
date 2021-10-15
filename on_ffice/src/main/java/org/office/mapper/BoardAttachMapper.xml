@@ -14,4 +14,9 @@
 	<select id ="findByNotice_num" resultType="org.office.domain.BoardAttachVO">
 		SELECT * FROM img_tbl WHERE notice_num = #{notice_num}
 	</select>
+	
+	<delete id="deleteAll">
+		DELETE FROM img_tbl WHERE notice_num=#{notice_num}
+	</delete>
+	
 </mapper>
