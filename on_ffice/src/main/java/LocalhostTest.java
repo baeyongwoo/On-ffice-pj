@@ -15,6 +15,7 @@ public class LocalhostTest {
 //				System.out.println(ip);
 //			}
 		    //System.out.println("My current IP address is " + s.next());
+
 		} catch (java.io.IOException e) {
 		    e.printStackTrace();
 		}

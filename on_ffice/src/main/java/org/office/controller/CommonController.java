@@ -17,7 +17,7 @@ public class CommonController {
 		
 		log.info("접근 거부 : " + auth);
 		
-		model.addAttribute("errorMessage", "접근 거부");
+		model.addAttribute("errorMessage", "권한이 없습니다.");
 	}
 	
 }

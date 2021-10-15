@@ -70,14 +70,14 @@
 		<hr>
 		<div class="text-center">
 		<h3>댓글</h3>
-		
-			<div>
-				<c:if test="${login_session ne null}">
-					<input type="hidden" name="replyer" value="${login_session.uid}" id="newReplyWriter">
-				</c:if>
 				<c:if test="${login_session eq null}">
-					<input type="hidden" name="replyer" value="${ip}" id="newReplyWriter">
+					<script type="text/javascript">
+						alert("로그인을 해야 댓글을 달수 있습니다.");
+					</script>
 				</c:if>
+				<c:if test="${login_session ne null}">
+			<div>
+				<input type="hidden" name="replyer" value="${login_session.uid}" id="newReplyWriter">
 			</div>
 			<div>
 
@@ -96,15 +96,16 @@
 			<div id="modDiv" style="display:none;">
 				<div class="modal-title"></div>			
 					<div>
-						<input type="text" id="replytext">
+						<input type="text" id="replytext" required="required">
 					</div>
 				<div>
 					<button type="button" id="replyModBtn">댓글 수정</button>
 					<button type="button" id="replyDelBtn">댓글 삭제</button>
 					<button type="button" id="closeBtn">창 닫기</button>
 				</div>
+				
 			</div>
-		
+		</c:if>
 	
 		
 		<ul id="replies">
@@ -124,11 +125,25 @@
 			
 			var str = "";
 			
+
+			
 			$(data).each(function(){
 				
+				var replyer = this.replyer;
+				var reply = this.reply;
+				function button() {
+					var l_s = "${login_session.uid}";
+					console.log(replyer + "가 가진 답변" + reply);
+					if(l_s===replyer){
+						return "<button type='button' class='btn btn-info'>수정/삭제</button>";
+					} 
+					return "";
+				}
+				
+				// 댓글 작성자와 로그인한 유저와 정보가 같을 때 button부분 출력하게 
 				str +="<li data-rno='" + this.rno + "' class='replyLi'>"
 				+ "<div class='reply'>" + this.rno + " : " + this.reply + " : " + this.replyer 
-				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>" + "<br/></div>";
+				+ button() + "</li></div>";
 			});
 			
 			$("#replies").html(str);
