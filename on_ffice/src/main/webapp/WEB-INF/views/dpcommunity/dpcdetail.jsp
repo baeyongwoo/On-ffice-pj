@@ -56,11 +56,9 @@
 		<div class="form-inline">
 		<figure class="text-center">
   <blockquote class="blockquote">
-    <h1>${DpCd.dtitle}</h1>
+    <h1>"${DpCd.dc_num}번 게시글"</h1>
   </blockquote>
-  <figcaption class="blockquote-footer">
-    ${DpCd.dc_num}번 글
-  </figcaption>
+ 
 </figure>
 	 
 	
@@ -73,7 +71,7 @@
 	<hr>
 	</div>
 	<div class = "cmargin">
-	<div class="content">
+	<div class="content text-center">
 	${DpCd.dcontent}
 	</div>
 	</div>
@@ -178,14 +176,14 @@
 					var l_s = "${login_session.uid}";
 				
 					if(l_s===replyer){
-						return "<button type='button' class='btn btn-primary'>수정/삭제</button>";
+						return "<button type='button' class='btn btn-info'>수정/삭제</button>";
 					} 
 					return "";
 				}
 				
 				// 댓글 작성자와 로그인한 유저와 정보가 같을 때 button부분 출력하게 
 				str +="<li data-dno='" + this.dno + "' class='replyLi'>"
-				+ "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " " + button() + "</li>";
+				+ "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " " + button() + "<br><br></li>";
 			});
 			
 			$("#dpcreplies").html(str);
