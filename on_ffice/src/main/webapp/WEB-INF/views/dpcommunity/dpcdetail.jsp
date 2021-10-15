@@ -119,13 +119,12 @@
 		<div class="fs-5">댓글 등록</div>
 		
 			<div>
-				<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
+				<input type="hidden" name="replyer" value="${login_session.uid}" id="newReplyWriter">
 			</div>
 			<div class="form-inline">
 				<div class="w-70">
 				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다."
-				 
-				id="newReply" class="form-control fs-6" required="required"><br/>
+					id="newReply" class="form-control fs-6" required="required"><br/>
 				</div>
 			<div class="text-end">
 				<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
@@ -134,12 +133,13 @@
 			<div id="modDiv" style="display:none;">
 				<div class="modal-title"></div>			
 					<div>
-						<input type="text" id="replytext">
+						<input type="text" id="replytext" required="required">
 					</div>
-				
+				<div>
 					<button type="button" id="replyModBtn">댓글 수정</button>
 					<button type="button" id="replyDelBtn">댓글 삭제</button>
-					<button type="button" id="closeB	tn">창 닫기</button>
+					<button type="button" id="closeBtn">창 닫기</button>
+				</div>
 			</div>
 			
 		<hr>
@@ -156,29 +156,36 @@
 		var dp_community = "${DpCd.dc_num}";
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
-		
 		function getAllList(){
 		
 		$.getJSON("/dpcommunity/dpcdetail/dpcreplies/all/" + dp_community ,function(data) {
-			console.log(data);
-			console.log("------");
-			console.log(data.length);
-			
+						
 			var str = "";
-			
+		
 			$(data).each(function(){
 				
+				var replyer = this.replyer;
+				var reply = this.reply;
+				var dno = this.dno;
 				var timestamp = this.updatedate;
 				var date = new Date(timestamp);
 				
 				console.log(date);
 				var formattedTime = "댓글 게시일 : " + date.getFullYear() 
 			 						+ "/" + (date.getMonth() + 1)
-				 					+ "/" + date.getDate()	 								
+				 					+ "/" + date.getDate()
+				function button() {
+					var l_s = "${login_session.uid}";
 				
+					if(l_s===replyer){
+						return "<button type='button' class='btn btn-primary'>수정/삭제</button>";
+					} 
+					return "";
+				}
+				
+				// 댓글 작성자와 로그인한 유저와 정보가 같을 때 button부분 출력하게 
 				str +="<li data-dno='" + this.dno + "' class='replyLi'>"
-					+ "<div class='reply'>" + "댓글내용 : " + this.reply + "<br/>" + "글쓴이 : " + this.replyer + "<br/>" + formattedTime + " " 
-					+ "<button type='button' class='btn btn-primary'>수정/삭제</button></li>";
+				+ "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " " + button() + "</li>";
 			});
 			
 			$("#dpcreplies").html(str);
@@ -191,6 +198,7 @@
 			var replyer = $("#newReplyWriter").val();
 			var reply = $("#newReply").val();
 			
+			
 			console.log(replyer + "/" + reply);
 			
 			$.ajax({
@@ -198,14 +206,14 @@
 				    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 				},
 				type : 'post',
-				url : '/dpcommunity/dpcdetail/dpcreplies',
+				url : '/dpcommunity/dpcdetail/dpcreplies/',
 				headers: {
 					"Content-Type"  :"application/json",
 					"X-HTTP-Method-Override" : "POST"
 				},
 				dataType : 'text',
 				data : JSON.stringify({
-					dp_community : dp_community ,
+					dp_community: dp_community,
 					replyer : replyer,
 					reply : reply
 				}),
@@ -223,6 +231,7 @@
 			
 			var dno = $(".modal-title").html();
 			var reply = $("#replytext").val();
+			console.log("댓글번호" + dno + "/댓글" + reply);
 				$.ajax({
 					beforeSend: function(xhr) {
 					    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
@@ -269,8 +278,9 @@
 			var replyLi = $(this).parent();
 			var dno = replyLi.attr("data-dno");
 			var reply = $(this).parent().siblings(".reply").text();
-						
-			console.log(dno + ":" + reply);
+			
+			console.log("this"  +$(this).parent().text());
+					
 			$(".modal-title").html(dno);
 			$("#replytext").val(reply);
 			$("#modDiv").show("slow");
@@ -281,4 +291,17 @@
 		})
 		</script>
 </body>
+<footer>
+	
+	<hr/>
+
+	<div class="row">
+		<h6 class="text-center">홈페이지 : <strong>www.onffice.com</strong></h6>
+		<h6 class="text-center">주소 : <strong>서울특별시 마포구 양화로 127, 첨단빌딩</strong></h6>
+		<h6 class="text-center">만든이 : <strong>배용우 신우람 고광훈 서성현 신동규</strong> </h6>
+	</div>
+
+
+	
+</footer>
 </html>
