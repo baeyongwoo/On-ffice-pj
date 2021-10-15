@@ -131,9 +131,10 @@
 				
 				var replyer = this.replyer;
 				var reply = this.reply;
+				var rno = this.rno;
 				function button() {
 					var l_s = "${login_session.uid}";
-					console.log(replyer + "가 가진 답변" + reply);
+					console.log(rno + "번째 " + replyer + "가 가진 답변" + reply);
 					if(l_s===replyer){
 						return "<button type='button' class='btn btn-info'>수정/삭제</button>";
 					} 
@@ -142,12 +143,12 @@
 				
 				// 댓글 작성자와 로그인한 유저와 정보가 같을 때 button부분 출력하게 
 				str +="<li data-rno='" + this.rno + "' class='replyLi'>"
-				+ "<div class='reply'>" + this.rno + " : " + this.reply + " : " + this.replyer 
-				+ button() + "</li></div>";
+				+ this.rno + " : " + this.reply + " : " + this.replyer 
+				+ button() + "</li>";
 			});
 			
 			$("#replies").html(str);
-			
+				
 			});
 		}
 		getAllList();
@@ -188,6 +189,7 @@
 			
 			var rno = $(".modal-title").html();
 			var reply = $("#replytext").val();
+			console.log("댓글번호" + rno + "/댓글" + reply);
 				$.ajax({
 					beforeSend: function(xhr) {
 					    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
@@ -234,8 +236,11 @@
 			var replyLi = $(this).parent();
 			var rno = replyLi.attr("data-rno");
 			var reply = $(this).parent().siblings(".reply").text();
-						
-			console.log(rno + ":" + reply);
+			
+			console.log("this"  +$(this).parent().text());
+			console.log("button부모 : " + replyLi);
+			console.log("글번호" + rno + "/ 글" + reply);
+			
 			$(".modal-title").html(rno);
 			$("#replytext").val(reply);
 			$("#modDiv").show("slow");

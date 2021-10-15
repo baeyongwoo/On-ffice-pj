@@ -153,7 +153,7 @@
 			});
 			
 			$("#cmreplies").html(str);
-			
+				
 			});
 		}
 		getAllList();
@@ -241,8 +241,10 @@
 			var replyLi = $(this).parent();
 			var cno = replyLi.attr("data-cno");
 			var reply = $(this).parent().siblings(".reply").text();
-						
-			console.log(cno + ":" + reply);
+		
+			console.log("this"  +$(this).parent().text());
+			console.log("button부모 : " + replyLi);
+			console.log("글번호" + cno + "/ 글" + reply);
 			$(".modal-title").html(cno);
 			$("#replytext").val(reply);
 			$("#modDiv").show("slow");
