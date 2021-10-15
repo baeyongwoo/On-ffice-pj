@@ -39,10 +39,31 @@ body {
 <script>
 	window.onload = function() {
 
-
 		let csrfHeaderName = "${_csrf.headerName}";
 		let csrfTokenValue = "${_csrf.token}";
 		let result = "${result}"
+
+		
+		
+		$.ajax({
+			beforeSend: function(xhr) {
+			    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			url : "/mypage/awayFromKeyboard",
+			type : "POST",
+			data : {
+				uid : "${info.uid}",
+				stat : "온라인"
+			},
+			success : function(data) {
+
+			},
+			error : function() {
+				alert("에러");
+			}
+		})
+		
+				
 
 		if (result === "insert") {
 			alert("TODO를 생성했습니다.")
@@ -63,9 +84,11 @@ body {
 		function userStat() {
 			let result = document.getElementById("result");
 
-			$('*').on("mousemove", _.throttle(function() {
+			$('*').on("keydown mousemove", _.throttle(function() {
 				active = true;
 			}, 1000));
+			
+			
 		}
 
 		setTimeout(userStat, 0);
@@ -164,7 +187,7 @@ body {
 
 				<div class="col-md-3">
 					<a href="/company/lobby"><button class="btn btn-primary">Lobby</button></a><br />
-					<div>접속자 : ${info.name }</div>
+					<div>접속자 : <c:out value="${info.name }"/></div>
 					<div>직원번호 : ${info.empno}</div>
 					<div>부서 : ${info.depart_name }</div>
 					<div>직급 : ${info.p_name }</div>
@@ -189,7 +212,7 @@ body {
 						<c:forEach items="${users }" var="users">
 						  <li class="list-group-item d-flex justify-content-between align-items-start">
 						    <div class="ms-2 me-auto">
-						      <div class="fw-bold">${users.name }(${users.uid})</div>
+						      <div class="fw-bold"><c:out value="${users.name }"/>(<c:out value="${users.uid}"/>)</div>
 						      ${users.depart_name }
 						    </div>
 						    	<button onclick ="window.open('/mypage/chat?targetUser=${users.uid}&targetName=${users.name }', 'Chat', 'width=300, height=250')"
@@ -229,9 +252,9 @@ body {
 						<c:forEach items="${todoList}" var="todo">
 							<tr>
 								<td>${todo.todo_num }</td>
-								<td>${todo.checker }</td>
+								<td><c:out value="${todo.checker }"/></td>
 								<td><a href="/mypage/detailTodo?todo_num=${todo.todo_num }">
-										${todo.todo_title} </a></td>
+										<c:out value="${todo.todo_title}"/> </a></td>
 								<td>${todo.recive_time }</td>
 								<td>${todo.complete }</td>
 							</tr>
@@ -257,7 +280,7 @@ body {
 
 							<c:if test="${btnMaker.next }">
 								<li class="page-item"><a class="page-link"
-									href="/mypage/main?pageNum=${btnMaker.endPage + 1 }"
+										href="/mypage/main?pageNum=${btnMaker.endPage + 1 }"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</c:if>
@@ -265,15 +288,45 @@ body {
 						</ul>
 					</nav>
 					</div>
+					
 					<div class="row">
 					<div class="completeList">
 					
-					내가 생성한 업무(완료목록 최근5개)
+					내가 생성한 업무(최근5개)
 					<table id=completeList class="text-center table table-hover">
 						<thead>
 							<tr>
 								<th>업무번호</th>
 								<th>작업자</th>
+								<th>업무제목</th>
+								<th>생성시간</th>
+							</tr>
+						</thead>
+						<c:forEach items="${createdList}" var="created">
+							<tr>
+								<td>${created.todo_num }</td>
+								<td>${created.worker }</td>
+								<td><a href="/mypage/detailTodo?todo_num=${created.todo_num }">
+										<c:out value="${created.todo_title}"/> </a></td>
+								<td>${created.recive_time }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+				</div>
+					
+					
+					
+					
+					<div class="row">
+					<div class="completeList">
+					
+					완료받은 업무(완료목록 최근5개)
+					<table id=completeList class="text-center table table-hover">
+						<thead>
+							<tr>
+								<th>업무번호</th>
+								<th>마지막 작업자</th>
 								<th>업무제목</th>
 								<th>완료시간</th>
 								<th>완료여부</th>
@@ -284,7 +337,7 @@ body {
 								<td>${comp.todo_num }</td>
 								<td>${comp.worker }</td>
 								<td><a href="/mypage/detailTodo?todo_num=${comp.todo_num }">
-										${comp.todo_title} </a></td>
+										<c:out value="${comp.todo_title}"/> </a></td>
 								<td>${comp.complete_time }</td>
 								<td>${comp.complete }</td>
 							</tr>
@@ -447,9 +500,9 @@ body {
 						<h3 class="modal-title" id="staticBackdropLabel">부재중입니다.</h3>
 					</div>
 					<div class="modal-body">
-						<h5>부재중 상태를 해제하려면 아래 버튼을 클릭하세요</h5>
+						<h5>부재중 상태를 해제하려면 아래 버튼을 클릭하거나 새로고침하세요</h5>
 						<form action="/mypage/awayFromKeyboard" method="post">
-							<input type="hidden" name="stat" value="접속중">
+							<input type="hidden" name="stat" value="온라인">
 							<input type="hidden" name="uid" value="${info.uid}">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<input type="submit" value="부재중 해제" class="btn btn-success">
@@ -458,15 +511,18 @@ body {
 				</div>
 			</div>
 		</div>
-		
 	</div>
+	
+	
+	<div class="mx-auto w-75 text-center">
+	
 	<!-- 가입 요청 받는 곳 -->
 	<c:if test="${info.dp_code eq '1'}">
 		<h3>가입 요청유저리스트</h3>
-					<div class="userListDiv">
-						<ol class="list-group">
+					<div class="userListDiv w-75 mx-auto">
+						<ol class="list-group list-inline">
 						<c:forEach items="${users }" var="users">
-						  <li class="list-group-item d-flex justify-content-between align-items-start">
+						  <li class="mx-auto border border-primary rounded">
 						    <div class="ms-2 me-auto">
 						    
 						    <c:if test="${users.stat eq null}">
@@ -474,17 +530,18 @@ body {
 						      ${users.depart_name }
 						    	<form action="/user/permit" method="post">
 						    		<input type="hidden" name="uid" value="${users.uid }">
-						    		<select name="permit">
+						    		<select name="permit" class="form-control">
 						    			<option value="ok">승인</option>
 						    			<option value="no">거절</option>
 						    		</select>
-						    		<input type="submit" value="처리">
+						    		<input type="submit" value="처리" class="btn btn-dark">
 						    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						    	</form>
 						    	</c:if>
 						  
 						   </div>
 						  </li>
+						  <br/>
 						</c:forEach>
 						 </ol>
 					</div>
@@ -496,7 +553,9 @@ body {
 					alert("가입승인 완료되었습니다.");
 				}
 			</script>
-	<footer> </footer>
+			</div>
+	<footer>
+	</footer>
 </body>
 
 </html>
