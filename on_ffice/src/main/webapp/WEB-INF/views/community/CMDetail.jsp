@@ -9,6 +9,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <style>
+	body{
+		margin-top:50px;
+		margin-left: 100px;
+		margin-right: 100px;
+	}
 		#modDiv {
 			width: 300px;
 			height: 100px;
@@ -27,68 +32,54 @@
 		width: 800px;
 	 	margin-left: 30%;
 		}
-		.btn1 { margin-right:5px;}
-		.btn3 { margin-left: 5px;}
+		.btn2 { margin-right:5px;}
+		
 		ul{
    list-style:none;
    }
+   .form{
+		display: inline-block;
+	}
 	</style>
 </head>
 <body>
 
-	<div class="text-center">
+	
 	<c:set var="cd" value="${csDetail}"></c:set>
 	<header>
+	<a href="/community/CMList" class="btn btn btn-success">목록으로</a>
+	<div class="text-center">
 	<h1>"<c:out value="${cd.community_num}"/>번 게시글"</h1>
-	</header>
-	<hr/>
+	&nbsp;	
 	<h2>제목 : <input type="text" disabled value="${cd.ctitle}">
 	작성자 : <input type="text" disabled value="${cd.cwriter}"></h2>
-	
-	<h2 class="mx-auto w-75" style="background-color: gray"><c:out value="${cd.ccontent}"/></h2>
-
-
-
-</div>
+	<hr/>
+	</div>
+</header>
 <div class="text-center">
+	<h2 class="mx-auto w-75" style="background-color: gray"><c:out value="${cd.ccontent}"/></h2>
+</div>
+
+	<hr>
+	<div class="text-end">
 	<div class="btn-group">
-	<a href="/community/CMList" class="btn1 btn btn-dark">목록으로</a>
-	
-	<form action="/community/deleteCheck" method="post">
-			<input type="hidden" name="community_num" value="${cd.community_num}">
-			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-			<input type="submit" value="삭제하기" class="btn2 btn btn-danger">
-
-	</form>
-
 	<form action="/community/CMUpdate" method="post">
 			<input type="hidden" name="community_num" value="${cd.community_num}">
-			<input type="submit" value="수정하기" class="btn3 btn btn-primary">
+			<input type="submit" value="수정하기" class="btn2 btn btn-warning">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			
 	</form>
+
+	<form action="/community/deleteCheck" method="post">
+		<input type="hidden" name="community_num" value="${cd.community_num}">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+		<input type="submit" value="삭제하기" class="btn3 btn btn-danger">
+
+</form>
+</div>
+</div>
 	
-	</div>
-		</div>
-	<hr>
-		<div class="text-center">
-
-			<h3>댓글</h3>
-
-		<h2>댓글 등록</h2>
-			<div>
-			<c:if test="${login_session ne null}">
-				<input type="hidden" name="replyer" value="${login_session.name}" id="newReplyWriter">
-			</c:if>
-			<c:if test="${login_session eq null}">
-				<input type="hidden" name="replyer" value="${ip}" id="newReplyWriter">
-			</c:if>
-			</div>
-			<div>
-				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
-				id="newReply" required="required"><br/>
-			</div>
-			&nbsp;
+		<div class="fs-5">댓글 등록</div>
 
 			<div>
 				<c:if test="${login_session ne null}">
@@ -98,11 +89,16 @@
 					<input type="hidden" name="replyer" value="${ip}" id="newReplyWriter">
 				</c:if>
 				</div>
-				<div>
-					<input type="text" style="width:800px" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
+				<div class="form-inline">
+					<div class="w-70">
+					<input type="text" class="form-control fs-6" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
 					id="newReply">
+				</div>
+				&nbsp;
+				<div class="text-end">
 				<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
 				</div>
+			</div>
 				<div id="modDiv" style="display:none;">
 					<div class="modal-title"></div>			
 						<div>
@@ -125,7 +121,10 @@
 				alert("비밀번호가 달라 수정 실패했습니다.")
 			)
 			</script>
+			
 			<hr>
+			<h2>댓글 창</h2>
+			&nbsp;
 		<ul id="cmreplies">
 		
 		</ul>
@@ -146,9 +145,15 @@
 			var str = "";
 			
 			$(data).each(function(){
+				
+				var timestamp = this.updatedate;
+				var date = new Date(timestamp);
+				var formattedTime = "댓글 게시일 : " + date.getFullYear() 
+											+ "/" + (date.getMonth() + 1)
+											+ "/" + date.getDate()
 												
 				str +="<li data-cno='" + this.cno + "' class='replyLi'>"
-				+ "<div class='reply'>" + this.cno + " : " + this.reply + " : " + this.replyer 
+				+ "<div class='reply'>" +  "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " "
 				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>" + "<br/></div>";
 			});
 			

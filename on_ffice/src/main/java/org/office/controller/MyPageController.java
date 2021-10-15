@@ -28,6 +28,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -63,6 +64,8 @@ public class MyPageController {
 		log.info("받아온 정보 : " + uservo);
 		List<TodoVO> todoList = service.getTodoList(cri);
 		log.info("받아온 할일 : " + todoList);
+		List<TodoVO> createdList = service.getcreatedTodo(cri);
+		log.info("내가 생성한 할일 :" + createdList);
 		List<TodoVO> completeList = service.getTodoComplete(cri);
 		log.info("완료된 목록 : " + completeList);
 		List<UserVO> userList = user_service.allUserInfo();
@@ -71,6 +74,7 @@ public class MyPageController {
 		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
 		model.addAttribute("todoList", todoList);
+		model.addAttribute("createdList", createdList);
 		model.addAttribute("completeList", completeList);
 		model.addAttribute("users", userList);
 		model.addAttribute("btnMaker", btnMaker);
@@ -86,7 +90,7 @@ public class MyPageController {
 
 	@PostMapping("/insertTodo")
 	public String insertTodo(TodoVO vo, Model model, RedirectAttributes rttr) {
-		vo.setTodo_content("<pre>"+vo.getTodo_content()+"</pre>");
+		vo.setTodo_content(vo.getTodo_content());
 		service.insertTodo(vo);
 		log.info(vo);
 		rttr.addFlashAttribute("result", "insert");
@@ -102,7 +106,7 @@ public class MyPageController {
 		String formDate = formatter.format(date);
 		StringBuilder sb = new StringBuilder();
 		sb.append(req.getParameter("already_todo_content"));
-		sb.append("<br>\r["+ formDate +" "+ login_session.getName() + " 추가]\r</br>" + req.getParameter("todo_content"));
+		sb.append("\r["+ formDate + login_session.getName() + " 추가]\r "+ req.getParameter("todo_content"));
 		vo.setTodo_content(sb.toString());
 		service.passTodo(vo);
 		log.info(vo);

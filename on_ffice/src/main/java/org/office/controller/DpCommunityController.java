@@ -2,11 +2,16 @@ package org.office.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.office.domain.DpCommunityVO;
 import org.office.domain.PageDTO;
 import org.office.domain.SearchCriteria;
+import org.office.domain.UserVO;
 import org.office.service.DpCommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,18 +33,37 @@ public class DpCommunityController {
 	private DpCommunityService service;
 	
 	@GetMapping("/dpclist")
-	public void dpCommunityList(SearchCriteria cri, Long dp_code, Model model) {
+	public String dpCommunityList(SearchCriteria cri, Long dp_code, Model model, HttpSession session) {
 				
-		log.info("부서 자유 게시판 로직 접속");
-		List<DpCommunityVO> DpCList = service.DpCListPage(cri, dp_code);
+		UserVO vo = new UserVO();
+		vo = (UserVO)session.getAttribute("login_session");
+		try {
+			Long dp_codeCI = dp_code;
+			if(vo.getDp_code() == dp_codeCI) {
+			log.info("부서 자유 게시판 로직 접속");
+			List<DpCommunityVO> DpCList = service.DpCListPage(cri, dp_code);
+			
+			int total = service.getTotalBoard(cri, dp_code);
+			PageDTO btnMaker = new PageDTO(cri, total, 10);
+			model.addAttribute("btnMaker", btnMaker);
+			model.addAttribute("dp_code", dp_code);
+			model.addAttribute("dpCommunityList", DpCList);
 		
-		int total = service.getTotalBoard(cri, dp_code);
-		PageDTO btnMaker = new PageDTO(cri, total, 10);
-		model.addAttribute("btnMaker", btnMaker);
-		model.addAttribute("dp_code", dp_code);
-		model.addAttribute("dpCommunityList", DpCList);
-		
+			} else {
+				return "redirect:/dpcommunity/loginNot";
+			}
+		} catch (Exception e) {
+			return "redirect:/dpcommunity/loginNot";
+		}
+		return "/dpcommunity/dpclist";
 	}
+	
+	@GetMapping("/loginNot")
+	public ResponseEntity<Void> sendListAuth(){
+		
+		return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+	}
+	
 	
 	@PostMapping("/dpcwrite")
 	public String DpCwrite(DpCommunityVO vo, RedirectAttributes rttr) {
