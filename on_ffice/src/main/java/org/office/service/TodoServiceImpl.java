@@ -76,5 +76,12 @@ public class TodoServiceImpl implements TodoService {
 		return vo;
 	}
 
+	@Override
+	public List<TodoVO> getcreatedTodo(TodoCri cri) {
+		log.info("내가 생성한 todo 5개");
+		List<TodoVO> vo = mapper.getCreatedTodo(cri);
+		return vo;
+	}
+
 
 }

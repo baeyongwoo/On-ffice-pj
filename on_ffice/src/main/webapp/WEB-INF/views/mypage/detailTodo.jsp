@@ -34,7 +34,7 @@ body{
 				<hr>
 				<h3>작업내용</h3>
 				<div class="w-75 mx-auto">
-				<h4 style="font-weight: bold"><span class="인덱스">${getTodo.todo_content }</span></h4>
+				<h4 style="font-weight: bold"><span class="인덱스"><c:out value="${getTodo.todo_content }"/></span></h4>
 				</div>
 				<hr>
 				<h4>작업생성시간 - ${getTodo.recive_time }</h4>

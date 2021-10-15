@@ -27,6 +27,8 @@ public interface TodoMapper {
 	
 	public List<TodoVO> getTodoList(TodoCri cri);
 	
+	public List<TodoVO> getCreatedTodo(TodoCri cri);
+	
 	public List<TodoVO> getTodoComplete(TodoCri cri);
 
 	public void insertTodo(TodoVO vo);
