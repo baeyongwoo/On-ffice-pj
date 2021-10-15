@@ -46,6 +46,8 @@
 	
 	<script>
 		$(document).ready(function(){
+			let csrfHeaderName = "${_csrf.headerName}";
+			let csrfTokenValue = "${_csrf.token}";
 			
 			let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
 			let maxSize = 5242880; //5MB
@@ -84,8 +86,6 @@
 					
 					formData.append("uploadFile", files[i]);
 				}
-				let csrfHeaderName = "${_csrf.headerName}";
-				let csrfTokenValue = "${_csrf.token}";
 				
 				$.ajax({
 					
@@ -124,9 +124,8 @@
 								obj.uploadPath+"/"+
 								obj.uuid + "_" + obj.fileName);
 						
-						str+= "<li><a href='/download?fileName=" + fileCallPath
-								+"'>" + "<img src='/resources/attachment.png'>"
-							+ obj.fileName + "</a>" 
+						str+= "<li><img src='/resources/attachment.png'>"
+							+ obj.fileName
 							+ "<span data-file=\'" + fileCallPath + "\' data-type='file'> X </span>"
 							+ "</li>";
 							
@@ -134,9 +133,9 @@
 						
 						let fileCallPath = encodeURIComponent(obj.uploadPath + "//s_" +
 															obj.uuid + "_" + obj.fileName);
-						str += "<li><a href='/download?fileName=" + fileCallPath
-								+"'>" + "<img src='/display?fileName=" + fileCallPath+"'>"
-										+ obj.fileName + "</a>"
+			
+						str += "<li><img src='/display?fileName=" + fileCallPath+"'>"
+										+ obj.fileName
 										+ "<span data-file=\'" + fileCallPath + "\'data-type='image'> X </span>" 
 										+ "</li>";
 					}
@@ -145,6 +144,37 @@
 				
 				uploadResult.append(str);
 			} // showUploadedFile
+			$(".uploadResult").on("click", "span", function(e){
+				
+				console.log($(e)); // e는 이벤트! 
+				
+				console.log($(this)); // this는 클릭한 x 문자! 
+				let targetFile = $(this).data("file");
+				let type = $(this).data("type");
+				console.log(targetFile + "///" + type); // 클릭한 파일명
+				
+				let targetLi = $(this).closest("li");
+				
+				$.ajax({
+					beforeSend: function(xhr) {
+					    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
+					url : '/deleteFile',
+					data : {fileName : targetFile, type:type},
+					dataType : 'text',
+					type : 'post',
+					success : function(result){
+						alert(result);
+						targetLi.remove();
+					}
+				})
+				
+				
+			});
+			
+			
+			
+			
 		});
 	</script>
 </body>

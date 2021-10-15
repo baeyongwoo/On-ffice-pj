@@ -11,6 +11,7 @@ package org.office.service;
 
 import java.util.List;
 
+import org.office.domain.BoardAttachVO;
 import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
 
@@ -45,6 +46,7 @@ public interface NoticeService {
 	// 글 조회수 증가 서비스
 	public void nhit_up(int notice_num);
 
+	public List<BoardAttachVO> getAttachList(int notice_num);
 
 
 

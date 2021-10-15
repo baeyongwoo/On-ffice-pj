@@ -1,6 +1,7 @@
 package org.office.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -15,6 +16,8 @@ public class NoticeVO {
 	private Date ndate;
 	private Date nupdate;
 	private int nhits;
+	
+	private List<BoardAttachVO> attachList;
 	
 	
 

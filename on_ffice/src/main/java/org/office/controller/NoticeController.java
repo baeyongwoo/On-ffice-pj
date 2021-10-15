@@ -2,16 +2,21 @@ package org.office.controller;
 
 import java.util.List;
 
+import org.office.domain.BoardAttachVO;
 import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
 import org.office.domain.PageDTO;
 import org.office.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -61,6 +66,13 @@ public class NoticeController {
 		log.info(vo);
 		
 		rttr.addFlashAttribute("notice_num", vo.getNotice_num());
+		
+		// 첨부파일 들어오는지 디버깅 위한 코드
+		log.info("==================");
+		log.info("register: "+ vo);
+		if(vo.getAttachList() != null) {
+			vo.getAttachList().forEach(attach -> log.info(attach));
+		}
 		
 		return "redirect:/notice/noticeList";
 	}
@@ -112,6 +124,14 @@ public class NoticeController {
 		model.addAttribute("notice", vo);
 		
 		return "/notice/noticeUpdate";
+	}
+	
+	@GetMapping(value="/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<BoardAttachVO>> getAttachList(int notice_num){
+		
+		return new ResponseEntity<>(service.getAttachList(notice_num), HttpStatus.OK);
+				
 	}
 	
 

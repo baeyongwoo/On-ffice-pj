@@ -32,9 +32,30 @@
 		ul{
    list-style:none;
    }
+   #uploadResult {
+   	width: 100%;
+   	background-color : gray;
+   }
+   #uploadResult ul {
+   	display: flex;
+   	flex-flow: row;
+   	justify-content : center;
+   	align-items : center;
+   }
+   #uploadResult ul li{
+   	list-style : none;
+   	padding: 10px;
+   	align-content : center;
+   	text-align : center;
+   }
+   #uploadResult ul li img{
+   	width: 100px;
+   }
 	</style>
 </head>
 <body>
+
+
 	<div class="text-center">
 	<c:set var="nd" value="${noticeDetail}"></c:set>
 	<header>
@@ -46,6 +67,8 @@
 	</h2>
 	<h2 class="mx-auto w-75" style="background-color: gray"><c:out value="${nd.ncontent}" /></h2>
 </div>
+
+
 
 <div class="text-center">
 	<div class="btn-group">
@@ -67,6 +90,72 @@
 		</c:if>
 	</div>
 </div>
+
+<div class="row">
+	<h3 class="text-primary">첨부파일</h3>
+	<div id="uploadResult">
+		<ul>
+			<!-- 첨부파일 들어갈 위치 -->
+		</ul>
+	</div>
+</div>
+
+<script>
+	(function() {
+		
+		$.getJSON("/notice/getAttachList", {notice_num: ${nd.notice_num}}, function(arr){
+			
+			console.log(arr);
+			
+			let str = "";
+			
+			$(arr).each(function(i, attach){
+				let fileCallPath = "";
+				// 그림파일일 경우!
+				if(attach.image){
+					fileCallPath = encodeURIComponent(attach.uploadPath + "//s_" + 
+							attach.uuid + "_" + attach.fileName);
+					
+					str += "<li data-path='" + attach.uploadPath + "' data-uuid='"
+						+ attach.uuid + "' data-filename='" + attach.fileName
+						+ "' data-type='" + attach.image + "' ><div>"
+						+ "<span> "+ attach.fileName + "</span><br>"
+						+ "<img src='/display?fileName="+ fileCallPath + "'>"
+						+ "</div>"
+						+ "</li>";
+				} else {
+					// 그림파일 아닐 경우! 
+					fileCallPath = encodeURIComponent(attach.uploadPath + "/" +
+							attach.uuid + "_" + attach.fileName);
+					
+					str += "<li data-path='" + attach.uploadPath + "' data-uuid='"
+					+ attach.uuid + "' data-filename='" + attach.fileName
+					+ "' data-type='" + attach.image + "' ><div>"
+					+ "<span> "+ attach.fileName + "</span><br>"
+					+ "<img src='/resources/attachment.png'" + " width='100px' height='100px'>"
+					+ "</div>"
+					+ "</li>";
+				}
+			});
+			$("#uploadResult ul").html(str);
+		});// getJSON 끝
+		
+		
+		$("#uploadResult").on("click", "li", function(e){
+			
+			let liObj = $(this);
+			
+			let path = encodeURIComponent(liObj.data("path") + "/" + liObj.data("uuid") + "_"
+											+ liObj.data("filename"));
+				//download
+				self.location = "/download?fileName=" + path;
+				
+		});
+		
+	})(); // 익명함수 끝 
+	
+</script>
+
 		<hr>
 		<div class="text-center">
 		<h3>댓글</h3>

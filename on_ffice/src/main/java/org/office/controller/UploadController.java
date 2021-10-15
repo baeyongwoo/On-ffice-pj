@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -123,7 +124,7 @@ public class UploadController {
 				
 				// 이 아래부터 썸네일 생성 로직
 				if(checkImageType(saveFile)) {
-					//클래스 생성 후 boolean타입은 자료입력을 하지 않으면
+					// 클래스 생성 후 boolean타입은 자료입력을 하지 않으면
 					// 자동으로 false로 간주됨 
 					// 이미지인경우에는 true를 넣고, 이미지가 아니면 그냥 건들지 않습니다.
 					attachDTO.setImage(true);
@@ -136,6 +137,7 @@ public class UploadController {
 						thumbnail.close();		
 				}
 				// 정상적으로 그림에 대한 정보가 입력되었다면 list에 쌓기
+				log.info("attachDTO 값 : " + attachDTO);
 				list.add(attachDTO);
 				
 			} catch(Exception e) {
@@ -198,5 +200,34 @@ public class UploadController {
 		return new ResponseEntity<Resource>(resource,
 											headers,
 											HttpStatus.OK);
+	}
+	
+	@PostMapping("/deleteFile")
+	@ResponseBody
+	public ResponseEntity<String> deleteFile(String fileName, String type){
+		log.info("deleteFile : " + fileName);
+		
+		File file = null;
+		
+		try {
+			// url 파일 이름을 원래대로 복원시킴
+			file = new File("c:\\upload_data\\temp\\"
+						+ URLDecoder.decode(fileName, "UTF-8"));
+			file.delete();
+			
+			// 웹화면에서 썸네일을 먼저 삭제하기 때문에 원본파일도 마저 잡아서 삭제해야함
+			if(type.equals("image")) {
+				// 썸네일 파일명에서 s_를 소거해 원본으로 교체
+				String largeFileName = file.getAbsolutePath().replace("s_", "");
+				
+				log.info("원본파일명 : " + largeFileName);
+				
+				file = new File(largeFileName);
+			}
+		} catch(UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>("delete", HttpStatus.OK);
 	}
 }

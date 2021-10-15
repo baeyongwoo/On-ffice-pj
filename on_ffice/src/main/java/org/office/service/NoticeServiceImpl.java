@@ -2,8 +2,10 @@ package org.office.service;
 
 import java.util.List;
 
+import org.office.domain.BoardAttachVO;
 import org.office.domain.Criteria;
 import org.office.domain.NoticeVO;
+import org.office.mapper.BoardAttachMapper;
 import org.office.mapper.NoticeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,9 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Autowired
 	private NoticeMapper noticemapper;
+	
+	@Autowired
+	private BoardAttachMapper attachmapper;
 
 	@Override
 	public List<NoticeVO> list(Criteria cri) {
@@ -47,8 +52,17 @@ public class NoticeServiceImpl implements NoticeService {
 		log.info("글작성 실행");
 		log.info("처음 글 쓰는거임");
 		log.info("관리자에게 문의하세요");
-
+		
 		noticemapper.writeSelectkey(vo);
+		
+		if(vo.getAttachList()==null || vo.getAttachList().size()<=0) {
+			return;
+		}
+		
+		vo.getAttachList().forEach(attach -> {
+			attach.setNotice_num(vo.getNotice_num());
+			attachmapper.insert(attach);
+		});
 
 	}
 
@@ -97,6 +111,14 @@ public class NoticeServiceImpl implements NoticeService {
 	public int getTotalCategory(String ncategory) {
 		return noticemapper.getTotalNoticeCate(ncategory);
 		
+	}
+
+	@Override
+	public List<BoardAttachVO> getAttachList(int notice_num) {
+		log.info("get Attach list : "+ notice_num);
+		
+		
+		return attachmapper.findByNotice_num(notice_num);
 	}
 
 
