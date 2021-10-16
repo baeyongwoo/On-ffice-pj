@@ -57,6 +57,11 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder pwen;
 
+	@GetMapping("/agreeCheck")
+	private void GoAgreeCheck() { 
+		log.info("개인정보 동의 창");
+	}
+	
 	@GetMapping("/guestIn")
 	private String GuestIn(GetIpService iservice, HttpSession session, Model model) throws Exception {
 

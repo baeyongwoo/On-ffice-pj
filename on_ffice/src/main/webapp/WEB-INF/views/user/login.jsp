@@ -99,7 +99,7 @@
 		<div class="row">
 			<div class="col-md-12">
 			<input type="submit" value="로그인">
-			<input type="button" value="회원가입" onclick="location.href='/user/register'">
+			<input type="button" value="회원가입" onclick="location.href='/user/agreeCheck'">
 			<div class="row">&nbsp;</div>
 			</div>
 			<div class="col-md-12">
