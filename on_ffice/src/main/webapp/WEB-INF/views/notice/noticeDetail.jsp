@@ -9,6 +9,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 	<style>
+		body{
+		margin-top:50px;
+		margin-left: 100px;
+		margin-right: 100px;
+	}
 		#modDiv {
 			width: 300px;
 			height: 100px;
@@ -28,7 +33,6 @@
 	 	margin-left: 30%;
 		}
 		.btn1 { margin-right:5px;}
-		.btn3 { margin-left: 5px;}
 		ul{
    list-style:none;
    }
@@ -56,35 +60,39 @@
 <body>
 
 
-	<div class="text-center">
+	
 	<c:set var="nd" value="${noticeDetail}"></c:set>
 	<header>
-	<h2>"<c:out value="${nd.notice_num}"/>번 게시글" </h2>
-	</header>
-	<hr/>
+	<a href="/notice/noticeList" class="btn btn-success">목록으로</a>
+	<div class="text-center">
+	<h1>"<c:out value="${nd.notice_num}"/>번 게시글" </h1>
 	<h2>제목 :  <input type="text" disabled value="${nd.ntitle}">
 		작성자 : <input type="text" disabled value="${nd.nwriter}">
 	</h2>
+</div>
+</header>
+<hr/>
+
+<div class="text-center">
 	<h2 class="mx-auto w-75" style="background-color: gray"><c:out value="${nd.ncontent}" /></h2>
 </div>
 
+<hr/>
 
-
-<div class="text-center">
+<div class="text-end">
 	<div class="btn-group">
-	<a href="/notice/noticeList" class="btn1 btn btn-dark">목록으로</a>
 	
 	<c:if test="${nd.nwriter eq login_session.uid}">
 	
+		<form action="/notice/noticeUpdate" method="post">
+			<input type="hidden" name="notice_num" value="${nd.notice_num}">
+			<input type="submit" value="수정하기" class="btn1 btn btn-warning">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form>
+
 		<form action="/notice/noticeDelete" method="post">
 			<input type="hidden" name="notice_num" value="${nd.notice_num}">
 			<input type="submit" value="삭제하기" class="btn2 btn btn-danger">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		</form>
-		
-		<form action="/notice/noticeUpdate" method="post">
-			<input type="hidden" name="notice_num" value="${nd.notice_num}">
-			<input type="submit" value="수정하기" class="btn3 btn btn-primary">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
 		</c:if>
@@ -92,7 +100,7 @@
 </div>
 
 <div class="row">
-	<h3 class="text-primary">첨부파일</h3>
+	<h2 class="text-primary">첨부파일</h2>
 	<div id="uploadResult">
 		<ul>
 			<!-- 첨부파일 들어갈 위치 -->
@@ -157,8 +165,7 @@
 </script>
 
 		<hr>
-		<div class="text-center">
-		<h3>댓글</h3>
+		<div class="fs-5">댓글 등록</div>
 				<c:if test="${login_session eq null}">
 					<script type="text/javascript">
 						alert("로그인을 해야 댓글을 달수 있습니다.");
@@ -168,18 +175,16 @@
 			<div>
 				<input type="hidden" name="replyer" value="${login_session.uid}" id="newReplyWriter">
 			</div>
-			<div>
-
-				<input type="text" style="width:800px" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
+			
+				<div class="form-inline">
+					<div class="w-70">
+				<input type="text" class="form-control fs-6" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
 				id="newReply">
-
-				<input type="text" name="reply" placeholder="명예훼손, 개인정보 유출, 분쟁, 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌 받을수 있습니다. 건전한 커뮤니티를 위해 자제 부탁드립니다." 
-				id="newReply" required="required"><br/>
 				</div>
 				&nbsp;
-			<div>
-
-			<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
+				<div class="text-end">
+					<button id="replyAddBtn" class="btn btn-dark">댓글 등록</button>
+				</div>
 		</div>	
 		
 			<div id="modDiv" style="display:none;">
@@ -196,7 +201,10 @@
 			</div>
 		</c:if>
 	
-		
+		<hr>
+			<h2>댓글 창</h2>
+			&nbsp;
+
 		<ul id="replies">
 		
 		</ul>
@@ -218,9 +226,16 @@
 			
 			$(data).each(function(){
 				
+				
 				var replyer = this.replyer;
 				var reply = this.reply;
 				var rno = this.rno;
+				var timestamp = this.updatedate;
+				var date = new Date(timestamp);
+				var formattedTime = "댓글 게시일 : " + date.getFullYear() 
+											+ "/" + (date.getMonth() + 1)
+											+ "/" + date.getDate()
+
 				function button() {
 					var l_s = "${login_session.uid}";
 					console.log(rno + "번째 " + replyer + "가 가진 답변" + reply);
@@ -232,8 +247,8 @@
 				
 				// 댓글 작성자와 로그인한 유저와 정보가 같을 때 button부분 출력하게 
 				str +="<li data-rno='" + this.rno + "' class='replyLi'>"
-				+ this.rno + " : " + this.reply + " : " + this.replyer 
-				+ button() + "</li>";
+				+ "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / "  + formattedTime + " "
+				+ button() + "<br/><br/></li>";
 			});
 			
 			$("#replies").html(str);
@@ -339,7 +354,7 @@
 			$("#modDiv").hide("slow");
 		})
 	</script>
-	</div>
+	
 
 	
 	

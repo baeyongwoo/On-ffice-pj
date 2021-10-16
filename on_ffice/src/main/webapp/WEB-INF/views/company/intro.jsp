@@ -6,6 +6,15 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>회사 소개</title>
+<style>
+	body { background-image: url('https://image.utoimage.com/preview/cp860522/2020/12/202012012763_500.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+	}
+	h1 h3 h4  {font-style: bold;}
+	
+</style>
 </head>
 <body>
 	
@@ -13,24 +22,15 @@
 			<div class="col-xs-12"></div>
 			<header>
 		&nbsp;
-	<h2>ON-FFICE PROJECT</h2>	<!-- 추후에 회사 소개창으로 -->
-	<h3>[프로젝트 과정]</h3>
+	<h1>ON-FFICE</h1>	<!-- 추후에 회사 소개창으로 -->
+	<h4>"저희 회사 홈페이지를 방문해주셔서 감사합니다"</h4>
 	&nbsp;
 </header>
 	<hr/>
 	<div class="container">
 	<div>
-		<p>~  테이블 구축, 기획서 작성</p>
-		<p>2021.09.18일 - 프로젝트 생성 & 깃허브 생성</p>
-		<p>2021.09.19일 - 회사원 계정 CRUD</p>
-		<p>2021.09.20일 - notice CRUD</p>
-		<p>2021.09.21일 - dPCommunity CRUD, Community CRUD</p>
-		<p>2021.09.22일 - todo CRUD</p>
-		<p>2021.09.23일 - 회사로비 view 생성</p>
-		<p>2021.09.21일 - 회사로비 view와 dp community 연결</p>
-		
-		<div>프로젝트 멤버</div>
-		<p>배용우, 신우람, 신동규, 고광훈, 서성현</p>
+		<h1>프로젝트 멤버</h1>
+		<h3>배용우, 신우람, 신동규, 고광훈, 서성현</h3>
 	</div>
 		
 	<div>

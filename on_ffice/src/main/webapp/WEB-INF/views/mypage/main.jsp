@@ -186,7 +186,8 @@ body {
 			<div class="row">
 
 				<div class="col-md-3">
-					<a href="/company/lobby"><button class="btn btn-primary">Lobby</button></a><br />
+					<a href="/company/lobby"><button class="btn btn-primary">Lobby</button></a><br/>
+					&nbsp;
 					<div>접속자 : <c:out value="${info.name }"/></div>
 					<div>직원번호 : ${info.empno}</div>
 					<div>부서 : ${info.depart_name }</div>
@@ -194,15 +195,20 @@ body {
 
 					<br /> 접속한 시간<br /> ${login_time }<br />
 					<div id="clock"></div>
-
-					<a href="/user/userInfo">내 정보보기</a>
+					&nbsp;
+					<div>
+					<a href="/user/userInfo" class="btn btn-dark">내 정보보기</a>
 					<!-- <form action="/user/userInfo" method="post">
 						<input type="hidden" name="uid" value="${login_session}">
 						<input class="btn btn-primary" type="submit" value="회원정보">
 					</form>
 					 -->
+					</div>
+					&nbsp;
+					<div>
 					<a href="/mypage/fileUpLoad"><button>자료업로드</button></a>
-					<br/><br/><br/><br/><br/>
+					</div>
+					<br/><br/><br/>
 					
 					
 					<!-- 회원 리스트 들어올 곳! -->

@@ -143,8 +143,7 @@
 		<hr>
 		
 		<h2>댓글 창</h2>
-			
-		<hr>
+		&nbsp;
 		<ul id="dpcreplies">
 		
 		
