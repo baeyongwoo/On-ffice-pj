@@ -80,4 +80,8 @@
 	UPDATE users set stat=#{stat} WHERE uid = #{uid}
 </update>
 
+<select id="selectNullStat" resultType="org.office.domain.UserVO">
+	select * from users where stat IS NULL
+</select>
+
 </mapper>

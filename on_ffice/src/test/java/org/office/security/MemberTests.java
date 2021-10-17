@@ -30,7 +30,15 @@ public class MemberTests {
 	
 	@Test
 	public void testCryptDefaultDB() {
-		String [] idList = {"test1"};
+		String [] idList = {"shinwr7",
+				"eastar93",
+				"soyowp",
+				"seonghynu9724",
+				"test1",
+				"test2",
+				"test3",
+				"test4",
+				"test5"};
 		String sql = "UPDATE USERS set upw=? WHERE uid=?";
 		
 		//test1 비밀번호는 test1

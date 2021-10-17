@@ -91,5 +91,11 @@ public class UserServiceImpl implements UserService {
 		log.info("유저 상태 변경 서비스 실행");
 		mapper.updateStat(stat, uid);
 	}
+
+	@Override
+	public List<UserVO> selectNullStat() {
+		log.info("statNull 조회 서비스 실행");
+		return mapper.selectNullStat();
+	}
 }
 
