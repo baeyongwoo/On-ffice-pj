@@ -34,7 +34,7 @@
 	
 	<form action="/notice/Update" method="post">
 		<input type="text" name="notice_num" value="${notice.notice_num}" readonly="readonly"></br>
-		<input type="text" name="ntitle" value="${notice.ntitle}"><br>
+		<input type="text" name="ntitle" id = "title" required value="${notice.ntitle}"><br>
 		<textarea rows="10" cols="50" name="ncontent">${notice.ncontent}</textarea><br>
 		<input type="text"  value="${login_session.name}" readonly="readonly">
 		<input type="hidden" name="nwriter" value="${notice.nwriter}" readonly="readonly"></br>
@@ -237,6 +237,17 @@ $("#submitBtn").on("click", function(e){
 	// hidden 태그를 만들기
 	let str ="";
 	
+	let title = $("#title").val();
+	console.log(title);
+	
+	if(title===""){
+		
+		alert('제목을 입력해주세요.');
+		
+	} else{
+		
+		
+	
 	$("#uploadResult ul li").each(function(i, obj){
 		
 		let data_input = $(obj);
@@ -261,7 +272,7 @@ $("#submitBtn").on("click", function(e){
 	
 	
 	formObj.append(str).submit();
-	
+	}
 	// console.log($(formObj)); 
 }); // submit 버튼
 

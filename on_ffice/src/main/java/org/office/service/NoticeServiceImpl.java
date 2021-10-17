@@ -83,12 +83,11 @@ public class NoticeServiceImpl implements NoticeService {
 		
 		boolean modifyResult = noticemapper.update(vo) == true;
 		
-		if(modifyResult && vo.getAttachList().size()>0) {
+		if(modifyResult && vo.getAttachList()!=null) {
 			vo.getAttachList().forEach(attach -> {
 				attach.setNotice_num(vo.getNotice_num());
 				attachmapper.insert(attach);
 			});
-			
 		}
 		return noticemapper.update(vo) == true;
 	}

@@ -221,8 +221,10 @@ body {
 						      <div class="fw-bold"><c:out value="${users.name }"/>(<c:out value="${users.uid}"/>)</div>
 						      ${users.depart_name }
 						    </div>
-						    	<button onclick ="window.open('/mypage/chat?targetUser=${users.uid}&targetName=${users.name }', 'Chat', 'width=300, height=250')"
-						    	class="badge rounded-pill bg-primary" id ="submit">Go Chat</button>
+						    	<c:if test = "${users.stat eq '온라인' }">
+							    	<button onclick ="window.open('/mypage/chat?targetUser=${users.uid}&targetName=${users.name }', 'Chat', 'width=300, height=250')"
+							    	class="badge rounded-pill bg-primary" id ="submit">Go Chat</button>
+						    	</c:if>
 						  </li>
 						</c:forEach>
 						 </ol>

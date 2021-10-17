@@ -57,7 +57,7 @@
 			<option value="기타">기타</option>
 		</select>
 		<br/><br/>
-		<input type="text" name="ntitle" placeholder="제목" required="required" class="form-control"><br>
+		<input type="text" name="ntitle" id="title" placeholder="제목" required="required" class="form-control"><br>
 
 		<textarea rows="10" cols="50" name="ncontent" required="required" class="form-control"></textarea>
 		<input type="hidden" name="nwriter" value="${login_session.uid}" placeholder="로그인해주세요" readonly="readonly"></br>
@@ -230,6 +230,20 @@
 				// e.preventDefault();
 				
 				// 2. let formObj = $("form");로 폼태그를 가져오기
+				
+				let check = $("#check").val();
+				console.log(check);
+				let title = $("#title").val();
+				console.log(title);
+				
+				if(check===""||title===""){
+					alert('카테고리, 제목을 입력해주세요.');
+					
+				} else{
+					
+					
+				
+				
 				let formObj = $("form");
 				
 				// hidden 태그를 만들기
@@ -261,8 +275,9 @@
 				formObj.append(str).submit();
 				
 				// console.log($(formObj)); 
+			}
+				
 			})
-			
 			
 			
 			
