@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -56,14 +57,14 @@
 		<div class="form-inline">
 		<figure class="text-center">
   <blockquote class="blockquote">
-    <h1>"${DpCd.dc_num}번 게시글"</h1>
+    <h1><c:out value="${DpCd.dc_num}번 게시글"/></h1>
   </blockquote>
  
 </figure>
 	 
 	
-	부서번호 : ${DpCd.dp_code} 
-	글쓴이 : ${DpCd.dwriter} 
+	부서번호 : <c:out value="${DpCd.dp_code}"/> 
+	글쓴이 : <c:out value="${DpCd.dwriter}"/> 
 	작성일 : ${DpCd.ddate} 
 	수정일 : ${DpCd.dupdate} 
 	조회수 : [${DpCd.dhits}]
@@ -72,7 +73,7 @@
 	</div>
 	<div class = "cmargin">
 	<div class="content text-center">
-	${DpCd.dcontent}
+	<c:out value="${DpCd.dcontent}"/>
 	</div>
 	</div>
 	<hr>
