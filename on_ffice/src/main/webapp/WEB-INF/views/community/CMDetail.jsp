@@ -157,12 +157,16 @@
 				
 				function button() {
 					var l_s = "${login_session.name}";
-					if(l_s===replyer) {
+					var l_ip = "${ip}";
+					// 로그인 세션의 이름이 같을 댓글 작성자와 같을 경우 또는 ip값이 작성자와 같을 경우 수정/삭제 버튼이 보이되
+					// 로그인한 작성자와 guest로 입장한 ip가 동일한 경우 guest에서 댓글을 작성하고 다시 로그인해서 댓글로 가면
+					// 수정 및 삭제 버튼이 보인다.
+					if(l_s===replyer || l_ip===replyer) {
 						return "<button type='button' class='btn btn-info'>수정/삭제</button>";
 					}
 					return "";
 				}
-											
+		
 				str +="<li data-cno='" + this.cno + "' class='replyLi'>"
 				+  "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " "
 				+ button() + "<br/><br/></div></li>";
