@@ -204,10 +204,6 @@ body {
 					</form>
 					 -->
 					</div>
-					&nbsp;
-					<div>
-					<a href="/mypage/fileUpLoad"><button>자료업로드</button></a>
-					</div>
 					<br/><br/><br/>
 					
 					
