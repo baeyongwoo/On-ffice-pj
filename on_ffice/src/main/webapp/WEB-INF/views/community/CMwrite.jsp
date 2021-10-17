@@ -49,6 +49,7 @@ margin:20px;
 	  
     var ip = json.ip
     
+    console.log(ip);
 	if(document.guest.cwriter.value == "") {
 		document.guest.cwriter.value=ip;
 	}
