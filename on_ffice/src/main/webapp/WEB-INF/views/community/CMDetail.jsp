@@ -102,7 +102,7 @@
 				<div id="modDiv" style="display:none;">
 					<div class="modal-title"></div>			
 						<div>
-							<input type="text" id="replytext">
+							<input type="text" id="replytext" required="required">
 						</div>
 					<div>
 						<button type="button" id="replyModBtn">댓글 수정</button>
@@ -146,15 +146,26 @@
 			
 			$(data).each(function(){
 				
+				var replyer = this.replyer;
+				var reply = this.reply;
+				var cno = this.cno
 				var timestamp = this.updatedate;
 				var date = new Date(timestamp);
 				var formattedTime = "댓글 게시일 : " + date.getFullYear() 
 											+ "/" + (date.getMonth() + 1)
 											+ "/" + date.getDate()
-												
+				
+				function button() {
+					var l_s = "${login_session.name}";
+					if(l_s===replyer) {
+						return "<button type='button' class='btn btn-info'>수정/삭제</button>";
+					}
+					return "";
+				}
+											
 				str +="<li data-cno='" + this.cno + "' class='replyLi'>"
-				+ "<div class='reply'>" +  "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " "
-				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>" + "<br/></div>";
+				+  "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " "
+				+ button() + "<br/><br/></div></li>";
 			});
 			
 			$("#cmreplies").html(str);
