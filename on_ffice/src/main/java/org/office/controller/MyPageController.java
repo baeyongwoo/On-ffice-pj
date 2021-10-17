@@ -70,6 +70,7 @@ public class MyPageController {
 		log.info("완료된 목록 : " + completeList);
 		List<UserVO> userList = user_service.allUserInfo();
 		log.info("전체유저리스트 :" + userList);
+		List<UserVO> StatNull = user_service.selectNullStat();
 
 		model.addAttribute("info", uservo);
 		model.addAttribute("login_time", login_time);
@@ -78,6 +79,7 @@ public class MyPageController {
 		model.addAttribute("completeList", completeList);
 		model.addAttribute("users", userList);
 		model.addAttribute("btnMaker", btnMaker);
+		model.addAttribute("StatNull", StatNull);
 		
 		return "/mypage/main";
 		

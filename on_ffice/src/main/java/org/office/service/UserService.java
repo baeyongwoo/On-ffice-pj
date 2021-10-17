@@ -36,4 +36,7 @@ public interface UserService {
 	
 	// 회원 상태 변경 서비스
 	public void updateStat(String uid, String stat);
+	
+	// 회원 상태 null 조회
+	public List<UserVO> selectNullStat();
 }
