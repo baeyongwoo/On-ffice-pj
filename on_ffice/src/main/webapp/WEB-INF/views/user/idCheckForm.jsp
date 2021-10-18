@@ -12,7 +12,7 @@
 	<div style="text-align: center"> 
 		<h3>아이디 중복확인</h3> 
 		<form method="post" action="/user/idCheckProc" onsubmit="return blankCheck(this)"> 
-			<input type="text" name="uid" maxlength="10" autofocus class="form-control" placeholder="아이디를 입력해주세요" style="text-align: center"> 
+			<input type="text" name="uid" maxlength="20" autofocus class="form-control" placeholder="아이디를 입력해주세요" style="text-align: center"> 
 			<br/>
 			<input type="submit" value="중복확인" class="btn btn-dark"> 
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

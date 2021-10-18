@@ -105,9 +105,9 @@
 								</select>
 								<br>
 							<div class="text-center"> 
+								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 								<input type="submit" class="btn btn-success" value="회원가입"/> 
 								<input type="reset" class="btn btn-danger" value="재작성" /> 
-								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 								</div>
 							</form>
 							<br>
@@ -156,7 +156,7 @@
 		let pw = param.upw.value;
 		pw = pw.trim();
 		
-		if(pw.length<5 || pw.length>10) {
+		if(pw.length<5 || pw.length>30) {
 			alert("비밀번호가 5~10자리 이내로 입력해주세요.")
 			param.upw.focus();//커서 가져다 주기
 			return false;
