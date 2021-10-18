@@ -44,12 +44,13 @@ body {
 							<h2>${dpinfo.depart_name} 소속 인원</h2>
 					<c:forEach items="${dpu_list}" var="dl">
 						<c:if test="${dl.dp_code eq login_session.dp_code}">
-						<div class="fs-6">
-							사원번호:[${dl.empno}] /
-							직급:${dl.p_name} /
-							이름:${dl.name} /
-							아이디:${dl.uid}
-							</div>
+								<div class="fs-6">
+								test : ${dl.stat }
+								사원번호:[${dl.empno}] /
+								직급:${dl.p_name} /
+								이름:${dl.name} /
+								아이디:${dl.uid}
+								</div>
 						</c:if>
 					</c:forEach>
 				</div>
