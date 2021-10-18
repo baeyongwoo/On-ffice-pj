@@ -88,7 +88,7 @@
 
 		<div class="row">&nbsp;</div>
 
-		<!-- <div class="g-recaptcha" data-sitekey="6LezJokcAAAAAGeSI922uGsecDbO3MCUTxplIzLj"></div> -->
+		<div class="g-recaptcha" data-sitekey="6LezJokcAAAAAGeSI922uGsecDbO3MCUTxplIzLj"></div>
 
 		<div class="row">&nbsp;</div>
 		
