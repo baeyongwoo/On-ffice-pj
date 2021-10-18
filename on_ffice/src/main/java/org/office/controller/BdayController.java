@@ -56,6 +56,8 @@ public class BdayController {
 
 		log.info("birth : " + birth_user);
 		log.info("brith_user" + birth_user.size());
+		
+		//view 에 뿌려질 내용
 		for (int i = 0; i <= birth_user.size() - 1; i++) {
 			birth_user_view.add(us.userInfo(birth_user.get(i)));
 		}

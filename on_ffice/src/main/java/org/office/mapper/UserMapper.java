@@ -42,7 +42,8 @@ public interface UserMapper {
 // 유저 상태 변경 매퍼
 	public void updateStat(@Param("stat")String stat, @Param("uid")String uid);
 	
-
+// stat null 조회
+	public List<UserVO> selectNullStat();
 	
 }
 

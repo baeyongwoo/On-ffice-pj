@@ -102,7 +102,7 @@
 				<div id="modDiv" style="display:none;">
 					<div class="modal-title"></div>			
 						<div>
-							<input type="text" id="replytext">
+							<input type="text" id="replytext" required="required">
 						</div>
 					<div>
 						<button type="button" id="replyModBtn">댓글 수정</button>
@@ -146,15 +146,30 @@
 			
 			$(data).each(function(){
 				
+				var replyer = this.replyer;
+				var reply = this.reply;
+				var cno = this.cno
 				var timestamp = this.updatedate;
 				var date = new Date(timestamp);
 				var formattedTime = "댓글 게시일 : " + date.getFullYear() 
 											+ "/" + (date.getMonth() + 1)
 											+ "/" + date.getDate()
-												
+				
+				function button() {
+					var l_s = "${login_session.name}";
+					var l_ip = "${ip}";
+					// 로그인 세션의 이름이 같을 댓글 작성자와 같을 경우 또는 ip값이 작성자와 같을 경우 수정/삭제 버튼이 보이되
+					// 로그인한 작성자와 guest로 입장한 ip가 동일한 경우 guest에서 댓글을 작성하고 다시 로그인해서 댓글로 가면
+					// 수정 및 삭제 버튼이 보인다.
+					if(l_s===replyer || l_ip===replyer) {
+						return "<button type='button' class='btn btn-info'>수정/삭제</button>";
+					}
+					return "";
+				}
+		
 				str +="<li data-cno='" + this.cno + "' class='replyLi'>"
-				+ "<div class='reply'>" +  "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " "
-				+ "<button type='button' class='btn btn-info'>수정/삭제</button></li>" + "<br/></div>";
+				+  "댓글 : " + this.reply + " / " + "작성자 : " + this.replyer + " / " + formattedTime + " "
+				+ button() + "<br/><br/></div></li>";
 			});
 			
 			$("#cmreplies").html(str);

@@ -35,12 +35,6 @@ function connect() {
 	};
 	
 }
-	function addMsg(msg) {
-		let chat = $('#msgArea').val();
-		chat = chat + "\n"+ $("#targetName").val() +" : " +  msg;
-		$('#msgArea').val(chat);
-	}
-	//메세지 전송
 	function register(){
 		let msg = {
 				type : "register",
@@ -48,7 +42,14 @@ function connect() {
 		};
 		sock.send(JSON.stringify(msg));
 	}
+	
 	//서버로부터 메세지를 받을때
+	function addMsg(msg) {
+		let chat = $('#msgArea').val();
+		chat = chat + "\n"+ $("#targetName").val() +" : " +  msg;
+		$('#msgArea').val(chat);
+	}
+	//메세지 전송
 	function sendMsg(){
 		let msg = {
 				type : "chat", 

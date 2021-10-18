@@ -18,7 +18,6 @@ text-align: center;
 <body>
 	<header>
 	<h1>잘못된 접근입니다.</h1>
-	<h5>정상적인 방법으로 접근해주세요!</h5>
 	</header>
 	<hr>
 	

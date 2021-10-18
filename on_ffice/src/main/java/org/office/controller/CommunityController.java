@@ -55,7 +55,7 @@ public class CommunityController {
 						ip = communityList.get(i).getCwriter().toString();
 						ip2 =  ip.split("[.]")[0].concat("." + ip.split("[.]")[1]);
 						communityList.get(i).setCwriter(ip2);
-					}
+						}
 					}
 					
 
@@ -109,6 +109,7 @@ public class CommunityController {
 			}
 			
 			model.addAttribute("csDetail", vo);
+			model.addAttribute("ip", ip2);
 			
 		} catch (Exception e) {
 			// 주소창으로 table에 없는 글 번호로 접근할 경우 오류가 뜨기 때문에 redirect시킴

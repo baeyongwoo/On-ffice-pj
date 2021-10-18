@@ -217,8 +217,10 @@ body {
 						      <div class="fw-bold"><c:out value="${users.name }"/>(<c:out value="${users.uid}"/>)</div>
 						      ${users.depart_name }
 						    </div>
-						    	<button onclick ="window.open('/mypage/chat?targetUser=${users.uid}&targetName=${users.name }', 'Chat', 'width=300, height=250')"
-						    	class="badge rounded-pill bg-primary" id ="submit">Go Chat</button>
+						    	<c:if test = "${users.stat eq '온라인' }">
+							    	<button onclick ="window.open('/mypage/chat?targetUser=${users.uid}&targetName=${users.name }', 'Chat', 'width=300, height=250')"
+							    	class="badge rounded-pill bg-primary" id ="submit">Go Chat</button>
+						    	</c:if>
 						  </li>
 						</c:forEach>
 						 </ol>
@@ -523,11 +525,10 @@ body {
 		<h3>가입 요청유저리스트</h3>
 					<div class="userListDiv w-75 mx-auto">
 						<ol class="list-group list-inline">
-						<c:forEach items="${users }" var="users">
+						<c:forEach items="${StatNull }" var="users">
 						  <li class="mx-auto border border-primary rounded">
 						    <div class="ms-2 me-auto">
 						    
-						    <c:if test="${users.stat eq null}">
 						      <div class="fw-bold">${users.name }(${users.uid})</div>
 						      ${users.depart_name }
 						    	<form action="/user/permit" method="post">
@@ -539,8 +540,6 @@ body {
 						    		<input type="submit" value="처리" class="btn btn-dark">
 						    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						    	</form>
-						    	</c:if>
-						  
 						   </div>
 						  </li>
 						  <br/>
