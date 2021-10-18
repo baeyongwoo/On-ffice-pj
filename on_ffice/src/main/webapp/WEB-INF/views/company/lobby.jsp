@@ -54,14 +54,14 @@
         border-style: solid;
         border-width: 2px 0px 0px 0px;  
     }
-    .company {
+  /*   .company {
         
         background-image: url('https://png.pngtree.com/element_our/20190601/ourmid/pngtree-blue-building-house-free-illustration-image_1373123.jpg');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         justify-content: center;
-    }
+    } */
     .introduce {
      
         text-align: center;
@@ -144,6 +144,30 @@
 	if(result==="success"){
 		alert(name + "님 환영합니다.");
 	}
+
+	$(document).ready(function(){
+		let letter = "Onffice";
+		let length = letter.length;
+		let text = "";
+		let i=0;
+		console.log("몇글자냐" + length);
+		
+	
+setInterval(function(){
+		if(i <= length){
+			text += letter.charAt(i);
+			i++;
+		}
+			$("#logo").html(text);
+		if(i === length+1){
+			$("#logo").css('color','#a4c9c5');
+		}
+		
+		},1000);
+		
+	})
+	
+	
 </script>
 <title></title>
 </head>
@@ -152,9 +176,7 @@
     <div class="wrap"> <!-- wrap 열기 -->
 
         <div class="header">
-            <div class="company">
-                <h2 class="text-center" style="font-weight: bold;">Onffice</h2> 
-            </div>
+                <h1 id="logo" class="text-center" style="font-weight: bold; margin-top: 50px;"></h1> 
             <div class="introduce">
                 <h2><a href="/company/intro">회사소개</a></h2></div>
             <div class="freeboard">
@@ -175,7 +197,7 @@
             <div class="side">
             <div class="text-center">
             <h1>${crawl.temp} ${crawl.weather }</h1>
-           <h5>${crawl.dust }</h3><br/>
+           <h5>${crawl.dust }</h5><br/>
             <h1>헤드라인뉴스</h1><br/>
             <c:forEach items="${crawl.headLine }" var="hL">${hL}<br/><br/></c:forEach>
             </div>
