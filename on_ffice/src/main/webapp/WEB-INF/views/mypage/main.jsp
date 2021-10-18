@@ -107,7 +107,8 @@ body {
 
 				} else if (afk === 10) {
 					$('#AFKModal').modal('show');
-
+					$('.stat').html('접속상태 : 부재중');
+							
 					$.ajax({
 						beforeSend: function(xhr) {
 						    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
@@ -171,6 +172,8 @@ body {
 			let todoList = document.getElementById("todoList");
 			todoList.style.display = ((todoList.style.display != 'none') ? 'none'
 					: 'block');
+			
+			
 		}
 	}
 </script>
@@ -192,6 +195,7 @@ body {
 					<div>직원번호 : ${info.empno}</div>
 					<div>부서 : ${info.depart_name }</div>
 					<div>직급 : ${info.p_name }</div>
+					<div class=stat>접속상태 : ${info.stat }</div>
 
 					<br /> 접속한 시간<br /> ${login_time }<br />
 					<div id="clock"></div>
