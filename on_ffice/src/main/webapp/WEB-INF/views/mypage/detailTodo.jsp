@@ -28,6 +28,8 @@ body{
         <div class="col-xs-12 text-center">
        	
 				<h1>[${getTodo.todo_num }]번 작업 상세정보</h1>
+				<h5>담당자 직원번호 [${getTodo.checker }]</h5>
+				<h5>현재 작업자 직원번호 [${getTodo.worker }]</h5>
 				<br>
 				<h3>작업명</h3>
 				<h2>${getTodo.todo_title}</h2>
