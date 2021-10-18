@@ -266,16 +266,25 @@ public class UserController {
 	}
 
 	@GetMapping("/login")
-	private String Gologin(String error, String logout, Model model) {
+	private String Gologin(String error, String logout, Model model, HttpSession session) {
+		UserVO login_session = (UserVO)session.getAttribute("login_session");
 		log.info("error여부 : " + error);
 		log.info("logout 여부 : " + logout);
 
-		if (logout != null) {
-			model.addAttribute("logout", "로그아웃 했습니다.");
+		if(login_session == null){
+			if (logout != null) {
+				log.info("login.jsp로 이동");
+				model.addAttribute("logout", "로그아웃 했습니다.");
+			}
+			
+		} else if(login_session != null) {
+			
+			return "redirect:/company/lobby";
 		}
-		log.info("login.jsp로 이동");
-
+		
+		
 		return "/user/login";
+
 	}
 
 	@PostMapping("/login")
