@@ -371,7 +371,7 @@ public class UserController {
 	}
 
 	@PostMapping("/deleteCheck")
-		private String deleteCheck(String uid, String upw, Model model) {
+		private String deleteCheck(String uid, String upw, Model model, HttpSession session) {
 			log.info("탈퇴를 위한 비밀번호 확인 시작");
 			// 로그인 로직과 동일하므로, 로그인 서비스 재사용
 			UserVO vo = service.login(uid, upw);
@@ -386,6 +386,7 @@ public class UserController {
 				log.info("비밀번호 일치하여 회원탈퇴 진행");
 				service.userDelete(uid);
 				model.addAttribute("delete_result", "success");
+				session.invalidate();
 				return "/user/userInfo";
 				
 			}
