@@ -22,13 +22,13 @@ public class PhoneServiceImpl implements PhoneService{
 			
 			log.info("문자 전송 서비스 실행");
 			
-			String api_key = "NCSCAOQEUA8V1LWS";
-		    String api_secret = "ZDFVIKYMXGG3FW2A8QK9LVL2HVGZYQDT";
+			String api_key = "";
+		    String api_secret = "";
 		    Message coolsms = new Message(api_key, api_secret);
 		    
 		    HashMap<String, String> params = new HashMap<String, String>();
 		    params.put("to", dto.getTo());
-		    params.put("from", "01041008149");
+		    params.put("from", "");
 		    params.put("type", "SMS");
 		    params.put("text", dto.getText());
 		    params.put("app_version", "test app 1.2"); // application name and version
