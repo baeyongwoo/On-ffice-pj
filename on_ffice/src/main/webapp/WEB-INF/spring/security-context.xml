@@ -22,7 +22,7 @@
 		
 		<security:access-denied-handler ref="AccessDenied"/>
 		
-		<security:logout logout-url="/user/logout" invalidate-session="true"/>	 
+		<security:logout logout-url="/user/logout" invalidate-session="true"/>	
 	</security:http>
 	
 	<security:authentication-manager>

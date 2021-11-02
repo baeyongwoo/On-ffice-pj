@@ -56,7 +56,7 @@ body {
 				stat : "온라인"
 			},
 			success : function(data) {
-
+				$('.stat').html('접속상태 : 온라인');
 			},
 			error : function() {
 				alert("에러");
